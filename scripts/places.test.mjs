@@ -60,6 +60,7 @@ test('straight-line distances require real coordinates and hotel distance is ind
   assert.equal(geo.distanceKm({lat:NaN,lng:136.9},castle),null);
   assert.equal(geo.formatDistance(null),'—');
   assert.equal(geo.formatDistance(distance),`${distance.toFixed(1)} km`);
-  assert.equal(place('molnoda').lat,null);
-  assert.equal(place('molnoda').lng,null);
+  const molnoda = place('molnoda');
+  assert(geo.distanceKm(hotel,molnoda) > 0 && geo.distanceKm(hotel,molnoda) < 2);
+  assert.equal(geo.distanceKm(hotel,{...molnoda,lat:null,lng:null}),null);
 });

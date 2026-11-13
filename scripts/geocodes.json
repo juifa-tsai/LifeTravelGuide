@@ -150,5 +150,45 @@
     "address": "中部国際空港駅",
     "label": "国土地理院・施設検索（機場以連接航廈的車站為參考點）",
     "checkedAt": "2026-11-13"
+  },
+  "molnoda": {
+    "lat": 35.171249,
+    "lng": 136.901321,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A62%E4%B8%81%E7%9B%AE12%E7%95%AA5%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦二丁目１２番５号",
+    "label": "国土地理院・住所検索（地址參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "coco_fushimi": {
+    "lat": 35.170326,
+    "lng": 136.897583,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A62%E4%B8%81%E7%9B%AE9%E7%95%AA25%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦二丁目９番２５号",
+    "label": "国土地理院・住所検索（地址參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "nine_cafe_fushimi": {
+    "lat": 35.170261,
+    "lng": 136.900757,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A62%E4%B8%81%E7%9B%AE14%E7%95%AA10%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦二丁目１４番１０号",
+    "label": "国土地理院・住所検索（地址參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "kazan": {
+    "lat": 35.166199,
+    "lng": 136.904648,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%843%E4%B8%81%E7%9B%AE12%E7%95%AA14%E5%8F%B7",
+    "address": "愛知県名古屋市中区栄三丁目１２番１４号",
+    "label": "国土地理院・住所検索（地址參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "durbar_sakae": {
+    "lat": 35.166573,
+    "lng": 136.904251,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%843%E4%B8%81%E7%9B%AE12%E7%95%AA6%E5%8F%B7",
+    "address": "愛知県名古屋市中区栄三丁目１２番６号",
+    "label": "国土地理院・住所検索（地址參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
   }
 }

@@ -21,7 +21,7 @@ test('lightweight marker SVGs match the current Lucide category icons', () => {
 });
 
 test('all four daily maps permanently retain the complete shared favorite collection', () => {
-  assert.equal(favoriteIds.length,9);
+  assert.equal(favoriteIds.length,14);
   for (const day of data.trip.days) {
     const points = model.dailyMapPoints(data.itinerary.filter(stop => stop.date === day.date),data.places);
     assert.deepEqual(points.filter(point => point.favorite).map(point => point.place.id).sort(),favoriteIds);
@@ -81,14 +81,19 @@ test('lodging remains exactly once on every daily and filtered places map', () =
   assert(!model.collectionMapPoints(missingLocation,[]).some(point => point.place.id === hotel.id));
 });
 
-test('unverified dinner locations remain listable without generating map markers', () => {
+test('all five dinner locations appear on the map exactly once, while unknown coordinates stay unmarked', () => {
   const dinnerIds = ['molnoda','coco_fushimi','nine_cafe_fushimi','kazan','durbar_sakae'];
   const listed = data.places.filter(place => !place.virtual);
   const points = model.collectionMapPoints(data.places, listed);
   for (const id of dinnerIds) {
     assert(listed.some(place => place.id === id));
-    assert(!points.some(point => point.place.id === id));
-    assert.equal(model.hasCoordinates(data.places.find(place => place.id === id)), false);
+    assert.equal(points.filter(point => point.place.id === id).length,1);
+    assert.equal(model.hasCoordinates(data.places.find(place => place.id === id)), true);
+  }
+  const unknown = data.places.map(place => dinnerIds.includes(place.id) ? {...place,lat:null,lng:null,coordinateSource:null} : place);
+  for (const id of dinnerIds) {
+    assert(!model.collectionMapPoints(unknown,unknown).some(point => point.place.id === id));
+    assert(!model.dailyMapPoints(data.itinerary,unknown).some(point => point.place.id === id));
   }
 });
 

@@ -17,7 +17,7 @@ Open **http://localhost:5173/LifeTravelGuide/**. The default route uses the Nago
 - `#/day/2026-11-16` — castle and antiques
 - `#/day/2026-11-17` — art and Osu
 - `#/day/2026-11-18` — checkout, Meitetsu, return flight
-- `#/places` — single-select icon category filters and local visited history
+- `#/places` — a horizontally scrolling category strip and local visit checks
 - `#/documents` — private Drive links and official transportation resources
 - `#/audio` — Japanese phrase cards with a recording player and Traditional Chinese translations
 
@@ -75,13 +75,13 @@ The importer reads the original seven sheets and allowlists fields into five JSO
 - [華山開店報導](https://jouhou.nagoya/menya-kazan/)：11:00–24:00、L.O.23:30，有 Vegan 白湯拉麵；報導為 2025 年資料，當日菜單仍需確認，午夜後「裏かざん」菜單不可套用。
 - [DURBAR 店家資料](https://tabelog.com/aichi/A2301/A230103/23073349/)：週日夜間至翌日04:00，不定休、L.O. 待確認；蔬菜／豆類咖哩與烤餅成分待詢問。
 
-以上為一般營業資訊，**不保證 2026/11/15 當日營業或供餐**。奶素可乳製品，不吃肉、魚、蛋、魚露、柴魚與其他動物性高湯；每間店都要確認醬汁、麵皮／麵條、配料與當日供應。分類是候選用途，不代表整間店為素食專門店。新增五店未核實座標，保留 null、只顯示清單和 Google Maps 外部搜尋連結，沿用現有已授權的示意圖及標籤。
+以上為一般營業資訊，**不保證 2026/11/15 當日營業或供餐**。奶素可乳製品，不吃肉、魚、蛋、魚露、柴魚與其他動物性高湯；每間店都要確認醬汁、麵皮／麵條、配料與當日供應。分類是候選用途，不代表整間店為素食專門店。新增五店已依店家／可信餐廳資料核對地址，並於 2026-11-13 取得國土地理院地址搜尋的唯一對應座標，顯示於踩點與每日地圖；這些是地址參考點，非入口導航。原始回應座標、查詢網址、對應地址與查核日記錄於 `scripts/geocodes.json`。沿用現有已授權的示意圖及標籤。
 
 `scripts/dinner-supplement.json` 保存五店完整資料與第一晚 `late_dinner` 的 `summary`／`note`。請修改該檔後執行 `npm run import:xlsx`，再執行 `npm run validate:data`、`npm test`、`npm run build`，一併提交補充檔及產生的 JSON。匯入以地點 `id`（行程的 `placeId`）去重；同 ID 若已存在 Excel，整筆 Excel 主資料優先，不用補充檔覆蓋。晚餐補充只更新相符日期／placeId 的說明，不改時間、彈性狀態或其他預約欄位，也不改原始 Excel 與工作表。測試會實際重新匯入並驗證未遺失資料及 Excel 優先行為；CI 執行測試需安裝 `requirements.txt` 的 Python 依賴。
 
 ### Coordinates and photos
 
-The original workbook has no coordinates or photos. `scripts/geocodes.json` supplies checked reference points from the [Geospatial Information Authority of Japan address/facility search](https://msearch.gsi.go.jp/address-search/AddressSearch). Every point records its exact source query, returned address, and check date. Address results are **street/block reference points, not entrance-level navigation**; use Google Maps for actual directions. The airport uses its terminal-connected station as a ground reference. Taiwan flights, virtual meals and duplicate events do not create extra map markers. Both the daily and places pages have interactive maps with clickable location markers. Daily maps always include the nine shared vegetarian/café/bar favorites and lodging. The places map follows the active category and visited filters, retaining only matching locations plus lodging. Itinerary favorites use one category icon instead of a duplicate pin. Daily dashed lines only connect adjacent known stops and break at virtual meals.
+The original workbook has no coordinates or photos. `scripts/geocodes.json` supplies checked reference points from the [Geospatial Information Authority of Japan address/facility search](https://msearch.gsi.go.jp/address-search/AddressSearch). Every point records its exact source query, returned address, and check date. Address results are **street/block reference points, not entrance-level navigation**; use Google Maps for actual directions. The airport uses its terminal-connected station as a ground reference. Taiwan flights, virtual meals and duplicate events do not create extra map markers. Both the daily and places pages have interactive maps with clickable location markers. Daily maps always include the fourteen shared vegetarian/café/bar favorites and lodging. The places map follows the active category filter, retaining only matching locations plus lodging. Itinerary favorites use one category icon instead of a duplicate pin. Daily dashed lines only connect adjacent known stops and break at virtual meals.
 
 Explicit Excel coordinates take precedence over the supplement, but need a coordinate source in `scripts/geocodes.json` to pass validation. If you move a place, update both its workbook address and its geocode record. Unknown coordinates remain null; the text card still works.
 
@@ -97,7 +97,7 @@ To replace a photo, update the matching media record with a licensed source and 
 
 The map uses standard **OpenStreetMap** tiles with light-gray styling applied only to the base tiles and requires no API key or billing account. Leaflet attribution and [OpenStreetMap contributor credit](https://www.openstreetmap.org/copyright) remain visible. Tile requests follow browser HTTP caching, with no app-level tile prefetch or offline storage, per the [tile usage policy](https://operations.osmfoundation.org/policies/tiles/).
 
-`src/lib/mapPoints.ts` defines the shared collection. Daily maps merge it with formal itinerary points; the places map merges it with matching list results. Category/visited filters affect both the places list and its location markers; only lodging stays present for empty results or unrelated categories. Daily itinerary maps retain their shared favorites. Initial map bounds favor Nagoya city points rather than the airport. Clicking a marker shows a photo popup with compact opening hours (including last-order details) and closure notes, and selects a visible matching card; a card's map button returns to its marker. A blue bed icon identifies the hotel. The **回到住宿** button below either map recenters it on the hotel, including repeated presses after panning, without requesting current-location permission or scrolling away from the map. Google Maps remains an external link for actual navigation.
+`src/lib/mapPoints.ts` defines the shared collection. Daily maps merge it with formal itinerary points; the places map merges it with matching list results. Category selection affects both the places list and its location markers; only lodging stays present for empty results or unrelated categories. Daily itinerary maps retain their shared favorites. Initial map bounds favor Nagoya city points rather than the airport. Clicking a marker shows a photo popup with compact opening hours (including last-order details) and closure notes, and selects a visible matching card; a card's map button returns to its marker. A blue bed icon identifies the hotel. The **回到住宿** button below either map recenters it on the hotel, including repeated presses after panning, without requesting current-location permission or scrolling away from the map. Google Maps remains an external link for actual navigation.
 
 ## Offline and local state
 
@@ -119,7 +119,7 @@ Edit `src/data/audioPhrases.ts` to add or revise a card and keep its text and au
 
 ## Compact places collection
 
-The places page uses collapsible cards. The preview shows the photo, name, today's regular opening window in **Japan time**, dining type (vegetarian or mixed kitchen where confirmed), and straight-line distance from the current position. Expanded cards show an approximately 50-character food description, Japanese name, address, concise hours/diet notes, source and navigation icons, visit checkbox, and distance from the hotel. The title counts follow the active category/visited filters. Opening windows are regular schedules, not live opening guarantees; a weekday-only workbook reference is never applied to another weekday.
+The places page uses collapsible cards. The preview shows the photo, name, today's regular opening window in **Japan time**, dining type (vegetarian or mixed kitchen where confirmed), and straight-line distance from the current position. Expanded cards show an approximately 50-character food description, Japanese name, address, concise hours/diet notes, source and navigation icons, visit checkbox, and distance from the hotel. The title count follows the selected category. The category icons stay in a single horizontally scrollable row with a hidden scrollbar. The all/unvisited/visited switch has been removed; individual visit checks remain stored locally. Opening windows are regular schedules, not live opening guarantees; a weekday-only workbook reference is never applied to another weekday.
 
 `scripts/place-details.json` maintains checked food descriptions, dining types, weekly hours and source URLs, merged into `places.json` on every `npm run import:xlsx`. It adds card-specific fields without overwriting the workbook's original fields or changing itinerary bookings. Weekly hours use Sunday=0 through Saturday=6, `null` for a regular closure and an explicit short uncertainty string when sources disagree. Food classification describes the whole kitchen; a restaurant with a Vegan option may still be marked **葷素餐廳**. Source details and checks are recorded per place (2026-11-13).
 
@@ -132,3 +132,9 @@ Distances are local calculations from verified place coordinates; unknown coordi
 `scripts/transport-supplement.json` 保存圖卡資料、使用者提供的兩個繁中名鐵網站，以及已核實的名鐵／中部機場繁中網址對照。執行 `npm run import:xlsx` 會同步到既有五份 JSON；重新匯入不會遺失圖片設定，新增網站以 ID／網址去重。地下鐵官網使用站內語言切換，保留官方路線頁並提示可選繁中，不加入未確認有效的語言參數。更換交通圖片時請同步更新來源記錄及雜湊，再執行資料驗證、測試與建置。
 
 每日時間軸與地圖均使用類型圖示（如飛機、列車、床、咖啡、古蹟），不再顯示數字順序；行程時間排序、地圖選取、回到住宿及踩點篩選沿用原有行為。
+
+## 精簡手機畫面與共用地點資訊
+
+移除最上方品牌橫幅、裝飾性的英文／日文副標及重複的頁尾導覽，四個分頁統一保留底部主選單（桌面亦可用）。主要內容以 16–18px 顯示，輔助資訊多為 14px；保留航班、時區、預約、奶素限制、當日營業不確定性及圖片來源等必要資訊。
+
+`src/components/PlaceDetails.tsx` 共用踩點與時間軸的展開內容，包括約 50 字餐點說明、日文名稱、地址、營業／奶素提醒、距飯店直線距離，以及 Google Maps／地圖定位／來源圖示。時間軸保留行程日期的開放時段與個別安排備註，收合時顯示餐廳種類；展開不再重複放置大型照片。補充五店的座標在 Excel 匯入時自動合併，未經核實的座標仍不放置標記。造訪狀態切換已移除，勾選紀錄不會影響清單或地圖是否顯示。

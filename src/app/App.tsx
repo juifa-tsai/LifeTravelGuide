@@ -1,6 +1,6 @@
 import { useEffect, useState, Component, type ReactNode } from 'react';
-import { HashRouter, Link, NavLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
-import { BookOpen, CalendarDays, MapPin, Files, Volume2, WifiOff, RefreshCw, X, ArrowUpRight } from 'lucide-react';
+import { HashRouter, NavLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { BookOpen, CalendarDays, MapPin, Files, Volume2, WifiOff, RefreshCw, X } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import type { TravelData } from '../lib/types';
 import { defaultDay, loadData } from '../lib/data';
@@ -52,10 +52,6 @@ function TravelApp({ data }: { data:TravelData }) {
     { url:'/audio', label:'語音', icon:Volume2, active:location.pathname === '/audio' },
   ];
   return <div className="app-shell"><a href="#main-content" className="skip-link" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>跳至主要內容</a>
-    <div className="masthead-wrap"><header className="masthead"><Link to={dayUrl} className="brand"><span className="brand-mark"><BookOpen size={21} strokeWidth={1.5} /></span><span>旅の手帖<small>NAGOYA TRAVEL COMPANION</small></span></Link>
-      <div className="trip-range"><span>2026</span>11.15 — 11.18<span className="trip-length">4 DAYS / 3 NIGHTS</span></div>
-      <nav className="desktop-nav" aria-label="桌面主選單">{nav.map(item => <Link key={item.label} to={item.url} aria-current={item.active ? 'page' : undefined} className={item.active ? 'active' : ''}><item.icon size={16} />{item.label}</Link>)}</nav>
-    </header></div>
     {!online && <div className="offline-banner" role="status"><WifiOff size={16} /><span>目前離線 · 已快取行程可查看，地圖與外部文件需連線。</span></div>}
     <main id="main-content" tabIndex={-1} className="main-content"><Routes>
       <Route path="/day/:date" element={<DayRoute data={data} />} />
@@ -63,7 +59,7 @@ function TravelApp({ data }: { data:TravelData }) {
       <Route path="/documents" element={<DocumentsPage data={data} />} />
       <Route path="/audio" element={<AudioPage />} />
       <Route path="*" element={<Navigate to={`/day/${homeDay}`} replace />} />
-    </Routes><footer className="page-footer"><span>行程資料 {data.trip.updatedAt}</span><Link to="/documents">旅途所需的文件<ArrowUpRight size={12} /></Link></footer></main>
+    </Routes></main>
     <nav className="bottom-nav" aria-label="主選單">{nav.map(item => <NavLink key={item.label} to={item.url} className={item.active ? 'active' : ''} aria-current={item.active ? 'page' : undefined}><item.icon size={22} strokeWidth={1.7} /><span>{item.label}</span></NavLink>)}</nav>
     <UpdateNotice />
   </div>;

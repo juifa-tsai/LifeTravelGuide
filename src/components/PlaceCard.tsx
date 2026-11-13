@@ -5,8 +5,9 @@ import { hasCoordinates, stopId } from '../lib/data';
 import { CategoryIcon } from './Icon';
 import { ExternalLink } from './ExternalLink';
 import { PlaceImage } from './PlaceImage';
-export function PlaceCard({ stop, place, selected, onFocus }: {
-  stop: Stop; place?: Place; selected: boolean; onFocus: (placeId: string, returnToMap?: boolean) => void;
+import { PlaceDetails } from './PlaceDetails';
+export function PlaceCard({ stop, place, hotel, selected, onFocus }: {
+  stop: Stop; place?: Place; hotel?: Place; selected: boolean; onFocus: (placeId: string, returnToMap?: boolean) => void;
 }) {
   const [open, setOpen] = useState(false);
   const flexible = ['彈性','待選','候選用餐','可選'].includes(stop.displayStatus);
@@ -19,20 +20,18 @@ export function PlaceCard({ stop, place, selected, onFocus }: {
         <span className="stop-overview"><span className="stop-time"><time>{stop.arrivalTime}</time>
           <span className="stay">{stop.timezone === 'Asia/Taipei' ? '台灣時間' : stop.stayMinutes ? `約 ${stop.stayMinutes} 分` : '日本時間'}</span>
           {stop.displayStatus !== '正式行程' && <span className={`badge ${flexible ? 'badge-flexible' : ''}`}>{stop.displayStatus}</span>}</span>
-          <span className="stop-title">{title}</span><span className="japanese" lang="ja">{place?.nameJa ?? '地點資訊待補'}</span>
+          <span className="stop-title">{title}</span>
+          {place?.diningType && <span className={`dining-badge ${place.diningType === '素食餐廳' ? 'vegetarian' : ''}`}>{place.diningType}</span>}
         </span>{place && <PlaceImage place={place} compact credit={false} />}<span className={`expand-icon ${open ? 'is-open' : ''}`}><ChevronDown size={17} /></span>
       </button>
       {open && <div id={`detail-${stopId(stop)}`} className="stop-detail">
-        {place && <PlaceImage place={place} />}
-        <p className="stop-summary">{stop.summary}</p>
-        {place?.hoursText && <p className="detail-meta"><Clock3 size={14} /><span>{place.hoursText}</span></p>}
-        {place && !place.virtual && <p className="detail-meta"><MapPin size={14} /><span>{place.address}</span></p>}
+        {place && !place.virtual ? <PlaceDetails place={place} hotel={hotel} date={stop.date} onFocus={onFocus} /> : <>
+          <p className="stop-summary">{stop.summary}</p>
+          {place?.hoursText && <p className="detail-meta"><Clock3 size={14} /><span>{place.hoursText}</span></p>}
+          {place?.dietText && <p className="diet-note">{place.dietText}</p>}
+          <div className="card-actions"><ExternalLink href={stop.mapsUrl} className="button button-outline"><MapPin size={15} />Google Maps<ArrowUpRight size={14} /></ExternalLink></div>
+        </>}
         {stop.note && /預約|不確定|僅預估|末點|末班|核對|μticket|台灣時間|含在住宿|含11|天守閣/.test(stop.note) && <p className="note">{stop.note}</p>}
-        {place?.dietText && <p className="diet-note">{place.dietText}</p>}
-        {place?.id === 'toraya' && <p className="note">週一營業仍需於出發前複核。</p>}
-        {place?.id === 'late_dinner' && <p className="note">依抵達時間安排奶素晚餐；杏ZU 週日末點約21:30。</p>}
-        <div className="card-actions"><ExternalLink href={stop.mapsUrl} className="button button-outline"><MapPin size={15} />Google Maps<ArrowUpRight size={14} /></ExternalLink>
-          {hasCoordinates(place) && <button className="text-action" onClick={() => onFocus(place.id, true)}>在地圖查看</button>}</div>
       </div>}
     </article>
   </div>;

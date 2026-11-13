@@ -33,7 +33,7 @@ function AudioCard({ phrase, onPlaybackStart }: { phrase: AudioPhrase; onPlaybac
   const PlaybackIcon = playing ? Pause : ended ? RotateCcw : Play;
   return <article className="audio-card" aria-labelledby={`phrase-${phrase.id}`}>
     <details className="audio-details">
-      <summary className="audio-card-heading"><span className="audio-card-icon"><Volume2 size={20} /></span><div><span className="eyebrow">用餐溝通</span><h2 id={`phrase-${phrase.id}`}>{phrase.title}</h2><span className="audio-expand-hint" aria-hidden="true">日文與中文說明</span></div><ChevronDown className="audio-chevron" size={18} aria-hidden="true" /></summary>
+      <summary className="audio-card-heading"><span className="audio-card-icon"><Volume2 size={20} /></span><div><h2 id={`phrase-${phrase.id}`}>{phrase.title}</h2></div><ChevronDown className="audio-chevron" size={18} aria-hidden="true" /></summary>
       <div className="audio-card-content"><p className="audio-japanese" lang="ja">{phrase.japanese}</p>
         <p className="audio-translation">{phrase.translation}</p>
         <p className="small muted">{phrase.voiceName} · AI 合成男聲（日文）</p></div>
@@ -54,8 +54,7 @@ export function AudioPage() {
     activeAudio.current = audio;
   }
   return <>
-    <header className="page-heading"><div className="heading-kicker"><span>WORDS FOR THE JOURNEY</span><span>JAPANESE PHRASES</span></div><h1>旅途語音<span className="heading-ja" lang="ja">伝えることば</span></h1><p>按播放讓對方聽，先詢問餐點，再補充奶素條件；點標題查看日文與中文。</p></header>
+    <header className="page-heading"><h1>旅途語音</h1><p>按播放讓店員聽，點標題查看日文與中文。</p></header>
     <section className="audio-cards" aria-label="日文語音卡片">{audioPhrases.map(phrase => <AudioCard key={phrase.id} phrase={phrase} onPlaybackStart={onPlaybackStart} />)}</section>
-    <p className="small muted">先確認手機音量；播放時再按一下即可暫停。</p>
   </>;
 }

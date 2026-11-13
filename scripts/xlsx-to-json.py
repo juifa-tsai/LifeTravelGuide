@@ -58,6 +58,11 @@ supplement = json.loads((ROOT / 'scripts/dinner-supplement.json').read_text())
 place_ids = {place['id'] for place in places}
 for place in supplement['places']:
     if place['id'] not in place_ids:
+        place = dict(place)
+        geo = geocodes.get(place['id'], {})
+        if place['lat'] is None and place['lng'] is None and geo:
+            place.update(lat=geo['lat'], lng=geo['lng'], coordinateSource=geo['source'],
+                         coordinateLabel=geo.get('label'), coordinateAddress=geo.get('address'))
         places.append(place)
         place_ids.add(place['id'])
 for extra in supplement['itinerary']:

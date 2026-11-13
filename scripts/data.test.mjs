@@ -46,6 +46,7 @@ test('every place and itinerary stop has a credited local preview with truthful 
 
 const dinnerIds = ['molnoda','coco_fushimi','nine_cafe_fushimi','kazan','durbar_sakae'];
 const supplement = JSON.parse(readFileSync(new URL('./dinner-supplement.json', import.meta.url), 'utf8'));
+const geocodes = JSON.parse(readFileSync(new URL('./geocodes.json', import.meta.url), 'utf8'));
 test('arrival restaurants have unique real places, HTTPS Maps links and explicit lacto-vegetarian cautions', () => {
   for (const id of dinnerIds) {
     const matches = data.places.filter(place => place.id === id);
@@ -60,9 +61,12 @@ test('arrival restaurants have unique real places, HTTPS Maps links and explicit
     for (const field of ['nameZh','nameJa','address','hoursText','closedText','priority','summary','verification','sourceUrl']) assert(place[field], `${id}: ${field}`);
     assert.match(place.hoursText, /非 2026\/11\/15 當日保證/);
     assert.match(place.hoursText, /L\.O\./);
-    assert.equal(place.lat, null, `${id}: no verified coordinates yet`);
-    assert.equal(place.lng, null);
-    assert.equal(place.coordinateSource, null);
+    assert.equal(place.lat, geocodes[id].lat, `${id}: use the recorded GSI response`);
+    assert.equal(place.lng, geocodes[id].lng);
+    assert.equal(place.coordinateSource, geocodes[id].source);
+    assert.match(place.coordinateSource, /^https:\/\/msearch\.gsi\.go\.jp\/address-search\/AddressSearch\?q=/);
+    assert.match(place.coordinateLabel, /參考點/);
+    assert.equal(place.coordinateAddress, geocodes[id].address);
     assert.equal(place.imageKind, 'illustration');
     assert.match(place.imageAlt, /示意/);
   }
