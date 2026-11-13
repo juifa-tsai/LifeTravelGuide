@@ -75,7 +75,7 @@ The importer reads the original seven sheets plus the optional `07_餐飲與酒�
 - [華山開店報導](https://jouhou.nagoya/menya-kazan/)：11:00–24:00、L.O.23:30，有 Vegan 白湯拉麵；報導為 2025 年資料，當日菜單仍需確認，午夜後「裏かざん」菜單不可套用。
 - [DURBAR 店家資料](https://tabelog.com/aichi/A2301/A230103/23073349/)：週日夜間至翌日04:00，不定休、L.O. 待確認；蔬菜／豆類咖哩與烤餅成分待詢問。
 
-以上為一般營業資訊，**不保證 2026/11/15 當日營業或供餐**。奶素可乳製品，不吃肉、魚、蛋、魚露、柴魚與其他動物性高湯；每間店都要確認醬汁、麵皮／麵條、配料與當日供應。分類是候選用途，不代表整間店為素食專門店。新增五店已依店家／可信餐廳資料核對地址，並於 2026-11-13 取得國土地理院地址搜尋的唯一對應座標，顯示於踩點與每日地圖；這些是地址參考點，非入口導航。原始回應座標、查詢網址、對應地址與查核日記錄於 `scripts/geocodes.json`。沿用現有已授權的示意圖及標籤。
+以上為一般營業資訊，**不保證 2026/11/15 當日營業或供餐**。奶素可乳製品，不吃肉、魚、蛋、魚露、柴魚與其他動物性高湯；每間店都要確認醬汁、麵皮／麵條、配料與當日供應。分類是候選用途，不代表整間店為素食專門店。新增五店已依店家／可信餐廳資料核對地址，並於 2026-11-13 取得國土地理院地址搜尋的唯一對應座標，顯示於踩點與每日地圖；這些是地址參考點，非入口導航。原始回應座標、查詢網址、對應地址與查核日記錄於 `scripts/geocodes.json`。五間店已改用對應店家的店面或室內實景截圖，來源及原攝影者署名保留。
 
 `scripts/dinner-supplement.json` 保存五店完整資料與第一晚 `late_dinner` 的 `summary`／`note`。請修改該檔後執行 `npm run import:xlsx`，再執行 `npm run validate:data`、`npm test`、`npm run build`，一併提交補充檔及產生的 JSON。匯入以地點 `id`（行程的 `placeId`）去重；同 ID 若已存在 Excel，整筆 Excel 主資料優先，不用補充檔覆蓋。晚餐補充僅在相符日期／placeId 的說明為空時補上；最新版 Excel 的摘要與備註優先，不改時間、彈性狀態或其他預約欄位，也不改原始 Excel 與工作表。測試會實際重新匯入並驗證未遺失資料及 Excel 優先行為；CI 執行測試需安裝 `requirements.txt` 的 Python 依賴。
 
@@ -85,9 +85,13 @@ The original workbook has no coordinates or photos. `scripts/geocodes.json` supp
 
 Explicit Excel coordinates take precedence over the supplement, but need a coordinate source in `scripts/geocodes.json` to pass validation. If you move a place, update both its workbook address and its geocode record. Unknown coordinates remain null; the text card still works.
 
-Twenty credited Wikimedia Commons photos are shipped as optimized WebP files under `public/images/`, covering all 35 place records and all itinerary cards. Nine places have confirmed location photos; places without a reusable location photo use category photos clearly marked **示意**. This label is also present in alternative text. Photo credits link to the original file's author and license; full records, including resizing information, are in `public/images/credits.json`.
+All 32 real locations now use photographs of the matching place. The 23 former generic previews have been replaced with 16 storefront/entrance images, five interiors and two terraces. Twenty-two were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
 
-`scripts/media.json` maps stable place IDs to the preview image, credit, source, license, type and alternative text. The Excel importer merges this supplement so reimporting the workbook preserves the photos. `scripts/media-assets.json` records the original Commons files; restore missing assets with:
+`scripts/storefront-photos.json` records the matched store name/address, photographer, original photo/viewer URL, capture date, view type and SHA-256 hashes. These personal noncommercial travel-reference screenshots retain the original photographers’ rights; they are **not CC-licensed or newly licensed by this repository**. Google Maps usage terms and the official source are recorded separately from the existing Commons CC licenses. Source and photographer links remain on cards and map popups. Full credits are in `public/images/credits.json`; Google Maps photos are not live API requests, and the app needs no Google API key.
+
+To recapture one reviewed image, install Playwright in your maintenance environment, then run `node scripts/capture-place-photo.mjs <placeId>`. An existing installation can be selected with `PLAYWRIGHT_MODULE_PATH` (module file path) and `CHROMIUM_PATH`. Inspect the result against its source and photographer, synchronize the corresponding `scripts/media.json` entry, rebuild credits with `python3 scripts/fetch-images.py`, then run `npm run import:xlsx` and the normal validation/tests/build. Captures do not replace a missing photo with an unrelated stock image; Excel reimports retain them by stable place ID.
+
+`scripts/media.json` maps stable place IDs to the preview image, credit, source, license, type and alternative text. The Excel importer merges this supplement so reimporting the workbook preserves the photos. `scripts/media-assets.json` records the original Commons files; restore missing Commons assets and rebuild all credits with (captured images must already exist):
 
 ```sh
 python3 scripts/fetch-images.py
@@ -119,7 +123,7 @@ Edit `src/data/audioPhrases.ts` to add or revise a card and keep its text and au
 
 ## Compact places collection
 
-The places page uses collapsible cards. The preview shows the photo, name, today's regular opening window in **Japan time**, dining type (vegetarian or mixed kitchen where confirmed), and straight-line distance from the current position. Expanded cards show an approximately 50-character food description, Japanese name, address, concise hours/diet notes, source and navigation icons, visit checkbox, and distance from the hotel. The title count follows the selected category. The category icons stay in a single horizontally scrollable row with a hidden scrollbar. The all/unvisited/visited switch has been removed; individual visit checks remain stored locally. Opening windows are regular schedules, not live opening guarantees; a weekday-only workbook reference is never applied to another weekday.
+The places page uses collapsible cards. The preview shows the photo, name, today's regular opening window in **Japan time**, dining type (vegetarian or mixed kitchen where confirmed), and straight-line distance from the current position. Expanded cards show an approximately 50-character food description, Japanese name, address, concise hours/diet notes, source and navigation icons, visit checkbox, and distance from the hotel. The title count follows the selected category. The complete list and every category sort by unrounded straight-line distance from the hotel, nearest first. Unknown coordinates sort last; ties retain source order. This order does not depend on current GPS position and never changes daily itinerary order. The category icons stay in a single horizontally scrollable row with a hidden scrollbar. The all/unvisited/visited switch has been removed; individual visit checks remain stored locally. Opening windows are regular schedules, not live opening guarantees; a weekday-only workbook reference is never applied to another weekday.
 
 `scripts/place-details.json` maintains checked food descriptions, dining types, weekly hours and source URLs, merged into `places.json` on every `npm run import:xlsx`. It adds card-specific fields without overwriting the workbook's original fields or changing itinerary bookings. Weekly hours use Sunday=0 through Saturday=6, `null` for a regular closure and an explicit short uncertainty string when sources disagree. Food classification describes the whole kitchen; a restaurant with a Vegan option may still be marked **葷素餐廳**. Source details and checks are recorded per place (2026-11-13).
 
@@ -155,7 +159,7 @@ Distances are local calculations from verified place coordinates; unknown coordi
 
 ## 最新 Drive 行程同步（2026-11-13）
 
-已同步 Drive「2026 Nakoya」中 13:49:30 UTC 更新的 Excel 原檔，共 35 個地點、29 個每日安排、21 段交通。原檔雜湊與 Drive 來源保存在 `docs/workbook-source.json`。新地點為 Bio Terrace、KHAJA GHAR、Miho’s Kitchen Grains、ORIBIO、Pupu Kitchen、「こ」VEGAN CAFE、Bar Thistle；皆補齊地址參考座標、約 50 字餐點／酒款描述、分類、營業資訊、Maps 連結及有授權的示意照片。示意圖不代表店家實景。
+已同步 Drive「2026 Nakoya」中 13:49:30 UTC 更新的 Excel 原檔，共 35 個地點、29 個每日安排、21 段交通。原檔雜湊與 Drive 來源保存在 `docs/workbook-source.json`。新地點為 Bio Terrace、KHAJA GHAR、Miho’s Kitchen Grains、ORIBIO、Pupu Kitchen、「こ」VEGAN CAFE、Bar Thistle；皆補齊地址參考座標、約 50 字餐點／酒款描述、分類、營業資訊、Maps 連結及對應店家的實景截圖；照片來源與原攝影者署名均保留。
 
 每日行程完全以新 Excel 的時間、狀態、摘要與備註為準：11/16 加入 Bio Terrace 午餐，吹上老件市場調整為 13:45／105 分；11/17 加入 KHAJA GHAR 午餐與 20:00 可選的 Bar Thistle，21:00 回飯店。既有航班、接機與住宿預約資料保留。第 07 工作表依地點名稱／穩定 ID 產生各日 `candidateIds`，已在時間軸中的地點不重複當作口袋候選。11/16 保留 Le Jardin、BAR Récit；11/17 備選為 Miho’s Kitchen Grains、BAR Récit，不把通常公休的 BAR BARNS 列為當天候選。
 

@@ -72,3 +72,23 @@ test('straight-line distances require real coordinates and hotel distance is ind
   assert(geo.distanceKm(hotel,molnoda) > 0 && geo.distanceKm(hotel,molnoda) < 2);
   assert.equal(geo.distanceKm(hotel,{...molnoda,lat:null,lng:null}),null);
 });
+
+test('places sort by unrounded distance from the hotel, keeping unknown coordinates last without mutating source data', () => {
+  const hotel = place('hotel');
+  const source = data.places.filter(p => !p.virtual && !['住宿','機場'].includes(p.category));
+  const originalIds = source.map(p => p.id);
+  const sorted = geo.byHotelDistance(source,hotel);
+  for (let i=1; i<sorted.length; i++) {
+    assert(geo.distanceKm(hotel,sorted[i-1]) <= geo.distanceKm(hotel,sorted[i]));
+  }
+  assert.deepEqual(source.map(p => p.id),originalIds);
+  for (const category of new Set(source.map(p => p.category))) {
+    assert.deepEqual(geo.byHotelDistance(source.filter(p=>p.category===category),hotel),sorted.filter(p=>p.category===category));
+  }
+  const unknown = { ...source[0],id:'unknown',lat:null,lng:null };
+  assert.equal(geo.byHotelDistance([unknown,...source],hotel).at(-1).id,'unknown');
+  assert.deepEqual(geo.byHotelDistance(source,undefined),source);
+  assert.deepEqual(geo.byHotelDistance(source,{lat:null,lng:null}),source);
+  const same = [{id:'first',lat:hotel.lat,lng:hotel.lng},{id:'second',lat:hotel.lat,lng:hotel.lng}];
+  assert.deepEqual(geo.byHotelDistance(same,hotel).map(p=>p.id),['first','second']);
+});

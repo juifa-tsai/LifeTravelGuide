@@ -12,6 +12,7 @@ export interface Place {
   dietText: string | null; summary: string; mapsUrl: string; website: string | null;
   imageUrl: string | null; imageAttribution: string | null; lat: number | null; lng: number | null;
   imageSourceUrl: string | null; imageLicenseUrl: string | null; imageKind: 'place' | 'illustration' | null; imageAlt: string | null;
+  imageSubject?: 'exterior' | 'interior' | 'terrace'; imageRights?: 'original-rights'; imageCapturedAt?: string;
   virtual: boolean; verification: string; sourceUrl: string | null; coordinateSource: string | null;
   coordinateLabel: string | null; coordinateAddress: string | null;
   foodDescription?: string; diningType?: string;

@@ -32,7 +32,7 @@ test('the updated workbook owns every itinerary time, status, summary and note',
   }
 });
 
-test('seven newly added places have sourced descriptions, real map reference points and credited illustrations', () => {
+test('seven newly added places have sourced descriptions, real map reference points and credited location photos', () => {
   const ids=['bio_terrace','khaja_ghar','mihos_grains','oribio','pupu_kitchen','ko_vegan','bar_thistle'];
   assert.equal(data.places.length,35);
   for (const id of ids) {
@@ -43,8 +43,8 @@ test('seven newly added places have sourced descriptions, real map reference poi
     assert.match(place.coordinateSource,/^https:\/\/msearch\.gsi\.go\.jp\//);
     assert(place.foodDescription.length>=35 && place.foodDescription.length<=70);
     assert(place.diningType && place.weeklyHours && place.hoursNote && place.detailSourceUrls.length);
-    assert.equal(place.imageKind,'illustration');
-    assert.match(place.imageAlt,/示意/);
+    assert.equal(place.imageKind,'place');
+    assert.match(place.imageAlt,/實景/);
     assert(place.imageAttribution && place.imageSourceUrl && place.imageLicenseUrl);
   }
 });

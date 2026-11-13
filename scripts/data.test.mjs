@@ -67,8 +67,8 @@ test('arrival restaurants have unique real places, HTTPS Maps links and explicit
     assert.match(place.coordinateSource, /^https:\/\/msearch\.gsi\.go\.jp\/address-search\/AddressSearch\?q=/);
     assert.match(place.coordinateLabel, /參考點/);
     assert.equal(place.coordinateAddress, geocodes[id].address);
-    assert.equal(place.imageKind, 'illustration');
-    assert.match(place.imageAlt, /示意/);
+    assert.equal(place.imageKind, 'place');
+    assert.match(place.imageAlt, /實景/);
   }
 });
 test('arrival dinner remains flexible at 21:45 and follows the updated workbook dinner plan', () => {

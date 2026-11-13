@@ -31,6 +31,8 @@ geo_path = ROOT / 'scripts/geocodes.json'
 geocodes = json.loads(geo_path.read_text()) if geo_path.exists() else {}
 media_path = ROOT / 'scripts/media.json'
 media = json.loads(media_path.read_text()) if media_path.exists() else {}
+photo_fields = ('imageUrl', 'imageAttribution', 'imageSourceUrl', 'imageLicenseUrl', 'imageKind', 'imageAlt',
+                'imageSubject', 'imageRights', 'imageCapturedAt')
 places = []
 for r in rows('02_踩點清單'):
     virtual = r[0] in ('late_dinner', 'meal_tbd_16', 'meal_tbd_17')
@@ -61,12 +63,18 @@ place_ids = {place['id'] for place in places}
 for place in supplement['places']:
     if place['id'] not in place_ids:
         place = dict(place)
+        photo = media.get(place['id'], {})
+        place.update({field:photo[field] for field in photo_fields if field in photo})
         geo = geocodes.get(place['id'], {})
         if place['lat'] is None and place['lng'] is None and geo:
             place.update(lat=geo['lat'], lng=geo['lng'], coordinateSource=geo['source'],
                          coordinateLabel=geo.get('label'), coordinateAddress=geo.get('address'))
         places.append(place)
         place_ids.add(place['id'])
+for place in places:
+    photo = media.get(place['id'], {})
+    if place['imageUrl'] == photo.get('imageUrl'):
+        place.update({field:photo[field] for field in ('imageSubject', 'imageRights', 'imageCapturedAt') if field in photo})
 for extra in supplement['itinerary']:
     for stop in itinerary:
         if (stop['date'], stop['placeId']) == (extra['date'], extra['placeId']):
