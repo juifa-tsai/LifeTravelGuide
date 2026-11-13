@@ -27,16 +27,24 @@ def time(value):
 
 geo_path = ROOT / 'scripts/geocodes.json'
 geocodes = json.loads(geo_path.read_text()) if geo_path.exists() else {}
+media_path = ROOT / 'scripts/media.json'
+media = json.loads(media_path.read_text()) if media_path.exists() else {}
 places = []
 for r in rows('02_踩點清單'):
     virtual = r[0] in ('late_dinner', 'meal_tbd_16', 'meal_tbd_17')
     geo = geocodes.get(r[0], {})
+    photo = media.get(r[0], {})
+    image_url = r[13] or photo.get('imageUrl')
+    if r[13] and r[13] != photo.get('imageUrl'):
+        photo = {}  # A new workbook image needs its own matching attribution.
     lat, lng = number(r[14]), number(r[15])
     if lat is None and lng is None and geo:
         lat, lng = geo['lat'], geo['lng']
     places.append(dict(id=r[0], category=r[1], nameZh=r[2], nameJa=r[3], address=r[4],
         hoursText=r[5], closedText=r[6], priority=r[7], dietText=r[9], summary=r[10],
-        mapsUrl=r[11], website=r[12], imageUrl=r[13], imageAttribution=None,
+        mapsUrl=r[11], website=r[12], imageUrl=image_url, imageAttribution=photo.get('imageAttribution'),
+        imageSourceUrl=photo.get('imageSourceUrl'), imageLicenseUrl=photo.get('imageLicenseUrl'),
+        imageKind=photo.get('imageKind'), imageAlt=photo.get('imageAlt'),
         lat=None if virtual else lat, lng=None if virtual else lng, virtual=virtual,
         verification=r[16], sourceUrl=r[17], coordinateSource=geo.get('source'),
         coordinateLabel=geo.get('label'), coordinateAddress=geo.get('address')))

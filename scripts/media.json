@@ -1,0 +1,186 @@
+{
+  "tpe": {
+    "imageUrl": "images/tpe.webp",
+    "imageAttribution": "Antonio Tajuelo · CC BY 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Waiting_Room_C3,_Taoyuan_Airport_Terminal_2.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageKind": "place",
+    "imageAlt": "桃園機場第二航廈候機室"
+  },
+  "ngo": {
+    "imageUrl": "images/ngo.webp",
+    "imageAttribution": "JKT-c · CC BY 3.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Chubu_Centrair_International_Airport_-_North_Wing_-_01.JPG",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "imageKind": "place",
+    "imageAlt": "中部國際機場北翼"
+  },
+  "nagoya_station": {
+    "imageUrl": "images/station.webp",
+    "imageAttribution": "そらみみ · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Meitetsu-Nagoya_Station_20150124.JPG",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "place",
+    "imageAlt": "名鐵名古屋站"
+  },
+  "nagoyajo": {
+    "imageUrl": "images/castle.webp",
+    "imageAttribution": "Base64 edit by Noodle snacks · CC BY-SA 3.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Nagoya_Castle(Edit2).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "imageKind": "place",
+    "imageAlt": "名古屋城"
+  },
+  "art_museum": {
+    "imageUrl": "images/museum.webp",
+    "imageAttribution": "Asturio Cantabrio · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Nagoya_City_Art_Museum_ac.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "place",
+    "imageAlt": "名古屋市美術館"
+  },
+  "shirokawa": {
+    "imageUrl": "images/park.webp",
+    "imageAttribution": "Roman SUZUKI · CC BY 3.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%99%BD%E5%B7%9D%E5%85%AC%E5%9C%92_-_panoramio.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "imageKind": "place",
+    "imageAlt": "白川公園"
+  },
+  "osu_kannon": {
+    "imageUrl": "images/temple.webp",
+    "imageAttribution": "Asturio Cantabrio · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Osu_Kannon_main_hall_2025-02_ac_(1).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "place",
+    "imageAlt": "大須觀音本堂"
+  },
+  "osu_street": {
+    "imageUrl": "images/osu.webp",
+    "imageAttribution": "Bariston · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Osu1.JPG",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "place",
+    "imageAlt": "大須商店街"
+  },
+  "ao_sands": {
+    "imageUrl": "images/aosands.webp",
+    "imageAttribution": "HQA02330 · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Aosuns-Osu-Nagoya.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "place",
+    "imageAlt": "AO SANDS 店面"
+  },
+  "hotel": {
+    "imageUrl": "images/room.webp",
+    "imageAttribution": "Tzuhsun Hsu · CC BY-SA 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9D%B1%E6%A8%AAINN%E6%B7%80%E5%B1%8B%E6%A9%8B%E9%A7%85%E5%8D%97_2016_%E5%AE%A4%E5%86%85_(30642072015).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "imageKind": "illustration",
+    "imageAlt": "住宿空間示意，非本次飯店實景"
+  },
+  "fukiage": {
+    "imageUrl": "images/antiques.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Era,_Trafalgar_Street,_Brighton_2025-04-25.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "老件選物空間示意，非店家實景"
+  },
+  "store_factory": {
+    "imageUrl": "images/vintage.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Snoopers_Paradise,_Kensington_Gardens,_Brighton_2025-04-25.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "古董店空間示意，非店家實景"
+  },
+  "le_jardin": {
+    "imageUrl": "images/macchiato.webp",
+    "imageAttribution": "Ryan Snyder · CC BY 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Macchiato_at_Seven_Virtues_Coffeehouse._(2452633887).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageKind": "illustration",
+    "imageAlt": "咖啡示意，非店家餐點"
+  },
+  "shrub": {
+    "imageUrl": "images/coffee.webp",
+    "imageAttribution": "Vee Satayamas · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:A_cup_of_espresso.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "illustration",
+    "imageAlt": "咖啡示意，非店家餐點"
+  },
+  "cereza": {
+    "imageUrl": "images/macchiato.webp",
+    "imageAttribution": "Ryan Snyder · CC BY 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Macchiato_at_Seven_Virtues_Coffeehouse._(2452633887).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageKind": "illustration",
+    "imageAlt": "咖啡示意，非店家餐點"
+  },
+  "mori": {
+    "imageUrl": "images/curry.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Vegan_Curry_-_Milk_No_Sugar.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "蔬食咖哩示意，非店家餐點"
+  },
+  "toraya": {
+    "imageUrl": "images/tofu.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Tofu_Curry_with_Rice_-_Rawlab_Juice_%26_Tea_2025-05-17.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "植物性餐點示意，非店家餐點"
+  },
+  "anzu": {
+    "imageUrl": "images/dumplings.webp",
+    "imageAttribution": "Yelderberry (talk) · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Vegetarian_Dumplings_2026-04-12_1.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "illustration",
+    "imageAlt": "中式餐點示意，非店家餐點"
+  },
+  "recit": {
+    "imageUrl": "images/cocktail.webp",
+    "imageAttribution": "Dennis Mojado · CC BY 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cocktail1.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageKind": "illustration",
+    "imageAlt": "調酒示意，非店家餐點"
+  },
+  "barns": {
+    "imageUrl": "images/blue-cocktail.webp",
+    "imageAttribution": "Le splendid · CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Blue_Lagoon,_Le_Splendid_DAX_(_FRANCE_).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "imageKind": "illustration",
+    "imageAlt": "調酒示意，非店家餐點"
+  },
+  "meal_tbd_16": {
+    "imageUrl": "images/vegetables.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cauliflower_Nanban_(v)_-_Japanese_Caf%C3%A9_an-an_2025-05-18.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "彈性午餐示意"
+  },
+  "meal_tbd_17": {
+    "imageUrl": "images/tofu.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Tofu_Curry_with_Rice_-_Rawlab_Juice_%26_Tea_2025-05-17.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "彈性午餐示意"
+  },
+  "late_dinner": {
+    "imageUrl": "images/vegetables.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cauliflower_Nanban_(v)_-_Japanese_Caf%C3%A9_an-an_2025-05-18.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "彈性晚餐示意"
+  }
+}

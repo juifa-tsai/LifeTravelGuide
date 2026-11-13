@@ -20,20 +20,19 @@ export function PlaceCard({ stop, place, selected, number, onFocus }: {
           <span className="stay">{stop.timezone === 'Asia/Taipei' ? '台灣時間' : stop.stayMinutes ? `約 ${stop.stayMinutes} 分` : '日本時間'}</span>
           {stop.displayStatus !== '正式行程' && <span className={`badge ${flexible ? 'badge-flexible' : ''}`}>{stop.displayStatus}</span>}</span>
           <span className="stop-title">{title}</span><span className="japanese" lang="ja">{place?.nameJa ?? '地點資訊待補'}</span>
-          {flexible && <span className="flexible-caption">參考時間 · 依當天狀況調整</span>}
-        </span><span className={`expand-icon ${open ? 'is-open' : ''}`}><ChevronDown size={17} /></span>
+        </span>{place && <PlaceImage place={place} compact credit={false} />}<span className={`expand-icon ${open ? 'is-open' : ''}`}><ChevronDown size={17} /></span>
       </button>
       {open && <div id={`detail-${stopId(stop)}`} className="stop-detail">
-        {place && !place.virtual && <PlaceImage place={place} />}
+        {place && <PlaceImage place={place} />}
         <p className="stop-summary">{stop.summary}</p>
-        {place?.hoursText && <p className="detail-meta"><Clock3 size={14} /><span>{place.hoursText}<small>行前資料，出發前請複核</small></span></p>}
+        {place?.hoursText && <p className="detail-meta"><Clock3 size={14} /><span>{place.hoursText}</span></p>}
         {place && !place.virtual && <p className="detail-meta"><MapPin size={14} /><span>{place.address}</span></p>}
-        {stop.note && <p className="note">{stop.note}</p>}
-        {place?.dietText && <p className="diet-note">奶素確認 · {place.dietText}；請確認無肉、魚、蛋及動物高湯。</p>}
+        {stop.note && /預約|不確定|僅預估|末點|末班|核對|μticket|台灣時間|含在住宿|含11|天守閣/.test(stop.note) && <p className="note">{stop.note}</p>}
+        {place?.dietText && <p className="diet-note">{place.dietText}</p>}
         {place?.id === 'toraya' && <p className="note">週一營業仍需於出發前複核。</p>}
-        {place?.virtual && <p className="note">現場尋找可確認奶素餐點{place.id === 'late_dinner' ? '的晚間輕食；杏ZU僅為早到候選，週日餐點末點約21:30。' : '；候選店家不代表已確定用餐。'}</p>}
+        {place?.id === 'late_dinner' && <p className="note">依抵達時間安排奶素晚餐；杏ZU 週日末點約21:30。</p>}
         <div className="card-actions"><ExternalLink href={stop.mapsUrl} className="button button-outline"><MapPin size={15} />Google Maps<ArrowUpRight size={14} /></ExternalLink>
-          {hasCoordinates(place) ? <button className="text-action" onClick={() => onFocus(place.id, true)}>在地圖查看</button> : <span className="small muted">{place?.virtual ? '彈性區塊，不設地圖標記' : '座標待確認'}</span>}</div>
+          {hasCoordinates(place) && <button className="text-action" onClick={() => onFocus(place.id, true)}>在地圖查看</button>}</div>
       </div>}
     </article>
   </div>;

@@ -10,6 +10,7 @@ export interface Place {
   hoursText: string | null; closedText: string | null; priority: string;
   dietText: string | null; summary: string; mapsUrl: string; website: string | null;
   imageUrl: string | null; imageAttribution: string | null; lat: number | null; lng: number | null;
+  imageSourceUrl: string | null; imageLicenseUrl: string | null; imageKind: 'place' | 'illustration' | null; imageAlt: string | null;
   virtual: boolean; verification: string; sourceUrl: string | null; coordinateSource: string | null;
   coordinateLabel: string | null; coordinateAddress: string | null;
 }
@@ -27,5 +28,3 @@ export interface TravelDocument {
   id: string; category: string; title: string; url: string; access: string; dates: string; description: string;
 }
 export interface TravelData { trip: Trip; places: Place[]; itinerary: Stop[]; legs: Leg[]; documents: TravelDocument[] }
-export type Layer = '素食餐廳' | '咖啡廳' | '酒吧';
-export type Layers = Record<Layer, boolean>;

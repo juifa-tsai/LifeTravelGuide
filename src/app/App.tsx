@@ -60,7 +60,7 @@ function TravelApp({ data }: { data:TravelData }) {
       <Route path="/places" element={<PlacesPage data={data} visited={visited} setVisited={setVisited} />} />
       <Route path="/documents" element={<DocumentsPage data={data} />} />
       <Route path="*" element={<Navigate to={`/day/${homeDay}`} replace />} />
-    </Routes><footer className="page-footer"><span>名古屋，四天三夜的日常片刻。</span><span>行程資料 {data.trip.updatedAt} · 營業與班次請出發前複核</span><Link to="/documents">旅途所需的文件<ArrowUpRight size={12} /></Link></footer></main>
+    </Routes><footer className="page-footer"><span>行程資料 {data.trip.updatedAt}</span><Link to="/documents">旅途所需的文件<ArrowUpRight size={12} /></Link></footer></main>
     <nav className="bottom-nav" aria-label="主選單">{nav.map(item => <NavLink key={item.label} to={item.url} className={item.active ? 'active' : ''} aria-current={item.active ? 'page' : undefined}><item.icon size={22} strokeWidth={1.7} /><span>{item.label}</span></NavLink>)}</nav>
     <UpdateNotice />
   </div>;

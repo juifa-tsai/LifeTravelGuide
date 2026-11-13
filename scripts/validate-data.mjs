@@ -27,6 +27,11 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
     for (const field of ['mapsUrl', 'website', 'sourceUrl', 'coordinateSource']) url(place[field], `${place.id}.${field}`);
     if (place.imageUrl) {
       assert(Boolean(place.imageAttribution), `${place.id}: image attribution required`);
+      assert(Boolean(place.imageSourceUrl && place.imageLicenseUrl), `${place.id}: image source and license required`);
+      url(place.imageSourceUrl, `${place.id}.imageSourceUrl`);
+      url(place.imageLicenseUrl, `${place.id}.imageLicenseUrl`);
+      assert(['place','illustration'].includes(place.imageKind), `${place.id}: image kind required`);
+      if (place.imageKind === 'illustration') assert(place.imageAlt?.includes('示意'), `${place.id}: illustrative photos must be labeled`);
       assert(!place.imageUrl.includes('drive.google.com'), `${place.id}: private documents cannot be images`);
       if (!place.imageUrl.startsWith('images/')) url(place.imageUrl, `${place.id}.imageUrl`);
     }

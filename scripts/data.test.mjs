@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { loadData, validateData } from './validate-data.mjs';
 const data = loadData();
 
@@ -26,7 +27,19 @@ test('private payloads and uncredited images cannot be exported', () => {
   const changed = structuredClone(data);
   changed.trip.email = 'traveler@example.com';
   changed.places[0].imageUrl = 'https://drive.google.com/private.pdf';
+  changed.places[0].imageAttribution = null;
   const errors = validateData(changed).join('\n');
   assert.match(errors, /email address/); assert.match(errors, /sensitive field/);
   assert.match(errors, /attribution required/); assert.match(errors, /private documents/);
+});
+
+test('every place and itinerary stop has a credited local preview with truthful labeling', () => {
+  for (const place of data.places) {
+    assert.match(place.imageUrl, /^images\/[a-z0-9-]+\.webp$/);
+    const bytes = readFileSync(new URL(`../public/${place.imageUrl}`, import.meta.url));
+    assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
+    assert(place.imageAttribution && place.imageSourceUrl && place.imageLicenseUrl);
+    if (place.imageKind === 'illustration') assert.match(place.imageAlt, /示意/);
+  }
+  for (const stop of data.itinerary) assert(data.places.find(p => p.id === stop.placeId)?.imageUrl);
 });
