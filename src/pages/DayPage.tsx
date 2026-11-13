@@ -12,6 +12,7 @@ import { PlaceImage } from '../components/PlaceImage';
 import { ExternalLink } from '../components/ExternalLink';
 export function DayPage({ data, day }: { data:TravelData; day:Day }) {
   const [selected, setSelected] = useState<string | null>(null);
+  const [focusVersion,setFocusVersion] = useState(0);
   const [highlightedStop, setHighlightedStop] = useState<string | null>(null);
   const stops = useMemo(() => data.itinerary.filter(s => s.date === day.date).sort((a,b) => a.sequence-b.sequence), [data, day.date]);
   const pins = useMemo(() => dayPins(stops, data.places), [stops, data.places]);
@@ -22,6 +23,7 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
   }
   function focus(placeId:string, returnToMap = false) {
     setSelected(placeId);
+    setFocusVersion(previous => previous+1);
     if (returnToMap) document.getElementById('day-map')?.scrollIntoView({ behavior:'smooth', block:'start' });
   }
   const candidateIds = day.date === '2026-11-15' ? ['anzu'] : day.date === '2026-11-16' ? ['le_jardin'] : day.date === '2026-11-17' ? ['cereza','recit','barns'] : [];
@@ -30,7 +32,7 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
       <h1>{shortDate(day.date)}<span className="heading-weekday">（{day.weekday}）</span>{day.title}</h1>
     </header>
     <DaySelector days={data.trip.days} />
-    <div className="day-layout"><div className="map-column"><DayMap key={day.date} stops={stops} places={data.places} selected={selected} onSelect={select} onReset={() => setSelected(null)} />
+    <div className="day-layout"><div className="map-column"><DayMap key={day.date} stops={stops} places={data.places} selected={selected} onSelect={select} onReset={() => setSelected(null)} onFavoriteSelect={id => focus(id)} focusVersion={focusVersion} />
 
     </div>
     <div className="timeline-column"><div className="section-heading"><h2>今天的行程<span>THE ITINERARY</span></h2><span className="small muted">{stops.length} 個安排</span></div>

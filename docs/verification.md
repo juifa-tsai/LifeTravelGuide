@@ -1,17 +1,19 @@
-# Verification — Google map and preview image update
+# Verification — free maps and fixed favorite collection
 
-Verified locally using the production build and Firefox through Playwright. The original design/spec are retained as source references; the following behavior reflects the owner's subsequent change requests.
+The owner chose a free map provider after clarifying that favorite markers must remain permanently visible and the places page must also include a map. The implementation now uses Leaflet with standard OpenStreetMap tiles in their original colors, without an API key or a billing account.
 
-- The daily map is a real Google Maps embed with grayscale styling. The embedded map retains Google's attribution and its own interactions.
-- Candidate map layers and their controls were removed. Numbered shortcuts select a map location and scroll to the relevant itinerary card; card map actions update the embedded location. Iframe map clicks cannot call back into the app, and the previous custom Leaflet markers/route lines are no longer displayed.
-- All 23 place records, including flexible meal blocks, have local preview images. All itinerary card headers include thumbnails. Nine places have confirmed location photos; other images are visibly labeled illustrative, including in alt text.
-- Twenty Wikimedia Commons assets were downloaded, inspected, resized and converted to WebP. Author, license, source and transformation records are retained under `public/images/credits.json`; visible credit links open the source pages.
-- The Excel importer merges `scripts/media.json` by stable place ID so photos and credits survive reimporting.
-- Category controls use nine icon-only native radio inputs (including all categories), with accessible names, tooltips and a single checked category. Switching coffee to bars clears coffee and returns only bars.
-- Repetitive explanatory prose and generic disclaimers were removed. Flight/transfer facts, flexible dinner timing and material restaurant opening/dietary cautions remain.
+- All four itinerary maps merge their formal stops with the complete nine-place shared vegetarian/café/bar collection. There are no layer toggles; the legend is static.
+- The places page includes a map above the result cards. Search, category and visit filters affect the list and other markers; all nine shared favorite markers remain, including when no list results match.
+- A scheduled favorite is represented once, retaining its itinerary number and favorite identity. Repeated hotel/airport events do not add duplicate markers, and virtual meals have no pin.
+- Daily dashed segments connect only adjacent known stops. They stop at unknown meal blocks and never join Taiwan/Japan flight events.
+- Map markers show photo/name/navigation popups and select a visible corresponding card. Card map actions return to and focus the selected marker, including repeated requests. Markers support keyboard activation.
+- Initial bounds favor Nagoya city points; the airport remains accessible through its card/marker. Tile attribution stays visible.
+- Original image previews, credits, single-select icon category controls and local visit tracking remain in place.
 
-Validation: production build, TypeScript and five data regression checks pass. The fifth check verifies every place/itinerary preview exists as a WebP file and illustrative images are honestly labeled.
+Validation: production build/TypeScript passed. All nine automated checks passed, including fixed favorite membership on all days and filtered/empty places results, deduplication and line boundaries.
 
-Browser verification covers category exclusivity, icon-only controls, search, local previews, Google embed rendering, the six routes, mobile widths and offline photo availability. Private Drive files and Google map content are not cached by the app.
+Firefox/Playwright checks covered all five map routes at 375, 390, 430 and 1280px without horizontal overflow, the nine permanently present favorite markers, no legend buttons, single-select categories, marker/card navigation, and original-color tiles. Offline reload retained the favorite markers, neutral map state and local content; the app cache contained no external map tiles or private files.
 
-Physical iPhone/Safari and actual phone geolocation still require device verification. Some Google iframe responses produce browser reporting-header diagnostics; these originate from Google and do not prevent map display.
+Real map tiles were visually inspected. Later automated interaction/layout checks blocked tile requests to avoid unnecessary tile traffic. Physical iPhone/Safari and actual phone geolocation remain device checks. Dense nearby markers can be separated using zoom; keyboard activation also works.
+
+Snapshots are in ignored `output/playwright/`, including `free-day-map.png`, `free-places-map.png` and `free-places-offline.png`.
