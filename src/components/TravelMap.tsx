@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Polyline, Popup, Tooltip, CircleMarker, useMap } from 'react-leaflet';
-import { BedDouble, LocateFixed, MapPin, Route, Clock3 } from 'lucide-react';
+import { BedDouble, LocateFixed, MapPin, Route, Clock3, MapPinned } from 'lucide-react';
 import { useOnline } from '../lib/connectivity';
 import { isCityPlace, type MapPoint } from '../lib/mapPoints';
 import { CategoryIcon } from './Icon';
@@ -81,11 +81,12 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
               }
             },
           }}>
-          <Tooltip>{point.place.nameZh}</Tooltip><Popup><div className="map-popup"><PlaceImage place={point.place} compact /><div><strong>{point.place.nameZh}</strong><span lang="ja">{point.place.nameJa}</span><span>{point.place.category}</span></div></div>
+          <Tooltip>{point.place.nameZh}</Tooltip><Popup className="place-popup"><div className="map-popup"><PlaceImage place={point.place} compact /><div><strong>{point.place.nameZh}</strong><span lang="ja">{point.place.nameJa}</span><span>{point.place.category}</span></div>
+            <ExternalLink href={point.place.mapsUrl} className="map-popup-link" label={`在 Google Maps 開啟 ${point.place.nameZh}`}><MapPinned size={18} aria-hidden="true" /><span className="sr-only">Google Maps</span></ExternalLink></div>
             <p className="map-popup-hours"><Clock3 size={13} aria-hidden="true" /><span>{compactHours(point.place)}</span></p>
             {point.place.closedText && <p className="map-popup-closed">休業：{point.place.closedText}</p>}
             {point.place.id === 'barns' && <p className="note">11/17 可能休業，請核對。</p>}
-            <ExternalLink href={point.place.mapsUrl} className="text-action">Google Maps ↗</ExternalLink></Popup>
+          </Popup>
         </Marker>)}
         {location && <CircleMarker center={location} radius={8} pathOptions={{ color:'#fff',weight:3,fillColor:'#4479AB',fillOpacity:1 }}><Tooltip>你的位置</Tooltip></CircleMarker>}
       </MapContainer>
