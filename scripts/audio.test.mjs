@@ -27,8 +27,14 @@ test('phrase recordings have unique IDs, valid local MP3s and matching generatio
   }
 });
 
-test('the complete lacto-vegetarian phrase introduces the diet and asks which dishes are suitable', () => {
-  const phrase = audioPhrases.find(phrase => phrase.id === 'lacto-vegetarian');
-  for (const term of ['ラクト・ベジタリアン','乳製品','肉','魚','卵','かつおだし','魚醤','動物性のだし','教えていただけますか']) assert(phrase.japanese.includes(term), term);
-  for (const term of ['奶素','乳製品','肉','魚','蛋','柴魚','魚露','動物性高湯','哪些餐點適合我吃']) assert(phrase.translation.includes(term), term);
+test('two polite phrases ask about vegetarian dishes first and then clarify lacto-vegetarian restrictions', () => {
+  assert.deepEqual(audioPhrases.map(phrase => phrase.id), ['vegetarian-inquiry','lacto-vegetarian']);
+  const [inquiry, details] = audioPhrases;
+  for (const term of ['すみません','ベジタリアン','料理はありますか']) assert(inquiry.japanese.includes(term), term);
+  assert.match(inquiry.translation, /適合素食者的餐點/);
+  for (const term of ['乳製品','肉','魚','卵','かつおだし','魚醤','動物性のだし']) assert(details.japanese.includes(term), term);
+  for (const term of ['乳製品','肉','魚','蛋','柴魚','魚露','動物性高湯']) assert(details.translation.includes(term), term);
+  assert(!details.japanese.includes('教えていただけますか'), 'supplement should explain conditions without repeating the inquiry');
+  assert(!details.japanese.includes('私は'), 'supplement should avoid repeating the introduction');
+  assert.equal(inquiry.voiceName, details.voiceName);
 });

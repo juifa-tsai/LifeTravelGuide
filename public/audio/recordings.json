@@ -1,16 +1,30 @@
 [
   {
-    "id": "lacto-vegetarian",
-    "path": "audio/lacto-vegetarian-arthur-ja.mp3",
-    "text": "すみません。私はラクト・ベジタリアンです。乳製品は大丈夫ですが、肉・魚・卵は食べられません。かつおだしや魚醤、その他の動物性のだしも避けています。私が食べられる料理を教えていただけますか。",
+    "id": "vegetarian-inquiry",
+    "path": "audio/vegetarian-inquiry-ja.mp3",
+    "text": "すみません。私はベジタリアンです。ベジタリアン向けの料理はありますか。",
     "provider": "Higgsfield",
     "model": "seed_audio",
-    "voice": "Arthur",
-    "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346",
+    "voice": "Benji",
+    "voiceId": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
     "voiceType": "preset",
     "speechRate": -10,
     "generatedAt": "2026-11-13",
-    "generationId": "8d2a0173-0ea4-439b-985e-a5fb46ab03c7",
-    "sha256": "0af6f7640864ba32e5ac1707bc4aba0d04582ce61128df6a627463c909007512"
+    "generationId": "cfe96701-00ef-489d-89d3-e8f48b24b3f3",
+    "sha256": "acde801453812905291ba8b935359542746201d56a3788904c0ffcaa99b41218"
+  },
+  {
+    "id": "lacto-vegetarian",
+    "path": "audio/lacto-vegetarian-details-ja.mp3",
+    "text": "乳製品は大丈夫ですが、肉・魚・卵は食べられません。かつおだしや魚醤、その他の動物性のだしも避けています。",
+    "provider": "Higgsfield",
+    "model": "seed_audio",
+    "voice": "Benji",
+    "voiceId": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
+    "voiceType": "preset",
+    "speechRate": -10,
+    "generatedAt": "2026-11-13",
+    "generationId": "78482024-08ea-4dbc-ba3a-9eb3926afc77",
+    "sha256": "2701e38a11068948f3af364348debe235f0313c46a92f7393641c8993953fab4"
   }
 ]
