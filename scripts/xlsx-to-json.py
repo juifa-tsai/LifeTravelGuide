@@ -52,6 +52,21 @@ itinerary = [dict(date=date(r[0]), sequence=number(r[1]), arrivalTime=time(r[2])
     stayMinutes=number(r[3]), placeId=r[4], title=r[5], category=r[6],
     displayStatus=r[7], summary=r[8], note=r[9], mapsUrl=r[10], sourceUrl=r[11],
     timezone='Asia/Taipei' if r[4]=='tpe' else 'Asia/Tokyo') for r in rows('01_每日行程')]
+# Supplemental restaurants fill gaps only; workbook places always win by stable ID.
+# Arrival dinner notes intentionally overlay only summary/note, never bookings/times.
+supplement = json.loads((ROOT / 'scripts/dinner-supplement.json').read_text())
+place_ids = {place['id'] for place in places}
+for place in supplement['places']:
+    if place['id'] not in place_ids:
+        places.append(place)
+        place_ids.add(place['id'])
+for extra in supplement['itinerary']:
+    for stop in itinerary:
+        if (stop['date'], stop['placeId']) == (extra['date'], extra['placeId']):
+            for field in ('summary', 'note'):
+                if field in extra:
+                    stop[field] = extra[field]
+
 legs = [dict(date=date(r[0]), fromPlaceId=r[1], toPlaceId=r[2], mode=r[3],
     summary=r[4], details=r[5], minutesEstimate=number(r[6]), fareJpyEstimate=number(r[7]),
     certainty=r[8], sourceUrl=r[9]) for r in rows('03_交通銜接')]

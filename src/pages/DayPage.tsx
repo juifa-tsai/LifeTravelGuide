@@ -26,7 +26,8 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
     setFocusVersion(previous => previous+1);
     if (returnToMap) document.getElementById('day-map')?.scrollIntoView({ behavior:'smooth', block:'start' });
   }
-  const candidateIds = day.date === '2026-11-15' ? ['anzu'] : day.date === '2026-11-16' ? ['le_jardin'] : day.date === '2026-11-17' ? ['cereza','recit','barns'] : [];
+  const arrivalDinner = day.date === '2026-11-15';
+  const candidateIds = arrivalDinner ? ['molnoda','coco_fushimi','nine_cafe_fushimi','kazan','durbar_sakae','anzu'] : day.date === '2026-11-16' ? ['le_jardin'] : day.date === '2026-11-17' ? ['cereza','recit','barns'] : [];
   return <>
     <header className="page-heading"><div className="heading-kicker"><span>NAGOYA · DAY {day.number} / 4</span><span>日本時間 JST</span></div>
       <h1>{shortDate(day.date)}<span className="heading-weekday">（{day.weekday}）</span>{day.title}</h1>
@@ -45,11 +46,12 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
           {leg && <div className="transit-offset"><TransitConnector leg={leg} from={place} to={data.places.find(p => p.id === next.placeId)} /></div>}
         </div>;
       })}</section>
-      {candidateIds.length > 0 && <section className="candidates"><div className="section-heading"><h2><Bookmark size={17} />口袋候選</h2><Link to="/places" className="text-action">全部收藏<ArrowUpRight size={14} /></Link></div>
+      {candidateIds.length > 0 && <section className="candidates"><div className="section-heading"><h2><Bookmark size={17} />{arrivalDinner ? '今晚晚餐候選' : '口袋候選'}</h2><Link to="/places" className="text-action">全部收藏<ArrowUpRight size={14} /></Link></div>
+        {arrivalDinner && <p className="small muted">一般週日資訊，非 11/15 當日保證；時間彈性，出發前確認供餐。奶素可乳製品，不吃肉、魚、蛋、魚露、柴魚與其他動物性高湯。</p>}
         {candidateIds.map(id => {
           const place = data.places.find(p => p.id === id)!;
           return <div className="candidate-row" key={id}><PlaceImage place={place} compact />
-            <div><strong>{place.nameZh}</strong><p className={id === 'barns' || id === 'anzu' ? 'candidate-warning' : 'muted'}>{id === 'barns' ? '11/17 第三個週二，可能休業 · 需核對' : id === 'anzu' ? '早到時備選 · 週日餐點末點約21:30' : place.dietText || place.hoursText}</p></div>
+            <div><strong>{place.nameZh}</strong>{arrivalDinner && <><p className="small muted" lang="ja">{place.nameJa}</p><p className="small muted">{place.hoursText?.split(' 一般週日資訊')[0]}</p></>}<p className={id === 'barns' || id === 'anzu' ? 'candidate-warning' : 'muted'}>{id === 'barns' ? '11/17 第三個週二，可能休業 · 需核對' : id === 'anzu' ? '早到時備選 · 週日末點約21:30，通常不適合21:45後抵達；奶素料理、醬汁與高湯需確認。' : arrivalDinner ? `奶素：${place.dietText?.split(' 奶素可乳製品；')[0]}` : place.dietText || place.hoursText}</p></div>
             <ExternalLink href={place.mapsUrl} className="candidate-link" label={`在 Google Maps 開啟 ${place.nameZh}`}><ArrowUpRight size={19} /></ExternalLink></div>;
         })}</section>}
       <div className="day-end">{data.trip.days[day.number] && <Link to={`/day/${data.trip.days[day.number].date}`} className="text-action">下一天<ArrowRight size={16} /></Link>}</div>

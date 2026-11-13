@@ -67,3 +67,14 @@ test('lodging remains exactly once on every daily and filtered places map', () =
   const missingLocation = data.places.map(place => place.id === hotel.id ? {...place,lat:null,lng:null} : place);
   assert(!model.collectionMapPoints(missingLocation,[]).some(point => point.place.id === hotel.id));
 });
+
+test('unverified dinner locations remain listable without generating map markers', () => {
+  const dinnerIds = ['molnoda','coco_fushimi','nine_cafe_fushimi','kazan','durbar_sakae'];
+  const listed = data.places.filter(place => !place.virtual);
+  const points = model.collectionMapPoints(data.places, listed);
+  for (const id of dinnerIds) {
+    assert(listed.some(place => place.id === id));
+    assert(!points.some(point => point.place.id === id));
+    assert.equal(model.hasCoordinates(data.places.find(place => place.id === id)), false);
+  }
+});
