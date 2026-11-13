@@ -28,12 +28,12 @@
     "fromPlaceId": "hotel",
     "toPlaceId": "late_dinner",
     "mode": "步行",
-    "summary": "飯店附近晚餐，5–15分",
-    "details": "僅選擇營業且可提供奶素餐點的店，若時間太晚改便利輕食",
-    "minutesEstimate": 10,
+    "summary": "MOLNODA 步行約5–10分",
+    "details": "飯店→MOLNODA（錦2-12-5），週日夜間可外帶Vegetarian Bowl；若趕不上CoCo L.O.22:00，較遠可選華山的Vegan拉麵",
+    "minutesEstimate": 8,
     "fareJpyEstimate": null,
-    "certainty": "依現場",
-    "sourceUrl": null
+    "certainty": "餐點需再次確認",
+    "sourceUrl": "https://molnoda.com/"
   },
   {
     "date": "2026-11-16",
@@ -69,26 +69,59 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "nagoyajo",
-    "toPlaceId": "meal_tbd_16",
-    "mode": "步行＋地鐵",
-    "summary": "午餐站點待定",
-    "details": "行程午餐尚未選定實際餐廳",
-    "minutesEstimate": 25,
+    "toPlaceId": "bio_terrace",
+    "mode": "步行",
+    "summary": "步行約15–25分",
+    "details": "名古屋城／本丸御殿 → 丸之內3丁目 Bio Terrace（久屋大通近旁），依Google Maps導航",
+    "minutesEstimate": 20,
     "fareJpyEstimate": null,
-    "certainty": "待定",
-    "sourceUrl": null
+    "certainty": "步行估算",
+    "sourceUrl": "https://vegewel.com/en/restaurant/2475",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 2017.7,
+        "durationSeconds": 1614.1,
+        "fromCoordinates": {
+          "lat": 35.1876572063889,
+          "lng": 136.899153485
+        },
+        "toCoordinates": {
+          "lat": 35.175282,
+          "lng": 136.903259
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8991535,35.1876572;136.9032590,35.1752820?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "meal_tbd_16",
+    "fromPlaceId": "bio_terrace",
     "toPlaceId": "fukiage",
     "mode": "地鐵＋步行",
-    "summary": "約25–40分",
-    "details": "以實際午餐地點調整，吹上站2號出口附近",
+    "summary": "約25–35分",
+    "details": "Bio Terrace → 久屋大通站（櫻通線）→ 吹上站 → 步行至Antique Market Fukiage",
     "minutesEstimate": 30,
     "fareJpyEstimate": null,
-    "certainty": "待定",
-    "sourceUrl": null
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "久屋大通站",
+          "toStation": "吹上站"
+        }
+      ],
+      "note": "從餐廳步行至久屋大通站，吹上站出站後步行至老件市場。",
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://vegewel.com/en/restaurant/2475"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-16",
@@ -152,7 +185,7 @@
         "https://nagoya.mypl.net/naka/shop/00000372987/access"
       ],
       "checkedAt": "2026-11-13",
-      "note": "新榮町站2號出口，步行 ~ 8 分至店家。"
+      "note": "新榮町站2號出口，步行 8 分至店家。"
     }
   },
   {
@@ -274,26 +307,62 @@
   {
     "date": "2026-11-17",
     "fromPlaceId": "shirokawa",
-    "toPlaceId": "meal_tbd_17",
+    "toPlaceId": "khaja_ghar",
     "mode": "步行",
-    "summary": "約15–20分",
-    "details": "白川公園 → 大須2丁目",
-    "minutesEstimate": 18,
+    "summary": "約12–20分",
+    "details": "白川公園 → 大須2丁目 KHAJA GHAR（大須マルシェ），沿途步行",
+    "minutesEstimate": 17,
     "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null
+    "certainty": "步行估算",
+    "sourceUrl": "https://tabelog.com/aichi/A2301/A230105/23085903/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 993.6,
+        "durationSeconds": 794.7,
+        "fromCoordinates": {
+          "lat": 35.164967,
+          "lng": 136.899704
+        },
+        "toCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899704,35.164967;136.899307,35.158134?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-17",
-    "fromPlaceId": "meal_tbd_17",
+    "fromPlaceId": "khaja_ghar",
     "toPlaceId": "osu_kannon",
     "mode": "步行",
-    "summary": "約5–10分",
-    "details": "大須2丁目 → 大須觀音",
-    "minutesEstimate": 8,
+    "summary": "約4–8分",
+    "details": "KHAJA GHAR → 大須觀音，行程步行可達",
+    "minutesEstimate": 6,
     "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null
+    "certainty": "步行估算",
+    "sourceUrl": "https://tabelog.com/aichi/A2301/A230105/23085903/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 166.5,
+        "durationSeconds": 133.1,
+        "fromCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        },
+        "toCoordinates": {
+          "lat": 35.15918,
+          "lng": 136.899597
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899307,35.158134;136.899597,35.15918?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-17",
@@ -349,20 +418,20 @@
         "https://www.kenko-shokuiku.city.nagoya.jp/pdf/mori_curry.pdf"
       ],
       "checkedAt": "2026-11-13",
-      "note": "榮站13號出口，步行 ~ 3 分至店家。"
+      "note": "榮站13號出口，步行 3 分至店家。"
     }
   },
   {
     "date": "2026-11-17",
     "fromPlaceId": "mori",
-    "toPlaceId": "hotel",
-    "mode": "地鐵／步行",
-    "summary": "約15–25分",
-    "details": "榮4丁目 → 伏見飯店；可步行或搭東山線",
-    "minutesEstimate": 20,
+    "toPlaceId": "bar_thistle",
+    "mode": "地鐵或步行",
+    "summary": "約18–28分",
+    "details": "栄4丁目 森のカレー → 伏見／錦2丁目 Bar Thistle；可步行約20–25分，或榮站搭東山線至伏見再步行",
+    "minutesEstimate": 23,
     "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null,
+    "certainty": "路線估算；酒吧可略過",
+    "sourceUrl": "https://www.bar-thistle.com/english.html",
     "navigation": {
       "steps": [
         {
@@ -371,9 +440,10 @@
           "toStation": "伏見站"
         }
       ],
+      "note": "伏見站出站後步行至酒吧；不飲酒可略過。",
       "sources": [
         "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.kenko-shokuiku.city.nagoya.jp/pdf/mori_curry.pdf"
+        "https://www.bar-thistle.com/english.html"
       ],
       "checkedAt": "2026-11-13"
     }
@@ -440,6 +510,36 @@
       ],
       "checkedAt": "2026-11-13",
       "note": "搭乘 μSKY 需另備 μticket；依當日班次搭車。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "bar_thistle",
+    "toPlaceId": "hotel",
+    "mode": "步行",
+    "summary": "約5–10分",
+    "details": "Bar Thistle（錦2丁目）→ 名古屋伏見舒適飯店（錦2-19-14），依實際出入口步行",
+    "minutesEstimate": 8,
+    "fareJpyEstimate": null,
+    "certainty": "估算；酒吧可略過",
+    "sourceUrl": "https://www.bar-thistle.com/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 238.2,
+        "durationSeconds": 194.5,
+        "fromCoordinates": {
+          "lat": 35.169556,
+          "lng": 136.899124
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899124,35.169556;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
     }
   }
 ]

@@ -19,7 +19,7 @@ Open **http://localhost:5173/LifeTravelGuide/**. The default route uses the Nago
 - `#/day/2026-11-18` — checkout, Meitetsu, return flight
 - `#/places` — a horizontally scrolling category strip and local visit checks
 - `#/documents` — private Drive links and official transportation resources
-- `#/audio` — Japanese phrase cards with a recording player and Traditional Chinese translations
+- `#/audio` — help phrases, a recording player, translations and nearby convenience-store search
 
 ```sh
 npm test
@@ -61,7 +61,7 @@ For a different workbook:
 python3 scripts/xlsx-to-json.py /path/to/updated.xlsx
 ```
 
-The importer reads the original seven sheets and allowlists fields into five JSON files in `public/data/`. It excludes default visit records, reservation contents, and the development task sheet. A gap report is generated in ignored `output/data-report.md`. Data validation runs on every build; CI intentionally uses committed JSON so changing a local workbook requires explicit reimport.
+The importer reads the original seven sheets plus the optional `07_餐飲與酒吧動線` candidate sheet and allowlists fields into five JSON files in `public/data/`. It excludes default visit records, reservation contents, and the development task sheet. A gap report is generated in ignored `output/data-report.md`. Data validation runs on every build; CI intentionally uses committed JSON so changing a local workbook requires explicit reimport.
 
 ### 第一晚晚餐與補充資料
 
@@ -77,15 +77,15 @@ The importer reads the original seven sheets and allowlists fields into five JSO
 
 以上為一般營業資訊，**不保證 2026/11/15 當日營業或供餐**。奶素可乳製品，不吃肉、魚、蛋、魚露、柴魚與其他動物性高湯；每間店都要確認醬汁、麵皮／麵條、配料與當日供應。分類是候選用途，不代表整間店為素食專門店。新增五店已依店家／可信餐廳資料核對地址，並於 2026-11-13 取得國土地理院地址搜尋的唯一對應座標，顯示於踩點與每日地圖；這些是地址參考點，非入口導航。原始回應座標、查詢網址、對應地址與查核日記錄於 `scripts/geocodes.json`。沿用現有已授權的示意圖及標籤。
 
-`scripts/dinner-supplement.json` 保存五店完整資料與第一晚 `late_dinner` 的 `summary`／`note`。請修改該檔後執行 `npm run import:xlsx`，再執行 `npm run validate:data`、`npm test`、`npm run build`，一併提交補充檔及產生的 JSON。匯入以地點 `id`（行程的 `placeId`）去重；同 ID 若已存在 Excel，整筆 Excel 主資料優先，不用補充檔覆蓋。晚餐補充只更新相符日期／placeId 的說明，不改時間、彈性狀態或其他預約欄位，也不改原始 Excel 與工作表。測試會實際重新匯入並驗證未遺失資料及 Excel 優先行為；CI 執行測試需安裝 `requirements.txt` 的 Python 依賴。
+`scripts/dinner-supplement.json` 保存五店完整資料與第一晚 `late_dinner` 的 `summary`／`note`。請修改該檔後執行 `npm run import:xlsx`，再執行 `npm run validate:data`、`npm test`、`npm run build`，一併提交補充檔及產生的 JSON。匯入以地點 `id`（行程的 `placeId`）去重；同 ID 若已存在 Excel，整筆 Excel 主資料優先，不用補充檔覆蓋。晚餐補充僅在相符日期／placeId 的說明為空時補上；最新版 Excel 的摘要與備註優先，不改時間、彈性狀態或其他預約欄位，也不改原始 Excel 與工作表。測試會實際重新匯入並驗證未遺失資料及 Excel 優先行為；CI 執行測試需安裝 `requirements.txt` 的 Python 依賴。
 
 ### Coordinates and photos
 
-The original workbook has no coordinates or photos. `scripts/geocodes.json` supplies checked reference points from the [Geospatial Information Authority of Japan address/facility search](https://msearch.gsi.go.jp/address-search/AddressSearch). Every point records its exact source query, returned address, and check date. Address results are **street/block reference points, not entrance-level navigation**; use Google Maps for actual directions. The airport uses its terminal-connected station as a ground reference. Taiwan flights, virtual meals and duplicate events do not create extra map markers. Both the daily and places pages have interactive maps with clickable location markers. Daily maps always include the fourteen shared vegetarian/café/bar favorites and lodging. The places map follows the active category filter, retaining only matching locations plus lodging. Itinerary favorites use one category icon instead of a duplicate pin. Daily dashed lines only connect adjacent known stops and break at virtual meals.
+The original workbook has no coordinates or photos. `scripts/geocodes.json` supplies checked reference points from the [Geospatial Information Authority of Japan address/facility search](https://msearch.gsi.go.jp/address-search/AddressSearch). Every point records its exact source query, returned address, and check date. Address results are **street/block reference points, not entrance-level navigation**; use Google Maps for actual directions. The airport uses its terminal-connected station as a ground reference. Taiwan flights, virtual meals and duplicate events do not create extra map markers. Both the daily and places pages have interactive maps with clickable location markers. Daily maps always include the twenty-one shared vegetarian/café/bar favorites and lodging. The places map follows the active category filter, retaining only matching locations plus lodging. Itinerary favorites use one category icon instead of a duplicate pin. Daily dashed lines only connect adjacent known stops and break at virtual meals.
 
 Explicit Excel coordinates take precedence over the supplement, but need a coordinate source in `scripts/geocodes.json` to pass validation. If you move a place, update both its workbook address and its geocode record. Unknown coordinates remain null; the text card still works.
 
-Twenty credited Wikimedia Commons photos are shipped as optimized WebP files under `public/images/`, covering all 28 place records and all itinerary cards. Nine places have confirmed location photos; places without a reusable location photo use category photos clearly marked **示意**. This label is also present in alternative text. Photo credits link to the original file's author and license; full records, including resizing information, are in `public/images/credits.json`.
+Twenty credited Wikimedia Commons photos are shipped as optimized WebP files under `public/images/`, covering all 35 place records and all itinerary cards. Nine places have confirmed location photos; places without a reusable location photo use category photos clearly marked **示意**. This label is also present in alternative text. Photo credits link to the original file's author and license; full records, including resizing information, are in `public/images/credits.json`.
 
 `scripts/media.json` maps stable place IDs to the preview image, credit, source, license, type and alternative text. The Excel importer merges this supplement so reimporting the workbook preserves the photos. `scripts/media-assets.json` records the original Commons files; restore missing assets with:
 
@@ -113,7 +113,7 @@ Hours, dietary suitability, fares and transit times remain workbook planning inf
 
 ## Japanese phrase recordings
 
-The **語音** tab (`#/audio`) displays collapsible phrase cards. Text starts collapsed; tap a card heading to show the Japanese phrase and Traditional Chinese translation. One large button plays or pauses the recording and offers replay when it ends; the native audio controls are hidden. Collapsing the text keeps playback available, and leaving the page stops the audio. The first card briefly asks whether vegetarian dishes are available. The second supplements it with lacto-vegetarian restrictions: dairy is allowed, while egg, meat, fish, bonito stock, fish sauce and other animal-based stock are avoided. Both use **Benji**, the selected AI male voice generated through Higgsfield / Seed Audio 1.0, at normal speaking speed (`speech_rate: 0`). Long silent gaps over 450 ms are shortened to about 220 ms, with brief leading/trailing silence; the spoken audio is not time-stretched. The recording metadata keeps the original generation and source checksum plus the silence-only edits. Starting another card pauses the previous recording so voices never overlap. There is no autoplay or microphone recording.
+The **求助** tab (`#/audio`) displays collapsible phrase cards. Text starts collapsed; tap a card heading to show the Japanese phrase and Traditional Chinese translation. One large button plays or pauses the recording and offers replay when it ends; the native audio controls are hidden. Collapsing the text keeps playback available, and leaving the page stops the audio. The first card briefly asks whether vegetarian dishes are available. The second supplements it with lacto-vegetarian restrictions: dairy is allowed, while egg, meat, fish, bonito stock, fish sauce and other animal-based stock are avoided. Both use **Benji**, the selected AI male voice generated through Higgsfield / Seed Audio 1.0, at normal speaking speed (`speech_rate: 0`). Long silent gaps over 450 ms are shortened to about 220 ms, with brief leading/trailing silence; the spoken audio is not time-stretched. The recording metadata keeps the original generation and source checksum plus the silence-only edits. Starting another card pauses the previous recording so voices never overlap. There is no autoplay or microphone recording.
 
 Edit `src/data/audioPhrases.ts` to add or revise a card and keep its text and audio in sync. Store generated MP3 recordings in `public/audio/`; `public/audio/recordings.json` records the prompt and generation details. The browser loads these local files using Vite's base path; it needs no Higgsfield account or API key to play them. MP3s are included in the service worker precache for offline playback after the production app finishes installing. Commit text, recording and metadata together, then run `npm test` and `npm run build`.
 
@@ -141,7 +141,7 @@ Distances are local calculations from verified place coordinates; unknown coordi
 
 ## 依時段閱讀行程
 
-時間軸以日本時間分為早上（12:00 前）、下午（12:00–18:00）與晚上（18:00 後），用小圖示、中文標題及細虛線分隔；沒有安排的時段不顯示，行程順序不變。一般地點卡片以 `~ 0.5 hr`、`~ 1 hr` 等顯示約略時長，依既有分鐘資料四捨五入至 0.5 小時，最少顯示 0.5 小時；未設定的停留時間不捏造時長。短程交通用分鐘呈現，60 分以上才改用 hr。固定航班保留精確時刻與台灣／日本時區，預約接機時間及退房限制保留在展開內容。原始 JSON 的時間、停留分鐘數、預約資訊及 Excel 格式不變。
+時間軸以日本時間分為早上（12:00 前）、下午（12:00–18:00）與晚上（18:00 後），用小圖示、中文標題及細虛線分隔；沒有安排的時段不顯示，行程順序不變。一般地點卡片以 `0.5 hr`、`1 hr` 等顯示約略時長，依既有分鐘資料四捨五入至 0.5 小時，最少顯示 0.5 小時；未設定的停留時間不捏造時長。短程交通用分鐘呈現，60 分以上才改用 hr。固定航班保留精確時刻與台灣／日本時區，預約接機時間及退房限制保留在展開內容。原始 JSON 的時間、停留分鐘數、預約資訊及 Excel 格式不變。
 
 移除地圖下方的圖例，踩點清單標題改隨分類顯示對應圖示與筆數。「地圖總覽」會停止未完成的移動並關閉彈窗，重新納入當前圖層的所有標記（含住宿；若有機場，也會納入），不改變分類篩選。首次載入仍優先顯示市區／當日行程範圍；按總覽才展開到整個圖層。
 
@@ -149,6 +149,16 @@ Distances are local calculations from verified place coordinates; unknown coordi
 
 交通卡不再顯示車資、核實程度、資料來源表格或無用的待確認欄位。步行以單列顯示路線距離與分鐘數，點選可開啟導航；公共運輸直接顯示起訖站、路線與移動時間，需轉乘時再展開各段車站。必要的接機位置、μticket 等提醒保留，航班時刻與時區不變。尚未選定餐廳的交通列隱藏，不把假定地點當成已知路段。
 
-`scripts/leg-details.json` 保存八段公共運輸的站點資料與四段步行路線；Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；四段以既有核實地址參考點查詢（2026-11-13），實際入口、號誌與步速仍會影響結果。數值以 `~` 表示估計；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
+`scripts/leg-details.json` 保存公共運輸站點與步行路線；本次行程使用九段公共運輸及八段已核對的步行路線，Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；路段以既有核實地址參考點查詢（2026-11-13），實際入口、號誌與步速仍會影響結果。數值不顯示估算前綴符號；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
 
 踩點清單與分類不再包含住宿與機場，名古屋車站仍歸在交通分類。飯店取自完整地點資料，固定保留在所有踩點地圖篩選中，供定位、導航與計算距離使用；每日航班、住宿安排及文件照常保留。
+
+## 最新 Drive 行程同步（2026-11-13）
+
+已同步 Drive「2026 Nakoya」中 13:49:30 UTC 更新的 Excel 原檔，共 35 個地點、29 個每日安排、21 段交通。原檔雜湊與 Drive 來源保存在 `docs/workbook-source.json`。新地點為 Bio Terrace、KHAJA GHAR、Miho’s Kitchen Grains、ORIBIO、Pupu Kitchen、「こ」VEGAN CAFE、Bar Thistle；皆補齊地址參考座標、約 50 字餐點／酒款描述、分類、營業資訊、Maps 連結及有授權的示意照片。示意圖不代表店家實景。
+
+每日行程完全以新 Excel 的時間、狀態、摘要與備註為準：11/16 加入 Bio Terrace 午餐，吹上老件市場調整為 13:45／105 分；11/17 加入 KHAJA GHAR 午餐與 20:00 可選的 Bar Thistle，21:00 回飯店。既有航班、接機與住宿預約資料保留。第 07 工作表依地點名稱／穩定 ID 產生各日 `candidateIds`，已在時間軸中的地點不重複當作口袋候選。11/16 保留 Le Jardin、BAR Récit；11/17 備選為 Miho’s Kitchen Grains、BAR Récit，不把通常公休的 BAR BARNS 列為當天候選。
+
+營業時間仍是一般資料，不是當日營業保證。Bio Terrace 官網目前無法開啟，餐廳平台標示營業狀態未確認；保留 Excel 的可選安排與地址，卡片及地圖明確標示需確認。Miho’s Kitchen Grains 的部分週六資訊有出入，晚餐須提前三天預約；ORIBIO 須至少前一天預約；「こ」VEGAN CAFE 以咖啡與甜點為主，未確認正餐。奶素仍需避開肉、魚、蛋、魚露、柴魚與動物性高湯，葷素店點餐時須確認醬汁與配料。
+
+介面維持原有卡片、地圖與半小時 hr 單位，移除所有數值前的波浪估算符號。語音分頁改名為「求助」，原有 `#/audio` 連結及 Benji 錄音保留；踩點與求助頁標題右側的商店 icon 會開啟 Google Maps 搜尋附近超商（包含 Lawson、全家、7-Eleven 等）。搜尋由 Google Maps 處理，網站不另行取得或傳送使用者座標；離線時仍可播放語音，外部 Maps 搜尋依既有離線規則停用。

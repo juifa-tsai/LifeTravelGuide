@@ -27,6 +27,14 @@ test('today uses Japan time and the actual weekday, with split hours, closures a
   assert.equal(hours.todayHours(place('nine_cafe_fushimi'),'2026-11-15'),'17:00–翌04:00');
   assert.equal(hours.todayHours(place('coco_fushimi'),'2026-11-15'),'週末時段待確認');
   assert.equal(hours.todayHours(place('art_museum'),'2026-11-13'),'09:30–20:00');
+  assert.equal(hours.todayHours(place('bio_terrace'),'2026-11-16'),'營業狀態待確認');
+  assert.equal(hours.todayHours(place('khaja_ghar'),'2026-11-17'),'11:00–15:00／17:00–23:00');
+  assert.equal(hours.todayHours(place('bar_thistle'),'2026-11-17'),'17:00–翌01:00');
+  assert.equal(hours.todayHours(place('oribio'),'2026-11-16'),'今日公休');
+  assert.equal(hours.todayHours(place('ko_vegan'),'2026-11-17'),'今日公休');
+  assert.equal(hours.todayHours(place('barns'),'2026-11-17'),'今日公休');
+  assert.equal(hours.todayHours(place('barns'),'2026-11-03'),'今日公休');
+  assert.equal(hours.todayHours(place('barns'),'2026-11-10'),'16:00–24:00');
 });
 test('workbook-only hours never copy a weekday-specific time to another day', () => {
   const workbookOnly = { ...place('toraya'),weeklyHours:undefined };
@@ -37,7 +45,7 @@ test('workbook-only hours never copy a weekday-specific time to another day', ()
 });
 test('all dining places have short sourced descriptions and distinguish vegetarian from mixed kitchens', () => {
   const dining = data.places.filter(p => !p.virtual && ['素食餐廳','咖啡廳','酒吧'].includes(p.category));
-  assert.equal(dining.length,14);
+  assert.equal(dining.length,21);
   for (const item of dining) {
     assert(item.foodDescription.length >= 35 && item.foodDescription.length <= 70, item.id);
     assert(item.diningType && item.weeklyHours && item.detailSourceUrls?.length);

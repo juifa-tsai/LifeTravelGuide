@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Pause, Play, RotateCcw, Volume2 } from 'lucide-react';
 import { audioPhrases, type AudioPhrase } from '../data/audioPhrases';
+import { NearbyStoresLink } from '../components/NearbyStoresLink';
 
 function AudioCard({ phrase, onPlaybackStart }: { phrase: AudioPhrase; onPlaybackStart: (audio: HTMLAudioElement) => void }) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -54,7 +55,7 @@ export function AudioPage() {
     activeAudio.current = audio;
   }
   return <>
-    <header className="page-heading"><h1>旅途語音</h1><p>按播放讓店員聽，點標題查看日文與中文。</p></header>
+    <header className="page-heading"><div className="page-title-row"><h1>求助</h1><NearbyStoresLink /></div><p>按播放讓店員聽，點標題查看日文與中文。</p></header>
     <section className="audio-cards" aria-label="日文語音卡片">{audioPhrases.map(phrase => <AudioCard key={phrase.id} phrase={phrase} onPlaybackStart={onPlaybackStart} />)}</section>
   </>;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState, Component, type ReactNode } from 'react';
 import { HashRouter, NavLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
-import { BookOpen, CalendarDays, MapPin, Files, Volume2, WifiOff, RefreshCw, X } from 'lucide-react';
+import { BookOpen, CalendarDays, MapPin, Files, CircleHelp, WifiOff, RefreshCw, X } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import type { TravelData } from '../lib/types';
 import { defaultDay, loadData } from '../lib/data';
@@ -43,13 +43,13 @@ function TravelApp({ data }: { data:TravelData }) {
   const dayUrl = `/day/${activeDay?.date ?? defaultDay(data.trip.days)}`;
   useEffect(() => { window.scrollTo({ top:0, behavior:'instant' }); }, [location.pathname]);
   useEffect(() => {
-    document.title = `${activeDay ? `${activeDay.title} · ${activeDay.date.slice(5).replace('-','/')}` : location.pathname === '/places' ? '踩點清單' : location.pathname === '/documents' ? '重要文件' : location.pathname === '/audio' ? '旅途語音' : '名古屋'}｜旅の手帖`;
+    document.title = `${activeDay ? `${activeDay.title} · ${activeDay.date.slice(5).replace('-','/')}` : location.pathname === '/places' ? '踩點清單' : location.pathname === '/documents' ? '重要文件' : location.pathname === '/audio' ? '求助' : '名古屋'}｜旅の手帖`;
   }, [activeDay, location.pathname]);
   const nav = [
     { url:dayUrl, label:'行程', icon:CalendarDays, active:location.pathname.startsWith('/day/') },
     { url:'/places', label:'踩點', icon:MapPin, active:location.pathname === '/places' },
     { url:'/documents', label:'文件', icon:Files, active:location.pathname === '/documents' },
-    { url:'/audio', label:'語音', icon:Volume2, active:location.pathname === '/audio' },
+    { url:'/audio', label:'求助', icon:CircleHelp, active:location.pathname === '/audio' },
   ];
   return <div className="app-shell"><a href="#main-content" className="skip-link" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>跳至主要內容</a>
     {!online && <div className="offline-banner" role="status"><WifiOff size={16} /><span>目前離線 · 已快取行程可查看，地圖與外部文件需連線。</span></div>}

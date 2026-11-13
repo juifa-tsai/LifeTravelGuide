@@ -11,7 +11,12 @@
       "title": "抵達名古屋",
       "description": "從桃園出發，把步調留給夜晚。",
       "label": "ARRIVAL",
-      "number": 1
+      "number": 1,
+      "candidateIds": [
+        "molnoda",
+        "kazan",
+        "bar_thistle"
+      ]
     },
     {
       "date": "2026-11-16",
@@ -19,7 +24,11 @@
       "title": "古蹟與老件",
       "description": "走進城郭，尋找時間留下的物件。",
       "label": "OLD & NEW",
-      "number": 2
+      "number": 2,
+      "candidateIds": [
+        "le_jardin",
+        "recit"
+      ]
     },
     {
       "date": "2026-11-17",
@@ -27,7 +36,11 @@
       "title": "藝術與大須",
       "description": "一杯咖啡、一場展覽，慢慢走進大須。",
       "label": "ART & STREETS",
-      "number": 3
+      "number": 3,
+      "candidateIds": [
+        "mihos_grains",
+        "recit"
+      ]
     },
     {
       "date": "2026-11-18",
@@ -35,7 +48,8 @@
       "title": "帶著回憶回家",
       "description": "吃好早餐，為回程留一點從容。",
       "label": "HOMEBOUND",
-      "number": 4
+      "number": 4,
+      "candidateIds": []
     }
   ],
   "overview": [

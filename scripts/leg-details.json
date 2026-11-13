@@ -71,7 +71,7 @@
         "https://nagoya.mypl.net/naka/shop/00000372987/access"
       ],
       "checkedAt": "2026-11-13",
-      "note": "新榮町站2號出口，步行 ~ 8 分至店家。"
+      "note": "新榮町站2號出口，步行 8 分至店家。"
     }
   },
   {
@@ -110,7 +110,7 @@
         "https://www.kenko-shokuiku.city.nagoya.jp/pdf/mori_curry.pdf"
       ],
       "checkedAt": "2026-11-13",
-      "note": "榮站13號出口，步行 ~ 3 分至店家。"
+      "note": "榮站13號出口，步行 3 分至店家。"
     }
   },
   {
@@ -258,6 +258,138 @@
       },
       "sources": [
         "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899597,35.15918;136.903915,35.160095?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "nagoyajo",
+    "toPlaceId": "bio_terrace",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 2017.7,
+        "durationSeconds": 1614.1,
+        "fromCoordinates": {
+          "lat": 35.1876572063889,
+          "lng": 136.899153485
+        },
+        "toCoordinates": {
+          "lat": 35.175282,
+          "lng": 136.903259
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8991535,35.1876572;136.9032590,35.1752820?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "shirokawa",
+    "toPlaceId": "khaja_ghar",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 993.6,
+        "durationSeconds": 794.7,
+        "fromCoordinates": {
+          "lat": 35.164967,
+          "lng": 136.899704
+        },
+        "toCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899704,35.164967;136.899307,35.158134?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "khaja_ghar",
+    "toPlaceId": "osu_kannon",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 166.5,
+        "durationSeconds": 133.1,
+        "fromCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        },
+        "toCoordinates": {
+          "lat": 35.15918,
+          "lng": 136.899597
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899307,35.158134;136.899597,35.15918?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "bar_thistle",
+    "toPlaceId": "hotel",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 238.2,
+        "durationSeconds": 194.5,
+        "fromCoordinates": {
+          "lat": 35.169556,
+          "lng": 136.899124
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899124,35.169556;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "bio_terrace",
+    "toPlaceId": "fukiage",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "久屋大通站",
+          "toStation": "吹上站"
+        }
+      ],
+      "note": "從餐廳步行至久屋大通站，吹上站出站後步行至老件市場。",
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://vegewel.com/en/restaurant/2475"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "mori",
+    "toPlaceId": "bar_thistle",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "榮站",
+          "toStation": "伏見站"
+        }
+      ],
+      "note": "伏見站出站後步行至酒吧；不飲酒可略過。",
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.bar-thistle.com/english.html"
       ],
       "checkedAt": "2026-11-13"
     }

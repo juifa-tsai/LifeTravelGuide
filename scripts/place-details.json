@@ -11,7 +11,7 @@
       "5": "12:00–15:00／17:30–22:00",
       "6": "12:00–15:00／17:30–22:00"
     },
-    "hoursNote": "週一營業待複核；週二、三休業，週四僅晚餐。",
+    "hoursNote": "週二、三休業，週四僅晚餐；臨時休業請確認。",
     "detailSourceUrls": [
       "https://tabelog.com/aichi/A2301/A230104/23089780/",
       "https://www.happycow.net/reviews/vegetiger-japan-nagoya-334902"
@@ -124,8 +124,9 @@
       "5": "11:30–14:30／17:30–20:30",
       "6": "11:30–14:30／17:30–20:30"
     },
-    "hoursNote": "L.O.午餐14:00、晚餐20:00；週三、四僅午餐，假日可能調整。",
+    "hoursNote": "需指定 Vegan 咖哩；晚餐L.O.20:00，供餐可能售罄。",
     "detailSourceUrls": [
+      "https://tabelog.com/aichi/A2301/A230103/23084339/dtlmenu/",
       "https://tabelog.com/aichi/A2301/A230103/23084339/"
     ],
     "detailsCheckedAt": "2026-11-13"
@@ -153,17 +154,17 @@
     "diningType": "酒吧",
     "weeklyHours": {
       "0": "16:00–24:00",
-      "1": "營業日待確認",
-      "2": "營業日待確認",
+      "1": null,
+      "2": "16:00–24:00",
       "3": "16:00–24:00",
       "4": "16:00–24:00",
       "5": "16:00–24:00",
       "6": "16:00–24:00"
     },
-    "hoursNote": "L.O.23:30、基本預約制；營業日依官方月曆，11/17可能休業。",
+    "hoursNote": "每月第1、3週二公休；不定休依官方月曆。",
     "detailSourceUrls": [
-      "https://www.bar-barns.jp/",
-      "https://www.bar-barns.jp/fcblog/opening-hours/"
+      "https://www.bar-barns.jp/fcblog/calendar/",
+      "https://www.bar-barns.jp/"
     ],
     "detailsCheckedAt": "2026-11-13"
   },
@@ -179,7 +180,7 @@
       "5": "11:00–16:00／17:00–23:00",
       "6": "11:00–16:00／17:00–23:00"
     },
-    "hoursNote": "晚間碗餐先詢問外帶；L.O.待確認。",
+    "hoursNote": "晚間碗餐以外帶為主；餐點L.O.22:30，蛋與醬汁先確認。",
     "detailSourceUrls": [
       "https://molnoda.com/"
     ],
@@ -271,6 +272,134 @@
     "hoursNote": "週一休館；假日調整，入館於閉館前30分鐘。",
     "detailSourceUrls": [
       "https://art-museum.city.nagoya.jp/guide/calendar/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
+  },
+  "bio_terrace": {
+    "foodDescription": "以植物性餐盤、米粉可麗露與生食甜點為主，搭配茶飲；目前營業狀態未確認，請先向店家確認再安排午餐。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "營業狀態待確認",
+      "1": "營業狀態待確認",
+      "2": "營業狀態待確認",
+      "3": "營業狀態待確認",
+      "4": "營業狀態待確認",
+      "5": "營業狀態待確認",
+      "6": "營業狀態待確認"
+    },
+    "hoursNote": "營業狀態待確認；平台暫停刊登，11/16請先確認供餐。",
+    "detailSourceUrls": [
+      "https://vegewel.com/en/restaurant/2475",
+      "https://tabelog.com/aichi/A2301/A230103/23079614/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
+  },
+  "khaja_ghar": {
+    "foodDescription": "尼泊爾食堂以豆湯、米飯與蔬菜咖哩組成套餐；屬葷素混合廚房，請指定蔬菜版並確認高湯、蛋與醬料。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–23:00",
+      "1": "11:00–15:00／17:00–23:00",
+      "2": "11:00–15:00／17:00–23:00",
+      "3": "11:00–15:00／17:00–23:00",
+      "4": "11:00–15:00／17:00–23:00",
+      "5": "11:00–15:00／17:00–23:00",
+      "6": "11:00–23:00"
+    },
+    "hoursNote": "餐點L.O.22:30；蔬菜套餐的高湯、魚露與配料先確認。",
+    "detailSourceUrls": [
+      "https://tabelog.com/aichi/A2301/A230105/23085903/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
+  },
+  "mihos_grains": {
+    "foodDescription": "以玄米與蔬菜製作純素定食、咖哩及甜點，週日提供純素拉麵；晚餐須提前預約，部分營業日仍需向店家確認。",
+    "diningType": "素食餐廳",
+    "weeklyHours": {
+      "0": "11:00–15:00",
+      "1": null,
+      "2": "11:00–15:00／17:00–21:00",
+      "3": "11:00–15:00／17:00–21:00",
+      "4": "11:00–15:00／17:00–21:00",
+      "5": "11:00–15:00／17:00–21:00",
+      "6": "營業日待確認"
+    },
+    "hoursNote": "晚餐須提前3天預約；週日拉麵售完為止，週六先確認。",
+    "detailSourceUrls": [
+      "https://grains.nagoya/",
+      "https://grains.nagoya/about-grains/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
+  },
+  "oribio": {
+    "foodDescription": "菜食餐廳供應蔬菜主餐、湯葉料理與多種純植物性選項；採完全預約制，點餐時可進一步說明奶素與其他飲食需求。",
+    "diningType": "素食餐廳",
+    "weeklyHours": {
+      "0": "11:00–14:00",
+      "1": null,
+      "2": null,
+      "3": "18:00–21:00",
+      "4": "18:00–21:00",
+      "5": "18:00–21:00",
+      "6": "18:00–21:00"
+    },
+    "hoursNote": "完全預約，至少前一天預約；晚餐L.O.20:30，週日L.O.13:30。",
+    "detailSourceUrls": [
+      "https://www.nagoya-oribiocafe.com/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
+  },
+  "pupu_kitchen": {
+    "foodDescription": "以有機時蔬與玄米設計日替午餐，也有香料蔬菜咖哩、豆乳甜點與咖啡；純植物性料理適合午間慢慢用餐。",
+    "diningType": "素食餐廳",
+    "weeklyHours": {
+      "0": null,
+      "1": null,
+      "2": "10:00–15:30",
+      "3": "10:00–15:30",
+      "4": "10:00–15:30",
+      "5": "10:00–15:30",
+      "6": "10:00–15:30"
+    },
+    "hoursNote": "午餐11:30–14:00，L.O.15:00；週日、週一公休。",
+    "detailSourceUrls": [
+      "https://heal-ai.com/pupu/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
+  },
+  "ko_vegan": {
+    "foodDescription": "安靜的純素咖啡空間，提供精品咖啡、豆乳拿鐵、巧克力與水果蛋糕及餅乾；目前未確認正餐，適合作為咖啡甜點站。",
+    "diningType": "素食餐廳",
+    "weeklyHours": {
+      "0": "10:00–17:00",
+      "1": "10:00–17:00",
+      "2": null,
+      "3": null,
+      "4": "10:00–17:00",
+      "5": "10:00–17:00",
+      "6": "10:00–17:00"
+    },
+    "hoursNote": "以咖啡與甜點為主，勿當作正餐；週二、三公休。",
+    "detailSourceUrls": [
+      "https://ko-vegancafe.jp/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
+  },
+  "bar_thistle": {
+    "foodDescription": "以經典與創作調酒為主，提供結合日本食材的特色酒款；有單人吧檯與無菸座位，點酒時請確認蛋白泡沫與配料成分。",
+    "diningType": "酒吧",
+    "weeklyHours": {
+      "0": "14:00–24:00",
+      "1": "17:00–翌01:00",
+      "2": "17:00–翌01:00",
+      "3": "17:00–翌01:00",
+      "4": "17:00–翌01:00",
+      "5": "17:00–翌01:00",
+      "6": "14:00–24:00"
+    },
+    "hoursNote": "不定休；平日飲料L.O.翌00:30，24:00無客可能提早打烊。",
+    "detailSourceUrls": [
+      "https://www.bar-thistle.com/english.html"
     ],
     "detailsCheckedAt": "2026-11-13"
   }

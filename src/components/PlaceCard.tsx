@@ -11,7 +11,7 @@ export function PlaceCard({ stop, place, hotel, selected, onFocus }: {
   stop: Stop; place?: Place; hotel?: Place; selected: boolean; onFocus: (placeId: string, returnToMap?: boolean) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const flexible = ['彈性','待選','候選用餐','可選'].includes(stop.displayStatus);
+  const flexible = /彈性|待選|候選用餐|可選/.test(stop.displayStatus);
   const flight = stop.displayStatus === '固定航班';
   const duration = durationHours(stop.stayMinutes);
   const title = stop.displayStatus === '固定航班' || stop.category === '早餐' || stop.summary.includes('返回飯店') || stop.summary.includes('退房') || stop.category === '接駁' || stop.category === '航班' ? stop.summary : stop.title;
@@ -35,7 +35,7 @@ export function PlaceCard({ stop, place, hotel, selected, onFocus }: {
           {place?.dietText && <p className="diet-note">{place.dietText}</p>}
           <div className="card-actions"><ExternalLink href={stop.mapsUrl} className="button button-outline"><MapPin size={15} />Google Maps<ArrowUpRight size={14} /></ExternalLink></div>
         </>}
-        {stop.note && /預約|不確定|僅預估|末點|末班|核對|μticket|台灣時間|含在住宿|含11|天守閣|退房/.test(stop.note) && <p className="note">{stop.note}</p>}
+        {stop.note && /預約|不確定|僅預估|末點|末班|核對|核實|μticket|台灣時間|含在住宿|含11|天守閣|退房|可略過|直接回|不喝酒|指定|奶素|Vegan|臨休|售罄|供餐/.test(stop.note) && <p className="note">{stop.note}</p>}
       </div>}
     </article>
   </div>;

@@ -1,6 +1,9 @@
 .app-shell { padding-bottom:95px; }
 .main-content { padding:0 16px; max-width:1120px; margin:auto; }
 .page-heading { padding:25px 0 0; }
+.page-title-row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.page-title-row h1 { min-width:0; }
+.nearby-stores-link { display:grid; place-items:center; flex-shrink:0; width:44px; height:44px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--primary); }
 h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .heading-weekday { font-size:21px; }
 .page-heading>p { color:var(--muted); font-size:14px; margin-top:4px; }

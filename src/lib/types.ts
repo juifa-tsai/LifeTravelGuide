@@ -1,5 +1,6 @@
 export interface Day {
   date: string; weekday: string; title: string; description: string; label: string; number: number;
+  candidateIds?: string[];
 }
 export interface Trip {
   title: string; startDate: string; endDate: string; timezone: string; updatedAt: string;

@@ -3,12 +3,12 @@ import { durationHours } from './timeline';
 
 export function transitTime(minutes:number | null): string | null {
   if (minutes === null || !Number.isFinite(minutes) || minutes <= 0) return null;
-  return minutes < 60 ? `~ ${Math.ceil(minutes)} 分` : durationHours(minutes);
+  return minutes < 60 ? `${Math.ceil(minutes)} 分` : durationHours(minutes);
 }
 
 export function walkingDistance(meters:number | undefined): string | null {
   if (meters === undefined || !Number.isFinite(meters) || meters <= 0) return null;
-  return meters < 1000 ? `~ ${Math.max(50,Math.round(meters/50)*50)} m` : `~ ${(meters/1000).toFixed(1)} km`;
+  return meters < 1000 ? `${Math.max(50,Math.round(meters/50)*50)} m` : `${(meters/1000).toFixed(1)} km`;
 }
 
 export function legView(leg:Leg, from?:Place, to?:Place) {
@@ -27,6 +27,6 @@ export function legView(leg:Leg, from?:Place, to?:Place) {
     distance:checkedFoot ? walkingDistance(checkedFoot.distanceMeters) : null,
     title:steps.length ? `${steps[0].fromStation} → ${steps[steps.length-1].toStation}` : `${from.nameZh} → ${to.nameZh}`,
     lines:[...new Set(steps.map(step => step.line))].join(' → '),
-    note:leg.navigation?.note ?? (leg.mode === '航班' || leg.mode.includes('專車') ? leg.details.replace(/(^|[^預])約(?=\s*\d)/g,'$1~ ') : null),
+    note:(leg.navigation?.note ?? (leg.mode === '航班' || leg.mode.includes('專車') ? leg.details.replace(/(^|[^預])約(?=\s*\d)/g,'$1') : null))?.replace(/~\s*/g,'') ?? null,
   };
 }

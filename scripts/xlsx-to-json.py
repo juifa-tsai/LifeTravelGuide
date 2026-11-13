@@ -3,6 +3,8 @@
 import argparse
 import datetime
 import json
+import re
+import unicodedata
 from pathlib import Path
 import openpyxl
 
@@ -53,7 +55,7 @@ itinerary = [dict(date=date(r[0]), sequence=number(r[1]), arrivalTime=time(r[2])
     displayStatus=r[7], summary=r[8], note=r[9], mapsUrl=r[10], sourceUrl=r[11],
     timezone='Asia/Taipei' if r[4]=='tpe' else 'Asia/Tokyo') for r in rows('01_每日行程')]
 # Supplemental restaurants fill gaps only; workbook places always win by stable ID.
-# Arrival dinner notes intentionally overlay only summary/note, never bookings/times.
+# Arrival dinner notes fill missing fields only; the current workbook owns its text.
 supplement = json.loads((ROOT / 'scripts/dinner-supplement.json').read_text())
 place_ids = {place['id'] for place in places}
 for place in supplement['places']:
@@ -69,7 +71,7 @@ for extra in supplement['itinerary']:
     for stop in itinerary:
         if (stop['date'], stop['placeId']) == (extra['date'], extra['placeId']):
             for field in ('summary', 'note'):
-                if field in extra:
+                if field in extra and not stop.get(field):
                     stop[field] = extra[field]
 
 # Checked card descriptions and weekly schedules survive workbook reimports.
@@ -122,6 +124,25 @@ trip = dict(title='名古屋 · 旅の手帖', startDate='2026-11-15', endDate='
     days=[dict(date=d,weekday=w,title=t,description=s,label=l,number=i+1) for i,(d,w,t,s,l) in enumerate(themes)],
     overview=[dict(title=r[0],value=r[1],note=r[2]) for r in rows('00_旅程總覽')
               if r[0] in ('住宿','去程','接機','回程','交通','飲食')])
+# The optional route sheet owns the pocket candidates for each day. Match the
+# established place names, omit scheduled stops, and retain stable place IDs.
+if '07_餐飲與酒吧動線' in workbook.sheetnames:
+    def normalized(value):
+        return ''.join(c for c in unicodedata.normalize('NFKC', str(value or '')).casefold() if c.isalnum())
+    for day in trip['days']:
+        day['candidateIds'] = []
+        scheduled = {stop['placeId'] for stop in itinerary if stop['date'] == day['date']}
+        for row in list(workbook['07_餐飲與酒吧動線'].values)[3:]:
+            match = re.match(r'(\d{1,2})/(\d{1,2})', str(row[0] or ''))
+            if not match or f'2026-{int(match[1]):02d}-{int(match[2]):02d}' != day['date']:
+                continue
+            text = normalized(f'{row[4] or ""} {row[8] or ""}')
+            for place in places:
+                if place['category'] not in ('素食餐廳', '咖啡廳', '酒吧') or place['id'] in scheduled:
+                    continue
+                aliases = [normalized(place['id'])] + [normalized(re.split(r'[（(]', name)[0]) for name in (place['nameZh'], place['nameJa']) if name]
+                if any(len(alias) >= 3 and alias in text for alias in aliases) and place['id'] not in day['candidateIds']:
+                    day['candidateIds'].append(place['id'])
 args.out.mkdir(parents=True, exist_ok=True)
 for name,data in dict(trip=trip,places=places,itinerary=itinerary,legs=legs,documents=documents).items():
     (args.out / f'{name}.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')

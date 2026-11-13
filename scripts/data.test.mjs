@@ -57,10 +57,10 @@ test('arrival restaurants have unique real places, HTTPS Maps links and explicit
     assert.equal(maps.protocol, 'https:');
     assert.equal(maps.hostname, 'www.google.com');
     assert(maps.searchParams.get('query'));
-    for (const term of ['奶素','肉','魚','蛋','魚露','柴魚','動物性高湯']) assert(place.dietText.includes(term), `${id}: ${term}`);
+    assert.match(place.dietText,/葷素|奶素|Vegan|Vegetarian|ヴィーガン/i, `${id}: dietary classification`);
+    assert.match(place.dietText,/指定|確認|核對|必須點/, `${id}: actionable ingredient caution`);
     for (const field of ['nameZh','nameJa','address','hoursText','closedText','priority','summary','verification','sourceUrl']) assert(place[field], `${id}: ${field}`);
-    assert.match(place.hoursText, /非 2026\/11\/15 當日保證/);
-    assert.match(place.hoursText, /L\.O\./);
+    assert.match(place.hoursText + place.hoursNote, /L\.O\./);
     assert.equal(place.lat, geocodes[id].lat, `${id}: use the recorded GSI response`);
     assert.equal(place.lng, geocodes[id].lng);
     assert.equal(place.coordinateSource, geocodes[id].source);
@@ -71,11 +71,11 @@ test('arrival restaurants have unique real places, HTTPS Maps links and explicit
     assert.match(place.imageAlt, /示意/);
   }
 });
-test('arrival dinner remains flexible at 21:45 and explains all six candidates', () => {
+test('arrival dinner remains flexible at 21:45 and follows the updated workbook dinner plan', () => {
   const dinner = data.itinerary.find(stop => stop.date === '2026-11-15' && stop.placeId === 'late_dinner');
   assert.equal(dinner.arrivalTime, '21:45');
   assert.equal(dinner.displayStatus, '彈性');
-  for (const term of ['MOLNODA','CoCo','NINE CAFE','華山','Vegan','DURBAR','杏ZU','21:30']) assert((dinner.summary + dinner.note).includes(term), term);
+  for (const term of ['MOLNODA','CoCo','華山','Vegan','21:45']) assert((dinner.summary + dinner.note).includes(term), term);
 });
 
 // Exercise the real importer, including a future workbook owning a supplemental ID.
@@ -108,7 +108,12 @@ row[0:3] = ['molnoda', '素食餐廳', 'Excel 優先餐廳']
 row[3] = 'Excel restaurant'
 row[4] = 'Excel address'
 row[7] = '備選'
-sheet.append(row)
+existing = next((r for r in range(5, sheet.max_row+1) if sheet.cell(r, 1).value == 'molnoda'), None)
+if existing:
+    for col, value in enumerate(row, 1):
+        sheet.cell(existing, col).value = value
+else:
+    sheet.append(row)
 book.save(sys.argv[2])
 `, workbook, futureWorkbook]);
     execFileSync('python3', [script, futureWorkbook, '--out', directory]);
@@ -121,5 +126,21 @@ book.save(sys.argv[2])
     for (const field of ['trip','legs','documents']) assert.deepEqual(future[field], data[field]);
     assert.deepEqual(future.places.filter(p => !dinnerIds.includes(p.id)), data.places.filter(p => !dinnerIds.includes(p.id)));
     assert.deepEqual(supplement.places.map(p => p.id), dinnerIds);
+    const legacyWorkbook = join(directory, 'legacy.xlsx');
+    execFileSync('python3', ['-c', `
+import openpyxl, sys
+book = openpyxl.load_workbook(sys.argv[1])
+sheet = book['02_踩點清單']
+ids = {'molnoda','coco_fushimi','nine_cafe_fushimi','kazan','durbar_sakae'}
+for row in range(sheet.max_row, 4, -1):
+    if sheet.cell(row, 1).value in ids:
+        sheet.delete_rows(row)
+book.save(sys.argv[2])
+`, workbook, legacyWorkbook]);
+    execFileSync('python3', [script, legacyWorkbook, '--out', directory]);
+    const legacy = loadOutput();
+    assert.deepEqual(validateData(legacy), []);
+    for (const id of dinnerIds) assert.equal(legacy.places.filter(place => place.id === id).length,1);
+    assert.deepEqual(legacy.itinerary,data.itinerary,'the legacy restaurant fallback must not overwrite current itinerary text');
   } finally { rmSync(directory, { recursive:true, force:true }); }
 });

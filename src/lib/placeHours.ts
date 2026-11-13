@@ -5,17 +5,17 @@ const weekdays = '日一二三四五六';
 
 export function todayHours(place: Place, date = japanDate()): string {
   const day = new Date(`${date}T00:00:00Z`).getUTCDay();
+  const closed = (place.closedText || '').replace(/第([1-5])[與、]第([1-5])週([日一二三四五六])/g,'第$1週$3、第$2週$3');
+  const ordinal = Math.ceil(Number(date.slice(8)) / 7);
+  const nthDay = [...closed.matchAll(/第([1-5])週([日一二三四五六])/g)];
+  const nthClosed = nthDay.some(match => Number(match[1]) === ordinal && match[2] === weekdays[day]);
+  if (nthClosed) return /可能|部分/.test(closed) ? '今日可能公休' : '今日公休';
   if (place.weeklyHours) {
     const hours = place.weeklyHours[String(day)];
     return hours === null ? '今日公休' : hours || '今日時段待確認';
   }
   // Workbook schedules are often for a particular itinerary day. Never reuse
   // that weekday's hours for a different day, even if the numeric time looks valid.
-  const closed = place.closedText || '';
-  const monthDay = Number(date.slice(8));
-  const ordinal = Math.ceil(monthDay / 7);
-  const nthDay = [...closed.matchAll(/第([1-5])週([日一二三四五六])/g)];
-  const nthClosed = nthDay.some(match => Number(match[1]) === ordinal && match[2] === weekdays[day]);
   const regular = closed.replace(/第[1-5]週[日一二三四五六]/g, '');
   const weekdayClosed = [...regular.matchAll(/週([日一二三四五六])/g)].some(match => match[1] === weekdays[day]);
   if (nthClosed || weekdayClosed) return /可能|部分/.test(closed) ? '今日可能公休' : '今日公休';
@@ -29,7 +29,7 @@ export function todayHours(place: Place, date = japanDate()): string {
   const periods = text.match(/\d{2}:\d{2}[–~～-](?:翌日?|隔日)?\d{2}:\d{2}/g);
   if (!periods) return '今日時段待確認';
   const suffix = /不定|待核實|待確認/.test(closed) ? '（待確認）' : '';
-  return periods.join('／') + suffix;
+  return periods.join('／').replace(/[~～〜]/g,'–') + suffix;
 }
 
 export function todayCaption(date = japanDate()): string {

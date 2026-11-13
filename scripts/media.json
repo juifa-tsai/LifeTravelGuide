@@ -182,5 +182,101 @@
     "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "imageKind": "illustration",
     "imageAlt": "彈性晚餐示意"
+  },
+  "molnoda": {
+    "imageUrl": "images/vegetables.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cauliflower_Nanban_(v)_-_Japanese_Caf%C3%A9_an-an_2025-05-18.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "彈性午餐示意"
+  },
+  "coco_fushimi": {
+    "imageUrl": "images/curry.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Vegan_Curry_-_Milk_No_Sugar.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "蔬食咖哩示意，非店家餐點"
+  },
+  "nine_cafe_fushimi": {
+    "imageUrl": "images/macchiato.webp",
+    "imageAttribution": "Ryan Snyder · CC BY 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Macchiato_at_Seven_Virtues_Coffeehouse._(2452633887).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageKind": "illustration",
+    "imageAlt": "咖啡示意，非店家餐點"
+  },
+  "kazan": {
+    "imageUrl": "images/vegetables.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cauliflower_Nanban_(v)_-_Japanese_Caf%C3%A9_an-an_2025-05-18.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "彈性午餐示意"
+  },
+  "durbar_sakae": {
+    "imageUrl": "images/curry.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Vegan_Curry_-_Milk_No_Sugar.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "蔬食咖哩示意，非店家餐點"
+  },
+  "bio_terrace": {
+    "imageUrl": "images/tofu.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Tofu_Curry_with_Rice_-_Rawlab_Juice_%26_Tea_2025-05-17.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "植物性餐盤與甜點示意，非店家實景"
+  },
+  "khaja_ghar": {
+    "imageUrl": "images/tofu.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Tofu_Curry_with_Rice_-_Rawlab_Juice_%26_Tea_2025-05-17.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "蔬菜咖哩套餐示意，非店家實景"
+  },
+  "mihos_grains": {
+    "imageUrl": "images/tofu.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Tofu_Curry_with_Rice_-_Rawlab_Juice_%26_Tea_2025-05-17.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "純素餐點示意，非店家實景"
+  },
+  "oribio": {
+    "imageUrl": "images/tofu.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Tofu_Curry_with_Rice_-_Rawlab_Juice_%26_Tea_2025-05-17.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "菜食主餐示意，非店家實景"
+  },
+  "pupu_kitchen": {
+    "imageUrl": "images/tofu.webp",
+    "imageAttribution": "Andy Li · CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Tofu_Curry_with_Rice_-_Rawlab_Juice_%26_Tea_2025-05-17.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imageKind": "illustration",
+    "imageAlt": "有機蔬食料理示意，非店家實景"
+  },
+  "ko_vegan": {
+    "imageUrl": "images/macchiato.webp",
+    "imageAttribution": "Ryan Snyder · CC BY 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Macchiato_at_Seven_Virtues_Coffeehouse._(2452633887).jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageKind": "illustration",
+    "imageAlt": "咖啡甜點示意，非店家實景"
+  },
+  "bar_thistle": {
+    "imageUrl": "images/cocktail.webp",
+    "imageAttribution": "Dennis Mojado · CC BY 2.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cocktail1.jpg",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "imageKind": "illustration",
+    "imageAlt": "創作調酒示意，非店家實景"
   }
 }

@@ -10,7 +10,7 @@ const { durationHours, dayPeriod, groupTimeline } = await import(`data:text/java
 const data = loadData();
 
 test('durations are approximate hours without inventing stays for flight events or unknown values', () => {
-  for (const [minutes,label] of [[5,'~ 0.5 hr'],[20,'~ 0.5 hr'],[30,'~ 0.5 hr'],[45,'~ 1 hr'],[65,'~ 1 hr'],[85,'~ 1.5 hr'],[110,'~ 2 hr'],[120,'~ 2 hr'],[155,'~ 2.5 hr']]) assert.equal(durationHours(minutes),label);
+  for (const [minutes,label] of [[5,'0.5 hr'],[20,'0.5 hr'],[30,'0.5 hr'],[45,'1 hr'],[65,'1 hr'],[85,'1.5 hr'],[110,'2 hr'],[120,'2 hr'],[155,'2.5 hr']]) assert.equal(durationHours(minutes),label);
   for (const value of [null,0,-10,NaN,Infinity]) assert.equal(durationHours(value),null);
 });
 
@@ -29,7 +29,7 @@ test('day parts preserve all itinerary entries, bookings and sequence without ad
   const expected = {
     '2026-11-15':[['afternoon',1],['evening',4]],
     '2026-11-16':[['morning',2],['afternoon',3],['evening',2]],
-    '2026-11-17':[['morning',3],['afternoon',4],['evening',2]],
+    '2026-11-17':[['morning',3],['afternoon',4],['evening',3]],
     '2026-11-18':[['morning',5],['afternoon',2]],
   };
   for (const [date,sections] of Object.entries(expected)) {

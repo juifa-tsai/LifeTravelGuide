@@ -15,7 +15,7 @@ const view = leg => legView(leg,place(leg.fromPlaceId),place(leg.toPlaceId));
 
 test('walking distances come from sourced foot routes with unchanged verified endpoints', () => {
   const walks = data.legs.filter(leg => leg.mode === '步行' && !place(leg.fromPlaceId).virtual && !place(leg.toPlaceId).virtual);
-  assert.equal(walks.length,4);
+  assert.equal(walks.length,8);
   for (const leg of walks) {
     assert(leg.navigation.walking.distanceMeters > 0);
     assert(leg.navigation.sources.some(source => source.includes('/routed-foot/')));
@@ -24,15 +24,15 @@ test('walking distances come from sourced foot routes with unchanged verified en
     assert.equal(result.walking,true);
     assert.equal(legView(leg,{...place(leg.fromPlaceId),lat:null,lng:null},place(leg.toPlaceId)).distance,null);
   }
-  assert.equal(walkingDistance(481.5),'~ 500 m');
-  assert.equal(walkingDistance(1087.2),'~ 1.1 km');
+  assert.equal(walkingDistance(481.5),'500 m');
+  assert.equal(walkingDistance(1087.2),'1.1 km');
   assert.equal(walkingDistance(undefined),null);
   assert.equal(walkingDistance(NaN),null);
 });
 
 test('public transport has continuous station steps and useful transfer details', () => {
   const transit = data.legs.filter(leg => /地鐵|名鐵/.test(leg.mode) && !place(leg.fromPlaceId).virtual && !place(leg.toPlaceId).virtual);
-  assert.equal(transit.length,8);
+  assert.equal(transit.length,9);
   for (const leg of transit) {
     const result = view(leg);
     assert(result.steps.length > 0);
@@ -47,13 +47,13 @@ test('public transport has continuous station steps and useful transfer details'
 
 test('unselected restaurants never create routes or guessed distances and short trips use minutes', () => {
   for (const leg of data.legs.filter(leg => place(leg.fromPlaceId).virtual || place(leg.toPlaceId).virtual)) assert.equal(view(leg),null);
-  assert.equal(transitTime(3.4),'~ 4 分');
-  assert.equal(transitTime(30),'~ 30 分');
-  assert.equal(transitTime(65),'~ 1 hr');
+  assert.equal(transitTime(3.4),'4 分');
+  assert.equal(transitTime(30),'30 分');
+  assert.equal(transitTime(65),'1 hr');
   assert.equal(transitTime(null),null);
   const booked = data.legs.find(leg => leg.mode === '預約專車');
   const note = view({...booked,details:'預約19:55接機，車程約65分鐘'}).note;
-  assert.equal(note,'預約19:55接機，車程~ 65分鐘');
+  assert.equal(note,'預約19:55接機，車程65分鐘');
 });
 
 test('stale walking coordinates and disconnected transfers are rejected', () => {

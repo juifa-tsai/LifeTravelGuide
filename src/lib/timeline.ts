@@ -5,7 +5,7 @@ export const periodLabels:Record<DayPeriod,string> = { morning:'早上', afterno
 
 export function durationHours(minutes:number | null): string | null {
   if (minutes === null || !Number.isFinite(minutes) || minutes <= 0) return null;
-  return `~ ${Math.max(0.5,Math.round(minutes / 30) / 2)} hr`;
+  return `${Math.max(0.5,Math.round(minutes / 30) / 2)} hr`;
 }
 
 export function dayPeriod(stop:Pick<Stop,'arrivalTime' | 'timezone'>): DayPeriod {

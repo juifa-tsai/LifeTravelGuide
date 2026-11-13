@@ -64,7 +64,13 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
     url(stop.mapsUrl, key);
     url(stop.sourceUrl, key);
   }
-  for (const day of trip.days) assert(itinerary.some(s => s.date === day.date), `Empty day: ${day.date}`);
+  for (const day of trip.days) {
+    assert(itinerary.some(s => s.date === day.date), `Empty day: ${day.date}`);
+    if (day.candidateIds) {
+      assert(new Set(day.candidateIds).size === day.candidateIds.length, 'Duplicate candidate place');
+      for (const id of day.candidateIds) assert(ids.has(id), `Missing candidate place: ${id}`);
+    }
+  }
   for (const leg of legs) {
     assert(ids.has(leg.fromPlaceId) && ids.has(leg.toPlaceId), 'Missing transit reference');
     assert(datePattern.test(leg.date), 'Invalid transit date');
