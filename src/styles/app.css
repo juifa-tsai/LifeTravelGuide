@@ -169,9 +169,6 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .entry-qr-open>span { display:flex; justify-content:center; align-items:center; gap:5px; font-size:13px; margin-top:6px; }
 .entry-qr-image { display:block; width:100%; height:auto; background:#fff; }
 .entry-qr-actions { display:flex; justify-content:space-between; gap:12px; margin-top:8px; }
-.entry-qr-drive { margin-top:12px; text-align:center; }
-.entry-qr-drive-frame { display:block; width:100%; height:auto; aspect-ratio:1125/2436; min-height:440px; max-height:760px; border:0; background:#fff; }
-.entry-qr-dialog .entry-qr-drive-frame { height:calc(100dvh - 116px); min-height:240px; max-height:none; }
 .entry-qr-upload { position:relative; cursor:pointer; }
 .entry-qr-upload:focus-within { outline:2px solid var(--primary); outline-offset:3px; }
 .entry-qr-empty { color:var(--muted); font-size:15px; margin:16px 0; }

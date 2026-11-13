@@ -31,7 +31,7 @@ test('both uploaded transport diagrams have local previews and traceable origina
       assert.equal(credit.sourceSha256,credit.assetSha256,'original SVG remains unchanged');
     } else assert.equal(bytes.toString('ascii',8,12),'WEBP');
   }
-  assert.equal(data.documents.filter(document => document.access === '私人').length,6);
+  assert.equal(data.documents.filter(document => document.access === '私人').length,5);
   assert(data.documents.filter(document => document.access === '私人').every(document => !document.preview));
 });
 

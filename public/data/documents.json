@@ -102,14 +102,5 @@
     "access": "公開",
     "dates": "全程",
     "description": "名鐵官方名古屋旅遊資訊"
-  },
-  {
-    "id": "entry-qr-visit-japan",
-    "category": "入境",
-    "title": "Visit Japan Web 入境 QR",
-    "url": "https://drive.google.com/file/d/1ixcOzR5ACuzWeYsgC6tFqd6RS1hwop9x/view",
-    "access": "私人",
-    "dates": "11/15",
-    "description": "入境審查及海關申報 QR，Google Drive 私人原圖。"
   }
 ]

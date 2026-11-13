@@ -9,17 +9,6 @@ const encoded=(size,bytes)=>`${size}.${Buffer.from(bytes).toString('base64url')}
 const fixture=()=>{const bytes=new Uint8Array(Math.ceil(21*21/8));bytes[0]=0b11000000;bytes[55]=0b10000000;return encoded(21,bytes);};
 const memory=()=>{const values=new Map();return {getItem:key=>values.get(key)??null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)};};
 
-test('only a private immigration document can create a validated Google Drive preview',()=>{
-  const source={category:'入境',access:'私人',url:'https://drive.google.com/file/d/example_qr-id/view?usp=drivesdk'};
-  assert.equal(qr.entryQrDrivePreview(source),'https://drive.google.com/file/d/example_qr-id/preview');
-  for(const value of [undefined,{...source,access:'公開'},{...source,category:'機票'},
-    {...source,url:'https://drive.google.com.evil.test/file/d/example/view'},
-    {...source,url:'http://drive.google.com/file/d/example/view'},
-    {...source,url:'https://drive.google.com/drive/folders/example'},
-    {...source,url:'https://evil.test/file/d/example/view'},
-    {...source,url:'javascript:alert(1)'}]) assert.equal(qr.entryQrDrivePreview(value),null);
-});
-
 test('QR modules preserve original black cells and a four-module quiet zone without an external renderer',()=>{
   const matrix=qr.qrMatrix(fixture());
   assert.equal(matrix.size,21);
