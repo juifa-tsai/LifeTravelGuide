@@ -118,7 +118,8 @@ for document in documents:
             document.update(extra)
 document_urls = {document['url'] for document in documents}
 document_ids = {document['id'] for document in documents}
-for extra in transport['documents']:
+document_supplement = json.loads((ROOT / 'scripts/document-supplement.json').read_text())
+for extra in transport['documents'] + document_supplement['documents']:
     if extra['id'] not in document_ids and extra['url'] not in document_urls:
         documents.append(extra)
         document_ids.add(extra['id'])

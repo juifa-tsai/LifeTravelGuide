@@ -169,6 +169,12 @@ Distances are local calculations from verified place coordinates; unknown coordi
 
 ## 入境 QR（僅存本機）
 
-文件頁最前方顯示 Visit Japan Web 入境審查及海關申報 QR，點圖可放大出示。首次可選擇原始 PNG／JPG／WebP 截圖（2 MB 內），或使用私人匯入連結；資料只存在目前瀏覽器的 `nagoya:entry-qr` localStorage，保留重新載入、切換頁面與離線使用。更換或移除只影響此瀏覽器，無跨裝置同步；清除瀏覽器資料後須重新匯入。
+文件頁最前方顯示 Visit Japan Web 入境審查及海關申報 QR，點圖可放大出示。首次可選擇原始 PNG／JPG／WebP 截圖（2 MB 內），或使用私人匯入連結；本機副本只存在目前瀏覽器的 `nagoya:entry-qr` localStorage，保留重新載入、切換頁面與離線使用。更換或移除只影響此瀏覽器，無跨裝置同步；清除瀏覽器資料後須重新匯入。
 
 私人連結使用 `#/documents?entryQr=<原始黑白模組>`，內容位於 URL fragment，不會成為 HTTP 路徑／查詢，也不會送到 GitHub Pages、Google 或其他服務。匯入後立即以 replace 移除該參數。渲染保留原始 QR 黑白模組與四格留白，不重新解讀／編碼入境資料，不以 AI 產生圖片。提供給使用者的實際碼須在本機驗證掃描內容與原圖逐位元組一致；不將原圖、碼內容、個人姓名或私人匯入連結放入 repository、公開 JSON、測試 fixture 或 PWA 快取。一般訪客只會看到自己的本機資料或匯入提示。私人匯入連結也應保留於私人對話；請在平常使用旅遊 APP 的同一個瀏覽器開啟。
+
+### Drive 入境 QR 來源
+
+文件頁首張 QR 卡片已接上 Nagoya 資料夾的「顯示QR碼畫面 Visit Japan Web.png」。`scripts/document-supplement.json` 只保存私人 Drive 原圖連結；Excel 匯入依 ID／URL 去重合併，未來工作簿已有同一來源時以工作簿為準。圖片、QR 內容與存取憑證不放入公開 JSON 或 repository，Drive 檔案維持原本私人權限。
+
+瀏覽器已有本機 QR 時優先顯示，可繼續離線出示；沒有本機資料時，連線下使用 Google Drive 私人預覽，可放大或點「Drive 原圖」開啟。Drive 預覽須登入有權限的 Google 帳號，瀏覽器的第三方登入限制可能使內嵌預覽無法顯示，此時使用原圖連結。離線時不載入 Drive iframe，也不聲稱私人 Drive 圖片已被預快取；可使用既有圖片匯入方式保存本機副本。Drive 原圖與目前本機資料不會自動同步更換，避免清除既有可離線的 QR。

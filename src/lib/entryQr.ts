@@ -1,4 +1,13 @@
 export const entryQrKey = 'nagoya:entry-qr';
+export function entryQrDrivePreview(source?:{category:string;access:string;url:string}):string | null {
+  if (source?.category !== '入境' || source.access !== '私人') return null;
+  try {
+    const url = new URL(source.url);
+    const match = /^\/file\/d\/([A-Za-z0-9_-]+)(?:\/view)?\/?$/.exec(url.pathname);
+    return url.protocol === 'https:' && url.hostname === 'drive.google.com' && !url.username && !url.password && match
+      ? `https://drive.google.com/file/d/${match[1]}/preview` : null;
+  } catch { return null; }
+}
 export type EntryQr = { kind:'matrix' | 'image'; data:string };
 type QrStorage = Pick<Storage,'getItem' | 'setItem' | 'removeItem'>;
 
