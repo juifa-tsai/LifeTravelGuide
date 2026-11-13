@@ -4,16 +4,16 @@ import { MapContainer, TileLayer, Marker, Polyline, Popup, Tooltip, CircleMarker
 import { BedDouble, LocateFixed, MapPin, Route, Clock3, MapPinned } from 'lucide-react';
 import { useOnline } from '../lib/connectivity';
 import { isCityPlace, type MapPoint } from '../lib/mapPoints';
-import { CategoryIcon, categoryMarkerSvg } from './Icon';
+import { categoryMarkerSvg } from './Icon';
 import { PlaceImage } from './PlaceImage';
 import { ExternalLink } from './ExternalLink';
 import { compactHours } from '../lib/hours';
 import type { Coordinates } from '../lib/distances';
 
 const categoryStyle = {
-  '素食餐廳':{ className:'vegan',label:'素食' },
-  '咖啡廳':{ className:'coffee',label:'咖啡' },
-  '酒吧':{ className:'bar',label:'酒吧' },
+  '素食餐廳':{ className:'vegan' },
+  '咖啡廳':{ className:'coffee' },
+  '酒吧':{ className:'bar' },
 };
 function icon(point:MapPoint, selected:boolean) {
   const style = categoryStyle[point.place.category as keyof typeof categoryStyle];
@@ -28,8 +28,19 @@ function MapViewport({ points, focusIds, selected, reset,focusVersion }: { point
   const targets = focus.length ? focus : city.length ? city : points;
   const signature = targets.map(point => `${point.place.id}:${point.place.lat},${point.place.lng}`).join('|');
   useEffect(() => {
+    map.stop();
+    map.closePopup();
     if (targets.length) map.fitBounds(L.latLngBounds(targets.map(point => [point.place.lat,point.place.lng])),{ padding:[34,34],maxZoom:15,animate:false });
-  },[map,signature,reset]);
+  },[map,signature]);
+  useEffect(() => {
+    if (!reset) return;
+    // Overview covers every marker in the current layer, including lodging.
+    // Stop flyTo and popup auto-pan before fitting so they cannot override it.
+    map.stop();
+    map.closePopup();
+    map.invalidateSize({ pan:false });
+    if (points.length) map.fitBounds(L.latLngBounds(points.map(point => [point.place.lat,point.place.lng])),{ padding:[34,34],maxZoom:15,animate:false });
+  },[map,reset]);
   const active = points.find(point => point.place.id === selected);
   useEffect(() => {
     if (active) map.flyTo([active.place.lat,active.place.lng],Math.max(map.getZoom(),active.place.category === '住宿' ? 16 : 15),{ duration:.4 });
@@ -67,7 +78,7 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
   }
   return <section className="travel-map-section" id={id} aria-label={label}>
     <div className="map-frame">
-      <MapContainer ref={map} center={[35.168,136.904]} zoom={14} scrollWheelZoom={false} zoomControl={false} className="travel-map">
+      <MapContainer ref={map} center={[35.168,136.904]} zoom={14} scrollWheelZoom={false} zoomControl={false} zoomAnimation={false} className="travel-map">
         {online && <TileLayer className="muted-map-tiles" url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution={'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'} eventHandlers={{ tileerror:() => setTileError(true) }} />}
         <MapViewport points={points} focusIds={focusIds} selected={selected} reset={reset} focusVersion={focusVersion} />
         {segments.map((positions,index) => <Polyline key={index} positions={positions} pathOptions={{ color:'#A8452B',weight:2,dashArray:'5 7',opacity:.7 }} />)}
@@ -96,7 +107,6 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
       {!online && <div className="offline-map map-offline-banner"><MapPin size={17} /><span>離線地圖 · 底圖需連線</span></div>}
     </div>
     <div className="map-tools"><button className="text-action" onClick={() => { onReset(); setReset(previous => previous+1); }}><Route size={16} />地圖總覽</button>{lodging && <button className="text-action lodging-action" title={lodging.place.nameZh} onClick={() => onFocusPlace(lodging.place.id)}><BedDouble size={17} />回到住宿</button>}<button className="text-action" aria-label="定位我的位置" disabled={locating} onClick={locate}><LocateFixed size={17} />{locating ? '定位中' : '我的位置'}</button></div>
-    <div className="map-legend" aria-label="地點圖例">{lodging && <span className="lodging-legend"><BedDouble size={14} />住宿</span>}{Object.entries(categoryStyle).filter(([category]) => points.some(point => point.place.category === category)).map(([category,style]) => <span key={category} className={style.className}><CategoryIcon category={category} size={14} />{style.label}</span>)}{segments.length > 0 && <small>虛線為行程示意</small>}</div>
     {tileError && online && <p className="map-message" role="status">部分底圖暫時無法載入，仍可點選地點標記。</p>}
     {message && <p className="map-message" role="status">{message}</p>}
   </section>;

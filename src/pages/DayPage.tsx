@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Bookmark, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Bookmark, ArrowRight, Sunrise, Sun, Moon } from 'lucide-react';
 import type { TravelData, Day } from '../lib/types';
 import { stopId, shortDate } from '../lib/data';
 import { writeStored } from '../lib/storage';
@@ -10,11 +10,14 @@ import { PlaceCard } from '../components/PlaceCard';
 import { TransitConnector } from '../components/TransitConnector';
 import { PlaceImage } from '../components/PlaceImage';
 import { ExternalLink } from '../components/ExternalLink';
+import { groupTimeline, periodLabels } from '../lib/timeline';
+const periodIcons = { morning:Sunrise, afternoon:Sun, evening:Moon };
 export function DayPage({ data, day }: { data:TravelData; day:Day }) {
   const [selected, setSelected] = useState<string | null>(null);
   const [focusVersion,setFocusVersion] = useState(0);
   const [highlightedStop, setHighlightedStop] = useState<string | null>(null);
   const stops = useMemo(() => data.itinerary.filter(s => s.date === day.date).sort((a,b) => a.sequence-b.sequence), [data, day.date]);
+  const periods = useMemo(() => groupTimeline(stops), [stops]);
   useEffect(() => { writeStored('last-day',day.date); }, [day.date]);
   function select(pin:MapPinData) {
     setSelected(pin.place.id); setHighlightedStop(stopId(pin.stop));
@@ -37,14 +40,20 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
 
     </div>
     <div className="timeline-column"><div className="section-heading"><h2>今天的行程</h2><span className="small muted">{stops.length} 個安排</span></div>
-      <section className="timeline" aria-label="正式行程時間軸">{stops.map((stop,i) => {
-        const place = data.places.find(p => p.id === stop.placeId);
-        const next = stops[i+1];
-        const leg = next && next.placeId !== stop.placeId ? data.legs.find(l => l.date === day.date && l.fromPlaceId === stop.placeId && l.toPlaceId === next.placeId) : undefined;
-        return <div className="timeline-item" key={stopId(stop)}>
-          <PlaceCard stop={stop} place={place} hotel={data.places.find(p => p.category === '住宿')} selected={highlightedStop === stopId(stop)} onFocus={focus} />
-          {leg && <div className="transit-offset"><TransitConnector leg={leg} from={place} to={data.places.find(p => p.id === next.placeId)} /></div>}
-        </div>;
+      <section className="timeline" aria-label="正式行程時間軸">{periods.map(period => {
+        const PeriodIcon = periodIcons[period.period];
+        return <section className="timeline-period" key={period.id} aria-labelledby={`period-${period.id}`}>
+          <h3 className="timeline-period-heading" id={`period-${period.id}`}><PeriodIcon size={17} aria-hidden="true" /><span>{periodLabels[period.period]}</span></h3>
+          <div className="timeline-items">{period.stops.map(stop => {
+            const i = stops.indexOf(stop);
+            const place = data.places.find(p => p.id === stop.placeId);
+            const next = stops[i+1];
+            const leg = next && next.placeId !== stop.placeId ? data.legs.find(l => l.date === day.date && l.fromPlaceId === stop.placeId && l.toPlaceId === next.placeId) : undefined;
+            return <div className="timeline-item" key={stopId(stop)}>
+              <PlaceCard stop={stop} place={place} hotel={data.places.find(p => p.category === '住宿')} selected={highlightedStop === stopId(stop)} onFocus={focus} />
+              {leg && <div className="transit-offset"><TransitConnector leg={leg} from={place} to={data.places.find(p => p.id === next.placeId)} /></div>}
+            </div>;
+          })}</div></section>;
       })}</section>
       {candidateIds.length > 0 && <section className="candidates"><div className="section-heading"><h2><Bookmark size={17} />{arrivalDinner ? '今晚晚餐候選' : '口袋候選'}</h2><Link to="/places" className="text-action">全部收藏<ArrowUpRight size={14} /></Link></div>
         {arrivalDinner && <p className="small muted">依抵達時間彈性選擇，出發前確認營業與奶素供餐。</p>}

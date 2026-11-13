@@ -14,7 +14,10 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .section-heading h2 { display:flex; align-items:center; gap:6px; font-size:18px; font-weight:650; }
 .section-heading>.small { font-size:14px; }
 .timeline-column>.section-heading { padding:23px 0 14px; }
-.timeline { display:flex; flex-direction:column; gap:8px; }
+.timeline { display:flex; flex-direction:column; gap:24px; }
+.timeline-period-heading { display:flex; align-items:center; gap:8px; padding:0 0 13px; margin:0; color:var(--muted); font-size:14px; font-weight:500; }
+.timeline-period-heading::after { content:''; flex:1; border-top:1px dashed #CFCBC5; margin-left:4px; }
+.timeline-items { display:flex; flex-direction:column; gap:8px; }
 .timeline-item { position:relative; }
 .timeline-item:not(:last-child)::before { content:''; position:absolute; left:13px; top:45px; bottom:-22px; border-left:2px dotted #CFCBC5; }
 .timeline-stop { display:flex; gap:10px; position:relative; scroll-margin-top:25px; }
@@ -27,7 +30,9 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .stop-toggle { width:100%; padding:13px 13px; min-height:91px; text-align:left; display:flex; align-items:center; gap:7px; }
 .stop-overview { flex:1; min-width:0; }
 .stop-time { display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin-bottom:4px; }
-.stop-time time { font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; }
+.stop-time time,.stop-duration { font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; }
+.stop-booking-time { display:flex; align-items:center; gap:6px; color:var(--primary-dark); font-size:14px; }
+.stop-booking-time time { font-weight:600; }
 .stay { color:var(--muted); font-size:14px; }
 .badge { display:inline-block; font-size:12px; line-height:1; padding:4px 5px; border-radius:5px; background:#F1EEE8; color:#6F6556; white-space:nowrap; font-weight:400; }
 .badge-flexible { border:1px dashed #C7B693; color:#7D5A17; background:#F6F1E6; }
@@ -208,7 +213,7 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
   .stay { font-size:14px; }
   .japanese { font-size:14px; }
   .timeline-item:not(:last-child)::before { left:13px; }
-  .timeline { gap:10px; }
+  .timeline-items { gap:10px; }
   .update-notice { left:auto; right:25px; }
   .places-layout { display:grid; grid-template-columns:260px minmax(0,1fr); gap:30px; margin-top:30px; align-items:start; }
   .places-controls { position:sticky; top:24px; }
@@ -262,12 +267,6 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .map-tools .text-action { color:var(--muted); font-size:14px; }
 .map-tools .text-action:hover { color:var(--primary); }
 .map-message { font-size:14px; color:var(--muted); padding:8px 0; }
-.map-legend { display:flex; align-items:center; flex-wrap:wrap; gap:14px; padding:1px 2px 8px; }
-.map-legend>span { display:flex; align-items:center; gap:5px; font-size:14px; }
-.map-legend .vegan { color:#64754F; }
-.map-legend .coffee { color:#89694F; }
-.map-legend .bar { color:#815D70; }
-.map-legend small { color:var(--muted); font-size:12px; margin-left:auto; }
 .offline-map { display:flex; justify-content:center; align-items:center; gap:8px; color:var(--muted); font-size:16px; }
 .map-offline-banner { position:absolute; z-index:500; left:10px; bottom:24px; padding:8px 10px; background:#FFFFFFE8; border-radius:8px; pointer-events:none; font-size:14px; }
 .travel-map-section { min-width:0; scroll-margin-top:20px; }
@@ -292,7 +291,7 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .travel-map { background:#F0F0ED; }
 .travel-marker.lodging-marker { background:#55718B; border:2px solid white; border-radius:10px; color:white; }
 .lodging-marker.marker-selected { outline-color:#55718B44; }
-.map-tools .lodging-action,.map-legend .lodging-legend { color:#55718B; }
+.map-tools .lodging-action { color:#55718B; }
 
 .place-popup .leaflet-popup-content .map-popup-hours { display:flex; align-items:flex-start; gap:5px; margin-top:7px; font-size:14px; color:var(--text); }
 .map-popup-hours svg { margin-top:1px; }
