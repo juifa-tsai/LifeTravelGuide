@@ -20,7 +20,8 @@ export function dayPins(stops:Stop[], places:Place[]): MapPinData[] {
   });
 }
 function mergePoints(places:Place[], primary:MapPoint[]): MapPoint[] {
-  const points = new Map(favorites(places).map(place => [place.id,{ place,favorite:true } as MapPoint]));
+  const fixed = places.filter((place): place is CoordinatePlace => hasCoordinates(place) && (isFavorite(place) || place.category === '住宿'));
+  const points = new Map(fixed.map(place => [place.id,{ place,favorite:isFavorite(place) } as MapPoint]));
   for (const point of primary) points.set(point.place.id,{ ...point,favorite:isFavorite(point.place) });
   return [...points.values()];
 }

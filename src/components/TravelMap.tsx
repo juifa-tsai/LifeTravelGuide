@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Polyline, Popup, Tooltip, CircleMarker, useMap } from 'react-leaflet';
-import { LocateFixed, MapPin, Route } from 'lucide-react';
+import { BedDouble, LocateFixed, MapPin, Route } from 'lucide-react';
 import { useOnline } from '../lib/connectivity';
 import { isCityPlace, type MapPoint } from '../lib/mapPoints';
 import { CategoryIcon } from './Icon';
@@ -15,8 +15,10 @@ const categoryStyle = {
 };
 function icon(point:MapPoint, selected:boolean) {
   const style = categoryStyle[point.place.category as keyof typeof categoryStyle];
-  const content = point.number ? String(point.number) : `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${style?.path ?? 'M12 21s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12ZM12 6v6M9 9h6'}"/></svg>`;
-  return L.divIcon({ className:`travel-marker ${point.number ? 'formal-marker' : style?.className ?? 'place-marker'} ${selected ? 'marker-selected' : ''}`, html:`<span data-place-id="${point.place.id}" data-favorite="${point.favorite}">${content}</span>`, iconSize:[32,32], iconAnchor:[16,16] });
+  const lodging = point.place.category === '住宿';
+  const path = lodging ? 'M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M5 9V5h14v4M8 9V7h3v2M13 9V7h3v2' : style?.path ?? 'M12 21s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12ZM12 6v6M9 9h6';
+  const content = point.number && !lodging ? String(point.number) : `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${path}"/></svg>${lodging && point.number ? `<small class="lodging-number">${point.number}</small>` : ''}`;
+  return L.divIcon({ className:`travel-marker ${lodging ? 'lodging-marker' : point.number ? 'formal-marker' : style?.className ?? 'place-marker'} ${selected ? 'marker-selected' : ''}`, html:`<span data-place-id="${point.place.id}" data-favorite="${point.favorite}" data-lodging="${lodging}">${content}</span>`, iconSize:[32,32], iconAnchor:[16,16] });
 }
 function MapViewport({ points, focusIds, selected, reset,focusVersion }: { points:MapPoint[]; focusIds:string[]; selected:string | null; reset:number; focusVersion:number }) {
   const map = useMap();
@@ -29,13 +31,13 @@ function MapViewport({ points, focusIds, selected, reset,focusVersion }: { point
   },[map,signature,reset]);
   const active = points.find(point => point.place.id === selected);
   useEffect(() => {
-    if (active) map.flyTo([active.place.lat,active.place.lng],Math.max(map.getZoom(),15),{ duration:.4 });
+    if (active) map.flyTo([active.place.lat,active.place.lng],Math.max(map.getZoom(),active.place.category === '住宿' ? 16 : 15),{ duration:.4 });
   },[map,active?.place.id,focusVersion]);
   return null;
 }
-export function TravelMap({ id,label,points,focusIds,selected,onSelect,onReset,segments = [],focusVersion = 0 }: {
+export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPlace,onReset,segments = [],focusVersion = 0 }: {
   id:string; label:string; points:MapPoint[]; focusIds:string[]; selected:string | null;
-  onSelect:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number;
+  onSelect:(id:string) => void; onFocusPlace:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number;
 }) {
   const online = useOnline();
   const map = useRef<L.Map | null>(null);
@@ -45,6 +47,7 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onReset,s
   const [locating,setLocating] = useState(false);
   const [message,setMessage] = useState('');
   const [tileError,setTileError] = useState(false);
+  const lodging = points.find(point => point.place.category === '住宿');
   useEffect(() => { alive.current = true; return () => { alive.current = false; }; },[]);
   const markerIcons = useMemo(() => new Map(points.map(point => [point.place.id,icon(point,point.place.id === selected)])),[points,selected]);
   function locate() {
@@ -62,7 +65,7 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onReset,s
   return <section className="travel-map-section" id={id} aria-label={label}>
     <div className="map-frame">
       <MapContainer ref={map} center={[35.168,136.904]} zoom={14} scrollWheelZoom={false} zoomControl={false} className="travel-map">
-        {online && <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution={'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'} eventHandlers={{ tileerror:() => setTileError(true) }} />}
+        {online && <TileLayer className="muted-map-tiles" url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution={'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'} eventHandlers={{ tileerror:() => setTileError(true) }} />}
         <MapViewport points={points} focusIds={focusIds} selected={selected} reset={reset} focusVersion={focusVersion} />
         {segments.map((positions,index) => <Polyline key={index} positions={positions} pathOptions={{ color:'#A8452B',weight:2,dashArray:'5 7',opacity:.7 }} />)}
         {points.map(point => <Marker key={point.place.id} position={[point.place.lat,point.place.lng]} icon={markerIcons.get(point.place.id)} title={point.place.nameZh} zIndexOffset={point.place.id === selected ? 1000 : point.number ? 100 : 0}
@@ -86,8 +89,8 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onReset,s
       <div className="map-zoom"><button aria-label="放大地圖" onClick={() => map.current?.zoomIn()}>+</button><button aria-label="縮小地圖" onClick={() => map.current?.zoomOut()}>−</button></div>
       {!online && <div className="offline-map map-offline-banner"><MapPin size={17} /><span>離線地圖 · 底圖需連線</span></div>}
     </div>
-    <div className="map-tools"><button className="text-action" onClick={() => { onReset(); setReset(previous => previous+1); }}><Route size={16} />地圖總覽</button><button className="text-action" aria-label="定位我的位置" disabled={locating} onClick={locate}><LocateFixed size={17} />{locating ? '定位中' : '我的位置'}</button></div>
-    <div className="map-legend" aria-label="固定收藏圖層">{Object.entries(categoryStyle).map(([category,style]) => <span key={category} className={style.className}><CategoryIcon category={category} size={14} />{style.label}</span>)}{segments.length > 0 && <small>虛線為行程示意</small>}</div>
+    <div className="map-tools"><button className="text-action" onClick={() => { onReset(); setReset(previous => previous+1); }}><Route size={16} />地圖總覽</button>{lodging && <button className="text-action lodging-action" title={lodging.place.nameZh} onClick={() => onFocusPlace(lodging.place.id)}><BedDouble size={17} />回到住宿</button>}<button className="text-action" aria-label="定位我的位置" disabled={locating} onClick={locate}><LocateFixed size={17} />{locating ? '定位中' : '我的位置'}</button></div>
+    <div className="map-legend" aria-label="固定收藏圖層">{lodging && <span className="lodging-legend"><BedDouble size={14} />住宿</span>}{Object.entries(categoryStyle).map(([category,style]) => <span key={category} className={style.className}><CategoryIcon category={category} size={14} />{style.label}</span>)}{segments.length > 0 && <small>虛線為行程示意</small>}</div>
     {tileError && online && <p className="map-message" role="status">部分底圖暫時無法載入，仍可點選地點標記。</p>}
     {message && <p className="map-message" role="status">{message}</p>}
   </section>;

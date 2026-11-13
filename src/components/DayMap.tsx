@@ -9,7 +9,7 @@ export function DayMap({ stops,places,selected,onSelect,onReset,onFavoriteSelect
   const pins = useMemo(() => dayPins(stops,places),[stops,places]);
   const points = useMemo(() => dailyMapPoints(stops,places),[stops,places]);
   const segments = useMemo(() => dailySegments(stops,places),[stops,places]);
-  return <TravelMap id="day-map" label="當日行程與收藏地圖" points={points} focusIds={pins.map(pin => pin.place.id)} selected={selected} onReset={onReset} segments={segments} focusVersion={focusVersion} onSelect={id => {
+  return <TravelMap id="day-map" label="當日行程與收藏地圖" points={points} focusIds={pins.map(pin => pin.place.id)} selected={selected} onReset={onReset} onFocusPlace={onFavoriteSelect} segments={segments} focusVersion={focusVersion} onSelect={id => {
     const pin = pins.find(pin => pin.place.id === id);
     if (pin) onSelect(pin); else onFavoriteSelect(id);
   }} />;

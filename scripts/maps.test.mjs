@@ -51,3 +51,19 @@ test('schematic segments stop at unknown meals and never connect international f
   assert.equal(model.hasCoordinates({...park,lat:NaN}),false);
   assert.equal(model.hasCoordinates({...park,virtual:true}),false);
 });
+
+test('lodging remains exactly once on every daily and filtered places map', () => {
+  const hotel = data.places.find(place => place.id === 'hotel');
+  const maps = data.trip.days.map(day => model.dailyMapPoints(data.itinerary.filter(stop => stop.date === day.date),data.places));
+  maps.push(model.collectionMapPoints(data.places,data.places.filter(place => place.category === '咖啡廳')));
+  maps.push(model.collectionMapPoints(data.places,[]));
+  for (const points of maps) {
+    const lodging = points.filter(point => point.place.id === hotel.id);
+    assert.equal(lodging.length,1);
+    assert.equal(lodging[0].place.lat,hotel.lat);
+    assert.equal(lodging[0].place.lng,hotel.lng);
+    assert.equal(lodging[0].favorite,false);
+  }
+  const missingLocation = data.places.map(place => place.id === hotel.id ? {...place,lat:null,lng:null} : place);
+  assert(!model.collectionMapPoints(missingLocation,[]).some(point => point.place.id === hotel.id));
+});

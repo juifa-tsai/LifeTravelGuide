@@ -1,6 +1,6 @@
 # 名古屋 · 旅の手帖
 
-Mobile-first travel companion for **November 15–18, 2026**, built from [the specification](docs/spec.md), [the design reference](docs/design.html), and the local Excel workbook. Traditional Chinese UI with Japanese place names. Vite, React, TypeScript, HashRouter, Leaflet with original-color OpenStreetMap tiles, and a Workbox PWA.
+Mobile-first travel companion for **November 15–18, 2026**, built from [the specification](docs/spec.md), [the design reference](docs/design.html), and the local Excel workbook. Traditional Chinese UI with Japanese place names. Vite, React, TypeScript, HashRouter, Leaflet with light-gray OpenStreetMap tiles, and a Workbox PWA.
 
 ## Run locally
 
@@ -17,7 +17,7 @@ Open **http://localhost:5173/LifeTravelGuide/**. The default route uses the Nago
 - `#/day/2026-11-16` — castle and antiques
 - `#/day/2026-11-17` — art and Osu
 - `#/day/2026-11-18` — checkout, Meitetsu, return flight
-- `#/places` — search, single-select icon category filters, local visited history
+- `#/places` — single-select icon category filters and local visited history
 - `#/documents` — private Drive links and official transportation resources
 
 ```sh
@@ -64,7 +64,7 @@ The importer reads the original seven sheets and allowlists fields into five JSO
 
 ### Coordinates and photos
 
-The original workbook has no coordinates or photos. `scripts/geocodes.json` supplies checked reference points from the [Geospatial Information Authority of Japan address/facility search](https://msearch.gsi.go.jp/address-search/AddressSearch). Every point records its exact source query, returned address, and check date. Address results are **street/block reference points, not entrance-level navigation**; use Google Maps for actual directions. The airport uses its terminal-connected station as a ground reference. Taiwan flights, virtual meals and duplicate events do not create extra map markers. Both the daily and places pages have interactive maps with clickable location markers. The nine shared vegetarian/café/bar favorites are always included, with no visibility toggles. Itinerary favorites use one numbered marker instead of a duplicate pin. Daily dashed lines only connect adjacent known stops and break at virtual meals.
+The original workbook has no coordinates or photos. `scripts/geocodes.json` supplies checked reference points from the [Geospatial Information Authority of Japan address/facility search](https://msearch.gsi.go.jp/address-search/AddressSearch). Every point records its exact source query, returned address, and check date. Address results are **street/block reference points, not entrance-level navigation**; use Google Maps for actual directions. The airport uses its terminal-connected station as a ground reference. Taiwan flights, virtual meals and duplicate events do not create extra map markers. Both the daily and places pages have interactive maps with clickable location markers. The nine shared vegetarian/café/bar favorites and the lodging location are always included, with no visibility toggles. Itinerary favorites use one numbered marker instead of a duplicate pin. Daily dashed lines only connect adjacent known stops and break at virtual meals.
 
 Explicit Excel coordinates take precedence over the supplement, but need a coordinate source in `scripts/geocodes.json` to pass validation. If you move a place, update both its workbook address and its geocode record. Unknown coordinates remain null; the text card still works.
 
@@ -78,9 +78,9 @@ python3 scripts/fetch-images.py
 
 To replace a photo, update the matching media record with a licensed source and image type. If Excel's `image_url` overrides the supplement, matching credit metadata must also be updated. Missing or failed images still have a category fallback. App icons and fallback artwork are original project assets.
 
-The map uses standard **OpenStreetMap** tiles in their original colors and requires no API key or billing account. Leaflet attribution and [OpenStreetMap contributor credit](https://www.openstreetmap.org/copyright) remain visible. Tile requests follow browser HTTP caching, with no app-level tile prefetch or offline storage, per the [tile usage policy](https://operations.osmfoundation.org/policies/tiles/).
+The map uses standard **OpenStreetMap** tiles with light-gray styling applied only to the base tiles and requires no API key or billing account. Leaflet attribution and [OpenStreetMap contributor credit](https://www.openstreetmap.org/copyright) remain visible. Tile requests follow browser HTTP caching, with no app-level tile prefetch or offline storage, per the [tile usage policy](https://operations.osmfoundation.org/policies/tiles/).
 
-`src/lib/mapPoints.ts` defines the shared collection. Daily maps merge it with formal itinerary points; the places map merges it with matching list results. Category/search/visited filters affect the list and other location markers, while all shared favorite markers remain present, even for empty results. Initial map bounds favor Nagoya city points rather than the airport. Clicking a marker shows a photo popup and selects a visible matching card; a card's map button returns to its marker. Google Maps remains an external link for actual navigation.
+`src/lib/mapPoints.ts` defines the shared collection. Daily maps merge it with formal itinerary points; the places map merges it with matching list results. Category/visited filters affect the list and other location markers, while all shared favorite markers and the lodging marker remain present, even for empty results. Initial map bounds favor Nagoya city points rather than the airport. Clicking a marker shows a photo popup and selects a visible matching card; a card's map button returns to its marker. A blue bed icon identifies the hotel. The **回到住宿** button below either map recenters it on the hotel, including repeated presses after panning, without requesting current-location permission or scrolling away from the map. Google Maps remains an external link for actual navigation.
 
 ## Offline and local state
 

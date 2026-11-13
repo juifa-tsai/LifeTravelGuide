@@ -120,21 +120,6 @@ h1 { font-size:23px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .load-state h1 { font-size:22px; }
 .load-state p { font-size:13px; color:var(--muted); }
 .places-layout,.documents-layout { margin-top:22px; }
-.visit-progress { padding:16px 17px; border:1px solid var(--border); border-radius:14px; background:#F0EEE8; margin-bottom:18px; }
-.visit-progress>div { display:flex; align-items:center; gap:9px; color:#827B6D; }
-.visit-progress strong { color:var(--text); font-size:22px; font-weight:600; }
-.visit-progress strong span { font-size:13px; font-weight:400; color:var(--muted); }
-.visit-progress>div>span { font-size:11px; }
-.visit-progress progress { appearance:none; display:block; height:4px; border:none; width:100%; margin-top:12px; border-radius:10px; overflow:hidden; background:#E0DCD2; }
-.visit-progress progress::-webkit-progress-bar { background:#E0DCD2; border-radius:10px; }
-.visit-progress progress::-webkit-progress-value { background:var(--primary); border-radius:10px; }
-.visit-progress progress::-moz-progress-bar { background:var(--primary); }
-.visit-progress p { color:#81796F; font-size:10px; margin-top:8px; }
-.search-field { display:flex; align-items:center; gap:9px; padding:0 12px; border:1px solid var(--border); background:white; border-radius:11px; color:#81796F; }
-.search-field input { min-height:46px; width:100%; min-width:0; border:0; outline:none; background:transparent; color:var(--text); font-size:12px; }
-.search-field:focus-within { outline:2px solid #C3866F; }
-.search-field button { min-width:28px; height:44px; }
-.search-field input::-webkit-search-cancel-button { display:none; }
 .category-filter { display:flex; flex-wrap:wrap; gap:8px; padding:14px 0; margin:0; border:0; min-width:0; }
 .category-option { position:relative; display:grid; place-items:center; width:44px; height:44px; border:1px solid var(--border); border-radius:11px; color:var(--muted); background:white; cursor:pointer; }
 .category-option input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
@@ -336,3 +321,9 @@ h1 { font-size:23px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .compact .image-credit { inset:0; padding:0; background:transparent; font-size:0; }
 .compact .image-credit::after { content:'ⓘ'; position:absolute; right:3px; bottom:3px; display:grid; place-items:center; width:16px; height:16px; border-radius:50%; background:#FFFFFFE8; color:#6A6257; font-size:11px; }
 .candidate-row>.compact { width:48px; height:48px; border-radius:9px; }
+.muted-map-tiles { filter:grayscale(1) brightness(1.1) contrast(.88); opacity:.92; }
+.travel-map { background:#F0F0ED; }
+.travel-marker.lodging-marker { background:#55718B; border:2px solid white; border-radius:10px; color:white; }
+.lodging-marker.marker-selected { outline-color:#55718B44; }
+.lodging-number { position:absolute; top:-7px; right:-7px; display:grid; place-items:center; min-width:17px; height:17px; padding:0 3px; border:1px solid white; border-radius:50%; background:#55718B; color:white; font-size:9px; line-height:1; }
+.map-tools .lodging-action,.map-legend .lodging-legend { color:#55718B; }
