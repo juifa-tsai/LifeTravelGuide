@@ -11,7 +11,31 @@
     "speechRate": 0,
     "generatedAt": "2026-11-13",
     "generationId": "78263052-9444-4e38-9b50-4a4f5059a27b",
-    "sha256": "3459966b1751e22da3a646d83f8a15c3a0a0a155379a29ba98a5e11f08932bd0"
+    "sha256": "1c842a216015b55eccaccb9c4e3c04eaaec45b418455a737c46f2304638fea6a",
+    "postProcessing": {
+      "operation": "shorten-silent-pauses",
+      "sourceSha256": "3459966b1751e22da3a646d83f8a15c3a0a0a155379a29ba98a5e11f08932bd0",
+      "silenceThresholdDb": -42,
+      "minimumSilenceSeconds": 0.45,
+      "internalPauseSeconds": 0.22,
+      "leadingSilenceSeconds": 0.08,
+      "trailingSilenceSeconds": 0.14,
+      "speedFactor": 1,
+      "removedIntervalsSeconds": [
+        [
+          1.11525,
+          1.442417
+        ],
+        [
+          3.328667,
+          5.063792
+        ],
+        [
+          7.632042,
+          8.064
+        ]
+      ]
+    }
   },
   {
     "id": "lacto-vegetarian",
@@ -25,6 +49,26 @@
     "speechRate": 0,
     "generatedAt": "2026-11-13",
     "generationId": "20b11870-d472-4cd7-905a-b5259c537b82",
-    "sha256": "e597919ed94622f04e869a2fd5534f7acec8e99abdf9d1455182113e52625f71"
+    "sha256": "ae04a83e2a3a835c7bb47d3b5ab60b0a10d995820f00a7938c2cf36039e1655f",
+    "postProcessing": {
+      "operation": "shorten-silent-pauses",
+      "sourceSha256": "e597919ed94622f04e869a2fd5534f7acec8e99abdf9d1455182113e52625f71",
+      "silenceThresholdDb": -42,
+      "minimumSilenceSeconds": 0.45,
+      "internalPauseSeconds": 0.22,
+      "leadingSilenceSeconds": 0.08,
+      "trailingSilenceSeconds": 0.14,
+      "speedFactor": 1,
+      "removedIntervalsSeconds": [
+        [
+          0,
+          0.47075
+        ],
+        [
+          5.490875,
+          6.023417
+        ]
+      ]
+    }
   }
 ]
