@@ -143,12 +143,7 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .empty-state { padding:45px 20px; text-align:center; color:#8B8276; display:flex; flex-direction:column; align-items:center; gap:14px; }
 .empty-state h2 { font-size:20px; color:var(--text); }
 .empty-state p { font-size:14px; }
-.privacy-note { display:flex; align-items:flex-start; gap:12px; border:1px solid #DDD5C7; background:#EEEBE4; padding:17px 15px; border-radius:14px; color:#82735B; }
-.privacy-note>svg { margin-top:3px; }
-.privacy-note h2 { font-size:16px; font-weight:600; color:#675C48; }
-.privacy-note p { margin-top:7px; font-size:14px; line-height:1.8; }
-.privacy-note p.small { font-size:14px; color:#8B806C; }
-.flight-overview { border:1px solid var(--border); border-radius:14px; padding:16px; margin-top:16px; background:#FAF9F6; }
+.flight-overview { border:1px solid var(--border); border-radius:14px; padding:16px; background:#FAF9F6; }
 .flight-overview>h2 { font-size:18px; margin-bottom:12px; }
 .flight-overview>div+div { margin-top:16px; padding-top:15px; border-top:1px solid var(--border); }
 .flight-overview>div>p { display:flex; align-items:center; gap:17px; margin:9px 0; }
@@ -197,8 +192,6 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
   .places-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .document-groups { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 22px; }
   .document-bottom-note { grid-column:1/-1; }
-  .documents-aside { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .flight-overview { margin:0; }
 }
 @media(min-width:900px) {
   .app-shell { padding-bottom:95px; }
@@ -226,7 +219,6 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
   .compact { width:64px; height:78px; }
   .documents-layout { display:grid; grid-template-columns:330px minmax(0,1fr); gap:45px; align-items:start; margin-top:30px; }
   .documents-aside { display:block; position:sticky; top:24px; }
-  .flight-overview { margin-top:20px; }
   .document-groups { margin:0; display:block; }
   .document-group { margin-bottom:29px; }
   .document-card { padding:17px; }

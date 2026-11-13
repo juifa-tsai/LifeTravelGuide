@@ -11,7 +11,7 @@ const groups = [
 export function DocumentsPage({ data }: { data:TravelData }) {
   return <>
     <header className="page-heading"><h1>重要文件</h1></header>
-    <div className="documents-layout"><aside className="documents-aside"><div className="privacy-note"><LockKeyhole size={21} /><div><h2>Google Drive 私人文件</h2><p>請連線並登入有權限的 Google 帳號。</p></div></div>
+    <div className="documents-layout"><aside className="documents-aside">
       <div className="flight-overview"><h2>航班時間</h2>
         <div><span className="small muted">11/15（日）· JL8670</span><p><strong>TPE</strong><Plane size={15} /><strong>NGO</strong></p><div className="flight-times"><span>15:50<small>桃園 T2 · 台灣時間</small></span><span>19:25<small>中部 T1 · 日本時間</small></span></div></div>
         <div><span className="small muted">11/18（三）· JL8671</span><p><strong>NGO</strong><Plane size={15} /><strong>TPE</strong></p><div className="flight-times"><span>12:05<small>中部 T1 · 日本時間</small></span><span>14:40<small>桃園 T2 · 台灣時間</small></span></div></div>
