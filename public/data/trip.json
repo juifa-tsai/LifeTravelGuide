@@ -1,0 +1,73 @@
+{
+  "title": "名古屋 · 旅の手帖",
+  "startDate": "2026-11-15",
+  "endDate": "2026-11-18",
+  "timezone": "Asia/Tokyo",
+  "updatedAt": "2026-11-13",
+  "days": [
+    {
+      "date": "2026-11-15",
+      "weekday": "日",
+      "title": "抵達名古屋",
+      "description": "從桃園出發，把步調留給夜晚。",
+      "label": "ARRIVAL",
+      "number": 1
+    },
+    {
+      "date": "2026-11-16",
+      "weekday": "一",
+      "title": "古蹟與老件",
+      "description": "走進城郭，尋找時間留下的物件。",
+      "label": "OLD & NEW",
+      "number": 2
+    },
+    {
+      "date": "2026-11-17",
+      "weekday": "二",
+      "title": "藝術與大須",
+      "description": "一杯咖啡、一場展覽，慢慢走進大須。",
+      "label": "ART & STREETS",
+      "number": 3
+    },
+    {
+      "date": "2026-11-18",
+      "weekday": "三",
+      "title": "帶著回憶回家",
+      "description": "吃好早餐，為回程留一點從容。",
+      "label": "HOMEBOUND",
+      "number": 4
+    }
+  ],
+  "overview": [
+    {
+      "title": "住宿",
+      "value": "名古屋伏見舒適飯店",
+      "note": "11/15入住、11/18退房；11/16–18含早餐"
+    },
+    {
+      "title": "去程",
+      "value": "JL8670",
+      "note": "11/15 15:50 桃園T2 → 19:25 中部T1"
+    },
+    {
+      "title": "接機",
+      "value": "已預約專車",
+      "note": "11/15 19:55 中部國際機場 → 飯店；非保證出發時刻"
+    },
+    {
+      "title": "回程",
+      "value": "JL8671",
+      "note": "11/18 12:05 中部T1 → 14:40 桃園T2"
+    },
+    {
+      "title": "交通",
+      "value": "以地鐵／步行為主",
+      "note": "11/18名鐵機場線；μSKY需另購指定席券"
+    },
+    {
+      "title": "飲食",
+      "value": "奶素；避免蛋與肉魚海鮮",
+      "note": "店家需確認醬料、魚露、蛋、動物高湯"
+    }
+  ]
+}

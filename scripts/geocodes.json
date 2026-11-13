@@ -1,0 +1,154 @@
+{
+  "hotel": {
+    "lat": 35.168926,
+    "lng": 136.900894,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A62%E4%B8%81%E7%9B%AE19%E7%95%AA14%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦二丁目１９番１４号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "fukiage": {
+    "lat": 35.158779,
+    "lng": 136.935486,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%8D%83%E7%A8%AE%E5%8C%BA%E5%8D%83%E7%A8%AE%E9%80%9A7%E4%B8%81%E7%9B%AE24%E7%95%AA",
+    "address": "愛知県名古屋市千種区千種通七丁目２４番地",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "le_jardin": {
+    "lat": 35.158779,
+    "lng": 136.935486,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%8D%83%E7%A8%AE%E5%8C%BA%E5%8D%83%E7%A8%AE%E9%80%9A7%E4%B8%81%E7%9B%AE24%E7%95%AA",
+    "address": "愛知県名古屋市千種区千種通七丁目２４番地",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "store_factory": {
+    "lat": 35.162441,
+    "lng": 136.915161,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%845%E4%B8%81%E7%9B%AE23%E7%95%AA9%E5%8F%B7",
+    "address": "愛知県名古屋市中区栄五丁目２３番９号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "toraya": {
+    "lat": 35.166874,
+    "lng": 136.923813,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%96%B0%E6%A0%843%E4%B8%81%E7%9B%AE14%E7%95%AA23%E5%8F%B7",
+    "address": "愛知県名古屋市中区新栄三丁目１４番２３号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "anzu": {
+    "lat": 35.173939,
+    "lng": 136.893539,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E4%B8%B8%E3%81%AE%E5%86%851%E4%B8%81%E7%9B%AE11%E7%95%AA28%E5%8F%B7",
+    "address": "愛知県名古屋市中区丸の内一丁目１１番２８号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "shrub": {
+    "lat": 35.171364,
+    "lng": 136.898483,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A62%E4%B8%81%E7%9B%AE7%E7%95%AA29%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦二丁目７番２９号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "art_museum": {
+    "lat": 35.16400256,
+    "lng": 136.901001,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%BE%8E%E8%A1%93%E9%A4%A8",
+    "address": "名古屋市美術館",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "shirokawa": {
+    "lat": 35.164967,
+    "lng": 136.899704,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%842%E4%B8%81%E7%9B%AE17%E7%95%AA",
+    "address": "愛知県名古屋市中区栄二丁目１７番",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "ao_sands": {
+    "lat": 35.160656,
+    "lng": 136.901642,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%A4%A7%E9%A0%882%E4%B8%81%E7%9B%AE6%E7%95%AA22%E5%8F%B7",
+    "address": "愛知県名古屋市中区大須二丁目６番２２号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "osu_kannon": {
+    "lat": 35.15918,
+    "lng": 136.899597,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%A4%A7%E9%A0%882%E4%B8%81%E7%9B%AE21%E7%95%AA47%E5%8F%B7",
+    "address": "愛知県名古屋市中区大須二丁目２１番４７号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "osu_street": {
+    "lat": 35.160095,
+    "lng": 136.903915,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%A4%A7%E9%A0%883%E4%B8%81%E7%9B%AE",
+    "address": "愛知県名古屋市中区大須三丁目",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "cereza": {
+    "lat": 35.159306,
+    "lng": 136.90361,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%A4%A7%E9%A0%883%E4%B8%81%E7%9B%AE27%E7%95%AA32%E5%8F%B7",
+    "address": "愛知県名古屋市中区大須三丁目２７番３２号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "mori": {
+    "lat": 35.167244,
+    "lng": 136.910385,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%844%E4%B8%81%E7%9B%AE15%E7%95%AA9%E5%8F%B7",
+    "address": "愛知県名古屋市中区栄四丁目１５番９号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "recit": {
+    "lat": 35.170063,
+    "lng": 136.903152,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A63%E4%B8%81%E7%9B%AE20%E7%95%AA14%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦三丁目２０番１４号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "barns": {
+    "lat": 35.167683,
+    "lng": 136.900024,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%842%E4%B8%81%E7%9B%AE3%E7%95%AA32%E5%8F%B7",
+    "address": "愛知県名古屋市中区栄二丁目３番３２号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-13"
+  },
+  "nagoyajo": {
+    "lat": 35.1876572063889,
+    "lng": 136.899153485,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%9F%8E",
+    "address": "名古屋城",
+    "label": "国土地理院・施設検索（參考點，非入口導航）",
+    "checkedAt": "2026-11-13"
+  },
+  "nagoya_station": {
+    "lat": 35.1704593888889,
+    "lng": 136.884356916667,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%90%8D%E9%89%84%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85",
+    "address": "名鉄名古屋駅",
+    "label": "国土地理院・施設検索（參考點，非入口導航）",
+    "checkedAt": "2026-11-13"
+  },
+  "ngo": {
+    "lat": 34.8603940555556,
+    "lng": 136.815981555556,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%E9%A7%85",
+    "address": "中部国際空港駅",
+    "label": "国土地理院・施設検索（機場以連接航廈的車站為參考點）",
+    "checkedAt": "2026-11-13"
+  }
+}
