@@ -337,11 +337,18 @@ h1 { font-size:23px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .place-popup .leaflet-popup-content .map-popup-closed { margin-top:3px; color:var(--muted); font-size:10px; }
 .audio-cards { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; margin:24px 0 16px; }
 .audio-card { min-width:0; padding:20px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); }
-.audio-card-heading { display:flex; align-items:center; gap:12px; }
+.audio-card-heading { display:flex; align-items:center; gap:12px; min-height:54px; cursor:pointer; list-style:none; border-radius:8px; }
+.audio-card-heading::-webkit-details-marker { display:none; }
+.audio-card-heading>div { flex:1; min-width:0; }
+.audio-expand-hint { display:block; margin-top:3px; font-size:11px; color:var(--muted); }
+.audio-chevron { flex-shrink:0; color:var(--muted); transition:transform .2s; }
+.audio-details[open] .audio-chevron { transform:rotate(180deg); }
+.audio-card-content { padding-top:2px; }
 .audio-card-icon { display:grid; place-items:center; width:40px; height:40px; flex-shrink:0; border-radius:12px; color:var(--primary); background:var(--primary-pale); }
 .audio-card h2 { font-size:16px; font-weight:600; }
 .audio-japanese { margin-top:22px; font-size:21px; line-height:1.9; overflow-wrap:anywhere; }
 .audio-translation { margin:12px 0 20px; font-size:13px; line-height:1.8; color:var(--muted); }
-.audio-card audio { display:block; width:100%; margin-top:20px; }
+.audio-play-button { width:100%; min-height:58px; margin-top:18px; gap:10px; font-size:16px; }
+.audio-play-button[aria-pressed="true"] { background:var(--primary-dark); }
 .audio-card>.note { margin-top:10px; }
 @media (min-width:760px) { .audio-cards { grid-template-columns:repeat(2,minmax(0,1fr)); } }
