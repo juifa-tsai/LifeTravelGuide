@@ -166,3 +166,9 @@ Distances are local calculations from verified place coordinates; unknown coordi
 營業時間仍是一般資料，不是當日營業保證。Bio Terrace 官網目前無法開啟，餐廳平台標示營業狀態未確認；保留 Excel 的可選安排與地址，卡片及地圖明確標示需確認。Miho’s Kitchen Grains 的部分週六資訊有出入，晚餐須提前三天預約；ORIBIO 須至少前一天預約；「こ」VEGAN CAFE 以咖啡與甜點為主，未確認正餐。奶素仍需避開肉、魚、蛋、魚露、柴魚與動物性高湯，葷素店點餐時須確認醬汁與配料。
 
 介面維持原有卡片、地圖與半小時 hr 單位，移除所有數值前的波浪估算符號。語音分頁改名為「求助」，原有 `#/audio` 連結及 Benji 錄音保留；踩點與求助頁標題右側的商店 icon 會開啟 Google Maps 搜尋附近超商（包含 Lawson、全家、7-Eleven 等）。搜尋由 Google Maps 處理，網站不另行取得或傳送使用者座標；離線時仍可播放語音，外部 Maps 搜尋依既有離線規則停用。
+
+## 入境 QR（僅存本機）
+
+文件頁最前方顯示 Visit Japan Web 入境審查及海關申報 QR，點圖可放大出示。首次可選擇原始 PNG／JPG／WebP 截圖（2 MB 內），或使用私人匯入連結；資料只存在目前瀏覽器的 `nagoya:entry-qr` localStorage，保留重新載入、切換頁面與離線使用。更換或移除只影響此瀏覽器，無跨裝置同步；清除瀏覽器資料後須重新匯入。
+
+私人連結使用 `#/documents?entryQr=<原始黑白模組>`，內容位於 URL fragment，不會成為 HTTP 路徑／查詢，也不會送到 GitHub Pages、Google 或其他服務。匯入後立即以 replace 移除該參數。渲染保留原始 QR 黑白模組與四格留白，不重新解讀／編碼入境資料，不以 AI 產生圖片。提供給使用者的實際碼須在本機驗證掃描內容與原圖逐位元組一致；不將原圖、碼內容、個人姓名或私人匯入連結放入 repository、公開 JSON、測試 fixture 或 PWA 快取。一般訪客只會看到自己的本機資料或匯入提示。私人匯入連結也應保留於私人對話；請在平常使用旅遊 APP 的同一個瀏覽器開啟。

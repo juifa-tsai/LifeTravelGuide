@@ -160,6 +160,26 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .empty-state h2 { font-size:20px; color:var(--text); }
 .empty-state p { font-size:14px; }
 .flight-overview { border:1px solid var(--border); border-radius:14px; padding:16px; background:#FAF9F6; }
+.entry-qr-card { padding:16px; margin-bottom:16px; border:1px solid var(--border); border-radius:14px; background:white; }
+.entry-qr-card>header { display:flex; align-items:center; gap:10px; }
+.entry-qr-card>header>svg { color:var(--primary); flex-shrink:0; }
+.entry-qr-card h2 { font-size:18px; line-height:1.5; }
+.entry-qr-card header p,.entry-qr-local { color:var(--muted); font-size:13px; }
+.entry-qr-open { display:block; width:100%; margin-top:12px; color:var(--muted); }
+.entry-qr-open>span { display:flex; justify-content:center; align-items:center; gap:5px; font-size:13px; margin-top:6px; }
+.entry-qr-image { display:block; width:100%; height:auto; background:#fff; }
+.entry-qr-actions { display:flex; justify-content:space-between; gap:12px; margin-top:8px; }
+.entry-qr-upload { position:relative; cursor:pointer; }
+.entry-qr-upload:focus-within { outline:2px solid var(--primary); outline-offset:3px; }
+.entry-qr-empty { color:var(--muted); font-size:15px; margin:16px 0; }
+.entry-qr-local { margin-top:5px; }
+.entry-qr-message { color:#815C24; font-size:14px; margin-top:8px; }
+.entry-qr-dialog { width:min(94vw,720px); max-height:calc(100dvh - 24px); padding:16px; margin:auto; border:0; border-radius:14px; background:white; color:var(--text); }
+.entry-qr-dialog::backdrop { background:#000B; }
+.entry-qr-dialog>header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.entry-qr-dialog h2 { font-size:18px; }
+.entry-qr-dialog header button { display:grid; place-items:center; width:44px; height:44px; border-radius:10px; background:var(--surface); }
+.entry-qr-dialog .entry-qr-image { max-height:calc(100dvh - 116px); object-fit:contain; }
 .flight-overview>h2 { font-size:18px; margin-bottom:12px; }
 .flight-overview>div+div { margin-top:16px; padding-top:15px; border-top:1px solid var(--border); }
 .flight-overview>div>p { display:flex; align-items:center; gap:17px; margin:9px 0; }
