@@ -1,4 +1,4 @@
-import { LockKeyhole, ArrowUpRight, FileText, Plane, BedDouble, CarFront, TrainFront, ExternalLink as LinkIcon } from 'lucide-react';
+import { LockKeyhole, ArrowUpRight, FileText, Plane, BedDouble, CarFront, TrainFront, Maximize2, ExternalLink as LinkIcon } from 'lucide-react';
 import type { TravelData } from '../lib/types';
 import { ExternalLink } from '../components/ExternalLink';
 const groups = [
@@ -19,7 +19,16 @@ export function DocumentsPage({ data }: { data:TravelData }) {
         const documents = data.documents.filter(document => document.category === group.category && document.url);
         if (!documents.length) return null;
         return <section className="document-group" key={group.category}><div className="document-group-heading"><span className="document-group-icon"><group.icon size={20} strokeWidth={1.6} /></span><h2>{group.title}<span>{group.en}</span></h2></div>
-          <div className="document-list">{documents.map(document => <ExternalLink key={document.id} href={document.url} className="document-card"><FileText size={19} /><span><strong>{document.title}</strong><small>{document.dates}{document.access === '私人' ? ' · Google Drive' : ' · 公開資訊'}</small></span>{document.access === '私人' && <LockKeyhole size={13} className="muted" />}<ArrowUpRight size={17} /></ExternalLink>)}</div>
+          <div className="document-list">{documents.map(document => <article key={document.id} className={document.preview ? 'document-guide' : undefined}>
+            <ExternalLink href={document.url} className="document-card"><FileText size={19} /><span><strong>{document.title}</strong><small>{document.dates}{document.access === '私人' ? ' · Google Drive' : ' · 公開資訊'}</small></span>{document.access === '私人' && <LockKeyhole size={13} className="muted" />}<ArrowUpRight size={17} /></ExternalLink>
+            {document.access === '公開' && document.preview && <figure className="transport-guide">
+              <a href={`${import.meta.env.BASE_URL}${document.preview.imageUrl}`} target="_blank" rel="noopener noreferrer" aria-label={`放大${document.title}（另開分頁）`}>
+                <img src={`${import.meta.env.BASE_URL}${document.preview.imageUrl}`} alt={document.preview.alt} width={document.preview.width} height={document.preview.height} loading="lazy" />
+                <span className="guide-zoom"><Maximize2 size={13} aria-hidden="true" />點圖放大</span>
+              </a>
+              <figcaption><span>{document.description}</span><small>圖：{document.preview.attribution}</small></figcaption>
+            </figure>}
+          </article>)}</div>
           {group.category === '接駁' && <p className="document-footnote">11/15 19:55 預約接機 · 中部國際機場 → 伏見飯店。上車位置依司機通知。</p>}
           {group.category === '住宿' && <p className="document-footnote">名古屋伏見舒適飯店 · 11/15 入住，11/18 10:00 前退房。含 11/16–18 早餐。</p>}
         </section>;

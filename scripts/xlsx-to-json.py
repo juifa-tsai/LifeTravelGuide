@@ -80,6 +80,27 @@ legs = [dict(date=date(r[0]), fromPlaceId=r[1], toPlaceId=r[2], mode=r[3],
     certainty=r[8], sourceUrl=r[9]) for r in rows('03_交通銜接')]
 documents = [dict(id=f'document-{i+1}', category=r[0], title=r[1], url=r[2],
     access=r[3], dates=r[4], description=r[5]) for i,r in enumerate(rows('04_重要文件')) if r[2]]
+# Keep public transport previews and verified Chinese URLs across workbook imports.
+# Exact URL replacements leave unrelated sources and all reservation links intact.
+transport = json.loads((ROOT / 'scripts/transport-supplement.json').read_text())
+for records, fields in ((places, ('website', 'sourceUrl')), (itinerary, ('sourceUrl',)),
+                       (legs, ('sourceUrl',)), (documents, ('url',))):
+    for record in records:
+        for field in fields:
+            if record.get(field) in transport['urlReplacements']:
+                record[field] = transport['urlReplacements'][record[field]]
+for document in documents:
+    if document['access'] == '公開':
+        extra = transport['previews'].get(document['url'])
+        if extra:
+            document.update(extra)
+document_urls = {document['url'] for document in documents}
+document_ids = {document['id'] for document in documents}
+for extra in transport['documents']:
+    if extra['id'] not in document_ids and extra['url'] not in document_urls:
+        documents.append(extra)
+        document_ids.add(extra['id'])
+        document_urls.add(extra['url'])
 themes = [('2026-11-15','日','抵達名古屋','從桃園出發，把步調留給夜晚。','ARRIVAL'),
     ('2026-11-16','一','古蹟與老件','走進城郭，尋找時間留下的物件。','OLD & NEW'),
     ('2026-11-17','二','藝術與大須','一杯咖啡、一場展覽，慢慢走進大須。','ART & STREETS'),

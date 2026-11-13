@@ -4,23 +4,22 @@ import { MapContainer, TileLayer, Marker, Polyline, Popup, Tooltip, CircleMarker
 import { BedDouble, LocateFixed, MapPin, Route, Clock3, MapPinned } from 'lucide-react';
 import { useOnline } from '../lib/connectivity';
 import { isCityPlace, type MapPoint } from '../lib/mapPoints';
-import { CategoryIcon } from './Icon';
+import { CategoryIcon, categoryMarkerSvg } from './Icon';
 import { PlaceImage } from './PlaceImage';
 import { ExternalLink } from './ExternalLink';
 import { compactHours } from '../lib/hours';
 import type { Coordinates } from '../lib/distances';
 
 const categoryStyle = {
-  '素食餐廳':{ className:'vegan',label:'素食',path:'M5 20C5 10 10 5 20 5c0 10-5 15-15 15ZM5 20l11-11' },
-  '咖啡廳':{ className:'coffee',label:'咖啡',path:'M4 9h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5ZM16 10h2a3 3 0 0 1 0 6h-2M8 3v3M12 3v3' },
-  '酒吧':{ className:'bar',label:'酒吧',path:'M4 4h16l-8 9ZM12 13v7M8 20h8' },
+  '素食餐廳':{ className:'vegan',label:'素食' },
+  '咖啡廳':{ className:'coffee',label:'咖啡' },
+  '酒吧':{ className:'bar',label:'酒吧' },
 };
 function icon(point:MapPoint, selected:boolean) {
   const style = categoryStyle[point.place.category as keyof typeof categoryStyle];
   const lodging = point.place.category === '住宿';
-  const path = lodging ? 'M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M5 9V5h14v4M8 9V7h3v2M13 9V7h3v2' : style?.path ?? 'M12 21s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12ZM12 6v6M9 9h6';
-  const content = point.number && !lodging ? String(point.number) : `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${path}"/></svg>${lodging && point.number ? `<small class="lodging-number">${point.number}</small>` : ''}`;
-  return L.divIcon({ className:`travel-marker ${lodging ? 'lodging-marker' : point.number ? 'formal-marker' : style?.className ?? 'place-marker'} ${selected ? 'marker-selected' : ''}`, html:`<span data-place-id="${point.place.id}" data-favorite="${point.favorite}" data-lodging="${lodging}">${content}</span>`, iconSize:[32,32], iconAnchor:[16,16] });
+  const content = `<span data-place-id="${point.place.id}" data-favorite="${point.favorite}" data-lodging="${lodging}">${categoryMarkerSvg(point.place.category)}</span>`;
+  return L.divIcon({ className:`travel-marker ${lodging ? 'lodging-marker' : style?.className ?? 'place-marker'} ${selected ? 'marker-selected' : ''}`, html:content, iconSize:[32,32], iconAnchor:[16,16] });
 }
 function MapViewport({ points, focusIds, selected, reset,focusVersion }: { points:MapPoint[]; focusIds:string[]; selected:string | null; reset:number; focusVersion:number }) {
   const map = useMap();

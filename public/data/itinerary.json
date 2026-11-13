@@ -26,7 +26,7 @@
     "summary": "中部國際機場 T1 抵達",
     "note": "入境及提取行李時間不確定",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
-    "sourceUrl": "https://www.centrair.jp/en/access/train.html",
+    "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
     "timezone": "Asia/Tokyo"
   },
   {
@@ -41,7 +41,7 @@
     "summary": "專車接機，直達伏見飯店",
     "note": "19:55 為預約接機時間，非保證上車時間",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
-    "sourceUrl": "https://www.centrair.jp/en/access/train.html",
+    "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
     "timezone": "Asia/Tokyo"
   },
   {
@@ -356,7 +356,7 @@
     "summary": "伏見站 → 名古屋站 → 名鐵名古屋",
     "note": "地鐵東山線，轉乘步行時間依現場",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%EF%BC%8F%E5%90%8D%E9%89%84%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%20Meieki%2C%20Nakamura%20Ward%2C%20Nagoya%2C%20Aichi%2C%20Japan",
-    "sourceUrl": "https://www.meitetsu.co.jp/eng/airport-access/index.html",
+    "sourceUrl": "https://www.meitetsu.co.jp/cht/airport-access/index.html",
     "timezone": "Asia/Tokyo"
   },
   {
@@ -371,7 +371,7 @@
     "summary": "名鐵直達中部國際機場",
     "note": "μSKY需加購μticket；實際班次請核對",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
-    "sourceUrl": "https://www.centrair.jp/en/access/train.html",
+    "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
     "timezone": "Asia/Tokyo"
   },
   {
@@ -386,7 +386,7 @@
     "summary": "中部國際機場 T1 登機報到",
     "note": "預留緩衝；起飛時間12:05",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
-    "sourceUrl": "https://www.centrair.jp/en/access/train.html",
+    "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
     "timezone": "Asia/Tokyo"
   },
   {
@@ -401,7 +401,7 @@
     "summary": "JL8671 起飛返回桃園",
     "note": "預定台灣時間14:40抵達",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
-    "sourceUrl": "https://www.centrair.jp/en/access/train.html",
+    "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
     "timezone": "Asia/Tokyo"
   },
   {

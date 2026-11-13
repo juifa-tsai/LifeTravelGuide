@@ -2,6 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import ts from 'typescript';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import * as lucide from 'lucide-react';
 import { loadData } from './validate-data.mjs';
 
 const source = readFileSync(new URL('../src/lib/mapPoints.ts',import.meta.url),'utf8');
@@ -9,6 +12,13 @@ const { outputText } = ts.transpileModule(source,{ compilerOptions:{ module:ts.M
 const model = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`);
 const data = loadData();
 const favoriteIds = model.favorites(data.places).map(place => place.id).sort();
+
+test('lightweight marker SVGs match the current Lucide category icons', () => {
+  const icons = JSON.parse(readFileSync(new URL('../src/data/markerIcons.json',import.meta.url),'utf8'));
+  for (const [name,svg] of Object.entries(icons)) {
+    assert.equal(svg,renderToStaticMarkup(createElement(lucide[name],{ size:16,strokeWidth:1.7,'aria-hidden':'true' })),name);
+  }
+});
 
 test('all four daily maps permanently retain the complete shared favorite collection', () => {
   assert.equal(favoriteIds.length,9);

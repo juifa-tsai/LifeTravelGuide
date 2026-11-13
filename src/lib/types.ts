@@ -29,5 +29,6 @@ export interface Leg {
 }
 export interface TravelDocument {
   id: string; category: string; title: string; url: string; access: string; dates: string; description: string;
+  preview?: { imageUrl: string; alt: string; width: number; height: number; attribution: string };
 }
 export interface TravelData { trip: Trip; places: Place[]; itinerary: Stop[]; legs: Leg[]; documents: TravelDocument[] }

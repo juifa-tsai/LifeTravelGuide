@@ -1,0 +1,26 @@
+[
+  {
+    "imageUrl": "transport/meitetsu-route.svg",
+    "sourceFileName": "pic_01.svg",
+    "sourceDriveUrl": "https://drive.google.com/file/d/1lyuu16KDnzmlO0Ejnq2CGa_iOzO8V17P/view",
+    "sourceSha256": "d3e574437e597fd4c8ec11c43485d656252197b2244444dbb586dfcfd5ab4192",
+    "assetSha256": "d3e574437e597fd4c8ec11c43485d656252197b2244444dbb586dfcfd5ab4192",
+    "referenceUrl": "https://www.meitetsu.co.jp/exp-nagoya/cht/?p=Aichi/Nagoya_City",
+    "attribution": "名古屋鐵道",
+    "rights": "Original transport diagram; rights retained by the respective operator. Not a CC-licensed place photo.",
+    "processing": "Original self-contained SVG, unchanged; no scripts, foreignObject or external references.",
+    "checkedAt": "2026-11-13"
+  },
+  {
+    "imageUrl": "transport/subway-map.webp",
+    "sourceFileName": "subwaymap.pdf",
+    "sourceDriveUrl": "https://drive.google.com/file/d/1trjp4xnBWR-RJ3IFAz78GQ9nGP75fcE6/view",
+    "sourceSha256": "ab5005b2cff7fe2181924fcfc66b5b714bc1840a73e3ca6ba31e1093b94c77f1",
+    "assetSha256": "6281e8bdc2c4e97ddcbc8a3540df7679194a337856a6a2d1e5d5764fb0ddb3aa",
+    "referenceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+    "attribution": "名古屋市交通局",
+    "rights": "Original transport diagram; rights retained by the respective operator. Not a CC-licensed place photo.",
+    "processing": "Page 1 rendered with PyMuPDF at 2200 px; WebP quality 94; station names and route labels unchanged.",
+    "checkedAt": "2026-11-13"
+  }
+]

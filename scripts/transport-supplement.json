@@ -1,0 +1,49 @@
+{
+  "urlReplacements": {
+    "https://www.meitetsu.co.jp/eng/airport-access/index.html": "https://www.meitetsu.co.jp/cht/airport-access/index.html",
+    "https://www.centrair.jp/en/": "https://www.centrair.jp/tzh/",
+    "https://www.centrair.jp/en/access/train.html": "https://www.centrair.jp/tzh/access/train.html"
+  },
+  "previews": {
+    "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html": {
+      "description": "地下鐵日英路線圖；官網可切換繁體中文。",
+      "preview": {
+        "imageUrl": "transport/subway-map.webp",
+        "alt": "名古屋地下鐵日英路線圖，含六條路線、車站名稱與站號",
+        "width": 2200,
+        "height": 2200,
+        "attribution": "名古屋市交通局"
+      }
+    },
+    "https://www.meitetsu.co.jp/cht/airport-access/index.html": {
+      "description": "名鐵繁中路線圖；μSKY 另購 μticket。",
+      "preview": {
+        "imageUrl": "transport/meitetsu-route.svg",
+        "alt": "名鐵繁中路線圖，標示中部國際機場、名鐵名古屋與周邊轉乘方向",
+        "width": 1100,
+        "height": 510,
+        "attribution": "名古屋鐵道"
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "transport-meitetsu-zh",
+      "category": "交通地圖",
+      "title": "名鐵官網（繁體中文）",
+      "url": "https://www.meitetsu.co.jp/cht/index.asp",
+      "access": "公開",
+      "dates": "全程",
+      "description": "繁體中文路線、票券與機場交通資訊"
+    },
+    {
+      "id": "transport-nagoya-guide-zh",
+      "category": "交通地圖",
+      "title": "名古屋散策指南（繁體中文）",
+      "url": "https://www.meitetsu.co.jp/exp-nagoya/cht/?p=Aichi/Nagoya_City",
+      "access": "公開",
+      "dates": "全程",
+      "description": "名鐵官方名古屋旅遊資訊"
+    }
+  ]
+}

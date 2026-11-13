@@ -75,6 +75,12 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
   for (const doc of documents) {
     assert(!docIds.has(doc.id), 'Duplicate document ID'); docIds.add(doc.id);
     assert(Boolean(doc.title && doc.url), 'Missing document fields'); url(doc.url, 'Document URL');
+    if (doc.preview) {
+      assert(doc.access === '公開' && doc.category === '交通地圖', `${doc.id}: only public transport diagrams can be embedded`);
+      assert(/^transport\/[a-z0-9-]+\.(svg|webp)$/.test(doc.preview.imageUrl), `${doc.id}: expected local transport preview`);
+      assert(Boolean(doc.preview.alt && doc.preview.attribution), `${doc.id}: preview description and attribution required`);
+      assert([doc.preview.width,doc.preview.height].every(value => Number.isInteger(value) && value > 0), `${doc.id}: invalid preview dimensions`);
+    }
   }
   const publicData = JSON.stringify({ trip, places, itinerary, legs, documents });
   assert(!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(publicData), 'Public data contains an email address');

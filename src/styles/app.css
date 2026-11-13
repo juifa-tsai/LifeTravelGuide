@@ -185,6 +185,14 @@ h1 { font-size:23px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .document-card small { display:block; font-size:10px; color:#8B8276; margin-top:4px; }
 .document-card>svg:last-child { color:var(--primary); }
 .document-card:hover { border-color:#CDAF9A; }
+.document-guide { overflow:hidden; border:1px solid var(--border); border-radius:13px; background:white; }
+.document-guide .document-card { border:0; border-bottom:1px solid var(--border); border-radius:0; }
+.transport-guide { margin:0; padding:12px; }
+.transport-guide>a { position:relative; display:block; border-radius:7px; overflow:hidden; background:white; }
+.transport-guide img { display:block; width:100%; height:auto; }
+.guide-zoom { position:absolute; right:6px; bottom:6px; display:flex; align-items:center; gap:4px; padding:5px 7px; border-radius:6px; background:#FFFFFFE8; color:var(--primary); font-size:10px; }
+.transport-guide figcaption { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 10px; margin-top:10px; color:var(--muted); font-size:10px; }
+.transport-guide figcaption small { font-size:9px; }
 .document-footnote { font-size:10px; color:#827765; margin-top:9px; line-height:1.8; padding:0 2px; }
 .document-bottom-note { color:#8B8276; font-size:11px; border-top:1px solid var(--border); padding-top:17px; }
 @media(min-width:600px) {
@@ -329,7 +337,6 @@ h1 { font-size:23px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .travel-map { background:#F0F0ED; }
 .travel-marker.lodging-marker { background:#55718B; border:2px solid white; border-radius:10px; color:white; }
 .lodging-marker.marker-selected { outline-color:#55718B44; }
-.lodging-number { position:absolute; top:-7px; right:-7px; display:grid; place-items:center; min-width:17px; height:17px; padding:0 3px; border:1px solid white; border-radius:50%; background:#55718B; color:white; font-size:9px; line-height:1; }
 .map-tools .lodging-action,.map-legend .lodging-legend { color:#55718B; }
 
 .place-popup .leaflet-popup-content .map-popup-hours { display:flex; align-items:flex-start; gap:5px; margin-top:7px; font-size:11px; color:var(--text); }

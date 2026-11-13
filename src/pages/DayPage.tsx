@@ -5,7 +5,7 @@ import type { TravelData, Day } from '../lib/types';
 import { stopId, shortDate } from '../lib/data';
 import { writeStored } from '../lib/storage';
 import { DaySelector } from '../components/DaySelector';
-import { DayMap, dayPins, type MapPinData } from '../components/DayMap';
+import { DayMap, type MapPinData } from '../components/DayMap';
 import { PlaceCard } from '../components/PlaceCard';
 import { TransitConnector } from '../components/TransitConnector';
 import { PlaceImage } from '../components/PlaceImage';
@@ -15,7 +15,6 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
   const [focusVersion,setFocusVersion] = useState(0);
   const [highlightedStop, setHighlightedStop] = useState<string | null>(null);
   const stops = useMemo(() => data.itinerary.filter(s => s.date === day.date).sort((a,b) => a.sequence-b.sequence), [data, day.date]);
-  const pins = useMemo(() => dayPins(stops, data.places), [stops, data.places]);
   useEffect(() => { writeStored('last-day',day.date); }, [day.date]);
   function select(pin:MapPinData) {
     setSelected(pin.place.id); setHighlightedStop(stopId(pin.stop));
@@ -42,7 +41,7 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
         const next = stops[i+1];
         const leg = next && next.placeId !== stop.placeId ? data.legs.find(l => l.date === day.date && l.fromPlaceId === stop.placeId && l.toPlaceId === next.placeId) : undefined;
         return <div className="timeline-item" key={stopId(stop)}>
-          <PlaceCard stop={stop} place={place} selected={highlightedStop === stopId(stop)} number={pins.find(p => p.place.id === stop.placeId)?.number} onFocus={focus} />
+          <PlaceCard stop={stop} place={place} selected={highlightedStop === stopId(stop)} onFocus={focus} />
           {leg && <div className="transit-offset"><TransitConnector leg={leg} from={place} to={data.places.find(p => p.id === next.placeId)} /></div>}
         </div>;
       })}</section>
