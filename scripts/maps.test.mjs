@@ -78,3 +78,18 @@ test('unverified dinner locations remain listable without generating map markers
     assert.equal(model.hasCoordinates(data.places.find(place => place.id === id)), false);
   }
 });
+
+const hoursSource = readFileSync(new URL('../src/lib/hours.ts',import.meta.url),'utf8');
+const hoursModule = ts.transpileModule(hoursSource,{ compilerOptions:{ module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022 } });
+const { compactHours } = await import(`data:text/javascript;base64,${Buffer.from(hoursModule.outputText).toString('base64')}`);
+test('popup hours keep last order, weekdays, overnight times and uncertain opening information', () => {
+  for (const id of ['anzu','toraya','recit']) {
+    const place = data.places.find(place => place.id === id);
+    assert.equal(compactHours(place),place.hoursText);
+  }
+  const nine = compactHours(data.places.find(place => place.id === 'nine_cafe_fushimi'));
+  assert.match(nine,/翌日04:00/);
+  assert.match(nine,/L\.O\. 翌日03:00/);
+  assert(!nine.includes('一般週日資訊'));
+  assert.equal(compactHours({ hoursText:null }), '開放時間待確認');
+});

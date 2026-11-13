@@ -1,6 +1,6 @@
 import { useEffect, useState, Component, type ReactNode } from 'react';
 import { HashRouter, Link, NavLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
-import { BookOpen, CalendarDays, MapPin, Files, WifiOff, RefreshCw, X, ArrowUpRight } from 'lucide-react';
+import { BookOpen, CalendarDays, MapPin, Files, Volume2, WifiOff, RefreshCw, X, ArrowUpRight } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import type { TravelData } from '../lib/types';
 import { defaultDay, loadData } from '../lib/data';
@@ -9,6 +9,7 @@ import { useOnline } from '../lib/connectivity';
 import { DayPage } from '../pages/DayPage';
 import { PlacesPage } from '../pages/PlacesPage';
 import { DocumentsPage } from '../pages/DocumentsPage';
+import { AudioPage } from '../pages/AudioPage';
 
 class ErrorBoundary extends Component<{ children:ReactNode }, { failed:boolean }> {
   state = { failed:false };
@@ -42,12 +43,13 @@ function TravelApp({ data }: { data:TravelData }) {
   const dayUrl = `/day/${activeDay?.date ?? defaultDay(data.trip.days)}`;
   useEffect(() => { window.scrollTo({ top:0, behavior:'instant' }); }, [location.pathname]);
   useEffect(() => {
-    document.title = `${activeDay ? `${activeDay.title} · ${activeDay.date.slice(5).replace('-','/')}` : location.pathname === '/places' ? '踩點清單' : location.pathname === '/documents' ? '重要文件' : '名古屋'}｜旅の手帖`;
+    document.title = `${activeDay ? `${activeDay.title} · ${activeDay.date.slice(5).replace('-','/')}` : location.pathname === '/places' ? '踩點清單' : location.pathname === '/documents' ? '重要文件' : location.pathname === '/audio' ? '旅途語音' : '名古屋'}｜旅の手帖`;
   }, [activeDay, location.pathname]);
   const nav = [
     { url:dayUrl, label:'行程', icon:CalendarDays, active:location.pathname.startsWith('/day/') },
     { url:'/places', label:'踩點', icon:MapPin, active:location.pathname === '/places' },
     { url:'/documents', label:'文件', icon:Files, active:location.pathname === '/documents' },
+    { url:'/audio', label:'語音', icon:Volume2, active:location.pathname === '/audio' },
   ];
   return <div className="app-shell"><a href="#main-content" className="skip-link" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>跳至主要內容</a>
     <div className="masthead-wrap"><header className="masthead"><Link to={dayUrl} className="brand"><span className="brand-mark"><BookOpen size={21} strokeWidth={1.5} /></span><span>旅の手帖<small>NAGOYA TRAVEL COMPANION</small></span></Link>
@@ -59,6 +61,7 @@ function TravelApp({ data }: { data:TravelData }) {
       <Route path="/day/:date" element={<DayRoute data={data} />} />
       <Route path="/places" element={<PlacesPage data={data} visited={visited} setVisited={setVisited} />} />
       <Route path="/documents" element={<DocumentsPage data={data} />} />
+      <Route path="/audio" element={<AudioPage />} />
       <Route path="*" element={<Navigate to={`/day/${homeDay}`} replace />} />
     </Routes><footer className="page-footer"><span>行程資料 {data.trip.updatedAt}</span><Link to="/documents">旅途所需的文件<ArrowUpRight size={12} /></Link></footer></main>
     <nav className="bottom-nav" aria-label="主選單">{nav.map(item => <NavLink key={item.label} to={item.url} className={item.active ? 'active' : ''} aria-current={item.active ? 'page' : undefined}><item.icon size={22} strokeWidth={1.7} /><span>{item.label}</span></NavLink>)}</nav>

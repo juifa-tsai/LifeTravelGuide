@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Polyline, Popup, Tooltip, CircleMarker, useMap } from 'react-leaflet';
-import { BedDouble, LocateFixed, MapPin, Route } from 'lucide-react';
+import { BedDouble, LocateFixed, MapPin, Route, Clock3 } from 'lucide-react';
 import { useOnline } from '../lib/connectivity';
 import { isCityPlace, type MapPoint } from '../lib/mapPoints';
 import { CategoryIcon } from './Icon';
 import { PlaceImage } from './PlaceImage';
 import { ExternalLink } from './ExternalLink';
+import { compactHours } from '../lib/hours';
 
 const categoryStyle = {
   '素食餐廳':{ className:'vegan',label:'素食',path:'M5 20C5 10 10 5 20 5c0 10-5 15-15 15ZM5 20l11-11' },
@@ -81,6 +82,8 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
             },
           }}>
           <Tooltip>{point.place.nameZh}</Tooltip><Popup><div className="map-popup"><PlaceImage place={point.place} compact /><div><strong>{point.place.nameZh}</strong><span lang="ja">{point.place.nameJa}</span><span>{point.place.category}</span></div></div>
+            <p className="map-popup-hours"><Clock3 size={13} aria-hidden="true" /><span>{compactHours(point.place)}</span></p>
+            {point.place.closedText && <p className="map-popup-closed">休業：{point.place.closedText}</p>}
             {point.place.id === 'barns' && <p className="note">11/17 可能休業，請核對。</p>}
             <ExternalLink href={point.place.mapsUrl} className="text-action">Google Maps ↗</ExternalLink></Popup>
         </Marker>)}

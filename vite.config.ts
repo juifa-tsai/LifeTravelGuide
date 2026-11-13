@@ -20,7 +20,7 @@ export default defineConfig({
       ],
     },
     workbox: {
-      globPatterns: ['**/*.{js,css,html,json,png,svg,webp,woff2}'],
+      globPatterns: ['**/*.{js,css,html,json,png,svg,webp,woff2,mp3}'],
       cleanupOutdatedCaches: true,
       navigateFallback: 'index.html',
       // External Drive documents and map tiles are deliberately never cached.

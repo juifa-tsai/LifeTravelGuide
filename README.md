@@ -19,6 +19,7 @@ Open **http://localhost:5173/LifeTravelGuide/**. The default route uses the Nago
 - `#/day/2026-11-18` — checkout, Meitetsu, return flight
 - `#/places` — single-select icon category filters and local visited history
 - `#/documents` — private Drive links and official transportation resources
+- `#/audio` — Japanese phrase cards with a recording player and Traditional Chinese translations
 
 ```sh
 npm test
@@ -96,11 +97,11 @@ To replace a photo, update the matching media record with a licensed source and 
 
 The map uses standard **OpenStreetMap** tiles with light-gray styling applied only to the base tiles and requires no API key or billing account. Leaflet attribution and [OpenStreetMap contributor credit](https://www.openstreetmap.org/copyright) remain visible. Tile requests follow browser HTTP caching, with no app-level tile prefetch or offline storage, per the [tile usage policy](https://operations.osmfoundation.org/policies/tiles/).
 
-`src/lib/mapPoints.ts` defines the shared collection. Daily maps merge it with formal itinerary points; the places map merges it with matching list results. Category/visited filters affect the list and other location markers, while all shared favorite markers and the lodging marker remain present, even for empty results. Initial map bounds favor Nagoya city points rather than the airport. Clicking a marker shows a photo popup and selects a visible matching card; a card's map button returns to its marker. A blue bed icon identifies the hotel. The **回到住宿** button below either map recenters it on the hotel, including repeated presses after panning, without requesting current-location permission or scrolling away from the map. Google Maps remains an external link for actual navigation.
+`src/lib/mapPoints.ts` defines the shared collection. Daily maps merge it with formal itinerary points; the places map merges it with matching list results. Category/visited filters affect the list and other location markers, while all shared favorite markers and the lodging marker remain present, even for empty results. Initial map bounds favor Nagoya city points rather than the airport. Clicking a marker shows a photo popup with compact opening hours (including last-order details) and closure notes, and selects a visible matching card; a card's map button returns to its marker. A blue bed icon identifies the hotel. The **回到住宿** button below either map recenters it on the hotel, including repeated presses after panning, without requesting current-location permission or scrolling away from the map. Google Maps remains an external link for actual navigation.
 
 ## Offline and local state
 
-After a successful production visit, the service worker precaches the app, all five JSON files and local images. All six routes work offline. Base-map tiles, external navigation and Drive documents require connectivity; the UI explains this and disables external links when offline. No private PDF or map tile is cached. A new deployment prompts to update; returning to the app also checks for an update. Production caching can be tested with `npm run build && npm run preview`; it is intentionally disabled in development. See [Vite PWA documentation](https://vite-pwa-org.netlify.app/guide/).
+After a successful production visit, the service worker precaches the app, all five JSON files and local images. All seven routes work offline. Local MP3 phrase recordings are precached with the app for offline playback. Base-map tiles, external navigation and Drive documents require connectivity; the UI explains this and disables external links when offline. No private PDF or map tile is cached. A new deployment prompts to update; returning to the app also checks for an update. Production caching can be tested with `npm run build && npm run preview`; it is intentionally disabled in development. See [Vite PWA documentation](https://vite-pwa-org.netlify.app/guide/).
 
 Last selected day and visit checks use `nagoya:*` localStorage keys. Visit records are stored by stable place ID, never uploaded or written to Excel. Unavailable storage falls back to in-memory session state. Clearing browser data removes local records. Location uses one `getCurrentPosition` call per tap and never watches or stores a location. The browser pans the map and requests only the visible tiles; this static application has no backend collecting location records.
 
@@ -109,3 +110,9 @@ Last selected day and visit checks use `nagoya:*` localStorage keys. Visit recor
 The public site contains Drive **URLs/IDs**, as specified. The linked files retain their existing Google account permissions; this application cannot verify or change those permissions. No ticket PDFs, booking PINs, full reservation numbers, email addresses or credentials belong in public data or source control.
 
 Hours, dietary suitability, fares and transit times remain workbook planning information; estimates are labeled. TORAYA's Monday opening, BAR BARNS's third-Tuesday closure and first-night dinner timing remain explicit checks. Generic photos are labeled as illustrative and do not establish a restaurant’s menu or dietary suitability.
+
+## Japanese phrase recordings
+
+The **語音** tab (`#/audio`) displays phrase cards with Japanese text, a Traditional Chinese translation and a native audio player. The first card explains lacto-vegetarian restrictions, including egg, meat, fish, bonito stock, fish sauce and other animal-based stock, then politely asks which dishes are suitable. Its recording uses **Arthur**, an AI male voice generated through Higgsfield / Seed Audio 1.0, at a slightly slower rate. There is no autoplay or microphone recording.
+
+Edit `src/data/audioPhrases.ts` to add or revise a card and keep its text and audio in sync. Store generated MP3 recordings in `public/audio/`; `public/audio/recordings.json` records the prompt and generation details. The browser loads these local files using Vite's base path; it needs no Higgsfield account or API key to play them. MP3s are included in the service worker precache for offline playback after the production app finishes installing. Commit text, recording and metadata together, then run `npm test` and `npm run build`.
