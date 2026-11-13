@@ -25,6 +25,20 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
       assert(!place.virtual, `${place.id}: virtual places cannot have coordinates`);
     }
     for (const field of ['mapsUrl', 'website', 'sourceUrl', 'coordinateSource']) url(place[field], `${place.id}.${field}`);
+    if (place.weeklyHours) {
+      assert(typeof place.weeklyHours === 'object' && !Array.isArray(place.weeklyHours), `${place.id}: weekly hours must be an object`);
+      for (const [day,hours] of Object.entries(place.weeklyHours)) {
+        assert(/^[0-6]$/.test(day), `${place.id}: invalid weekday`);
+        assert(hours === null || (typeof hours === 'string' && hours.length > 0 && hours.length <= 60), `${place.id}: invalid daily hours`);
+      }
+      assert(place.detailSourceUrls?.length > 0, `${place.id}: weekly hours need sources`);
+    }
+    if (place.foodDescription) {
+      assert(place.foodDescription.length >= 35 && place.foodDescription.length <= 70, `${place.id}: food description should be about 50 characters`);
+      assert(Boolean(place.diningType), `${place.id}: dining type required`);
+      assert(place.detailSourceUrls?.length > 0, `${place.id}: food description needs sources`);
+    }
+    for (const source of place.detailSourceUrls || []) url(source, `${place.id}.detailSourceUrls`);
     if (place.imageUrl) {
       assert(Boolean(place.imageAttribution), `${place.id}: image attribution required`);
       assert(Boolean(place.imageSourceUrl && place.imageLicenseUrl), `${place.id}: image source and license required`);

@@ -19,11 +19,14 @@ test('all four daily maps permanently retain the complete shared favorite collec
     assert(!points.some(point => point.place.virtual || point.place.id === 'tpe'));
   }
 });
-test('places map filtering and empty results never remove the fixed favorites', () => {
-  for (const visible of [data.places,data.places.filter(p => p.category === '咖啡廳'),data.places.filter(p => p.category === '酒吧'),[]]) {
+test('places map shows exactly the filtered locations plus lodging, including empty results', () => {
+  for (const visible of [data.places,data.places.filter(p => p.category === '咖啡廳'),data.places.filter(p => p.category === '酒吧'),data.places.filter(p => p.category === '老件店'),[]]) {
     const points = model.collectionMapPoints(data.places,visible);
-    assert.deepEqual(points.filter(point => point.favorite).map(point => point.place.id).sort(),favoriteIds);
+    const expected = new Set(visible.filter(p => model.hasCoordinates(p) && p.id !== 'tpe').map(p => p.id));
+    for (const hotel of data.places.filter(p => p.category === '住宿' && model.hasCoordinates(p))) expected.add(hotel.id);
+    assert.deepEqual(points.map(point => point.place.id).sort(), [...expected].sort());
     assert.equal(new Set(points.map(point => point.place.id)).size,points.length);
+    assert(points.every(point => point.favorite === model.isFavorite(point.place)));
   }
 });
 test('a scheduled favorite has one marker with both its itinerary number and favorite identity', () => {

@@ -13,6 +13,9 @@ export interface Place {
   imageSourceUrl: string | null; imageLicenseUrl: string | null; imageKind: 'place' | 'illustration' | null; imageAlt: string | null;
   virtual: boolean; verification: string; sourceUrl: string | null; coordinateSource: string | null;
   coordinateLabel: string | null; coordinateAddress: string | null;
+  foodDescription?: string; diningType?: string;
+  weeklyHours?: Partial<Record<string, string | null>>;
+  hoursNote?: string; detailSourceUrls?: string[]; detailsCheckedAt?: string;
 }
 export interface Stop {
   date: string; sequence: number; arrivalTime: string; stayMinutes: number | null;

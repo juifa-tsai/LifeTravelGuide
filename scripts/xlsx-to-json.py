@@ -67,6 +67,14 @@ for extra in supplement['itinerary']:
                 if field in extra:
                     stop[field] = extra[field]
 
+# Checked card descriptions and weekly schedules survive workbook reimports.
+place_details = json.loads((ROOT / 'scripts/place-details.json').read_text())
+for place in places:
+    extra = place_details.get(place['id'], {})
+    for field in ('foodDescription', 'diningType', 'weeklyHours', 'hoursNote', 'detailSourceUrls', 'detailsCheckedAt'):
+        if field in extra:
+            place[field] = extra[field]
+
 legs = [dict(date=date(r[0]), fromPlaceId=r[1], toPlaceId=r[2], mode=r[3],
     summary=r[4], details=r[5], minutesEstimate=number(r[6]), fareJpyEstimate=number(r[7]),
     certainty=r[8], sourceUrl=r[9]) for r in rows('03_交通銜接')]

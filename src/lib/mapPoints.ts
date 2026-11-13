@@ -19,14 +19,14 @@ export function dayPins(stops:Stop[], places:Place[]): MapPinData[] {
     return [{ place,stop,number:seen.size }];
   });
 }
-function mergePoints(places:Place[], primary:MapPoint[]): MapPoint[] {
-  const fixed = places.filter((place): place is CoordinatePlace => hasCoordinates(place) && (isFavorite(place) || place.category === '住宿'));
+function mergePoints(places:Place[], primary:MapPoint[], includeFavorites = true): MapPoint[] {
+  const fixed = places.filter((place): place is CoordinatePlace => hasCoordinates(place) && (place.category === '住宿' || (includeFavorites && isFavorite(place))));
   const points = new Map(fixed.map(place => [place.id,{ place,favorite:isFavorite(place) } as MapPoint]));
   for (const point of primary) points.set(point.place.id,{ ...point,favorite:isFavorite(point.place) });
   return [...points.values()];
 }
 export const dailyMapPoints = (stops:Stop[], places:Place[]) => mergePoints(places,dayPins(stops,places).map(pin => ({ place:pin.place,number:pin.number,favorite:isFavorite(pin.place) })));
-export const collectionMapPoints = (places:Place[], visible:Place[]) => mergePoints(places,visible.filter((place): place is CoordinatePlace => hasCoordinates(place) && place.id !== 'tpe').map(place => ({ place,favorite:isFavorite(place) })));
+export const collectionMapPoints = (places:Place[], visible:Place[]) => mergePoints(places,visible.filter((place): place is CoordinatePlace => hasCoordinates(place) && place.id !== 'tpe').map(place => ({ place,favorite:isFavorite(place) })),false);
 export function dailySegments(stops:Stop[], places:Place[]): [number,number][][] {
   return stops.slice(1).flatMap((stop,i) => {
     const from = places.find(place => place.id === stops[i].placeId);

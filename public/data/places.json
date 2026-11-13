@@ -193,7 +193,24 @@
     "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Le%20Jardin%20Fukiage%20Nagoya",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%8D%83%E7%A8%AE%E5%8C%BA%E5%8D%83%E7%A8%AE%E9%80%9A7%E4%B8%81%E7%9B%AE24%E7%95%AA",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市千種区千種通七丁目２４番地"
+    "coordinateAddress": "愛知県名古屋市千種区千種通七丁目２４番地",
+    "foodDescription": "古董市場頂樓的花園咖啡廳，供應蔬菜沙拉、燉飯、蛋料理與甜點；可喝咖啡小憩，奶素主餐需另詢問。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "10:00–19:00",
+      "1": "10:00–19:00",
+      "2": "10:00–19:00",
+      "3": "週三時段待確認",
+      "4": "10:00–19:00",
+      "5": "10:00–19:00",
+      "6": "10:00–19:00"
+    },
+    "hoursNote": "官網與餐廳平台開店時間有差異；週三、假日先確認。",
+    "detailSourceUrls": [
+      "https://www.antiquemarket.co.jp/7floor.html",
+      "https://www.hotpepper.jp/strJ000107726/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "store_factory",
@@ -249,7 +266,24 @@
     "sourceUrl": "https://nagoya.mypl.net/naka/shop/00000372987/menu",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%96%B0%E6%A0%843%E4%B8%81%E7%9B%AE14%E7%95%AA23%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区新栄三丁目１４番２３号"
+    "coordinateAddress": "愛知県名古屋市中区新栄三丁目１４番２３号",
+    "foodDescription": "以植物性食材製作異國蔬食，招牌虎式拼盤、蔬菜咖哩與叻沙麵兼具香料風味，適合想吃完整正餐的旅人。",
+    "diningType": "素食餐廳",
+    "weeklyHours": {
+      "0": "12:00–15:00／17:30–22:00",
+      "1": "12:00–15:00／17:30–22:00",
+      "2": null,
+      "3": null,
+      "4": "17:30–22:00",
+      "5": "12:00–15:00／17:30–22:00",
+      "6": "12:00–15:00／17:30–22:00"
+    },
+    "hoursNote": "週二、三休業；週四僅晚餐。",
+    "detailSourceUrls": [
+      "https://tabelog.com/aichi/A2301/A230104/23089780/",
+      "https://www.happycow.net/reviews/vegetiger-japan-nagoya-334902"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "anzu",
@@ -277,7 +311,24 @@
     "sourceUrl": "https://anzu-yakuzen.sakura.ne.jp/access.html",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E4%B8%B8%E3%81%AE%E5%86%851%E4%B8%81%E7%9B%AE11%E7%95%AA28%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区丸の内一丁目１１番２８号"
+    "coordinateAddress": "愛知県名古屋市中区丸の内一丁目１１番２８号",
+    "foodDescription": "藥膳風格中華料理，供應擔擔麵、麻婆豆腐與青菜湯葉等菜色；標示 V 的品項可詢問調整為 Vegan。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "17:30–22:00",
+      "1": null,
+      "2": "11:30–14:00／17:30–23:00",
+      "3": "11:30–14:00／17:30–23:00",
+      "4": "11:30–14:00／17:30–23:00",
+      "5": "11:30–14:00／17:30–23:00",
+      "6": "17:30–23:00"
+    },
+    "hoursNote": "午餐 L.O.13:30；晚餐平日、週六22:30，週日21:30。",
+    "detailSourceUrls": [
+      "https://anzu-yakuzen.sakura.ne.jp/access.html",
+      "https://anzu-yakuzen.sakura.ne.jp/itemlist.html"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "shrub",
@@ -305,7 +356,24 @@
     "sourceUrl": "https://shrubcoffee.com/shop/",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A62%E4%B8%81%E7%9B%AE7%E7%95%AA29%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区錦二丁目７番２９号"
+    "coordinateAddress": "愛知県名古屋市中区錦二丁目７番２９号",
+    "foodDescription": "以自家烘焙的產地咖啡為主，可選手沖與牛奶咖啡，搭配當日甜點小憩；點心常有蛋奶，奶素食用前須確認。",
+    "diningType": "咖啡廳",
+    "weeklyHours": {
+      "0": "09:00–18:00",
+      "1": "09:00–18:00",
+      "2": "09:00–18:00",
+      "3": "09:00–18:00",
+      "4": "09:00–18:00",
+      "5": "09:00–18:00",
+      "6": "09:00–18:00"
+    },
+    "hoursNote": "不定休、L.O.17:30；官網日英開店時間不同，早到先確認。",
+    "detailSourceUrls": [
+      "https://shrubcoffee.com/shop/",
+      "https://tabelog.com/aichi/A2301/A230102/23087115/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "art_museum",
@@ -333,7 +401,21 @@
     "sourceUrl": "https://art-museum.city.nagoya.jp/exhibitions/post/van_gogh_and_the_impressionists/",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%BE%8E%E8%A1%93%E9%A4%A8",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "名古屋市美術館"
+    "coordinateAddress": "名古屋市美術館",
+    "weeklyHours": {
+      "0": "09:30–17:00",
+      "1": null,
+      "2": "09:30–17:00",
+      "3": "09:30–17:00",
+      "4": "09:30–17:00",
+      "5": "09:30–20:00",
+      "6": "09:30–17:00"
+    },
+    "hoursNote": "週一休館；假日調整，入館於閉館前30分鐘。",
+    "detailSourceUrls": [
+      "https://art-museum.city.nagoya.jp/guide/calendar/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "shirokawa",
@@ -389,7 +471,24 @@
     "sourceUrl": "https://www.kinsyachi.com/shop/aosans/",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%A4%A7%E9%A0%882%E4%B8%81%E7%9B%AE6%E7%95%AA22%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区大須二丁目６番２２号"
+    "coordinateAddress": "愛知県名古屋市中区大須二丁目６番２２号",
+    "foodDescription": "主打現烤麵包的越南法國三明治，以蔬菜、香草與醬料組合呈現越南風味；奶素需先確認配料、蛋與魚露。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–18:30",
+      "1": "11:00–18:30",
+      "2": "11:00–18:30",
+      "3": "11:00–18:30",
+      "4": "11:00–18:30",
+      "5": "11:00–18:30",
+      "6": "11:00–18:30"
+    },
+    "hoursNote": "不定休、售完提早結束；假日先確認。",
+    "detailSourceUrls": [
+      "https://aosuns.win/",
+      "https://www.kinsyachi.com/shop/aosans/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "osu_kannon",
@@ -473,7 +572,23 @@
     "sourceUrl": "https://tabelog.com/aichi/A2301/A230105/23006652/",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%A4%A7%E9%A0%883%E4%B8%81%E7%9B%AE27%E7%95%AA32%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区大須三丁目２７番３２号"
+    "coordinateAddress": "愛知県名古屋市中区大須三丁目２７番３２号",
+    "foodDescription": "以現磨手沖咖啡與濃郁咖啡歐蕾為主，搭配起司蛋糕等甜點；吧台氣氛安靜，蛋類配方需先向店員確認。",
+    "diningType": "咖啡廳",
+    "weeklyHours": {
+      "0": null,
+      "1": "12:00–20:00",
+      "2": "12:00–20:00",
+      "3": "12:00–20:00",
+      "4": "12:00–20:00",
+      "5": "12:00–20:00",
+      "6": "12:00–20:00"
+    },
+    "hoursNote": "週日休、不定休；L.O.19:30，假日18:00閉店。",
+    "detailSourceUrls": [
+      "https://tabelog.com/aichi/A2301/A230105/23006652/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "mori",
@@ -501,7 +616,23 @@
     "sourceUrl": "https://tabelog.com/aichi/A2301/A230103/23084339/",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%844%E4%B8%81%E7%9B%AE15%E7%95%AA9%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区栄四丁目１５番９号"
+    "coordinateAddress": "愛知県名古屋市中区栄四丁目１５番９号",
+    "foodDescription": "以時令蔬菜與香料製作無麩質咖哩，提供 Vegan 及雞肉等選項；可搭配藥味變化風味，出汁成分須確認。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:30–14:30／17:30–20:30",
+      "1": null,
+      "2": "11:30–14:30／17:30–20:30",
+      "3": "11:30–14:30",
+      "4": "11:30–14:30",
+      "5": "11:30–14:30／17:30–20:30",
+      "6": "11:30–14:30／17:30–20:30"
+    },
+    "hoursNote": "L.O.午餐14:00、晚餐20:00；週三、四僅午餐，假日可能調整。",
+    "detailSourceUrls": [
+      "https://tabelog.com/aichi/A2301/A230103/23084339/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "recit",
@@ -529,7 +660,23 @@
     "sourceUrl": "https://bar-recit.com/",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A63%E4%B8%81%E7%9B%AE20%E7%95%AA14%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区錦三丁目２０番１４号"
+    "coordinateAddress": "愛知県名古屋市中区錦三丁目２０番１４号",
+    "foodDescription": "提供經典與原創調酒，另有堅果、橄欖、起司及義大利麵等餐點；部分酒款含蛋白泡沫，點酒時先說明飲食限制。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "16:00–翌01:00",
+      "1": "16:00–翌01:00",
+      "2": "16:00–翌01:00",
+      "3": "16:00–翌01:00",
+      "4": "16:00–翌01:00",
+      "5": "16:00–翌01:00",
+      "6": "16:00–翌01:00"
+    },
+    "hoursNote": "不定休；調酒泡沫與餐點成分另確認。",
+    "detailSourceUrls": [
+      "https://bar-recit.com/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "barns",
@@ -557,7 +704,24 @@
     "sourceUrl": "https://www.bar-barns.jp/",
     "coordinateSource": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%842%E4%B8%81%E7%9B%AE3%E7%95%AA32%E5%8F%B7",
     "coordinateLabel": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
-    "coordinateAddress": "愛知県名古屋市中区栄二丁目３番３２号"
+    "coordinateAddress": "愛知県名古屋市中区栄二丁目３番３２号",
+    "foodDescription": "以新鮮水果調酒、經典雞尾酒與威士忌為主，附小點並可搭配餐食；調酒、前菜與堅果配料請確認奶素適用性。",
+    "diningType": "酒吧",
+    "weeklyHours": {
+      "0": "16:00–24:00",
+      "1": "營業日待確認",
+      "2": "營業日待確認",
+      "3": "16:00–24:00",
+      "4": "16:00–24:00",
+      "5": "16:00–24:00",
+      "6": "16:00–24:00"
+    },
+    "hoursNote": "L.O.23:30、基本預約制；營業日依官方月曆，11/17可能休業。",
+    "detailSourceUrls": [
+      "https://www.bar-barns.jp/",
+      "https://www.bar-barns.jp/fcblog/opening-hours/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "meal_tbd_16",
@@ -669,7 +833,23 @@
     "sourceUrl": "https://molnoda.com/",
     "coordinateSource": null,
     "coordinateLabel": null,
-    "coordinateAddress": null
+    "coordinateAddress": null,
+    "foodDescription": "以蔬菜、穀物與各式配料組合碗餐，設有 Vegetarian Bowl 選項；晚間碗餐可能僅供外帶，蛋及醬汁需確認。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–16:00／17:00–23:00",
+      "1": "11:00–16:00／17:00–23:00",
+      "2": "11:00–16:00／17:00–23:00",
+      "3": "11:00–16:00／17:00–23:00",
+      "4": "11:00–16:00／17:00–23:00",
+      "5": "11:00–16:00／17:00–23:00",
+      "6": "11:00–16:00／17:00–23:00"
+    },
+    "hoursNote": "晚間碗餐先詢問外帶；L.O.待確認。",
+    "detailSourceUrls": [
+      "https://molnoda.com/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "coco_fushimi",
@@ -697,7 +877,24 @@
     "sourceUrl": "https://tenpo.ichibanya.co.jp/map/2172/",
     "coordinateSource": null,
     "coordinateLabel": null,
-    "coordinateAddress": null
+    "coordinateAddress": null,
+    "foodDescription": "日式咖哩可搭配蔬菜與米飯，奶素須指定不含動物性原料的ココイチベジカレー，分店販售及加料成分另確認。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "週末時段待確認",
+      "1": "11:00–23:00",
+      "2": "11:00–23:00",
+      "3": "11:00–23:00",
+      "4": "11:00–23:00",
+      "5": "11:00–23:00",
+      "6": "週末時段待確認"
+    },
+    "hoursNote": "週末22:00與23:00資訊有差異；先確認接單及素咖哩供應。",
+    "detailSourceUrls": [
+      "https://tenpo.ichibanya.co.jp/map/2172/",
+      "https://www.ichibanya.co.jp/menu/detail.html?id=1327"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "nine_cafe_fushimi",
@@ -725,7 +922,23 @@
     "sourceUrl": "https://akr0294539820.owst.jp/",
     "coordinateSource": null,
     "coordinateLabel": null,
-    "coordinateAddress": null
+    "coordinateAddress": null,
+    "foodDescription": "深夜供應披薩、義大利麵、咖啡及甜點，適合晚到時詢問簡餐；麵皮、麵條、醬汁及高湯的蛋與動物成分需確認。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "17:00–翌04:00",
+      "1": "17:00–翌04:00",
+      "2": "17:00–翌04:00",
+      "3": "17:00–翌04:00",
+      "4": "17:00–翌04:00",
+      "5": "17:00–翌04:00",
+      "6": "17:00–翌04:00"
+    },
+    "hoursNote": "餐點與飲品 L.O.翌03:00。",
+    "detailSourceUrls": [
+      "https://akr0294539820.owst.jp/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "kazan",
@@ -753,7 +966,23 @@
     "sourceUrl": "https://jouhou.nagoya/menya-kazan/",
     "coordinateSource": null,
     "coordinateLabel": null,
-    "coordinateAddress": null
+    "coordinateAddress": null,
+    "foodDescription": "拉麵店的 Vegan 白湯以豆乳與香味蔬菜熬煮，口感濃郁；僅選明確標示品項，其他拉麵及桌上調味料可能含葷。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–24:00",
+      "1": "11:00–24:00",
+      "2": "11:00–24:00",
+      "3": "11:00–24:00",
+      "4": "11:00–24:00",
+      "5": "11:00–24:00",
+      "6": "11:00–24:00"
+    },
+    "hoursNote": "L.O.23:30；午夜後菜單不同，Vegan供應另確認。",
+    "detailSourceUrls": [
+      "https://jouhou.nagoya/menya-kazan/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   },
   {
     "id": "durbar_sakae",
@@ -781,6 +1010,22 @@
     "sourceUrl": "https://tabelog.com/aichi/A2301/A230103/23073349/",
     "coordinateSource": null,
     "coordinateLabel": null,
-    "coordinateAddress": null
+    "coordinateAddress": null,
+    "foodDescription": "以尼泊爾、印度風味咖哩與烤餅為主，可詢問蔬菜或豆類咖哩；烤餅中的蛋、醬汁與高湯成分需逐項確認。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–15:00／17:00–翌04:00",
+      "1": "11:00–15:00／17:00–翌04:00",
+      "2": "11:00–15:00／17:00–22:00",
+      "3": "11:00–15:00／17:00–翌04:00",
+      "4": "11:00–15:00／17:00–翌04:00",
+      "5": "11:00–15:00／17:00–翌04:00",
+      "6": "11:00–15:00／17:00–翌04:00"
+    },
+    "hoursNote": "不定休、L.O.待確認。",
+    "detailSourceUrls": [
+      "https://tabelog.com/aichi/A2301/A230103/23073349/"
+    ],
+    "detailsCheckedAt": "2026-11-13"
   }
 ]

@@ -6,6 +6,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 const base = process.env.VITE_BASE_PATH || '/LifeTravelGuide/';
 export default defineConfig({
   base,
+  build: { rollupOptions: { output: { manualChunks(id) {
+    if (id.endsWith('/src/data/nagoyaBoundary.json')) return 'nagoya-boundary';
+  } } } },
   plugins: [react(), VitePWA({
     registerType: 'prompt',
     includeAssets: ['icons/*.png', 'icons/*.svg'],

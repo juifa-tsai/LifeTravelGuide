@@ -8,6 +8,7 @@ import { CategoryIcon } from './Icon';
 import { PlaceImage } from './PlaceImage';
 import { ExternalLink } from './ExternalLink';
 import { compactHours } from '../lib/hours';
+import type { Coordinates } from '../lib/distances';
 
 const categoryStyle = {
   '素食餐廳':{ className:'vegan',label:'素食',path:'M5 20C5 10 10 5 20 5c0 10-5 15-15 15ZM5 20l11-11' },
@@ -36,9 +37,9 @@ function MapViewport({ points, focusIds, selected, reset,focusVersion }: { point
   },[map,active?.place.id,focusVersion]);
   return null;
 }
-export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPlace,onReset,segments = [],focusVersion = 0 }: {
+export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPlace,onReset,onLocation,segments = [],focusVersion = 0 }: {
   id:string; label:string; points:MapPoint[]; focusIds:string[]; selected:string | null;
-  onSelect:(id:string) => void; onFocusPlace:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number;
+  onSelect:(id:string) => void; onFocusPlace:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number; onLocation?:(point:Coordinates | null) => boolean | void;
 }) {
   const online = useOnline();
   const map = useRef<L.Map | null>(null);
@@ -52,15 +53,17 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
   useEffect(() => { alive.current = true; return () => { alive.current = false; }; },[]);
   const markerIcons = useMemo(() => new Map(points.map(point => [point.place.id,icon(point,point.place.id === selected)])),[points,selected]);
   function locate() {
-    if (!navigator.geolocation) { setMessage('此瀏覽器不支援定位。'); return; }
+    if (!navigator.geolocation) { onLocation?.(null); setMessage('此瀏覽器不支援定位。'); return; }
     setLocating(true); setMessage('正在取得位置…');
     navigator.geolocation.getCurrentPosition(result => {
       if (!alive.current) return;
       const position:L.LatLngTuple = [result.coords.latitude,result.coords.longitude];
-      setLocation(position); setLocating(false); setMessage(''); map.current?.flyTo(position,15);
+      const accepted = onLocation?.({ lat:position[0],lng:position[1] });
+      setLocation(accepted === false ? null : position); setLocating(false); setMessage('');
+      if (accepted !== false) map.current?.flyTo(position,15);
     },() => {
       if (!alive.current) return;
-      setLocating(false); setMessage('無法取得位置，請確認瀏覽器定位權限。');
+      onLocation?.(null); setLocating(false); setMessage('無法取得位置，請確認瀏覽器定位權限。');
     },{ enableHighAccuracy:false,timeout:10000,maximumAge:0 });
   }
   return <section className="travel-map-section" id={id} aria-label={label}>
@@ -94,7 +97,7 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
       {!online && <div className="offline-map map-offline-banner"><MapPin size={17} /><span>離線地圖 · 底圖需連線</span></div>}
     </div>
     <div className="map-tools"><button className="text-action" onClick={() => { onReset(); setReset(previous => previous+1); }}><Route size={16} />地圖總覽</button>{lodging && <button className="text-action lodging-action" title={lodging.place.nameZh} onClick={() => onFocusPlace(lodging.place.id)}><BedDouble size={17} />回到住宿</button>}<button className="text-action" aria-label="定位我的位置" disabled={locating} onClick={locate}><LocateFixed size={17} />{locating ? '定位中' : '我的位置'}</button></div>
-    <div className="map-legend" aria-label="固定收藏圖層">{lodging && <span className="lodging-legend"><BedDouble size={14} />住宿</span>}{Object.entries(categoryStyle).map(([category,style]) => <span key={category} className={style.className}><CategoryIcon category={category} size={14} />{style.label}</span>)}{segments.length > 0 && <small>虛線為行程示意</small>}</div>
+    <div className="map-legend" aria-label="地點圖例">{lodging && <span className="lodging-legend"><BedDouble size={14} />住宿</span>}{Object.entries(categoryStyle).filter(([category]) => points.some(point => point.place.category === category)).map(([category,style]) => <span key={category} className={style.className}><CategoryIcon category={category} size={14} />{style.label}</span>)}{segments.length > 0 && <small>虛線為行程示意</small>}</div>
     {tileError && online && <p className="map-message" role="status">部分底圖暫時無法載入，仍可點選地點標記。</p>}
     {message && <p className="map-message" role="status">{message}</p>}
   </section>;
