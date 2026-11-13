@@ -8,7 +8,7 @@ import { japanDate, todayCaption } from '../lib/placeHours';
 import { isInNagoya, type Coordinates } from '../lib/distances';
 import { TravelMap } from '../components/TravelMap';
 import { collectionMapPoints } from '../lib/mapPoints';
-const categories = ['老件店','古蹟／歷史','美術館／公園','素食餐廳','咖啡廳','酒吧','住宿','交通'];
+const categories = ['老件店','古蹟／歷史','美術館／公園','素食餐廳','咖啡廳','酒吧','交通'];
 export function PlacesPage({ data, visited, setVisited }: { data:TravelData; visited:Record<string,boolean>; setVisited:(value:Record<string,boolean> | ((previous:Record<string,boolean>) => Record<string,boolean>)) => void }) {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => { const timer = window.setInterval(() => setNow(new Date()),60000); return () => window.clearInterval(timer); }, []);
@@ -40,9 +40,9 @@ export function PlacesPage({ data, visited, setVisited }: { data:TravelData; vis
   const [filter, setFilter] = useState('');
   const [selected,setSelected] = useState<string | null>(null);
   const [focusVersion,setFocusVersion] = useState(0);
-  const places = useMemo(() => data.places.filter(p => !p.virtual), [data.places]);
+  const places = useMemo(() => data.places.filter(p => !p.virtual && !['機場','住宿'].includes(p.category)), [data.places]);
   const visible = useMemo(() => places.filter(p => !filter || filter === categoryGroup(p.category)),[places,filter]);
-  const mapPoints = useMemo(() => collectionMapPoints(places,visible),[places,visible]);
+  const mapPoints = useMemo(() => collectionMapPoints(data.places,visible),[data.places,visible]);
   function selectPlace(id:string) {
     setSelected(id);
     setFocusVersion(previous => previous+1);

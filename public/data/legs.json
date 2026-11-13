@@ -45,7 +45,26 @@
     "minutesEstimate": 30,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "伏見站",
+          "toStation": "榮站"
+        },
+        {
+          "line": "名城線",
+          "fromStation": "榮站",
+          "toStation": "名古屋城站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-13",
+      "note": "出站後步行至名古屋城。"
+    }
   },
   {
     "date": "2026-11-16",
@@ -81,7 +100,27 @@
     "minutesEstimate": 30,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "吹上站",
+          "toStation": "久屋大通站"
+        },
+        {
+          "line": "名城線",
+          "fromStation": "久屋大通站",
+          "toStation": "矢場町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://retty.me/area/PRE23/ARE63/SUB6304/100001529102/"
+      ],
+      "checkedAt": "2026-11-13",
+      "note": "矢場町站出站後步行至店家。"
+    }
   },
   {
     "date": "2026-11-16",
@@ -93,7 +132,28 @@
     "minutesEstimate": 25,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "矢場町站",
+          "toStation": "榮站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "榮站",
+          "toStation": "新榮町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://retty.me/area/PRE23/ARE63/SUB6304/100001529102/",
+        "https://nagoya.mypl.net/naka/shop/00000372987/access"
+      ],
+      "checkedAt": "2026-11-13",
+      "note": "新榮町站2號出口，步行 ~ 8 分至店家。"
+    }
   },
   {
     "date": "2026-11-16",
@@ -105,7 +165,21 @@
     "minutesEstimate": 25,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "新榮町站",
+          "toStation": "伏見站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://nagoya.mypl.net/naka/shop/00000372987/access"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-17",
@@ -117,7 +191,25 @@
     "minutesEstimate": 10,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "walking": {
+        "distanceMeters": 481.5,
+        "durationSeconds": 389.1,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.171364,
+          "lng": 136.898483
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.898483,35.171364?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-17",
@@ -129,7 +221,25 @@
     "minutesEstimate": 18,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": "https://www.nagoya-info.jp/en/event/detail/1419/"
+    "sourceUrl": "https://www.nagoya-info.jp/en/event/detail/1419/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1087.2,
+        "durationSeconds": 876,
+        "fromCoordinates": {
+          "lat": 35.171364,
+          "lng": 136.898483
+        },
+        "toCoordinates": {
+          "lat": 35.16400256,
+          "lng": 136.901001
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.898483,35.171364;136.901001,35.16400256?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-17",
@@ -141,7 +251,25 @@
     "minutesEstimate": 3,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "walking": {
+        "distanceMeters": 253,
+        "durationSeconds": 202.4,
+        "fromCoordinates": {
+          "lat": 35.16400256,
+          "lng": 136.901001
+        },
+        "toCoordinates": {
+          "lat": 35.164967,
+          "lng": 136.899704
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.901001,35.16400256;136.899704,35.164967?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-17",
@@ -177,7 +305,25 @@
     "minutesEstimate": 5,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "walking": {
+        "distanceMeters": 590.8,
+        "durationSeconds": 474.6,
+        "fromCoordinates": {
+          "lat": 35.15918,
+          "lng": 136.899597
+        },
+        "toCoordinates": {
+          "lat": 35.160095,
+          "lng": 136.903915
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899597,35.15918;136.903915,35.160095?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-17",
@@ -189,7 +335,22 @@
     "minutesEstimate": 25,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "上前津站",
+          "toStation": "榮站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.kenko-shokuiku.city.nagoya.jp/pdf/mori_curry.pdf"
+      ],
+      "checkedAt": "2026-11-13",
+      "note": "榮站13號出口，步行 ~ 3 分至店家。"
+    }
   },
   {
     "date": "2026-11-17",
@@ -201,7 +362,21 @@
     "minutesEstimate": 20,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null
+    "sourceUrl": null,
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "榮站",
+          "toStation": "伏見站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.kenko-shokuiku.city.nagoya.jp/pdf/mori_curry.pdf"
+      ],
+      "checkedAt": "2026-11-13"
+    }
   },
   {
     "date": "2026-11-18",
@@ -213,7 +388,21 @@
     "minutesEstimate": 30,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "伏見站",
+          "toStation": "名古屋站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-13",
+      "note": "出站後步行轉往名鐵名古屋站。"
+    }
   },
   {
     "date": "2026-11-18",
@@ -237,6 +426,20 @@
     "minutesEstimate": 40,
     "fareJpyEstimate": null,
     "certainty": "官方最快車程；門到門估算",
-    "sourceUrl": "https://www.meitetsu.co.jp/cht/airport-access/index.html"
+    "sourceUrl": "https://www.meitetsu.co.jp/cht/airport-access/index.html",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名鐵 μSKY",
+          "fromStation": "名鐵名古屋站",
+          "toStation": "中部國際機場站"
+        }
+      ],
+      "sources": [
+        "https://www.meitetsu.co.jp/cht/airport-access/index.html"
+      ],
+      "checkedAt": "2026-11-13",
+      "note": "搭乘 μSKY 需另備 μticket；依當日班次搭車。"
+    }
   }
 ]

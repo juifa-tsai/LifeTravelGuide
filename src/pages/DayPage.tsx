@@ -48,10 +48,11 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
             const i = stops.indexOf(stop);
             const place = data.places.find(p => p.id === stop.placeId);
             const next = stops[i+1];
+            const destination = next && data.places.find(p => p.id === next.placeId);
             const leg = next && next.placeId !== stop.placeId ? data.legs.find(l => l.date === day.date && l.fromPlaceId === stop.placeId && l.toPlaceId === next.placeId) : undefined;
             return <div className="timeline-item" key={stopId(stop)}>
               <PlaceCard stop={stop} place={place} hotel={data.places.find(p => p.category === '住宿')} selected={highlightedStop === stopId(stop)} onFocus={focus} />
-              {leg && <div className="transit-offset"><TransitConnector leg={leg} from={place} to={data.places.find(p => p.id === next.placeId)} /></div>}
+              {leg && place && !place.virtual && destination && !destination.virtual && <div className="transit-offset"><TransitConnector leg={leg} from={place} to={destination} /></div>}
             </div>;
           })}</div></section>;
       })}</section>

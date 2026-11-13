@@ -26,6 +26,11 @@ export interface Leg {
   date: string; fromPlaceId: string; toPlaceId: string; mode: string; summary: string;
   details: string; minutesEstimate: number | null; fareJpyEstimate: number | null;
   certainty: string; sourceUrl: string | null;
+  navigation?: {
+    steps?: { line:string; fromStation:string; toStation:string }[];
+    walking?: { distanceMeters:number; durationSeconds:number; fromCoordinates:{lat:number;lng:number}; toCoordinates:{lat:number;lng:number} };
+    note?: string; sources:string[]; checkedAt:string;
+  };
 }
 export interface TravelDocument {
   id: string; category: string; title: string; url: string; access: string; dates: string; description: string;

@@ -10,9 +10,8 @@ const { durationHours, dayPeriod, groupTimeline } = await import(`data:text/java
 const data = loadData();
 
 test('durations are approximate hours without inventing stays for flight events or unknown values', () => {
-  for (const [minutes,label] of [[30,'約 0.5 hr'],[45,'約 0.75 hr'],[65,'約 1 hr'],[85,'約 1.5 hr'],[120,'約 2 hr'],[155,'約 2.5 hr']]) assert.equal(durationHours(minutes),label);
+  for (const [minutes,label] of [[5,'~ 0.5 hr'],[20,'~ 0.5 hr'],[30,'~ 0.5 hr'],[45,'~ 1 hr'],[65,'~ 1 hr'],[85,'~ 1.5 hr'],[110,'~ 2 hr'],[120,'~ 2 hr'],[155,'~ 2.5 hr']]) assert.equal(durationHours(minutes),label);
   for (const value of [null,0,-10,NaN,Infinity]) assert.equal(durationHours(value),null);
-  assert.equal(durationHours(5),'少於 0.25 hr');
 });
 
 test('morning, afternoon and evening boundaries use Japan time, including Taiwan flight events', () => {

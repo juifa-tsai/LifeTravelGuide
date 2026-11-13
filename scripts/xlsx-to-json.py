@@ -83,6 +83,13 @@ for place in places:
 legs = [dict(date=date(r[0]), fromPlaceId=r[1], toPlaceId=r[2], mode=r[3],
     summary=r[4], details=r[5], minutesEstimate=number(r[6]), fareJpyEstimate=number(r[7]),
     certainty=r[8], sourceUrl=r[9]) for r in rows('03_交通銜接')]
+# Checked station steps and walking routes supplement, rather than replace, Excel legs.
+leg_details = json.loads((ROOT / 'scripts/leg-details.json').read_text())
+navigation = {(extra['date'], extra['fromPlaceId'], extra['toPlaceId']):extra['navigation'] for extra in leg_details}
+for leg in legs:
+    extra = navigation.get((leg['date'], leg['fromPlaceId'], leg['toPlaceId']))
+    if extra:
+        leg['navigation'] = extra
 documents = [dict(id=f'document-{i+1}', category=r[0], title=r[1], url=r[2],
     access=r[3], dates=r[4], description=r[5]) for i,r in enumerate(rows('04_重要文件')) if r[2]]
 # Keep public transport previews and verified Chinese URLs across workbook imports.

@@ -70,6 +70,26 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
     assert(datePattern.test(leg.date), 'Invalid transit date');
     assert(nonnegative(leg.minutesEstimate) && nonnegative(leg.fareJpyEstimate), 'Invalid transit estimate');
     url(leg.sourceUrl, 'Transit source');
+    if (leg.navigation) {
+      const nav = leg.navigation;
+      assert(Array.isArray(nav.sources) && nav.sources.length > 0, 'Transit navigation needs sources');
+      for (const source of nav.sources || []) url(source, 'Transit navigation source');
+      assert(/^\d{4}-\d{2}-\d{2}$/.test(nav.checkedAt), 'Transit navigation needs check date');
+      for (const [index,step] of (nav.steps || []).entries()) {
+        assert(Boolean(step.line && step.fromStation && step.toStation && step.fromStation !== step.toStation), 'Invalid station step');
+        if (index) assert(nav.steps[index-1].toStation === step.fromStation, 'Disconnected station transfer');
+      }
+      if (nav.walking) {
+        assert(leg.mode === '步行', 'Walking distance on non-walking leg');
+        const foot = nav.walking;
+        assert(Number.isFinite(foot.distanceMeters) && foot.distanceMeters > 0, 'Invalid walking route distance');
+        assert(Number.isFinite(foot.durationSeconds) && foot.durationSeconds > 0, 'Invalid walking route duration');
+        for (const [id,coordinates] of [[leg.fromPlaceId,foot.fromCoordinates],[leg.toPlaceId,foot.toCoordinates]]) {
+          const place = places.find(place => place.id === id);
+          assert(place && !place.virtual && Number.isFinite(place.lat) && Number.isFinite(place.lng) && coordinates?.lat === place.lat && coordinates?.lng === place.lng, 'Walking route endpoints changed or unverified');
+        }
+      }
+    }
   }
   const docIds = new Set();
   for (const doc of documents) {

@@ -3,15 +3,25 @@ import type { Leg, Place } from '../lib/types';
 import { CategoryIcon } from './Icon';
 import { ExternalLink } from './ExternalLink';
 import { directions } from '../lib/mapLinks';
-import { durationHours } from '../lib/timeline';
-export function TransitConnector({ leg, from, to }: { leg: Leg; from?: Place; to?: Place }) {
-  return <details className="transit"><summary><CategoryIcon category={leg.mode === '步行' ? '步行' : leg.mode.includes('專車') ? '預約專車' : leg.mode === '航班' ? '航班' : '交通'} size={17} />
-    <span className="transit-label">{leg.mode}<span> · {durationHours(leg.minutesEstimate) ?? '時間待確認'}</span></span><ChevronDown className="chevron" size={15} /></summary>
-    <div className="transit-details"><p><strong>{leg.summary}</strong><br />{leg.details}</p><dl>
-      <dt>預估時間</dt><dd>{leg.minutesEstimate === null ? '待確認' : `約 ${leg.minutesEstimate} 分鐘`}</dd>
-      <dt>預估車資</dt><dd>{leg.mode === '步行' ? '步行無車資' : leg.fareJpyEstimate === null ? '待確認' : `約 ¥${leg.fareJpyEstimate}`}</dd>
-      <dt>核實程度</dt><dd>{leg.certainty}</dd>
-      <dt>資料來源</dt><dd>{leg.sourceUrl ? <ExternalLink href={leg.sourceUrl}>查看依據 ↗</ExternalLink> : '行前估算，非即時導航'}</dd>
-    </dl>{from && to && !from.virtual && !to.virtual && leg.mode !== '航班' && <ExternalLink href={directions(from, to, leg.mode)} className="text-action">在 Google Maps 規劃路線 <ArrowUpRight size={15} /></ExternalLink>}</div>
+import { legView } from '../lib/transit';
+
+export function TransitConnector({ leg, from, to }: { leg:Leg; from?:Place; to?:Place }) {
+  const view = legView(leg,from,to);
+  if (!view || !from || !to) return null;
+  const href = directions(from,to,leg.mode);
+  const label = `${from.nameZh}至${to.nameZh}的路線`;
+  if (view.walking) return <ExternalLink href={href} label={label} className="transit transit-walk">
+    <CategoryIcon category="步行" size={17} /><span>步行</span><span>{[view.distance,view.time].filter(Boolean).join(' · ')}</span><ArrowUpRight size={15} aria-hidden="true" />
+  </ExternalLink>;
+
+  const category = leg.mode.includes('專車') ? '預約專車' : leg.mode === '航班' ? '航班' : '交通';
+  const overview = <><CategoryIcon category={category} size={17} /><span className="transit-label"><strong className="transit-route">{view.title}</strong><span className="transit-meta">{[view.lines || view.mode,view.time].filter(Boolean).join(' · ')}</span></span></>;
+  if (!view.note && view.steps.length <= 1) return <ExternalLink href={href} label={label} className="transit transit-direct">{overview}<ArrowUpRight size={15} aria-hidden="true" /></ExternalLink>;
+  return <details className="transit"><summary>{overview}<ChevronDown className="chevron" size={15} /></summary>
+    <div className="transit-details">
+      {view.steps.length > 1 && <ol className="transit-steps">{view.steps.map((step,index) => <li key={index}><span>{step.line}</span><strong>{step.fromStation} → {step.toStation}</strong></li>)}</ol>}
+      {view.note && <p className="transit-note">{view.note}</p>}
+      {leg.mode !== '航班' && <ExternalLink href={href} className="text-action" label={label}>路線導航<ArrowUpRight size={15} /></ExternalLink>}
+    </div>
   </details>;
 }
