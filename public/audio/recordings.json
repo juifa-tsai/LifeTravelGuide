@@ -8,10 +8,10 @@
     "voice": "Benji",
     "voiceId": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
     "voiceType": "preset",
-    "speechRate": -10,
+    "speechRate": 0,
     "generatedAt": "2026-11-13",
-    "generationId": "cfe96701-00ef-489d-89d3-e8f48b24b3f3",
-    "sha256": "acde801453812905291ba8b935359542746201d56a3788904c0ffcaa99b41218"
+    "generationId": "78263052-9444-4e38-9b50-4a4f5059a27b",
+    "sha256": "3459966b1751e22da3a646d83f8a15c3a0a0a155379a29ba98a5e11f08932bd0"
   },
   {
     "id": "lacto-vegetarian",
@@ -22,9 +22,9 @@
     "voice": "Benji",
     "voiceId": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
     "voiceType": "preset",
-    "speechRate": -10,
+    "speechRate": 0,
     "generatedAt": "2026-11-13",
-    "generationId": "78482024-08ea-4dbc-ba3a-9eb3926afc77",
-    "sha256": "2701e38a11068948f3af364348debe235f0313c46a92f7393641c8993953fab4"
+    "generationId": "20b11870-d472-4cd7-905a-b5259c537b82",
+    "sha256": "e597919ed94622f04e869a2fd5534f7acec8e99abdf9d1455182113e52625f71"
   }
 ]
