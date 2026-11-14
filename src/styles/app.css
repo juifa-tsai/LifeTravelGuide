@@ -64,7 +64,8 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .card-actions .button { font-size:14px; padding:0 10px; }
 .card-actions .text-action { font-size:14px; }
 .card-actions>.small { font-size:14px; }
-.transit-offset { margin:8px 0 0 38px; }
+.transit-offset { margin:8px 0 0 38px; display:grid; gap:8px; }
+.timeline-leading-transfers { margin-top:0; margin-bottom:16px; }
 .transit { border-radius:11px; background:#EDEBE7; }
 .transit summary { list-style:none; display:flex; align-items:center; gap:7px; min-height:44px; padding:9px 10px; font-size:14px; cursor:pointer; }
 .transit summary::-webkit-details-marker { display:none; }

@@ -33,7 +33,7 @@ export function DocumentsPage({ data }: { data:TravelData }) {
             </figure>}
           </article>)}</div>
           {group.category === '接駁' && <p className="document-footnote">11/15 19:55 預約接機 · 中部國際機場 → 伏見飯店。上車位置依司機通知。</p>}
-          {group.category === '住宿' && <p className="document-footnote">名古屋伏見舒適飯店 · 11/15 入住，11/18 10:00 前退房。含 11/16–18 早餐。</p>}
+          {group.category === '住宿' && <p className="document-footnote">名古屋伏見舒適飯店 · 11/15 入住，11/18 10:00 前退房。</p>}
         </section>;
       })}</div></div>
     <PhotoCredits places={data.places} documents={data.documents} />

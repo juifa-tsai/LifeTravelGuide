@@ -10,16 +10,18 @@ const data=loadData();
 const sample={JL8670:{orderNumber:'DEMO-ORDER-01',bookingReference:'DEMO01'},JL8671:{orderNumber:'DEMO-ORDER-01',bookingReference:'DEMO02'},hotel:{orderNumber:'DEMO-HOTEL-01'}};
 const encode=x=>Buffer.from(JSON.stringify(x)).toString('base64url');
 
-test('booking panels attach to five flight events and four hotel stays without attaching to meals or transfers',()=>{
+test('booking details appear once per outbound flight, return flight and initial hotel check-in',()=>{
  const mapped=data.itinerary.map(stop=>({stop,booking:basic.bookingForStop(stop)}));
- assert.equal(mapped.filter(x=>x.booking?.kind==='flight').length,5);
- assert.equal(mapped.filter(x=>x.booking?.kind==='hotel').length,4);
+ assert.equal(mapped.filter(x=>x.booking?.kind==='flight').length,2);
+ assert.equal(mapped.filter(x=>x.booking?.kind==='hotel').length,1);
  for(const {stop,booking} of mapped){
   if(stop.category==='早餐'||stop.category==='接駁')assert.equal(booking,undefined);
-  if(booking?.kind==='flight')assert.equal(booking.date,stop.date);
-  if(booking?.kind==='hotel')assert.equal(stop.placeId,'hotel');
+  if(booking?.kind==='flight'){assert.equal(booking.date,stop.date);assert(stop.summary.includes('起飛'));}
+  if(booking?.kind==='hotel'){assert.equal(stop.placeId,'hotel');assert.equal(stop.date,'2026-11-15');}
  }
- assert.equal(basic.bookingForStop({date:'2026-11-19',displayStatus:'固定航班',placeId:'ngo',category:'航班'}),undefined);
+ assert.deepEqual(mapped.filter(x=>x.booking).map(x=>x.booking.key),['JL8670','hotel','JL8671']);
+ for(const booking of [...basic.flightBookings,basic.hotelBooking])for(const field of ['carryOn','checked','breakfast'])assert.equal(field in booking,false);
+ assert.equal(basic.bookingForStop({date:'2026-11-19',displayStatus:'固定航班',placeId:'ngo',category:'航班',summary:'起飛'}),undefined);
 });
 test('both full flight schedules agree with the existing precise departure/arrival events and time zones',()=>{
  for(const flight of basic.flightBookings){

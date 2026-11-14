@@ -5,7 +5,7 @@ import { ExternalLink } from './ExternalLink';
 import { directions } from '../lib/mapLinks';
 import { legView } from '../lib/transit';
 
-export function TransitConnector({ leg, from, to }: { leg:Leg; from?:Place; to?:Place }) {
+export function TransitConnector({ leg, from, to, pickupTime }: { leg:Leg; from?:Place; to?:Place; pickupTime?:string }) {
   const view = legView(leg,from,to);
   if (!view || !from || !to) return null;
   const href = directions(from,to,leg.mode);
@@ -15,11 +15,12 @@ export function TransitConnector({ leg, from, to }: { leg:Leg; from?:Place; to?:
   </ExternalLink>;
 
   const category = leg.mode.includes('專車') ? '預約專車' : leg.mode === '航班' ? '航班' : '交通';
-  const overview = <><CategoryIcon category={category} size={17} /><span className="transit-label"><strong className="transit-route">{view.title}</strong><span className="transit-meta">{[view.lines || view.mode,view.time].filter(Boolean).join(' · ')}</span></span></>;
+  const overview = <><CategoryIcon category={category} size={17} /><span className="transit-label"><strong className="transit-route">{view.title}</strong><span className="transit-meta">{[pickupTime ? `預約接機 ${pickupTime}` : null,view.lines || view.mode,view.time].filter(Boolean).join(' · ')}</span></span></>;
   if (!view.note && view.steps.length <= 1) return <ExternalLink href={href} label={label} className="transit transit-direct">{overview}<ArrowUpRight size={15} aria-hidden="true" /></ExternalLink>;
   return <details className="transit"><summary>{overview}<ChevronDown className="chevron" size={15} /></summary>
     <div className="transit-details">
       {view.steps.length > 1 && <ol className="transit-steps">{view.steps.map((step,index) => <li key={index}><span>{step.line}</span><strong>{step.fromStation} → {step.toStation}</strong></li>)}</ol>}
+      {pickupTime && <p className="transit-note">日本時間 · 上車時間依入境與司機通知調整。</p>}
       {view.note && <p className="transit-note">{view.note}</p>}
       {leg.mode !== '航班' && <ExternalLink href={href} className="text-action" label={label}>路線導航<ArrowUpRight size={15} /></ExternalLink>}
     </div>
