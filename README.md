@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open **http://localhost:5173/LifeTravelGuide/**. The default route uses the Nagoya date, then remembers the last chosen day. Direct hash routes override this default:
+Open **http://localhost:5173/LifeTravelGuide/**. On launch, Japan time selects the matching travel day (11/15–18); dates outside the trip always select 11/15. Saved itinerary URLs reset to this default on a fresh load. Once open, date tabs remain freely selectable. Explicit utility links remain available:
 
 - `#/day/2026-11-15` — arrival, booked transfer, flexible dinner
 - `#/day/2026-11-16` — castle and antiques
@@ -184,3 +184,5 @@ Distances are local calculations from verified place coordinates; unknown coordi
 求助頁的附近超商搜尋以白色卡片與語音播放相同的大按鈕呈現；踩點頁仍使用頂部商店 icon。圖片不再連到易失效的 Maps 照片檢視器，而是使用該地點原本的 `mapsUrl`，圖片載入失敗時也保留位置連結。每張卡片及交通圖下方的出處註解已移除，圖片與交通圖的作者及授權集中到文件頁底部的「圖片授權」，原始授權／處理紀錄與示意標籤保留。
 
 機場接送於時間軸的「中部國際機場 → 名古屋伏見舒適飯店」交通區塊展開後，顯示 Trip.com 接機訂單、訂單編號、本機編輯按鈕及 `documents.json` 接駁分類的 Google Drive 訂單連結。已核對既有接機憑證中的平台與 11/15 19:55 日本時間；編號沿用同一個本機儲存鍵，以 `airport_transfer` 記錄，支援私人 fragment 匯入並保留原有航班／飯店資料。未匯入時顯示「—」，不把實際編號放入公開網站；離線仍可查看本機編號，Drive 連結需連線。
+
+開啟網站或重新整理行程頁時，以日本日期選擇當日；旅行期間外固定開啟第一天，不再讀取或儲存上次選擇的日期。App 跨日本午夜從背景返回行程頁時也會更新日期；手動切換日期不受影響。文件、踩點、求助及私人匯入直連仍保留。各頁往下滑超過 320 px 後，右下角會出現白底圓形向上箭頭，點擊平滑回到頂端；按鈕避開底部分頁及更新通知，並尊重系統減少動態效果設定。

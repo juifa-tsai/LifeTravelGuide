@@ -1,8 +1,10 @@
-import { lazy, Suspense, useEffect, useState, Component, type ReactNode } from 'react';
-import { HashRouter, NavLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { lazy, Suspense, useEffect, useRef, useState, Component, type ReactNode } from 'react';
+import { HashRouter, NavLink, Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { BookOpen, CalendarDays, MapPin, Files, CircleHelp, WifiOff, RefreshCw, X } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import type { TravelData } from '../lib/types';
+import { BackToTop } from '../components/BackToTop';
+import { japanDate, launchHash } from '../lib/entryDay';
 import { BookingProvider } from '../components/BookingProvider';
 import { defaultDay, loadData } from '../lib/data';
 import { useStoredState } from '../lib/storage';
@@ -39,13 +41,26 @@ function TravelApp({ data }: { data:TravelData }) {
   const location = useLocation();
   const online = useOnline();
   const [visited,setVisited] = useStoredState<Record<string,boolean>>('visited', {});
-  const [homeDay] = useState(() => defaultDay(data.trip.days));
+  const [homeDay,setHomeDay] = useState(() => defaultDay(data.trip.days));
+  const lastDate = useRef(japanDate());
+  const navigate = useNavigate();
   const activeDay = data.trip.days.find(d => location.pathname.endsWith(d.date));
-  const dayUrl = `/day/${activeDay?.date ?? defaultDay(data.trip.days)}`;
+  const dayUrl = `/day/${activeDay?.date ?? homeDay}`;
   useEffect(() => { window.scrollTo({ top:0, behavior:'instant' }); }, [location.pathname]);
   useEffect(() => {
     document.title = `${activeDay ? `${activeDay.title} · ${activeDay.date.slice(5).replace('-','/')}` : location.pathname === '/places' ? '踩點清單' : location.pathname === '/documents' ? '重要文件' : location.pathname === '/audio' ? '求助' : '名古屋'}｜旅の手帖`;
   }, [activeDay, location.pathname]);
+  useEffect(() => {
+    function resume() {
+      if (document.visibilityState !== 'visible' || lastDate.current === japanDate()) return;
+      lastDate.current = japanDate();
+      const day = defaultDay(data.trip.days);
+      setHomeDay(day);
+      if (location.pathname.startsWith('/day/')) navigate(`/day/${day}`,{replace:true});
+    }
+    document.addEventListener('visibilitychange',resume);
+    return () => document.removeEventListener('visibilitychange',resume);
+  },[data.trip.days,location.pathname,navigate]);
   const nav = [
     { url:dayUrl, label:'行程', icon:CalendarDays, active:location.pathname.startsWith('/day/') },
     { url:'/places', label:'踩點', icon:MapPin, active:location.pathname === '/places' },
@@ -62,13 +77,23 @@ function TravelApp({ data }: { data:TravelData }) {
       <Route path="*" element={<Navigate to={`/day/${homeDay}`} replace />} />
     </Routes></BookingProvider></main>
     <nav className="bottom-nav" aria-label="主選單">{nav.map(item => <NavLink key={item.label} to={item.url} className={item.active ? 'active' : ''} aria-current={item.active ? 'page' : undefined}><item.icon size={22} strokeWidth={1.7} /><span>{item.label}</span></NavLink>)}</nav>
-    <UpdateNotice />
+    <UpdateNotice /><BackToTop />
   </div>;
 }
 export default function App() {
   const [data,setData] = useState<TravelData | null>(null);
   const [error,setError] = useState(false);
-  useEffect(() => { let active = true; loadData().then(value => { if (active) setData(value); }).catch(() => { if (active) setError(true); }); return () => { active = false; }; }, []);
+  useEffect(() => {
+    let active = true;
+    loadData().then(value => {
+      if (!active) return;
+      const url = new URL(window.location.href);
+      url.hash = launchHash(url.hash,value.trip.days);
+      window.history.replaceState(window.history.state,'',url);
+      setData(value);
+    }).catch(() => { if (active) setError(true); });
+    return () => { active = false; };
+  },[]);
   if (error) return <LoadError />;
   if (!data) return <main className="load-state" role="status"><BookOpen size={36} /><h1>打開旅行手帖…</h1><p>正在準備四天的名古屋時光。</p></main>;
   return <ErrorBoundary><HashRouter><TravelApp data={data} /></HashRouter></ErrorBoundary>;

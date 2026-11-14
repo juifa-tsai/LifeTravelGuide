@@ -1,6 +1,7 @@
 import type { Place } from './types';
 
-export const japanDate = (now = new Date()) => new Intl.DateTimeFormat('sv-SE', { timeZone:'Asia/Tokyo' }).format(now);
+import { japanDate } from './entryDay';
+export { japanDate } from './entryDay';
 const weekdays = '日一二三四五六';
 
 export function todayHours(place: Place, date = japanDate()): string {

@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Bookmark, ArrowRight, Sunrise, Sun, Moon } from 'lucide-react';
 import type { TravelData, Day } from '../lib/types';
 import { stopId, shortDate } from '../lib/data';
-import { writeStored } from '../lib/storage';
 import { DaySelector } from '../components/DaySelector';
 import { DayMap, type MapPinData } from '../components/DayMap';
 import { PlaceCard } from '../components/PlaceCard';
@@ -22,7 +21,6 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
   const periods = useMemo(() => groupTimeline(entries.map(entry=>entry.stop)), [entries]);
   const hotel = data.places.find(place=>place.category === '住宿');
   const mapStops = stops.filter(stop=>stop.category !== '早餐');
-  useEffect(() => { writeStored('last-day',day.date); }, [day.date]);
   function select(pin:MapPinData) {
     const target = entries.find(entry=>entry.sourceStops.includes(pin.stop))?.stop;
     setSelected(pin.place.id); setHighlightedStop(target ? stopId(target) : null);

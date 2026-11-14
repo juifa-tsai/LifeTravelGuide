@@ -9,7 +9,10 @@ async function moduleFrom(path, replace = source => source) {
   const { outputText } = ts.transpileModule(source,{ compilerOptions:{ module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022 } });
   return import(`data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`);
 }
-const hours = await moduleFrom('../src/lib/placeHours.ts');
+const entryDaySource = readFileSync(new URL('../src/lib/entryDay.ts',import.meta.url),'utf8');
+const entryDayJs = ts.transpileModule(entryDaySource,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const entryDayUrl = `data:text/javascript;base64,${Buffer.from(entryDayJs).toString('base64')}`;
+const hours = await moduleFrom('../src/lib/placeHours.ts',source=>source.replaceAll("'./entryDay'",JSON.stringify(entryDayUrl)));
 const boundary = JSON.parse(readFileSync(new URL('../src/data/nagoyaBoundary.json',import.meta.url),'utf8'));
 const geo = await moduleFrom('../src/lib/distances.ts', source => source.replace(/import boundary from [^;]+;/,`const boundary = ${JSON.stringify(boundary)};`));
 const data = loadData();
