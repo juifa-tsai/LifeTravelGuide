@@ -37,3 +37,43 @@ export function todayCaption(date = japanDate()): string {
   const day = new Date(`${date}T00:00:00Z`).getUTCDay();
   return `${Number(date.slice(5,7))}/${Number(date.slice(8))}（${weekdays[day]}）日本時間`;
 }
+
+export type OpeningState = 'open' | 'closed' | 'unknown';
+export interface OpeningInfo { state:OpeningState; hoursText:string }
+export const openingLabels:Record<OpeningState,string> = {open:'營業中',closed:'未營業',unknown:'營業狀態待確認'};
+const japanClock = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+
+function openingRanges(text:string):[number,number][] | null {
+  if (/待確認|待核實|未確認|可能|各店|依現場|戶外|入住/.test(text)) return null;
+  if (text === '今日公休') return [];
+  if (/^(24\s*小時|24h)$/i.test(text)) return [[0,1440]];
+  const ranges:[number,number][] = [];
+  for (const match of text.normalize('NFKC').matchAll(/(\d{1,2}):([0-5]\d)\s*[–—~～〜-]\s*(翌日?|隔日)?\s*(\d{1,2}):([0-5]\d)/g)) {
+    const start = Number(match[1])*60+Number(match[2]);
+    let end = Number(match[4])*60+Number(match[5]);
+    if (start >= 1440 || end > 2880 || (start === end && !match[3])) return null;
+    if ((match[3] && end < 1440) || end < start) end += 1440;
+    ranges.push([start,end]);
+  }
+  return ranges.length ? ranges : null;
+}
+
+// This is a schedule estimate, not a live report from the business. Use both
+// calendar days so yesterday's late service can remain open on a closed day.
+export function openingInfo(place:Place, now = new Date()):OpeningInfo {
+  if (!Number.isFinite(now.getTime())) return {state:'unknown',hoursText:'時段待確認'};
+  const date = japanDate(now);
+  const hoursText = todayHours(place,date);
+  if (/營業狀態待確認|營業狀態未確認/.test(place.hoursNote || '')) return {state:'unknown',hoursText:'營業狀態待確認'};
+  const [hour,minute] = japanClock.format(now).split(':').map(Number);
+  const minutes = hour*60+minute;
+  const today = openingRanges(hoursText);
+  if (today?.some(([start,end])=>minutes >= start && minutes < end)) return {state:'open',hoursText};
+  const previousDate = new Date(Date.parse(`${date}T00:00:00Z`)-86400000).toISOString().slice(0,10);
+  const overnight = openingRanges(todayHours(place,previousDate))?.find(([start,end])=>minutes+1440 >= start && minutes+1440 < end);
+  if (overnight) {
+    const end = overnight[1]%1440;
+    return {state:'open',hoursText:`跨日營業至 ${String(Math.floor(end/60)).padStart(2,'0')}:${String(end%60).padStart(2,'0')}`};
+  }
+  return {state:today === null ? 'unknown' : 'closed',hoursText};
+}

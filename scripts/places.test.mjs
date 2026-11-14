@@ -95,3 +95,40 @@ test('places sort by unrounded distance from the hotel, keeping unknown coordina
   const same = [{id:'first',lat:hotel.lat,lng:hotel.lng},{id:'second',lat:hotel.lat,lng:hotel.lng}];
   assert.deepEqual(geo.byHotelDistance(same,hotel).map(p=>p.id),['first','second']);
 });
+
+test('opening lights use Japan time, inclusive opening and exclusive closing times, including lunch breaks',()=>{
+ const at=(id,time)=>hours.openingInfo(place(id),new Date(`2026-11-17T${time}:00+09:00`)).state;
+ for(const [time,state]of [['10:59','closed'],['11:00','open'],['14:59','open'],['15:00','closed'],['16:59','closed'],['17:00','open'],['22:59','open'],['23:00','closed']])assert.equal(at('khaja_ghar',time),state,time);
+ assert.equal(hours.openingInfo(place('khaja_ghar'),new Date('2026-11-17T02:00:00Z')).state,'open');
+ assert.equal(hours.openingInfo(place('shrub'),new Date('2026-11-17T23:30:00+08:00')).state,'closed');
+});
+
+test('overnight service belongs to yesterday, including when today is closed and across month boundaries',()=>{
+ const fixture={...place('recit'),closedText:null,hoursNote:undefined,weeklyHours:{'0':'17:00–翌04:00','1':null,'2':null,'3':null,'4':null,'5':null,'6':null}};
+ assert.deepEqual(hours.openingInfo(fixture,new Date('2026-11-16T01:00:00+09:00')),{state:'open',hoursText:'跨日營業至 04:00'});
+ assert.equal(hours.openingInfo(fixture,new Date('2026-11-16T04:00:00+09:00')).state,'closed');
+ assert.equal(hours.openingInfo(fixture,new Date('2026-11-17T01:00:00+09:00')).state,'closed');
+ assert.equal(hours.openingInfo(fixture,new Date('2026-12-01T01:00:00+09:00')).state,'closed','Monday had no service to carry into Tuesday');
+ assert.equal(hours.openingInfo(place('nine_cafe_fushimi'),new Date('2026-12-01T03:59:59+09:00')).state,'open');
+ assert.equal(hours.openingInfo(place('nine_cafe_fushimi'),new Date('2026-12-01T04:00:00+09:00')).state,'closed');
+ assert.equal(hours.openingInfo(place('durbar_sakae'),new Date('2026-11-18T01:00:00+09:00')).state,'closed','Tuesday service ended at 22:00');
+});
+
+test('ordinary and nth-week closures are gray while unresolved or outdoor hours stay unknown',()=>{
+ for(const [id,date]of [['anzu','2026-11-16'],['fukiage','2026-11-10'],['barns','2026-11-17']])assert.equal(hours.openingInfo(place(id),new Date(date+'T18:00:00+09:00')).state,'closed');
+ assert.equal(hours.openingInfo(place('fukiage'),new Date('2026-11-17T18:00:00+09:00')).state,'open');
+ for(const [id,date]of [['bio_terrace','2026-11-16'],['coco_fushimi','2026-11-15'],['mihos_grains','2026-11-14'],['nagoya_station','2026-11-17'],['osu_street','2026-11-17'],['shirokawa','2026-11-17']])assert.equal(hours.openingInfo(place(id),new Date(date+'T12:00:00+09:00')).state,'unknown',id);
+ const pending={...place('fukiage'),closedText:'待確認'};
+ assert.equal(hours.openingInfo(pending,new Date('2026-11-17T12:00:00+09:00')).state,'unknown');
+});
+
+test('24-hour and inferred overnight schedules work without treating 24:00 as another open morning',()=>{
+ const fixture=(schedule)=>({...place('recit'),closedText:null,hoursNote:undefined,weeklyHours:Object.fromEntries(Array.from({length:7},(_,day)=>[day,schedule]))});
+ for(const time of ['00:00','12:00','23:59'])assert.equal(hours.openingInfo(fixture('24 小時'),new Date(`2026-11-17T${time}:00+09:00`)).state,'open');
+ assert.equal(hours.openingInfo(fixture('22:00–02:00'),new Date('2026-11-17T01:00:00+09:00')).state,'open');
+ assert.equal(hours.openingInfo(fixture('22:00–翌02:00'),new Date('2026-11-17T02:00:00+09:00')).state,'closed');
+ assert.equal(hours.openingInfo(fixture('22:00–26:00'),new Date('2026-11-17T01:00:00+09:00')).state,'open');
+ assert.equal(hours.openingInfo(fixture('16:00–24:00'),new Date('2026-11-17T00:00:00+09:00')).state,'closed');
+ for(const schedule of ['00:00–00:00','99:00–100:00','11:00–15:00／晚間待確認'])assert.equal(hours.openingInfo(fixture(schedule),new Date('2026-11-17T12:00:00+09:00')).state,'unknown');
+ assert.equal(hours.openingInfo(place('recit'),new Date('invalid')).state,'unknown');
+});

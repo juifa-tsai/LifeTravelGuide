@@ -12,7 +12,7 @@ import { ExternalLink } from '../components/ExternalLink';
 import { compactTimeline, groupTimeline, periodLabels, type TimelineTransfer } from '../lib/timeline';
 import { todayHours } from '../lib/placeHours';
 const periodIcons = { morning:Sunrise, afternoon:Sun, evening:Moon };
-export function DayPage({ data, day }: { data:TravelData; day:Day }) {
+export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; onSelectDay:(date:string)=>void }) {
   const [selected, setSelected] = useState<string | null>(null);
   const [focusVersion,setFocusVersion] = useState(0);
   const [highlightedStop, setHighlightedStop] = useState<string | null>(null);
@@ -42,7 +42,7 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
       <h1>{shortDate(day.date)}<span className="heading-weekday">（{day.weekday}）</span>{day.title}</h1>
       <p>日本時間</p>
     </header>
-    <DaySelector days={data.trip.days} />
+    <DaySelector days={data.trip.days} onSelect={onSelectDay} />
     <div className="day-layout"><div className="map-column"><DayMap key={day.date} stops={mapStops} places={data.places} selected={selected} onSelect={select} onReset={() => setSelected(null)} onFavoriteSelect={id => focus(id)} focusVersion={focusVersion} />
 
     </div>
