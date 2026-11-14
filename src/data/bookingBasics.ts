@@ -1,5 +1,5 @@
 import type { Leg, Stop } from '../lib/types';
-export type BookingKey = 'JL8670' | 'JL8671' | 'hotel' | 'airport_transfer';
+export type BookingKey = 'JL8670' | 'JL8671' | 'hotel' | 'airport_transfer' | 'taiwan_transfer';
 export interface FlightBooking {
   kind:'flight'; key:'JL8670' | 'JL8671'; date:string; carrier:string; cabin:string; aircraft:string;
   from:{code:string;airport:string;terminal:string;time:string;zone:string};
@@ -9,10 +9,11 @@ export interface HotelBooking {
   kind:'hotel'; key:'hotel'; name:string; room:string; stay:string; checkIn:string; checkOut:string;
 }
 export interface TransferBooking {
-  kind:'transfer'; key:'airport_transfer'; name:string; platform:string;
+  kind:'transfer'; key:'airport_transfer' | 'taiwan_transfer'; name:string; platform:string; date?:string;
 }
 export type BookingBasics = FlightBooking | HotelBooking | TransferBooking;
 export const transferBooking:TransferBooking = {kind:'transfer',key:'airport_transfer',name:'接機訂單',platform:'Trip.com'};
+export const taiwanTransferBooking:TransferBooking = {kind:'transfer',key:'taiwan_transfer',name:'返台接駁訂單',platform:'全鋒機場接送',date:'2026-11-18'};
 export function bookingForTransfer(leg:Leg):TransferBooking | undefined {
   if (leg.date === '2026-11-15' && leg.fromPlaceId === 'ngo' && leg.toPlaceId === 'hotel' && leg.mode === '預約專車') return transferBooking;
 }

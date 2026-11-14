@@ -7,6 +7,8 @@ import { DaySelector } from '../components/DaySelector';
 import { DayMap, type MapPinData } from '../components/DayMap';
 import { ReservationBadge } from '../components/ReservationBadge';
 import { PlaceCard } from '../components/PlaceCard';
+import { TaiwanTransferCard } from '../components/TaiwanTransferCard';
+import { taiwanTransferBooking } from '../data/bookingBasics';
 import { TransitConnector } from '../components/TransitConnector';
 import { PlaceImage } from '../components/PlaceImage';
 import { ExternalLink } from '../components/ExternalLink';
@@ -37,17 +39,18 @@ export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; 
     return <TransitConnector key={`${leg.date}-${leg.fromPlaceId}-${leg.toPlaceId}`} leg={leg} from={data.places.find(place=>place.id === leg.fromPlaceId)} to={data.places.find(place=>place.id === leg.toPlaceId)} pickupTime={transfer.pickupTime} documents={data.documents} />;
   }
   const arrivalDinner = day.date === '2026-11-15';
+  const returnTransfer = day.date === taiwanTransferBooking.date;
   const candidateIds = arrivalDinner ? ['molnoda','coco_fushimi','nine_cafe_fushimi','kazan','durbar_sakae','anzu'] : day.candidateIds ?? (day.date === '2026-11-16' ? ['le_jardin'] : day.date === '2026-11-17' ? ['cereza','recit'] : []);
   return <>
     <header className="page-heading">
       <h1>{shortDate(day.date)}<span className="heading-weekday">（{day.weekday}）</span>{day.title}</h1>
-      <p>日本時間</p>
+      <p>{returnTransfer ? '日本／台灣時間' : '日本時間'}</p>
     </header>
     <DaySelector days={data.trip.days} onSelect={onSelectDay} />
     <div className="day-layout"><div className="map-column"><DayMap key={day.date} stops={mapStops} places={data.places} selected={selected} onSelect={select} onReset={() => setSelected(null)} onFavoriteSelect={id => focus(id)} focusVersion={focusVersion} />
 
     </div>
-    <div className="timeline-column"><div className="section-heading"><h2>今天的行程</h2><span className="small muted">{entries.length} 個安排</span></div>
+    <div className="timeline-column"><div className="section-heading"><h2>今天的行程</h2><span className="small muted">{entries.length + Number(returnTransfer)} 個安排</span></div>
       {leadingTransfers.length > 0 && <div className="timeline-leading-transfers transit-offset">{leadingTransfers.map(transfer)}</div>}
       <section className="timeline" aria-label="正式行程時間軸">{periods.map(period => {
         const PeriodIcon = periodIcons[period.period];
@@ -60,7 +63,7 @@ export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; 
               <PlaceCard stop={stop} place={place} hotel={hotel} checkInTime={entry.checkInTime} documents={data.documents} selected={highlightedStop === stopId(stop)} onFocus={focus} />
               {entry.transfers.length > 0 && <div className="transit-offset">{entry.transfers.map(transfer)}</div>}
             </div>;
-          })}</div></section>;
+          })}{returnTransfer && period === periods.at(-1) && <div className="timeline-item"><TaiwanTransferCard /></div>}</div></section>;
       })}</section>
       {candidateIds.length > 0 && <section className="candidates"><div className="section-heading"><h2><Bookmark size={17} />{arrivalDinner ? '今晚晚餐候選' : '口袋候選'}</h2><Link to="/places" className="text-action">全部收藏<ArrowUpRight size={14} /></Link></div>
         {arrivalDinner && <p className="small muted">依抵達時間彈性選擇，出發前確認營業與奶素供餐。</p>}

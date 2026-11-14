@@ -105,3 +105,24 @@ test('partial vehicle imports preserve the same pickup order and all other saved
 test('public datasets cannot contain private driver or vehicle fields',()=>{
  for(const field of ['driverName','driverLanguage','licensePlate','vehicleModel','vehicleColor']){const changed=structuredClone(data);changed.trip[field]='DEMO';assert(validateData(changed).some(e=>e.includes('sensitive field')),field);}
 });
+
+test('Taiwan return transfer round-trips separately from all four existing bookings',()=>{
+ const taiwan={orderNumber:'DEMO-RETURN-01',verificationCode:'1234',destinationAddress:'台北市測試路1號',orderUrl:'https://www.tms.tw/ABC123',registeredTime:'14:40',vehicleModel:'四人座'};
+ const records={...sample,taiwan_transfer:taiwan};
+ assert.deepEqual(local.parsePrivateBookings(records),records);assert.deepEqual(local.decodeBookingImport(encode(records)),records);
+ assert.equal(basic.taiwanTransferBooking.key,'taiwan_transfer');assert.equal(basic.taiwanTransferBooking.date,'2026-11-18');assert.equal(basic.taiwanTransferBooking.platform,'全鋒機場接送');
+ assert.equal('orderNumber' in basic.taiwanTransferBooking,false);assert.equal('verificationCode' in basic.taiwanTransferBooking,false);assert.equal('destinationAddress' in basic.taiwanTransferBooking,false);
+ const merged=local.mergeBookingImport(sample,{taiwan_transfer:taiwan});assert.deepEqual(merged,records);assert.deepEqual(merged.airport_transfer,sample.airport_transfer);
+ const old=Object.getOwnPropertyDescriptor(globalThis,'localStorage');let stored;
+ Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:()=>stored??null,setItem:(_,v)=>{stored=v;}}});
+ try{assert(local.savePrivateBookings(records));assert.deepEqual(local.loadPrivateBookings(),records);}finally{if(old)Object.defineProperty(globalThis,'localStorage',old);else delete globalThis.localStorage;}
+});
+test('return-only verification codes, home address and order URL are bounded and cannot appear on Japanese bookings',()=>{
+ for(const key of ['JL8670','JL8671','hotel','airport_transfer'])for(const [field,value]of Object.entries({verificationCode:'1234',destinationAddress:'台北市測試路1號',orderUrl:'https://www.tms.tw/ABC123',registeredTime:'14:40'}))assert.equal(local.parsePrivateBookings({[key]:{[field]:value}}),null,`${key}/${field}`);
+ for(const code of ['123','12345','123a','<script>',1234])assert.equal(local.parsePrivateBookings({taiwan_transfer:{verificationCode:code}}),null);
+ for(const value of ['javascript:alert(1)','http://www.tms.tw/ABC123','https://evil.example/ABC123','https://www.tms.tw.evil.example/ABC123','https://user:pass@www.tms.tw/ABC123','https://www.tms.tw:8443/ABC123','https://www.tms.tw/ABC123?code=1234','https://www.tms.tw/ABC123#1234','https://www.tms.tw/ABC123/extra'])assert.equal(local.parsePrivateBookings({taiwan_transfer:{orderUrl:value}}),null,value);
+ assert.equal(local.isTaiwanOrderUrl('https://www.tms.tw/ABC123'),true);
+ for(const value of ['<script>','Test\nAddress','x'.repeat(121)])assert.equal(local.parsePrivateBookings({taiwan_transfer:{destinationAddress:value}}),null);
+ for(const value of ['24:00','14:60','14:40+08:00'])assert.equal(local.parsePrivateBookings({taiwan_transfer:{registeredTime:value}}),null);
+ for(const field of ['verificationCode','destinationAddress','orderUrl']){const changed=structuredClone(data);changed.trip[field]='DEMO';assert(validateData(changed).some(e=>e.includes('sensitive field')));}
+});

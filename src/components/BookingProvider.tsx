@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import type { BookingKey } from '../data/bookingBasics';
+import { taiwanTransferBooking, type BookingKey } from '../data/bookingBasics';
 import { bookingStorageKey, decodeBookingImport, loadPrivateBookings, mergeBookingImport, parsePrivateBookings, savePrivateBookings, type PrivateBooking, type PrivateBookings } from '../lib/privateBookings';
 const Context = createContext<{ records:PrivateBookings; update:(key:BookingKey,value:PrivateBooking)=>void }>({records:{},update:()=>{}});
 export const useBookingDetails = () => useContext(Context);
@@ -15,14 +15,16 @@ export function BookingProvider({ children }:{children:ReactNode}) {
   }
   useEffect(()=>{
     const params = new URLSearchParams(location.search);
-    if (!params.has('bookings') && !params.has('pickup')) return;
-    const incoming = decodeBookingImport(params.get('bookings') ?? params.get('pickup'));
+    if (!params.has('bookings') && !params.has('pickup') && !params.has('returnTransfer')) return;
+    const returnImport = params.has('returnTransfer');
+    const incoming = decodeBookingImport(params.get('bookings') ?? params.get('pickup') ?? params.get('returnTransfer'));
     if (incoming) persist(mergeBookingImport(loadPrivateBookings(),incoming));
     else setMessage('訂單匯入連結無效，可在卡片內填寫。');
     params.delete('bookings');
     params.delete('pickup');
+    params.delete('returnTransfer');
     const rest = params.toString();
-    navigate({pathname:location.pathname,search:rest ? `?${rest}` : ''},{replace:true});
+    navigate({pathname:returnImport && incoming?.taiwan_transfer ? `/day/${taiwanTransferBooking.date}` : location.pathname,search:rest ? `?${rest}` : ''},{replace:true});
   },[location.search,location.pathname,navigate]);
   useEffect(()=>{
     const changed = (event:StorageEvent) => {if (event.key === bookingStorageKey || event.key === null) setRecords(loadPrivateBookings());};
