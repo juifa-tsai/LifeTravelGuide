@@ -2,6 +2,7 @@ import { LockKeyhole, ArrowUpRight, FileText, Plane, BedDouble, CarFront, TrainF
 import type { TravelData } from '../lib/types';
 import { ExternalLink } from '../components/ExternalLink';
 import { EntryQrCard } from '../components/EntryQrCard';
+import { PhotoCredits } from '../components/PhotoCredits';
 const groups = [
   { category:'機票', title:'往返機票', icon:Plane },
   { category:'住宿', title:'住宿預訂', icon:BedDouble },
@@ -28,12 +29,13 @@ export function DocumentsPage({ data }: { data:TravelData }) {
                 <img src={`${import.meta.env.BASE_URL}${document.preview.imageUrl}`} alt={document.preview.alt} width={document.preview.width} height={document.preview.height} loading="lazy" />
                 <span className="guide-zoom"><Maximize2 size={13} aria-hidden="true" />點圖放大</span>
               </a>
-              <figcaption><span>{document.description}</span><small>圖：{document.preview.attribution}</small></figcaption>
+              <figcaption><span>{document.description}</span></figcaption>
             </figure>}
           </article>)}</div>
           {group.category === '接駁' && <p className="document-footnote">11/15 19:55 預約接機 · 中部國際機場 → 伏見飯店。上車位置依司機通知。</p>}
           {group.category === '住宿' && <p className="document-footnote">名古屋伏見舒適飯店 · 11/15 入住，11/18 10:00 前退房。含 11/16–18 早餐。</p>}
         </section>;
       })}</div></div>
+    <PhotoCredits places={data.places} documents={data.documents} />
   </>;
 }

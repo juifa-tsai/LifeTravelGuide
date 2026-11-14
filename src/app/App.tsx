@@ -1,15 +1,16 @@
-import { useEffect, useState, Component, type ReactNode } from 'react';
+import { lazy, Suspense, useEffect, useState, Component, type ReactNode } from 'react';
 import { HashRouter, NavLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { BookOpen, CalendarDays, MapPin, Files, CircleHelp, WifiOff, RefreshCw, X } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import type { TravelData } from '../lib/types';
+import { BookingProvider } from '../components/BookingProvider';
 import { defaultDay, loadData } from '../lib/data';
 import { useStoredState } from '../lib/storage';
 import { useOnline } from '../lib/connectivity';
 import { DayPage } from '../pages/DayPage';
 import { PlacesPage } from '../pages/PlacesPage';
 import { DocumentsPage } from '../pages/DocumentsPage';
-import { AudioPage } from '../pages/AudioPage';
+const AudioPage = lazy(()=>import('../pages/AudioPage').then(module=>({default:module.AudioPage})));
 
 class ErrorBoundary extends Component<{ children:ReactNode }, { failed:boolean }> {
   state = { failed:false };
@@ -53,13 +54,13 @@ function TravelApp({ data }: { data:TravelData }) {
   ];
   return <div className="app-shell"><a href="#main-content" className="skip-link" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>跳至主要內容</a>
     {!online && <div className="offline-banner" role="status"><WifiOff size={16} /><span>目前離線 · 已快取行程可查看，地圖與外部文件需連線。</span></div>}
-    <main id="main-content" tabIndex={-1} className="main-content"><Routes>
+    <main id="main-content" tabIndex={-1} className="main-content"><BookingProvider><Routes>
       <Route path="/day/:date" element={<DayRoute data={data} />} />
       <Route path="/places" element={<PlacesPage data={data} visited={visited} setVisited={setVisited} />} />
       <Route path="/documents" element={<DocumentsPage data={data} />} />
-      <Route path="/audio" element={<AudioPage />} />
+      <Route path="/audio" element={<Suspense fallback={<p role="status">載入中…</p>}><AudioPage /></Suspense>} />
       <Route path="*" element={<Navigate to={`/day/${homeDay}`} replace />} />
-    </Routes></main>
+    </Routes></BookingProvider></main>
     <nav className="bottom-nav" aria-label="主選單">{nav.map(item => <NavLink key={item.label} to={item.url} className={item.active ? 'active' : ''} aria-current={item.active ? 'page' : undefined}><item.icon size={22} strokeWidth={1.7} /><span>{item.label}</span></NavLink>)}</nav>
     <UpdateNotice />
   </div>;

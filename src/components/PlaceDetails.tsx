@@ -27,6 +27,5 @@ export function PlaceDetails({ place, hotel, date, visited, onVisit, onFocus }: 
       {hasCoordinates(place) && <button type="button" className="collection-icon-action" onClick={() => onFocus(place.id,true)} aria-label={`在地圖查看 ${place.nameZh}`}><LocateFixed size={20} aria-hidden="true" /></button>}
       {source && <ExternalLink href={source} className="collection-icon-action" label={`${place.nameZh} 的資料來源`}><Info size={19} aria-hidden="true" /><span className="sr-only">資料來源</span></ExternalLink>}
     </div>{onVisit && <label className={`visited-checkbox ${visited ? 'checked' : ''}`}><input type="checkbox" checked={!!visited} onChange={event => onVisit(event.target.checked)} aria-label={`${place.nameZh} 已造訪`} /><span className="checkbox-visual">{visited && <Check size={12} />}</span>{visited ? '已造訪' : '標記造訪'}</label>}</div>
-    {place.imageAttribution && place.imageSourceUrl && <ExternalLink href={place.imageSourceUrl} className="place-photo-credit" label={`照片來源：${place.imageAttribution}`}>圖：{place.imageAttribution}</ExternalLink>}
   </div>;
 }

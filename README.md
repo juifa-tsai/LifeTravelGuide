@@ -87,7 +87,7 @@ Explicit Excel coordinates take precedence over the supplement, but need a coord
 
 All 32 real locations now use photographs of the matching place. The 23 former generic previews have been replaced with 16 storefront/entrance images, five interiors and two terraces. Twenty-two were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
 
-`scripts/storefront-photos.json` records the matched store name/address, photographer, original photo/viewer URL, capture date, view type and SHA-256 hashes. These personal noncommercial travel-reference screenshots retain the original photographers’ rights; they are **not CC-licensed or newly licensed by this repository**. Google Maps usage terms and the official source are recorded separately from the existing Commons CC licenses. Source and photographer links remain on cards and map popups. Full credits are in `public/images/credits.json`; Google Maps photos are not live API requests, and the app needs no Google API key.
+`scripts/storefront-photos.json` records the matched store name/address, photographer, original photo/viewer URL, capture date, view type and SHA-256 hashes. These personal noncommercial travel-reference screenshots retain the original photographers’ rights; they are **not CC-licensed or newly licensed by this repository**. Google Maps usage terms and the official source are recorded separately from the existing Commons CC licenses. Card and popup thumbnails open the matching place’s stable Google Maps location link. Per-card photographer captions have been removed; complete author/source/license attribution is grouped under the collapsed 圖片授權 section at the bottom of Documents. Historical photo-viewer URLs remain provenance records, not navigation targets. Full credits are in `public/images/credits.json`; Google Maps photos are not live API requests, and the app needs no Google API key.
 
 To recapture one reviewed image, install Playwright in your maintenance environment, then run `node scripts/capture-place-photo.mjs <placeId>`. An existing installation can be selected with `PLAYWRIGHT_MODULE_PATH` (module file path) and `CHROMIUM_PATH`. Inspect the result against its source and photographer, synchronize the corresponding `scripts/media.json` entry, rebuild credits with `python3 scripts/fetch-images.py`, then run `npm run import:xlsx` and the normal validation/tests/build. Captures do not replace a missing photo with an unrelated stock image; Excel reimports retain them by stable place ID.
 
@@ -165,10 +165,18 @@ Distances are local calculations from verified place coordinates; unknown coordi
 
 營業時間仍是一般資料，不是當日營業保證。Bio Terrace 官網目前無法開啟，餐廳平台標示營業狀態未確認；保留 Excel 的可選安排與地址，卡片及地圖明確標示需確認。Miho’s Kitchen Grains 的部分週六資訊有出入，晚餐須提前三天預約；ORIBIO 須至少前一天預約；「こ」VEGAN CAFE 以咖啡與甜點為主，未確認正餐。奶素仍需避開肉、魚、蛋、魚露、柴魚與動物性高湯，葷素店點餐時須確認醬汁與配料。
 
-介面維持原有卡片、地圖與半小時 hr 單位，移除所有數值前的波浪估算符號。語音分頁改名為「求助」，原有 `#/audio` 連結及 Benji 錄音保留；踩點與求助頁標題右側的商店 icon 會開啟 Google Maps 搜尋附近超商（包含 Lawson、全家、7-Eleven 等）。搜尋由 Google Maps 處理，網站不另行取得或傳送使用者座標；離線時仍可播放語音，外部 Maps 搜尋依既有離線規則停用。
+介面維持原有卡片、地圖與半小時 hr 單位，移除所有數值前的波浪估算符號。語音分頁改名為「求助」，原有 `#/audio` 連結及 Benji 錄音保留；踩點頁標題右側的商店 icon，以及求助頁最上方與語音播放相同樣式的大按鈕，會開啟 Google Maps 搜尋附近超商（包含 Lawson、全家、7-Eleven 等）。搜尋由 Google Maps 處理，網站不另行取得或傳送使用者座標；離線時仍可播放語音，外部 Maps 搜尋依既有離線規則停用。
 
 ## 入境 QR（僅存本機）
 
 文件頁最前方顯示 Visit Japan Web 入境審查及海關申報 QR，點圖可放大出示。首次可選擇原始 PNG／JPG／WebP 截圖（2 MB 內），或使用私人匯入連結；資料只存在目前瀏覽器的 `nagoya:entry-qr` localStorage，保留重新載入、切換頁面與離線使用。更換或移除只影響此瀏覽器，無跨裝置同步；清除瀏覽器資料後須重新匯入。
 
 私人連結使用 `#/documents?entryQr=<原始黑白模組>`，內容位於 URL fragment，不會成為 HTTP 路徑／查詢，也不會送到 GitHub Pages、Google 或其他服務。匯入後立即以 replace 移除該參數。渲染保留原始 QR 黑白模組與四格留白，不重新解讀／編碼入境資料，不以 AI 產生圖片。提供給使用者的實際碼須在本機驗證掃描內容與原圖逐位元組一致；不將原圖、碼內容、個人姓名或私人匯入連結放入 repository、公開 JSON、測試 fixture 或 PWA 快取。一般訪客只會看到自己的本機資料或匯入提示。私人匯入連結也應保留於私人對話；請在平常使用旅遊 APP 的同一個瀏覽器開啟。
+
+## 航班與住宿時間軸資料
+
+展開航班卡片可看完整起訖航廈、各地時刻、日本航空／經濟艙／訂單機型與行李額；入住、返回飯店及退房卡片共用房型、住宿晚數、入住退房時限與早餐資料。早餐及接駁卡不會混入航班／住宿訂單欄位。各卡片直接連結 `documents.json` 中對應的兩份私人 Drive 憑證。基本資料集中於 `src/data/bookingBasics.ts`，核對來源為既有電子行程單、機票訂單確認、入住憑證及住宿訂單；不改原始行程時刻或預約。
+
+訂單編號及航空公司訂位代號只存在瀏覽器 `nagoya:booking-details`，可用私人 `#/day/2026-11-15?bookings=<base64url>` 連結一次匯入，或在展開卡片按「編輯訂單」填寫。匯入後立即移除 fragment 參數，所有同一預訂的卡片共用資料；重新整理、切換日期或離線仍可看。只接受兩段航班與飯店的訂單編號／訂位代號，不保存 PIN、姓名、票號、付款或證件資訊。不把實際編號、私人連結或來源 PDF 放進 repository、公開 JSON、測試 fixture 或預快取；清除瀏覽器資料後需重新匯入。Drive 憑證維持原本權限，需連線及有權限的 Google 帳號才能開啟。
+
+求助頁的附近超商搜尋以白色卡片與語音播放相同的大按鈕呈現；踩點頁仍使用頂部商店 icon。圖片不再連到易失效的 Maps 照片檢視器，而是使用該地點原本的 `mapsUrl`，圖片載入失敗時也保留位置連結。每張卡片及交通圖下方的出處註解已移除，圖片與交通圖的作者及授權集中到文件頁底部的「圖片授權」，原始授權／處理紀錄與示意標籤保留。
