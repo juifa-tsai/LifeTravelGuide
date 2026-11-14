@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import type { BookingKey } from '../data/bookingBasics';
-import { bookingStorageKey, decodeBookingImport, loadPrivateBookings, parsePrivateBookings, savePrivateBookings, type PrivateBooking, type PrivateBookings } from '../lib/privateBookings';
+import { bookingStorageKey, decodeBookingImport, loadPrivateBookings, mergeBookingImport, parsePrivateBookings, savePrivateBookings, type PrivateBooking, type PrivateBookings } from '../lib/privateBookings';
 const Context = createContext<{ records:PrivateBookings; update:(key:BookingKey,value:PrivateBooking)=>void }>({records:{},update:()=>{}});
 export const useBookingDetails = () => useContext(Context);
 export function BookingProvider({ children }:{children:ReactNode}) {
@@ -15,11 +15,12 @@ export function BookingProvider({ children }:{children:ReactNode}) {
   }
   useEffect(()=>{
     const params = new URLSearchParams(location.search);
-    if (!params.has('bookings')) return;
-    const incoming = decodeBookingImport(params.get('bookings'));
-    if (incoming) persist({...loadPrivateBookings(),...incoming});
+    if (!params.has('bookings') && !params.has('pickup')) return;
+    const incoming = decodeBookingImport(params.get('bookings') ?? params.get('pickup'));
+    if (incoming) persist(mergeBookingImport(loadPrivateBookings(),incoming));
     else setMessage('訂單匯入連結無效，可在卡片內填寫。');
     params.delete('bookings');
+    params.delete('pickup');
     const rest = params.toString();
     navigate({pathname:location.pathname,search:rest ? `?${rest}` : ''},{replace:true});
   },[location.search,location.pathname,navigate]);

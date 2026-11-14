@@ -77,3 +77,31 @@ test('only the booked airport pickup exposes a transfer order, using the existin
  for(const other of data.legs.filter(other=>other!==leg))assert.equal(basic.bookingForTransfer(other),undefined);
  for(const changes of [{date:'2026-11-18'},{fromPlaceId:'hotel'},{toPlaceId:'tpe'},{mode:'步行'}])assert.equal(basic.bookingForTransfer({...leg,...changes}),undefined);
 });
+
+test('assigned transfer vehicle and driver fields support Japanese plates and Chinese text only on the pickup record',()=>{
+ const vehicle={licensePlate:'名古屋 500 あ 00-00',vehicleColor:'白色',vehicleModel:'Toyota Demo 3/4代',driverName:'Demo Driver',driverLanguage:'中文'};
+ const records={airport_transfer:vehicle};
+ assert.deepEqual(local.decodeBookingImport(encode(records)),records);
+ assert.deepEqual(local.parsePrivateBookings({airport_transfer:{...vehicle,driverName:'  Demo Driver  '}}),records);
+ for(const key of ['hotel','JL8670','JL8671'])assert.equal(local.parsePrivateBookings({[key]:vehicle}),null);
+ for(const value of ['<script>','Demo\nDriver','Demo\u0000Driver','https://example.com','x'.repeat(65)])assert.equal(local.parsePrivateBookings({airport_transfer:{driverName:value}}),null);
+ for(const field of ['phone','pin','passengerName','ticketNumber','__proto__'])assert.equal(local.decodeBookingImport(encode({airport_transfer:JSON.parse(`{"${field}":"demo"}`)})),null);
+ assert.equal(local.parsePrivateBookings({airport_transfer:{licensePlate:'x'.repeat(41)}}),null);
+ assert.equal(local.parsePrivateBookings({airport_transfer:{driverName:42}}),null);
+ const previous=Object.getOwnPropertyDescriptor(globalThis,'localStorage');let stored;
+ Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:()=>stored??null,setItem:(_,v)=>{stored=v;}}});
+ try{assert(local.savePrivateBookings(records));assert.deepEqual(local.loadPrivateBookings(),records);}finally{if(previous)Object.defineProperty(globalThis,'localStorage',previous);else delete globalThis.localStorage;}
+});
+test('partial vehicle imports preserve the same pickup order and all other saved bookings in either import order',()=>{
+ const original={...sample,airport_transfer:{orderNumber:'DEMO-TRANSFER-01',driverLanguage:'中文'}};
+ const incoming={airport_transfer:{licensePlate:'名古屋 500 あ 00-00',vehicleColor:'白色',driverName:'Demo Driver'}};
+ const snapshot=structuredClone(original);const merged=local.mergeBookingImport(original,incoming);
+ assert.deepEqual(merged,{...original,airport_transfer:{...original.airport_transfer,...incoming.airport_transfer}});
+ assert.deepEqual(original,snapshot);
+ const orderOnly={airport_transfer:{orderNumber:'DEMO-TRANSFER-02'}};
+ assert.deepEqual(local.mergeBookingImport(merged,orderOnly).airport_transfer,{...merged.airport_transfer,...orderOnly.airport_transfer});
+ assert.deepEqual(local.mergeBookingImport(merged,{}),merged);
+});
+test('public datasets cannot contain private driver or vehicle fields',()=>{
+ for(const field of ['driverName','driverLanguage','licensePlate','vehicleModel','vehicleColor']){const changed=structuredClone(data);changed.trip[field]='DEMO';assert(validateData(changed).some(e=>e.includes('sensitive field')),field);}
+});

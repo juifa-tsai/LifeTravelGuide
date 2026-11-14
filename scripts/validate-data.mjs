@@ -122,7 +122,7 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
   }
   const publicData = JSON.stringify({ trip, places, itinerary, legs, documents });
   assert(!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(publicData), 'Public data contains an email address');
-  assert(!/"(?:pin|password|ticketNumber|bookingNumber|orderNumber|bookingReference|birthDate|creditCard|email)"\s*:/i.test(publicData), 'Public data contains a sensitive field');
+  assert(!/"(?:pin|password|ticketNumber|bookingNumber|orderNumber|bookingReference|birthDate|creditCard|email|driverName|driverLanguage|licensePlate|vehicleColor|vehicleModel)"\s*:/i.test(publicData), 'Public data contains a sensitive field');
   const stringValues = value => typeof value === 'string' ? [value] : value && typeof value === 'object' ? Object.values(value).flatMap(stringValues) : [];
   assert(!stringValues({ trip, places, itinerary, legs, documents }).some(value => /\b(?:\d[ -]?){13,19}\b/.test(value)), 'Public data contains a possible ticket/card number');
   return errors;
