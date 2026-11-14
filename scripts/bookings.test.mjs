@@ -7,7 +7,7 @@ async function moduleFrom(path){const source=readFileSync(new URL(path,import.me
 const basic=await moduleFrom('../src/data/bookingBasics.ts');
 const local=await moduleFrom('../src/lib/privateBookings.ts');
 const data=loadData();
-const sample={JL8670:{orderNumber:'DEMO-ORDER-01',bookingReference:'DEMO01'},JL8671:{orderNumber:'DEMO-ORDER-01',bookingReference:'DEMO02'},hotel:{orderNumber:'DEMO-HOTEL-01'}};
+const sample={JL8670:{orderNumber:'DEMO-ORDER-01',bookingReference:'DEMO01'},JL8671:{orderNumber:'DEMO-ORDER-01',bookingReference:'DEMO02'},hotel:{orderNumber:'DEMO-HOTEL-01'},airport_transfer:{orderNumber:'DEMO-TRANSFER-01'}};
 const encode=x=>Buffer.from(JSON.stringify(x)).toString('base64url');
 
 test('booking details appear once per outbound flight, return flight and initial hotel check-in',()=>{
@@ -34,15 +34,18 @@ test('both full flight schedules agree with the existing precise departure/arriv
  const nights=(Date.parse(data.trip.endDate)-Date.parse(data.trip.startDate))/86400000;
  assert(basic.hotelBooking.stay.includes(`${nights} 晚`));
 });
-test('private booking import round-trips only the three known booking records',()=>{
+test('private booking import round-trips all four known booking records, retaining compatibility with saved flight and hotel records',()=>{
  assert.deepEqual(local.decodeBookingImport(encode(sample)),sample);
+ const {airport_transfer,...legacy}=sample;
+ assert.deepEqual(local.parsePrivateBookings(legacy),legacy);
+ assert.deepEqual(local.decodeBookingImport(encode({airport_transfer})),{airport_transfer});
  assert.deepEqual(local.parsePrivateBookings({hotel:{orderNumber:'  DEMO-HOTEL  '}}),{hotel:{orderNumber:'DEMO-HOTEL'}});
  assert.deepEqual(local.parsePrivateBookings({hotel:{orderNumber:''}}),{});
  const url=new URL('https://example.com/LifeTravelGuide/#/day/2026-11-15?bookings='+encode(sample));
  assert.equal(url.search,'');assert.equal(url.pathname,'/LifeTravelGuide/');
 });
 test('booking imports reject PINs, ticket numbers, unknown keys, markup, oversized values and invalid UTF-8',()=>{
- for(const payload of [{hotel:{pin:'demo'}},{JL8670:{ticketNumber:'demo'}},{traveler:{orderNumber:'demo'}},{hotel:{bookingReference:'demo'}},{hotel:{orderNumber:'<script>'}},{hotel:{orderNumber:'a'.repeat(65)}},JSON.parse('{"__proto__":{"orderNumber":"demo"}}'),[]])assert.equal(local.decodeBookingImport(encode(payload)),null);
+ for(const payload of [{hotel:{pin:'demo'}},{JL8670:{ticketNumber:'demo'}},{traveler:{orderNumber:'demo'}},{hotel:{bookingReference:'demo'}},{airport_transfer:{bookingReference:'demo'}},{airport_transfer:{pin:'demo'}},{...sample,unexpected:{orderNumber:'demo'}},{hotel:{orderNumber:'<script>'}},{hotel:{orderNumber:'a'.repeat(65)}},JSON.parse('{"__proto__":{"orderNumber":"demo"}}'),[]])assert.equal(local.decodeBookingImport(encode(payload)),null);
  for(const text of [null,'','A','%invalid','A'.repeat(4097),Buffer.from([255]).toString('base64url')])assert.equal(local.decodeBookingImport(text),null);
 });
 test('local booking storage survives a new read and empty records can be removed',()=>{
@@ -59,4 +62,18 @@ test('corrupt or blocked booking storage falls back safely without exposing data
 });
 test('public data validation rejects reservation identifiers even when their values look like harmless labels',()=>{
  for(const field of ['orderNumber','bookingReference']){const changed=structuredClone(data);changed.trip[field]='DEMO';assert(validateData(changed).some(error=>error.includes('sensitive field')));}
+});
+
+
+test('only the booked airport pickup exposes a transfer order, using the existing private Drive document',()=>{
+ const leg=data.legs.find(leg=>leg.date==='2026-11-15'&&leg.fromPlaceId==='ngo'&&leg.toPlaceId==='hotel');
+ assert.equal(basic.bookingForTransfer(leg),basic.transferBooking);
+ assert.equal(basic.transferBooking.key,'airport_transfer');
+ assert.equal(basic.transferBooking.platform,'Trip.com');
+ assert.equal('orderNumber' in basic.transferBooking,false);
+ const source=data.documents.filter(document=>document.category==='接駁');
+ assert.equal(source.length,1);assert.equal(source[0].url,leg.sourceUrl);
+ assert.equal(source[0].access,'私人');assert.equal(new URL(source[0].url).hostname,'drive.google.com');
+ for(const other of data.legs.filter(other=>other!==leg))assert.equal(basic.bookingForTransfer(other),undefined);
+ for(const changes of [{date:'2026-11-18'},{fromPlaceId:'hotel'},{toPlaceId:'tpe'},{mode:'步行'}])assert.equal(basic.bookingForTransfer({...leg,...changes}),undefined);
 });

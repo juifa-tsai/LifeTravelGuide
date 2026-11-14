@@ -35,7 +35,7 @@ export function DayPage({ data, day }: { data:TravelData; day:Day }) {
   }
   function transfer(transfer:TimelineTransfer) {
     const leg = transfer.leg;
-    return <TransitConnector key={`${leg.date}-${leg.fromPlaceId}-${leg.toPlaceId}`} leg={leg} from={data.places.find(place=>place.id === leg.fromPlaceId)} to={data.places.find(place=>place.id === leg.toPlaceId)} pickupTime={transfer.pickupTime} />;
+    return <TransitConnector key={`${leg.date}-${leg.fromPlaceId}-${leg.toPlaceId}`} leg={leg} from={data.places.find(place=>place.id === leg.fromPlaceId)} to={data.places.find(place=>place.id === leg.toPlaceId)} pickupTime={transfer.pickupTime} documents={data.documents} />;
   }
   const arrivalDinner = day.date === '2026-11-15';
   const candidateIds = arrivalDinner ? ['molnoda','coco_fushimi','nine_cafe_fushimi','kazan','durbar_sakae','anzu'] : day.candidateIds ?? (day.date === '2026-11-16' ? ['le_jardin'] : day.date === '2026-11-17' ? ['cereza','recit'] : []);

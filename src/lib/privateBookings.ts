@@ -2,15 +2,15 @@ import type { BookingKey } from '../data/bookingBasics';
 export type PrivateBooking = { orderNumber?:string; bookingReference?:string };
 export type PrivateBookings = Partial<Record<BookingKey,PrivateBooking>>;
 export const bookingStorageKey = 'nagoya:booking-details';
-const keys = ['JL8670','JL8671','hotel'];
+const keys = ['JL8670','JL8671','hotel','airport_transfer'];
 export function parsePrivateBookings(value:unknown):PrivateBookings | null {
-  if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).length > 3) return null;
+  if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).length > 4) return null;
   const result:PrivateBookings = {};
   for (const [key,record] of Object.entries(value)) {
     if (!keys.includes(key) || !record || typeof record !== 'object' || Array.isArray(record)) return null;
     const fields:PrivateBooking = {};
     for (const [field,text] of Object.entries(record)) {
-      if (!['orderNumber','bookingReference'].includes(field) || (key === 'hotel' && field === 'bookingReference') || typeof text !== 'string' || !/^[A-Za-z0-9 -]{0,64}$/.test(text)) return null;
+      if (!['orderNumber','bookingReference'].includes(field) || (!['JL8670','JL8671'].includes(key) && field === 'bookingReference') || typeof text !== 'string' || !/^[A-Za-z0-9 -]{0,64}$/.test(text)) return null;
       if (text.trim()) fields[field as keyof PrivateBooking] = text.trim();
     }
     if (Object.keys(fields).length) result[key as BookingKey] = fields;
