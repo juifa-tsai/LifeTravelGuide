@@ -5,11 +5,13 @@ export { japanDate } from './entryDay';
 const weekdays = '日一二三四五六';
 
 export function todayHours(place: Place, date = japanDate()): string {
+  if (place.eventPeriod && (date < place.eventPeriod.start || date > place.eventPeriod.end)) return '非活動期間';
+  if (place.dateHours && Object.prototype.hasOwnProperty.call(place.dateHours,date)) return place.dateHours[date] || (place.category === '夜間活動' ? '當日無場次' : '今日公休');
   const day = new Date(`${date}T00:00:00Z`).getUTCDay();
   const closed = (place.closedText || '').replace(/第([1-5])[與、]第([1-5])週([日一二三四五六])/g,'第$1週$3、第$2週$3');
   const ordinal = Math.ceil(Number(date.slice(8)) / 7);
   const nthDay = [...closed.matchAll(/第([1-5])週([日一二三四五六])/g)];
-  const nthClosed = nthDay.some(match => Number(match[1]) === ordinal && match[2] === weekdays[day]);
+  const nthClosed = !place.dateHours && nthDay.some(match => Number(match[1]) === ordinal && match[2] === weekdays[day]);
   if (nthClosed) return /可能|部分/.test(closed) ? '今日可能公休' : '今日公休';
   if (place.weeklyHours) {
     const hours = place.weeklyHours[String(day)];
@@ -45,7 +47,7 @@ const japanClock = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'
 
 function openingRanges(text:string):[number,number][] | null {
   if (/待確認|待核實|未確認|可能|各店|依現場|戶外|入住/.test(text)) return null;
-  if (text === '今日公休') return [];
+  if (['今日公休','非活動期間','當日無場次'].includes(text)) return [];
   if (/^(24\s*小時|24h)$/i.test(text)) return [[0,1440]];
   const ranges:[number,number][] = [];
   for (const match of text.normalize('NFKC').matchAll(/(\d{1,2}):([0-5]\d)\s*[–—~～〜-]\s*(翌日?|隔日)?\s*(\d{1,2}):([0-5]\d)/g)) {

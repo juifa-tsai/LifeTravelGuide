@@ -1,11 +1,11 @@
 {
   "driveFileId": "11iKYAKClPwtdG0jtotqcchyyApw57Vbn",
   "driveUrl": "https://docs.google.com/spreadsheets/d/11iKYAKClPwtdG0jtotqcchyyApw57Vbn/edit",
-  "driveModifiedTime": "2026-11-13T13:49:30.710Z",
-  "syncedAt": "2026-11-13",
-  "sha256": "911f204337f460e3897aab7df47b63384fa9568b7af69a38522bc967aa445d14",
-  "places": 35,
-  "stops": 29,
-  "legs": 21,
-  "notes": "Includes 07_餐飲與酒吧動線. Stored source workbook unchanged; only allowlisted fields are exported."
+  "driveModifiedTime": "2026-11-14T03:13:43.877Z",
+  "syncedAt": "2026-11-14",
+  "sha256": "d725f7207a0e5ac3aa4ee6ccac08313d7474e119f04e7c2ae193300809d78c89",
+  "places": 46,
+  "stops": 37,
+  "legs": 30,
+  "notes": "Includes 07_餐飲與酒吧動線 and reservation columns. Stored source workbook unchanged; only allowlisted fields are exported."
 }

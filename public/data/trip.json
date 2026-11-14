@@ -3,7 +3,7 @@
   "startDate": "2026-11-15",
   "endDate": "2026-11-18",
   "timezone": "Asia/Tokyo",
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "days": [
     {
       "date": "2026-11-15",
@@ -14,8 +14,7 @@
       "number": 1,
       "candidateIds": [
         "molnoda",
-        "kazan",
-        "bar_thistle"
+        "kazan"
       ]
     },
     {
@@ -26,8 +25,7 @@
       "label": "OLD & NEW",
       "number": 2,
       "candidateIds": [
-        "le_jardin",
-        "recit"
+        "bio_terrace"
       ]
     },
     {
@@ -38,8 +36,7 @@
       "label": "ART & STREETS",
       "number": 3,
       "candidateIds": [
-        "mihos_grains",
-        "recit"
+        "mihos_grains"
       ]
     },
     {

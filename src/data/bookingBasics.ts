@@ -30,5 +30,5 @@ export const hotelBooking:HotelBooking = {kind:'hotel',key:'hotel',name:'名古�
 // Order numbers, airline references, passenger names and PINs never belong here.
 export function bookingForStop(stop:Pick<Stop,'date' | 'displayStatus' | 'placeId' | 'category' | 'summary'>):FlightBooking | HotelBooking | undefined {
   if (stop.displayStatus === '固定航班' && stop.summary.includes('起飛')) return flightBookings.find(flight=>flight.date === stop.date);
-  if (stop.placeId === 'hotel' && stop.category === '住宿' && stop.date === '2026-11-15') return hotelBooking;
+  if (stop.placeId === 'hotel' && stop.category === '住宿' && stop.date === '2026-11-15' && stop.summary.includes('入住')) return hotelBooking;
 }

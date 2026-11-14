@@ -27,9 +27,9 @@ test('morning, afternoon and evening boundaries use Japan time, including Taiwan
 test('day parts preserve all itinerary entries, bookings and sequence without adding empty sections', () => {
   const before = structuredClone(data.itinerary);
   const expected = {
-    '2026-11-15':[['afternoon',1],['evening',4]],
-    '2026-11-16':[['morning',2],['afternoon',3],['evening',2]],
-    '2026-11-17':[['morning',3],['afternoon',4],['evening',3]],
+    '2026-11-15':[['afternoon',1],['evening',7]],
+    '2026-11-16':[['morning',2],['afternoon',4],['evening',5]],
+    '2026-11-17':[['morning',3],['afternoon',4],['evening',4]],
     '2026-11-18':[['morning',5],['afternoon',2]],
   };
   for (const [date,sections] of Object.entries(expected)) {
@@ -46,7 +46,7 @@ test('day parts preserve all itinerary entries, bookings and sequence without ad
 
 test('compact timelines remove breakfasts and repeated airport cards without changing source reservations',()=>{
   const before = structuredClone(data);
-  const expected = {'2026-11-15':[1,4,5],'2026-11-16':[2,3,4,5,6,7],'2026-11-17':[2,3,4,5,6,7,8,9,10],'2026-11-18':[2,6]};
+  const expected = {'2026-11-15':[1,4,5,6,7,8],'2026-11-16':[2,3,4,5,6,7,8,9,10,11],'2026-11-17':[2,3,4,5,6,7,8,9,10,11],'2026-11-18':[2,6]};
   for (const [date,sequences] of Object.entries(expected)) {
     const source = data.itinerary.filter(stop=>stop.date === date);
     const {entries} = compactTimeline(source,data.legs);

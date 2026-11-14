@@ -28,14 +28,14 @@ test('today uses Japan time and the actual weekday, with split hours, closures a
   assert.equal(hours.todayHours(place('toraya'),'2026-11-19'),'17:30–22:00');
   assert.equal(hours.todayHours(place('mori'),'2026-11-18'),'11:30–14:30');
   assert.equal(hours.todayHours(place('nine_cafe_fushimi'),'2026-11-15'),'17:00–翌04:00');
-  assert.equal(hours.todayHours(place('coco_fushimi'),'2026-11-15'),'週末時段待確認');
+  assert.equal(hours.todayHours(place('coco_fushimi'),'2026-11-15'),'11:00–23:00');
   assert.equal(hours.todayHours(place('art_museum'),'2026-11-13'),'09:30–20:00');
   assert.equal(hours.todayHours(place('bio_terrace'),'2026-11-16'),'營業狀態待確認');
   assert.equal(hours.todayHours(place('khaja_ghar'),'2026-11-17'),'11:00–15:00／17:00–23:00');
   assert.equal(hours.todayHours(place('bar_thistle'),'2026-11-17'),'17:00–翌01:00');
   assert.equal(hours.todayHours(place('oribio'),'2026-11-16'),'今日公休');
   assert.equal(hours.todayHours(place('ko_vegan'),'2026-11-17'),'今日公休');
-  assert.equal(hours.todayHours(place('barns'),'2026-11-17'),'今日公休');
+  assert.equal(hours.todayHours(place('barns'),'2026-11-17'),'16:00–24:00');
   assert.equal(hours.todayHours(place('barns'),'2026-11-03'),'今日公休');
   assert.equal(hours.todayHours(place('barns'),'2026-11-10'),'16:00–24:00');
 });
@@ -48,7 +48,7 @@ test('workbook-only hours never copy a weekday-specific time to another day', ()
 });
 test('all dining places have short sourced descriptions and distinguish vegetarian from mixed kitchens', () => {
   const dining = data.places.filter(p => !p.virtual && ['素食餐廳','咖啡廳','酒吧'].includes(p.category));
-  assert.equal(dining.length,21);
+  assert.equal(dining.length,23);
   for (const item of dining) {
     assert(item.foodDescription.length >= 35 && item.foodDescription.length <= 70, item.id);
     assert(item.diningType && item.weeklyHours && item.detailSourceUrls?.length);
@@ -115,9 +115,9 @@ test('overnight service belongs to yesterday, including when today is closed and
 });
 
 test('ordinary and nth-week closures are gray while unresolved or outdoor hours stay unknown',()=>{
- for(const [id,date]of [['anzu','2026-11-16'],['fukiage','2026-11-10'],['barns','2026-11-17']])assert.equal(hours.openingInfo(place(id),new Date(date+'T18:00:00+09:00')).state,'closed');
+ for(const [id,date]of [['anzu','2026-11-16'],['fukiage','2026-11-10'],['barns','2026-11-16']])assert.equal(hours.openingInfo(place(id),new Date(date+'T18:00:00+09:00')).state,'closed');
  assert.equal(hours.openingInfo(place('fukiage'),new Date('2026-11-17T18:00:00+09:00')).state,'open');
- for(const [id,date]of [['bio_terrace','2026-11-16'],['coco_fushimi','2026-11-15'],['mihos_grains','2026-11-14'],['nagoya_station','2026-11-17'],['osu_street','2026-11-17'],['shirokawa','2026-11-17']])assert.equal(hours.openingInfo(place(id),new Date(date+'T12:00:00+09:00')).state,'unknown',id);
+ for(const [id,date]of [['bio_terrace','2026-11-16'],['nagoya_station','2026-11-17'],['osu_street','2026-11-17'],['shirokawa','2026-11-17']])assert.equal(hours.openingInfo(place(id),new Date(date+'T12:00:00+09:00')).state,'unknown',id);
  const pending={...place('fukiage'),closedText:'待確認'};
  assert.equal(hours.openingInfo(pending,new Date('2026-11-17T12:00:00+09:00')).state,'unknown');
 });
@@ -131,4 +131,28 @@ test('24-hour and inferred overnight schedules work without treating 24:00 as an
  assert.equal(hours.openingInfo(fixture('16:00–24:00'),new Date('2026-11-17T00:00:00+09:00')).state,'closed');
  for(const schedule of ['00:00–00:00','99:00–100:00','11:00–15:00／晚間待確認'])assert.equal(hours.openingInfo(fixture(schedule),new Date('2026-11-17T12:00:00+09:00')).state,'unknown');
  assert.equal(hours.openingInfo(place('recit'),new Date('invalid')).state,'unknown');
+});
+
+test('seasonal and date-specific activities never appear open outside their actual dates',()=>{
+ const at=(id,date,time)=>hours.openingInfo(place(id),new Date(`${date}T${time}:00+09:00`)).state;
+ assert.equal(at('mirai_naked_moon','2026-11-15','20:00'),'open');
+ assert.equal(at('mirai_naked_moon','2026-11-16','20:00'),'closed');
+ assert.equal(at('jazz_inn_lovely','2026-11-16','20:00'),'closed');
+ assert.equal(at('jazz_inn_lovely','2026-11-17','19:29'),'closed');
+ assert.equal(at('jazz_inn_lovely','2026-11-17','19:30'),'open');
+ assert.equal(at('jazz_inn_lovely','2026-11-17','22:00'),'closed');
+ assert.equal(at('aniaff_air','2026-11-16','19:00'),'open');
+ assert.equal(at('aniaff_air','2026-11-17','19:00'),'closed');
+ assert.equal(at('shirotori_lights','2026-11-15','18:00'),'open');
+ for(const date of ['2026-11-16','2026-11-17'])assert.equal(at('shirotori_lights',date,'18:00'),'closed');
+ assert.equal(at('hirokoji_lights_fushimi','2027-01-16','01:29'),'open','the final evening can continue after midnight');
+ assert.equal(at('hirokoji_lights_fushimi','2027-01-16','01:30'),'closed');
+ assert.equal(at('dainagoya_lights','2026-11-10','18:00'),'closed');
+ assert.equal(at('ikeda_lights','2026-11-17','01:00'),'open');
+ assert.equal(at('oasis21','2026-11-17','21:00'),'closed');
+ assert.equal(at('barns','2026-11-17','18:00'),'open','current official November calendar supersedes the old third-Tuesday rule');
+ assert.equal(at('barns','2026-12-17','18:00'),'unknown','a November calendar does not promise December opening');
+ assert.equal(at('coco_fushimi','2026-11-15','22:30'),'open');
+ assert.equal(at('mihos_grains','2026-11-14','12:00'),'open');
+ assert.equal(at('recit','2026-11-19','18:00'),'closed');
 });

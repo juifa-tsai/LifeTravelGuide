@@ -5,6 +5,7 @@ import type { TravelData, Day } from '../lib/types';
 import { stopId, shortDate } from '../lib/data';
 import { DaySelector } from '../components/DaySelector';
 import { DayMap, type MapPinData } from '../components/DayMap';
+import { ReservationBadge } from '../components/ReservationBadge';
 import { PlaceCard } from '../components/PlaceCard';
 import { TransitConnector } from '../components/TransitConnector';
 import { PlaceImage } from '../components/PlaceImage';
@@ -66,7 +67,7 @@ export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; 
         {candidateIds.map(id => {
           const place = data.places.find(p => p.id === id)!;
           return <div className="candidate-row" key={id}><PlaceImage place={place} compact />
-            <div><strong>{place.nameZh}</strong><p className="small muted">{arrivalDinner ? place.hoursText?.split(' 一般週日資訊')[0] : todayHours(place,day.date).replace('今日','當日')}</p><p className={id === 'anzu' ? 'candidate-warning' : 'muted'}>{id === 'anzu' ? '早到時備選 · 週日末點約21:30，通常不適合21:45後抵達；奶素料理、醬汁與高湯需確認。' : arrivalDinner ? `奶素：${place.dietText?.split(' 奶素可乳製品；')[0]}` : place.hoursNote || place.dietText}</p></div>
+            <div><strong>{place.nameZh}</strong><ReservationBadge place={place} /><p className="small muted">{arrivalDinner ? place.hoursText?.split(' 一般週日資訊')[0] : todayHours(place,day.date).replace('今日','當日')}</p><p className={id === 'anzu' ? 'candidate-warning' : 'muted'}>{id === 'anzu' ? '早到時備選 · 週日末點約21:30，通常不適合21:45後抵達；奶素料理、醬汁與高湯需確認。' : arrivalDinner ? `奶素：${place.dietText?.split(' 奶素可乳製品；')[0]}` : place.hoursNote || place.dietText}</p></div>
             <ExternalLink href={place.mapsUrl} className="candidate-link" label={`在 Google Maps 開啟 ${place.nameZh}`}><ArrowUpRight size={19} /></ExternalLink></div>;
         })}</section>}
       <div className="day-end">{data.trip.days[day.number] && <Link to={`/day/${data.trip.days[day.number].date}`} className="text-action">下一天<ArrowRight size={16} /></Link>}</div>

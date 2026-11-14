@@ -6,6 +6,7 @@ import { hasCoordinates, stopId } from '../lib/data';
 import { CategoryIcon } from './Icon';
 import { ExternalLink } from './ExternalLink';
 import { PlaceImage } from './PlaceImage';
+import { ReservationBadge } from './ReservationBadge';
 import { PlaceDetails } from './PlaceDetails';
 import { durationHours } from '../lib/timeline';
 const BookingDetails = lazy(()=>import('./BookingDetails'));
@@ -17,7 +18,7 @@ export function PlaceCard({ stop, place, hotel, documents, checkInTime, selected
   const flight = stop.displayStatus === '固定航班';
   const duration = durationHours(stop.stayMinutes);
   const booking = bookingForStop(stop);
-  const title = booking?.kind === 'flight' ? `${booking.from.airport} ${booking.from.terminal} → ${booking.to.airport} ${booking.to.terminal}` : stop.displayStatus === '固定航班' || stop.summary.includes('返回飯店') || stop.summary.includes('退房') || stop.category === '接駁' || stop.category === '航班' ? stop.summary : stop.title;
+  const title = stop.category === '住宿' && booking?.kind !== 'hotel' ? stop.summary : booking?.kind === 'flight' ? `${booking.from.airport} ${booking.from.terminal} → ${booking.to.airport} ${booking.to.terminal}` : stop.displayStatus === '固定航班' || stop.summary.includes('返回飯店') || stop.summary.includes('退房') || stop.category === '接駁' || stop.category === '航班' ? stop.summary : stop.title;
   return <div className="timeline-stop" id={`stop-${stopId(stop)}`}>
     <div className="timeline-rail"><span className={`timeline-dot ${flexible ? 'flexible' : ''}`}>
       <CategoryIcon category={stop.category} size={15} /></span></div>
@@ -29,6 +30,7 @@ export function PlaceCard({ stop, place, hotel, documents, checkInTime, selected
           <span className="stop-title">{title}</span>
           {booking && <span className="booking-caption">{booking.kind === 'flight' ? `${booking.key} · ${booking.cabin}` : `${booking.room.split(' · ')[0]} · 3 晚`}</span>}
           {checkInTime && <span className="booking-caption">{checkInTime} 登機報到 · 日本時間</span>}
+          <ReservationBadge place={place} />
           {place?.diningType && <span className={`dining-badge ${place.diningType === '素食餐廳' ? 'vegetarian' : ''}`}>{place.diningType}</span>}
         </span>{place && <PlaceImage place={place} compact linked={false} />}<span className={`expand-icon ${open ? 'is-open' : ''}`}><ChevronDown size={17} /></span>
       </button>
@@ -40,7 +42,7 @@ export function PlaceCard({ stop, place, hotel, documents, checkInTime, selected
           {place?.dietText && <p className="diet-note">{place.dietText}</p>}
           <div className="card-actions"><ExternalLink href={stop.mapsUrl} className="button button-outline"><MapPin size={15} />Google Maps<ArrowUpRight size={14} /></ExternalLink></div>
         </>}
-        {booking?.kind !== 'flight' && stop.note && /預約|不確定|僅預估|末點|末班|核對|核實|μticket|台灣時間|含在住宿|含11|天守閣|退房|可略過|直接回|不喝酒|指定|奶素|Vegan|臨休|售罄|供餐/.test(stop.note) && <p className="note">{stop.note}</p>}
+        {booking?.kind !== 'flight' && stop.note && !/早餐|行李/.test(stop.note) && /預約|不確定|僅預估|末點|末班|核對|核實|μticket|台灣時間|含在住宿|含11|天守閣|退房|可略過|直接回|不喝酒|指定|奶素|Vegan|臨休|售罄|供餐/.test(stop.note) && <p className="note">{stop.note}</p>}
       </div>}
     </article>
   </div>;

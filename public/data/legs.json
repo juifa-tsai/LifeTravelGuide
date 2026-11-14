@@ -36,6 +36,78 @@
     "sourceUrl": "https://molnoda.com/"
   },
   {
+    "date": "2026-11-15",
+    "fromPlaceId": "late_dinner",
+    "toPlaceId": "hirokoji_lights_fushimi",
+    "mode": "步行",
+    "summary": "約5–10分",
+    "details": "晚餐後走到伏見交差點，依雨勢決定停留。",
+    "minutesEstimate": 7,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://aichinow.pref.aichi.jp/events/detail/1828/"
+  },
+  {
+    "date": "2026-11-15",
+    "fromPlaceId": "hirokoji_lights_fushimi",
+    "toPlaceId": "bar_ylang_ylang",
+    "mode": "步行",
+    "summary": "約7–12分",
+    "details": "沿廣小路通往西，再往錦1丁目。",
+    "minutesEstimate": 10,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://tabelog.com/aichi/A2301/A230102/23010014/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 790.8,
+        "durationSeconds": 632.5,
+        "fromCoordinates": {
+          "lat": 35.170815,
+          "lng": 136.899475
+        },
+        "toCoordinates": {
+          "lat": 35.169769,
+          "lng": 136.892609
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899475,35.170815;136.892609,35.169769?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-15",
+    "fromPlaceId": "bar_ylang_ylang",
+    "toPlaceId": "hotel",
+    "mode": "步行",
+    "summary": "約10–15分",
+    "details": "錦1丁目回飯店所在的錦2丁目。",
+    "minutesEstimate": 12,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://tabelog.com/aichi/A2301/A230102/23010014/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 841.2,
+        "durationSeconds": 681,
+        "fromCoordinates": {
+          "lat": 35.169769,
+          "lng": 136.892609
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.892609,35.169769;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
     "date": "2026-11-16",
     "fromPlaceId": "hotel",
     "toPlaceId": "nagoyajo",
@@ -69,41 +141,37 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "nagoyajo",
-    "toPlaceId": "bio_terrace",
-    "mode": "步行",
-    "summary": "步行約15–25分",
-    "details": "名古屋城／本丸御殿 → 丸之內3丁目 Bio Terrace（久屋大通近旁），依Google Maps導航",
-    "minutesEstimate": 20,
+    "toPlaceId": "montmartre",
+    "mode": "地鐵＋步行",
+    "summary": "約20–30分",
+    "details": "名古屋城站搭名城線到榮，12號出口步行至名古屋東急飯店。",
+    "minutesEstimate": 25,
     "fareJpyEstimate": null,
-    "certainty": "步行估算",
-    "sourceUrl": "https://vegewel.com/en/restaurant/2475",
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
     "navigation": {
-      "walking": {
-        "distanceMeters": 2017.7,
-        "durationSeconds": 1614.1,
-        "fromCoordinates": {
-          "lat": 35.1876572063889,
-          "lng": 136.899153485
-        },
-        "toCoordinates": {
-          "lat": 35.175282,
-          "lng": 136.903259
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "名古屋城站",
+          "toStation": "榮站"
         }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8991535,35.1876572;136.9032590,35.1752820?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-13"
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-14",
+      "note": "榮站出站後步行至名古屋東急飯店。"
     }
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "bio_terrace",
+    "fromPlaceId": "montmartre",
     "toPlaceId": "fukiage",
     "mode": "地鐵＋步行",
-    "summary": "約25–35分",
-    "details": "Bio Terrace → 久屋大通站（櫻通線）→ 吹上站 → 步行至Antique Market Fukiage",
-    "minutesEstimate": 30,
+    "summary": "約25–40分",
+    "details": "從飯店步行至高岳站，搭櫻通線至吹上站2號出口。",
+    "minutesEstimate": 33,
     "fareJpyEstimate": null,
     "certainty": "路線估算",
     "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
@@ -111,29 +179,40 @@
       "steps": [
         {
           "line": "櫻通線",
-          "fromStation": "久屋大通站",
+          "fromStation": "高岳站",
           "toStation": "吹上站"
         }
       ],
-      "note": "從餐廳步行至久屋大通站，吹上站出站後步行至老件市場。",
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://vegewel.com/en/restaurant/2475"
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
       ],
-      "checkedAt": "2026-11-13"
+      "checkedAt": "2026-11-14",
+      "note": "從飯店步行至高岳站；吹上站2號出口附近。"
     }
   },
   {
     "date": "2026-11-16",
     "fromPlaceId": "fukiage",
+    "toPlaceId": "le_jardin",
+    "mode": "同棟",
+    "summary": "約1–3分",
+    "details": "同棟電梯到7樓。",
+    "minutesEstimate": 2,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.antiquemarket.co.jp/7floor.html"
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "le_jardin",
     "toPlaceId": "store_factory",
     "mode": "地鐵＋步行",
     "summary": "約25–35分",
-    "details": "吹上（櫻通線）→ 久屋大通／轉乘或步行至榮5丁目；路線待導航核實",
+    "details": "由吹上站搭櫻通線，依現場導航選擇下車與步行路線。",
     "minutesEstimate": 30,
     "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
     "navigation": {
       "steps": [
         {
@@ -148,11 +227,10 @@
         }
       ],
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://retty.me/area/PRE23/ARE63/SUB6304/100001529102/"
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
       ],
-      "checkedAt": "2026-11-13",
-      "note": "矢場町站出站後步行至店家。"
+      "checkedAt": "2026-11-14",
+      "note": "頂樓咖啡廳離開後，步行至吹上站。"
     }
   },
   {
@@ -191,27 +269,116 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "toraya",
-    "toPlaceId": "hotel",
+    "toPlaceId": "oasis21",
     "mode": "地鐵＋步行",
     "summary": "約20–30分",
-    "details": "新榮町 → 伏見，末段步行",
+    "details": "步行到新榮町站，搭東山線一站至榮。",
     "minutesEstimate": 25,
     "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
     "navigation": {
       "steps": [
         {
           "line": "東山線",
           "fromStation": "新榮町站",
-          "toStation": "伏見站"
+          "toStation": "榮站"
         }
       ],
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://nagoya.mypl.net/naka/shop/00000372987/access"
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
       ],
-      "checkedAt": "2026-11-13"
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "oasis21",
+    "toPlaceId": "hotel",
+    "mode": "步行",
+    "summary": "約15–20分",
+    "details": "榮站周邊沿廣小路通往伏見。",
+    "minutesEstimate": 18,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.sakaepark.co.jp/about/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1029.7,
+        "durationSeconds": 823.3,
+        "fromCoordinates": {
+          "lat": 35.171772,
+          "lng": 136.909058
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.909058,35.171772;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "recit",
+    "mode": "步行",
+    "summary": "約5–10分",
+    "details": "飯店錦2丁目到錦3丁目 RayOne錦ビル3F。",
+    "minutesEstimate": 8,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.bar-recit.com/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 334.1,
+        "durationSeconds": 271.2,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.170063,
+          "lng": 136.903152
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.903152,35.170063?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "recit",
+    "toPlaceId": "hotel",
+    "mode": "步行",
+    "summary": "約5–10分",
+    "details": "由錦3丁目步行返回。",
+    "minutesEstimate": 8,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.bar-recit.com/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 334.1,
+        "durationSeconds": 271.2,
+        "fromCoordinates": {
+          "lat": 35.170063,
+          "lng": 136.903152
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.903152,35.170063;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
     }
   },
   {
@@ -424,26 +591,119 @@
   {
     "date": "2026-11-17",
     "fromPlaceId": "mori",
-    "toPlaceId": "bar_thistle",
-    "mode": "地鐵或步行",
-    "summary": "約18–28分",
-    "details": "栄4丁目 森のカレー → 伏見／錦2丁目 Bar Thistle；可步行約20–25分，或榮站搭東山線至伏見再步行",
-    "minutesEstimate": 23,
+    "toPlaceId": "jazz_inn_lovely",
+    "mode": "步行",
+    "summary": "約10–15分",
+    "details": "栄4丁目沿久屋大通往東桜，預留開演前入場時間。",
+    "minutesEstimate": 12,
     "fareJpyEstimate": null,
-    "certainty": "路線估算；酒吧可略過",
-    "sourceUrl": "https://www.bar-thistle.com/english.html",
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.jazzinnlovely.com/schedule/",
     "navigation": {
-      "steps": [
-        {
-          "line": "東山線",
-          "fromStation": "榮站",
-          "toStation": "伏見站"
+      "walking": {
+        "distanceMeters": 646.6,
+        "durationSeconds": 525.6,
+        "fromCoordinates": {
+          "lat": 35.167244,
+          "lng": 136.910385
+        },
+        "toCoordinates": {
+          "lat": 35.172615,
+          "lng": 136.910217
         }
-      ],
-      "note": "伏見站出站後步行至酒吧；不飲酒可略過。",
+      },
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.bar-thistle.com/english.html"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.910385,35.167244;136.910217,35.172615?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "jazz_inn_lovely",
+    "toPlaceId": "bar_thistle",
+    "mode": "步行",
+    "summary": "約15–25分",
+    "details": "東桜1丁目經榮走回伏見錦2丁目。",
+    "minutesEstimate": 20,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.bar-thistle.com/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1311.4,
+        "durationSeconds": 1051.2,
+        "fromCoordinates": {
+          "lat": 35.172615,
+          "lng": 136.910217
+        },
+        "toCoordinates": {
+          "lat": 35.169556,
+          "lng": 136.899124
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.910217,35.172615;136.899124,35.169556?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "jazz_inn_lovely",
+    "toPlaceId": "hotel",
+    "mode": "步行",
+    "summary": "約15–25分",
+    "details": "爵士結束後可直接步行回飯店。",
+    "minutesEstimate": 20,
+    "fareJpyEstimate": null,
+    "certainty": "路線估算",
+    "sourceUrl": "https://www.jazzinnlovely.com/schedule/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1234.2,
+        "durationSeconds": 989,
+        "fromCoordinates": {
+          "lat": 35.172615,
+          "lng": 136.910217
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.910217,35.172615;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "bar_thistle",
+    "toPlaceId": "hotel",
+    "mode": "步行",
+    "summary": "約5–10分",
+    "details": "Bar Thistle（錦2丁目）→ 名古屋伏見舒適飯店（錦2-19-14），依實際出入口步行",
+    "minutesEstimate": 8,
+    "fareJpyEstimate": null,
+    "certainty": "估算；酒吧可略過",
+    "sourceUrl": "https://www.bar-thistle.com/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 238.2,
+        "durationSeconds": 194.5,
+        "fromCoordinates": {
+          "lat": 35.169556,
+          "lng": 136.899124
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899124,35.169556;136.900894,35.168926?overview=false&steps=false"
       ],
       "checkedAt": "2026-11-13"
     }
@@ -476,18 +736,6 @@
   },
   {
     "date": "2026-11-18",
-    "fromPlaceId": "ngo",
-    "toPlaceId": "tpe",
-    "mode": "航班",
-    "summary": "JL8671 12:05–14:40",
-    "details": "日本時間12:05起飛、台灣時間14:40抵達；飛行約215分鐘",
-    "minutesEstimate": 215,
-    "fareJpyEstimate": null,
-    "certainty": "電子機票",
-    "sourceUrl": "https://drive.google.com/file/d/1CzLVEmBks43X_2pFAp4UGCOeyDsqLM4M/view?usp=drivesdk"
-  },
-  {
-    "date": "2026-11-18",
     "fromPlaceId": "nagoya_station",
     "toPlaceId": "ngo",
     "mode": "名鐵機場線",
@@ -513,33 +761,15 @@
     }
   },
   {
-    "date": "2026-11-17",
-    "fromPlaceId": "bar_thistle",
-    "toPlaceId": "hotel",
-    "mode": "步行",
-    "summary": "約5–10分",
-    "details": "Bar Thistle（錦2丁目）→ 名古屋伏見舒適飯店（錦2-19-14），依實際出入口步行",
-    "minutesEstimate": 8,
+    "date": "2026-11-18",
+    "fromPlaceId": "ngo",
+    "toPlaceId": "tpe",
+    "mode": "航班",
+    "summary": "JL8671 12:05–14:40",
+    "details": "日本時間12:05起飛、台灣時間14:40抵達；飛行約215分鐘",
+    "minutesEstimate": 215,
     "fareJpyEstimate": null,
-    "certainty": "估算；酒吧可略過",
-    "sourceUrl": "https://www.bar-thistle.com/",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 238.2,
-        "durationSeconds": 194.5,
-        "fromCoordinates": {
-          "lat": 35.169556,
-          "lng": 136.899124
-        },
-        "toCoordinates": {
-          "lat": 35.168926,
-          "lng": 136.900894
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899124,35.169556;136.900894,35.168926?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-13"
-    }
+    "certainty": "電子機票",
+    "sourceUrl": "https://drive.google.com/file/d/1CzLVEmBks43X_2pFAp4UGCOeyDsqLM4M/view?usp=drivesdk"
   }
 ]

@@ -61,7 +61,7 @@ For a different workbook:
 python3 scripts/xlsx-to-json.py /path/to/updated.xlsx
 ```
 
-The importer reads the original seven sheets plus the optional `07_餐飲與酒吧動線` candidate sheet and allowlists fields into five JSON files in `public/data/`. It excludes default visit records, reservation contents, and the development task sheet. A gap report is generated in ignored `output/data-report.md`. Data validation runs on every build; CI intentionally uses committed JSON so changing a local workbook requires explicit reimport.
+The importer reads the original seven sheets plus the optional `07_餐飲與酒吧動線` candidate sheet and allowlists fields into five JSON files in `public/data/`. It excludes default visit records, private booking contents, and the development task sheet. The place sheet’s public reservation requirement, notes, contact link and verification source are allowlisted; HYPERLINK formulas are read as URLs without evaluating formulas. A gap report is generated in ignored `output/data-report.md`. Data validation runs on every build; CI intentionally uses committed JSON so changing a local workbook requires explicit reimport.
 
 ### 第一晚晚餐與補充資料
 
@@ -70,7 +70,7 @@ The importer reads the original seven sheets plus the optional `07_餐飲與酒�
 2026-11-13 核對的來源與限制：
 
 - [MOLNODA 官方](https://molnoda.com/)：夜間至 23:00，碗餐可能僅外帶，L.O. 待確認。
-- [CoCo 分店官方](https://tenpo.ichibanya.co.jp/map/2172/)：現頁列 23:00（L.O.），與先前週末 22:00 資訊有差異，週日先以 22:00 保守規劃，L.O. 待確認。[官方素咖哩](https://www.ichibanya.co.jp/menu/detail.html?id=1327) 不使用動物性原料，但須確認該店販售及配料。
+- [CoCo 分店官方](https://tenpo.ichibanya.co.jp/map/2172/)：2026-11-14 再核對，分店現頁列 11:00–23:00，已同步各日一般時段；素咖哩供應與 L.O. 仍須確認。[官方素咖哩](https://www.ichibanya.co.jp/menu/detail.html?id=1327) 不使用動物性原料，但須確認該店販售及配料。
 - [NINE CAFE 官方](https://akr0294539820.owst.jp/)：17:00–翌日04:00，餐點 L.O. 翌日03:00；披薩及義大利麵未經奶素認證。
 - [華山開店報導](https://jouhou.nagoya/menya-kazan/)：11:00–24:00、L.O.23:30，有 Vegan 白湯拉麵；報導為 2025 年資料，當日菜單仍需確認，午夜後「裏かざん」菜單不可套用。
 - [DURBAR 店家資料](https://tabelog.com/aichi/A2301/A230103/23073349/)：週日夜間至翌日04:00，不定休、L.O. 待確認；蔬菜／豆類咖哩與烤餅成分待詢問。
@@ -85,7 +85,7 @@ The original workbook has no coordinates or photos. `scripts/geocodes.json` supp
 
 Explicit Excel coordinates take precedence over the supplement, but need a coordinate source in `scripts/geocodes.json` to pass validation. If you move a place, update both its workbook address and its geocode record. Unknown coordinates remain null; the text card still works.
 
-All 32 real locations now use photographs of the matching place. The 23 former generic previews have been replaced with 16 storefront/entrance images, five interiors and two terraces. Twenty-two were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
+All 43 real locations now use photographs of the matching place. The capture manifest contains 34 reviewed photographs, including storefronts, entrances, interiors, terraces and the actual activity venues. Twenty-two were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. The 11 latest additions use photographs from venue/organizer websites, Nagoya’s official tourism site and a matched HomeMate Cinema 2 entrance photograph. The MIRAI TOWER image shows the view from its observation deck; the Shirotori image shows the garden in daylight, not a promised night scene. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
 
 `scripts/storefront-photos.json` records the matched store name/address, photographer, original photo/viewer URL, capture date, view type and SHA-256 hashes. These personal noncommercial travel-reference screenshots retain the original photographers’ rights; they are **not CC-licensed or newly licensed by this repository**. Google Maps usage terms and the official source are recorded separately from the existing Commons CC licenses. Card and popup thumbnails open the matching place’s stable Google Maps location link. Per-card photographer captions have been removed; complete author/source/license attribution is grouped under the collapsed 圖片授權 section at the bottom of Documents. Historical photo-viewer URLs remain provenance records, not navigation targets. Full credits are in `public/images/credits.json`; Google Maps photos are not live API requests, and the app needs no Google API key.
 
@@ -113,7 +113,7 @@ Last selected day and visit checks use `nagoya:*` localStorage keys. Visit recor
 
 The public site contains Drive **URLs/IDs**, as specified. The linked files retain their existing Google account permissions; this application cannot verify or change those permissions. No ticket PDFs, booking PINs, full reservation numbers, email addresses or credentials belong in public data or source control.
 
-Hours, dietary suitability, fares and transit times remain workbook planning information; estimates are labeled. TORAYA's Monday opening, BAR BARNS's third-Tuesday closure and first-night dinner timing remain explicit checks. Generic photos are labeled as illustrative and do not establish a restaurant’s menu or dietary suitability.
+Hours, dietary suitability, fares and transit times remain workbook planning information; estimates are labeled. TORAYA's Monday opening and first-night dinner timing remain explicit checks. BAR BARNS uses its published November 2026 calendar: November 17 is open; November 15–16 are closed. This calendar does not establish other months’ opening days. Generic photos are labeled as illustrative and do not establish a restaurant’s menu or dietary suitability.
 
 ## Japanese phrase recordings
 
@@ -153,17 +153,21 @@ Distances are local calculations from verified place coordinates; unknown coordi
 
 交通卡不再顯示車資、核實程度、資料來源表格或無用的待確認欄位。步行以單列顯示路線距離與分鐘數，點選可開啟導航；公共運輸直接顯示起訖站、路線與移動時間，需轉乘時再展開各段車站。必要的接機位置、μticket 等提醒保留，航班時刻與時區不變。尚未選定餐廳的交通列隱藏，不把假定地點當成已知路段。
 
-`scripts/leg-details.json` 保存公共運輸站點與步行路線；本次行程使用九段公共運輸及八段已核對的步行路線，Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；路段以既有核實地址參考點查詢（2026-11-13），實際入口、號誌與步速仍會影響結果。數值不顯示估算前綴符號；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
+`scripts/leg-details.json` 保存公共運輸站點與步行路線；本次行程使用九段公共運輸及十五段已核對的步行路線，Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；路段以既有核實地址參考點查詢（2026-11-13–14），實際入口、號誌與步速仍會影響結果。數值不顯示估算前綴符號；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
 
 踩點清單與分類不再包含住宿與機場，名古屋車站仍歸在交通分類。飯店取自完整地點資料，固定保留在所有踩點地圖篩選中，供定位、導航與計算距離使用；每日航班、住宿安排及文件照常保留。
 
-## 最新 Drive 行程同步（2026-11-13）
+## 最新 Drive 行程同步（2026-11-14）
 
-已同步 Drive「2026 Nakoya」中 13:49:30 UTC 更新的 Excel 原檔，共 35 個地點、29 個每日安排、21 段交通。原檔雜湊與 Drive 來源保存在 `docs/workbook-source.json`。新地點為 Bio Terrace、KHAJA GHAR、Miho’s Kitchen Grains、ORIBIO、Pupu Kitchen、「こ」VEGAN CAFE、Bar Thistle；皆補齊地址參考座標、約 50 字餐點／酒款描述、分類、營業資訊、Maps 連結及對應店家的實景截圖；照片來源與原攝影者署名均保留。
+已同步 Drive「2026 Nakoya」中 03:13:43 UTC 更新的 Excel 原檔，共 46 個地點、37 個原始每日安排、30 段交通；踩點頁顯示其中 40 個非住宿／機場的實體地點。原檔雜湊與來源保存在 `docs/workbook-source.json`，重新執行 `npm run import:xlsx` 會重建相同資料，不修改 Excel。
 
-每日行程完全以新 Excel 的時間、狀態、摘要與備註為準：11/16 加入 Bio Terrace 午餐，吹上老件市場調整為 13:45／105 分；11/17 加入 KHAJA GHAR 午餐與 20:00 可選的 Bar Thistle，21:00 回飯店。既有航班、接機與住宿預約資料保留。第 07 工作表依地點名稱／穩定 ID 產生各日 `candidateIds`，已在時間軸中的地點不重複當作口袋候選。11/16 保留 Le Jardin、BAR Récit；11/17 備選為 Miho’s Kitchen Grains、BAR Récit，不把通常公休的 BAR BARNS 列為當天候選。
+新增 11 個地點：廣小路通冬季點燈（伏見段）、BAR YLANG YLANG、綠洲21、jazz inn LOVELY、Montmartre、大名古屋聖誕點燈、池田公園冬季點燈、榮南・大須冬季點燈、NAKED 天空賞月、ANIAFF《劇場版 AIR》、白鳥庭園紅葉點燈。全部保留地址參考座標、Maps 連結、實景照片、描述與官方／可信來源；分類列新增「夜間活動」，仍以飯店距離排序，分類後飯店標記持續保留。
 
-營業時間仍是一般資料，不是當日營業保證。Bio Terrace 官網目前無法開啟，餐廳平台標示營業狀態未確認；保留 Excel 的可選安排與地址，卡片及地圖明確標示需確認。Miho’s Kitchen Grains 的部分週六資訊有出入，晚餐須提前三天預約；ORIBIO 須至少前一天預約；「こ」VEGAN CAFE 以咖啡與甜點為主，未確認正餐。奶素仍需避開肉、魚、蛋、魚露、柴魚與動物性高湯，葷素店點餐時須確認醬汁與配料。
+行程依 Excel 更新：11/15 加入點燈散步與可選酒吧；11/16 改為 Montmartre 午餐、吹上市場／頂樓咖啡廳，晚間綠洲21與 BAR Récit；11/17 晚餐後加入爵士演出與可選 Bar Thistle。航班、接機與住宿訂單仍沿用既有資料，入住訂單只顯示一次，早餐維持隱藏。口袋候選排除當日已排入的店家；11/16 為 Bio Terrace，11/17 為 Miho’s Kitchen Grains。首晚六間晚餐候選順序不變。
+
+只有「必須訂位？」為「是」的地點顯示 **需預約**；不顯示建議、可選或未確認的預約狀態標籤。Miho’s Kitchen Grains 的晚餐須至少三天前預約，ORIBIO 為至少前一天的完全預約制。聯絡／預約連結與條件只在卡片展開後顯示，沒有代為完成預約。匯入器支援原檔第19–22欄，包括 HYPERLINK 形式的連結。`scripts/place-details.json` 保存已核對的條件與來源，與圖片、座標補充檔一併依穩定 ID 合併。
+
+活動不是每天皆有：NAKED 至11/15、AIR 場次為11/15與16、爵士演出為11/17；白鳥庭園11/16–17沒有一般夜間點燈。`eventPeriod` 與 `dateHours` 讓營業燈號依日期判斷，不把活動時段當成每日營業保證。首晚抵達後通常趕不上 NAKED；AIR 與既定晚餐時段重疊，只放入踩點候選。一般營業時間、天候與座位仍以現場／官方當日公告為準；Vegan 菜單須確認供應與醬汁，不因葷素店提供 Vegan 選項而標成全素餐廳。所有來源與核對日期保存在地點資料內。
 
 介面維持原有卡片、地圖與半小時 hr 單位，移除所有數值前的波浪估算符號。語音分頁改名為「求助」，原有 `#/audio` 連結及 Benji 錄音保留；踩點頁標題右側的商店 icon，以及求助頁最上方與語音播放相同樣式的大按鈕，會開啟 Google Maps 搜尋附近超商（包含 Lawson、全家、7-Eleven 等）。搜尋由 Google Maps 處理，網站不另行取得或傳送使用者座標；離線時仍可播放語音，外部 Maps 搜尋依既有離線規則停用。
 

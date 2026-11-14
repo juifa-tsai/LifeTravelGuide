@@ -13,6 +13,7 @@ export function TransitConnector({ leg, from, to, pickupTime, documents = [] }: 
   if (!view || !from || !to) return null;
   const href = directions(from,to,leg.mode);
   const label = `${from.nameZh}至${to.nameZh}的路線`;
+  if (leg.mode === '同棟') return <div className="transit transit-walk"><CategoryIcon category="步行" size={17} /><span>同棟移動</span><span>{view.time}</span></div>;
   if (view.walking) return <ExternalLink href={href} label={label} className="transit transit-walk">
     <CategoryIcon category="步行" size={17} /><span>步行</span><span>{[view.distance,view.time].filter(Boolean).join(' · ')}</span><ArrowUpRight size={15} aria-hidden="true" />
   </ExternalLink>;

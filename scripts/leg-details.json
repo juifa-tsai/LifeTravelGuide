@@ -393,5 +393,269 @@
       ],
       "checkedAt": "2026-11-13"
     }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "nagoyajo",
+    "toPlaceId": "montmartre",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "名古屋城站",
+          "toStation": "榮站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-14",
+      "note": "榮站出站後步行至名古屋東急飯店。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "montmartre",
+    "toPlaceId": "fukiage",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "高岳站",
+          "toStation": "吹上站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-14",
+      "note": "從飯店步行至高岳站；吹上站2號出口附近。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "le_jardin",
+    "toPlaceId": "store_factory",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "吹上站",
+          "toStation": "久屋大通站"
+        },
+        {
+          "line": "名城線",
+          "fromStation": "久屋大通站",
+          "toStation": "矢場町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-14",
+      "note": "頂樓咖啡廳離開後，步行至吹上站。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "toraya",
+    "toPlaceId": "oasis21",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "新榮町站",
+          "toStation": "榮站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-15",
+    "fromPlaceId": "hirokoji_lights_fushimi",
+    "toPlaceId": "bar_ylang_ylang",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 790.8,
+        "durationSeconds": 632.5,
+        "fromCoordinates": {
+          "lat": 35.170815,
+          "lng": 136.899475
+        },
+        "toCoordinates": {
+          "lat": 35.169769,
+          "lng": 136.892609
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899475,35.170815;136.892609,35.169769?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-15",
+    "fromPlaceId": "bar_ylang_ylang",
+    "toPlaceId": "hotel",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 841.2,
+        "durationSeconds": 681,
+        "fromCoordinates": {
+          "lat": 35.169769,
+          "lng": 136.892609
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.892609,35.169769;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "oasis21",
+    "toPlaceId": "hotel",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1029.7,
+        "durationSeconds": 823.3,
+        "fromCoordinates": {
+          "lat": 35.171772,
+          "lng": 136.909058
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.909058,35.171772;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "recit",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 334.1,
+        "durationSeconds": 271.2,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.170063,
+          "lng": 136.903152
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.903152,35.170063?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "recit",
+    "toPlaceId": "hotel",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 334.1,
+        "durationSeconds": 271.2,
+        "fromCoordinates": {
+          "lat": 35.170063,
+          "lng": 136.903152
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.903152,35.170063;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "mori",
+    "toPlaceId": "jazz_inn_lovely",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 646.6,
+        "durationSeconds": 525.6,
+        "fromCoordinates": {
+          "lat": 35.167244,
+          "lng": 136.910385
+        },
+        "toCoordinates": {
+          "lat": 35.172615,
+          "lng": 136.910217
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.910385,35.167244;136.910217,35.172615?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "jazz_inn_lovely",
+    "toPlaceId": "bar_thistle",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1311.4,
+        "durationSeconds": 1051.2,
+        "fromCoordinates": {
+          "lat": 35.172615,
+          "lng": 136.910217
+        },
+        "toCoordinates": {
+          "lat": 35.169556,
+          "lng": 136.899124
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.910217,35.172615;136.899124,35.169556?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "jazz_inn_lovely",
+    "toPlaceId": "hotel",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1234.2,
+        "durationSeconds": 989,
+        "fromCoordinates": {
+          "lat": 35.172615,
+          "lng": 136.910217
+        },
+        "toCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.910217,35.172615;136.900894,35.168926?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-14"
+    }
   }
 ]

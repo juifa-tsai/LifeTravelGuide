@@ -347,5 +347,126 @@
     "imageSubject": "interior",
     "imageRights": "original-rights",
     "imageCapturedAt": "2026-11-13"
+  },
+  "hirokoji_lights_fushimi": {
+    "imageUrl": "images/place-hirokoji-lights-fushimi.webp",
+    "imageAttribution": "名古屋観光コンベンションビューロー · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.nagoya-info.jp/zhtw/event/detail/62/",
+    "imageLicenseUrl": "https://www.nagoya-info.jp/zhtw/event/detail/62/",
+    "imageKind": "place",
+    "imageAlt": "廣小路通冬季點燈街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "bar_ylang_ylang": {
+    "imageUrl": "images/place-bar-ylang-ylang.webp",
+    "imageAttribution": "BAR YLANG YLANG · 原攝影者保留著作權",
+    "imageSourceUrl": "https://bar-ylangylang1.amebaownd.com/",
+    "imageLicenseUrl": "https://bar-ylangylang1.amebaownd.com/",
+    "imageKind": "place",
+    "imageAlt": "BAR YLANG YLANG 吧台內部實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "oasis21": {
+    "imageUrl": "images/place-oasis21.webp",
+    "imageAttribution": "オアシス21 · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.sakaepark.co.jp/about/",
+    "imageLicenseUrl": "https://www.sakaepark.co.jp/about/",
+    "imageKind": "place",
+    "imageAlt": "綠洲21水之宇宙船夜景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "jazz_inn_lovely": {
+    "imageUrl": "images/place-jazz-inn-lovely.webp",
+    "imageAttribution": "jazz inn LOVELY · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.jazzinnlovely.com/access/",
+    "imageLicenseUrl": "https://www.jazzinnlovely.com/access/",
+    "imageKind": "place",
+    "imageAlt": "jazz inn LOVELY 店門實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "montmartre": {
+    "imageUrl": "images/place-montmartre.webp",
+    "imageAttribution": "名古屋東急ホテル · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www-new.tokyuhotels.co.jp/nagoya-h/eat/montmartre/index.html",
+    "imageLicenseUrl": "https://www-new.tokyuhotels.co.jp/nagoya-h/eat/montmartre/index.html",
+    "imageKind": "place",
+    "imageAlt": "名古屋東急飯店 Montmartre 餐廳內部實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "dainagoya_lights": {
+    "imageUrl": "images/place-dainagoya-lights.webp",
+    "imageAttribution": "大名古屋ビルヂング · 原攝影者保留著作權",
+    "imageSourceUrl": "https://dainagoyabuilding.com/article/skygarden/13366/",
+    "imageLicenseUrl": "https://dainagoyabuilding.com/article/skygarden/13366/",
+    "imageKind": "place",
+    "imageAlt": "大名古屋大樓空中花園冬季點燈實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "ikeda_lights": {
+    "imageUrl": "images/place-ikeda-lights.webp",
+    "imageAttribution": "名古屋観光コンベンションビューロー · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.nagoya-info.jp/event/detail/731/",
+    "imageLicenseUrl": "https://www.nagoya-info.jp/event/detail/731/",
+    "imageKind": "place",
+    "imageAlt": "池田公園冬季點燈實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "sakaeminami_lights": {
+    "imageUrl": "images/place-sakaeminami-lights.webp",
+    "imageAttribution": "名古屋観光コンベンションビューロー · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.nagoya-info.jp/event/detail/220/",
+    "imageLicenseUrl": "https://www.nagoya-info.jp/event/detail/220/",
+    "imageKind": "place",
+    "imageAlt": "榮南大須街道冬季點燈實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "mirai_naked_moon": {
+    "imageUrl": "images/place-mirai-naked-moon.webp",
+    "imageAttribution": "中部電力 MIRAI TOWER · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.nagoya-tv-tower.co.jp/",
+    "imageLicenseUrl": "https://www.nagoya-tv-tower.co.jp/",
+    "imageKind": "place",
+    "imageAlt": "MIRAI TOWER 展望台望向綠洲21的夜景實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "aniaff_air": {
+    "imageUrl": "images/place-aniaff-air.webp",
+    "imageAttribution": "ホームメイト・リサーチ投稿者（詳細は出典参照） · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.homemate-research-cinema.com/dtl/75000000000000064282/",
+    "imageLicenseUrl": "https://www.homemate-research-cinema.com/dtl/75000000000000064282/",
+    "imageKind": "place",
+    "imageAlt": "Midland Square Cinema 2 街道入口實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
+  },
+  "shirotori_lights": {
+    "imageUrl": "images/place-shirotori-lights.webp",
+    "imageAttribution": "白鳥庭園管理事務所 · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.shirotori-garden.jp/calendar/kanpuukai/index.html",
+    "imageLicenseUrl": "https://www.shirotori-garden.jp/calendar/kanpuukai/index.html",
+    "imageKind": "place",
+    "imageAlt": "白鳥庭園秋季庭園實景（日間）",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-14"
   }
 }

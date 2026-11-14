@@ -21,7 +21,7 @@ test('lightweight marker SVGs match the current Lucide category icons', () => {
 });
 
 test('all four daily maps permanently retain the complete shared favorite collection', () => {
-  assert.equal(favoriteIds.length,21);
+  assert.equal(favoriteIds.length,23);
   for (const day of data.trip.days) {
     const points = model.dailyMapPoints(data.itinerary.filter(stop => stop.date === day.date),data.places);
     assert.deepEqual(points.filter(point => point.favorite).map(point => point.place.id).sort(),favoriteIds);
@@ -49,7 +49,7 @@ test('a scheduled favorite has one marker with both its itinerary number and fav
   assert.equal(model.dayPins(stops,data.places).filter(point => point.place.id === 'hotel').length,1);
 });
 test('schematic segments stop at unknown meals and never connect international flights', () => {
-  const expectedCounts = { '2026-11-15':1,'2026-11-16':6,'2026-11-17':9,'2026-11-18':2 };
+  const expectedCounts = { '2026-11-15':3,'2026-11-16':10,'2026-11-17':10,'2026-11-18':2 };
   const knownTaiwan = data.places.map(place => place.id === 'tpe' ? {...place,lat:25.08,lng:121.23} : place);
   for (const [date,count] of Object.entries(expectedCounts)) {
     const stops = data.itinerary.filter(stop => stop.date === date);

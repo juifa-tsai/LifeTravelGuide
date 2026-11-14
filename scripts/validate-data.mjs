@@ -24,7 +24,19 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
       assert(Boolean(place.coordinateSource), `${place.id}: coordinate provenance required`);
       assert(!place.virtual, `${place.id}: virtual places cannot have coordinates`);
     }
-    for (const field of ['mapsUrl', 'website', 'sourceUrl', 'coordinateSource']) url(place[field], `${place.id}.${field}`);
+    for (const field of ['mapsUrl', 'website', 'sourceUrl', 'coordinateSource', 'reservationUrl', 'reservationSourceUrl']) url(place[field], `${place.id}.${field}`);
+    if (place.reservationRequired !== undefined) assert(typeof place.reservationRequired === 'boolean', `${place.id}: reservation requirement must be boolean`);
+    if (place.reservationRequired) assert(Boolean(place.reservationNote && place.reservationUrl && place.reservationSourceUrl), `${place.id}: required reservations need instructions, contact link and source`);
+    if (place.eventPeriod) {
+      const {start,end} = place.eventPeriod;
+      assert([start,end].every(value => /^\d{4}-\d{2}-\d{2}$/.test(value)) && start <= end, `${place.id}: invalid event period`);
+      assert(place.detailSourceUrls?.length > 0, `${place.id}: event period needs sources`);
+    }
+    if (place.dateHours) {
+      assert(typeof place.dateHours === 'object' && !Array.isArray(place.dateHours), `${place.id}: dated hours must be an object`);
+      for (const [date,hours] of Object.entries(place.dateHours)) assert(/^\d{4}-\d{2}-\d{2}$/.test(date) && (hours === null || typeof hours === 'string' && hours.length > 0 && hours.length <= 60), `${place.id}: invalid dated hours`);
+      assert(place.detailSourceUrls?.length > 0, `${place.id}: dated hours need sources`);
+    }
     if (place.weeklyHours) {
       assert(typeof place.weeklyHours === 'object' && !Array.isArray(place.weeklyHours), `${place.id}: weekly hours must be an object`);
       for (const [day,hours] of Object.entries(place.weeklyHours)) {

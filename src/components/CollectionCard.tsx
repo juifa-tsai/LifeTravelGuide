@@ -4,6 +4,7 @@ import { hasCoordinates } from '../lib/mapPoints';
 import { openingLabels, type OpeningInfo } from '../lib/placeHours';
 import { distanceKm, formatDistance, type Coordinates } from '../lib/distances';
 import { PlaceImage } from './PlaceImage';
+import { ReservationBadge } from './ReservationBadge';
 import { PlaceDetails } from './PlaceDetails';
 
 export function CollectionCard({ place, opening, position, hotel, visited, selected, onVisit, onFocus }: {
@@ -17,7 +18,7 @@ export function CollectionCard({ place, opening, position, hotel, visited, selec
       <summary className="collection-toggle"><PlaceImage place={place} compact /><div className="collection-heading">
         <h2>{place.nameZh}</h2>
         <p className="collection-today"><span className={`status-dot ${opening.state}`} role="img" aria-label={openingLabels[opening.state]} /><span>{opening.hoursText}</span></p>
-        <span className={`dining-badge ${foodType === '素食餐廳' ? 'vegetarian' : ''}`}>{foodType}</span>
+        <span className="collection-tags"><span className={`dining-badge ${foodType === '素食餐廳' ? 'vegetarian' : ''}`}>{foodType}</span><ReservationBadge place={place} /></span>
       </div><span className="collection-distance" aria-label={`距目前位置 ${fromHere}`}><small>目前</small><strong>{fromHere}</strong></span><ChevronDown className="collection-chevron" size={17} aria-hidden="true" /></summary>
       <div className="collection-body"><PlaceDetails place={place} hotel={hotel} visited={visited} onVisit={onVisit} onFocus={onFocus} /></div>
     </details>

@@ -418,3 +418,9 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .opening-option:focus-within { outline:2px solid var(--primary); outline-offset:1px; }
 .bottom-nav a { touch-action:manipulation; }
 .status-dot.unknown { background:transparent; border:1px dashed #8D958D; }
+
+.collection-tags { display:flex; flex-wrap:wrap; align-items:center; gap:4px; }
+.reservation-badge { display:inline-block; margin-top:4px; padding:2px 5px; border-radius:4px; background:var(--primary-pale); color:var(--primary-dark); font-size:12px; line-height:1.45; white-space:nowrap; }
+.map-popup .reservation-badge { display:inline-block; color:var(--primary-dark); font-size:12px; }
+.reservation-details { margin-top:8px; }
+.reservation-link { display:inline-flex; align-items:center; gap:5px; min-height:44px; font-size:15px; }

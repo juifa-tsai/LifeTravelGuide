@@ -14,6 +14,19 @@ parser.add_argument('workbook', nargs='?', type=Path, default=ROOT / 'docs/名�
 parser.add_argument('--out', type=Path, default=ROOT / 'public/data')
 args = parser.parse_args()
 workbook = openpyxl.load_workbook(args.workbook, data_only=True)
+formula_workbook = openpyxl.load_workbook(args.workbook, data_only=False)
+
+def hyperlink(cell):
+    if cell.hyperlink:
+        return cell.hyperlink.target
+    value = cell.value
+    if not isinstance(value, str):
+        return None
+    match = re.match(r'^=HYPERLINK\(\s*"((?:[^"]|"")*)"\s*[,;]', value, re.I)
+    target = match.group(1).replace('""', '"') if match else value
+    return target if target.startswith(('https://', 'http://')) else None
+
+reservation_rows = {r[0].value:r for r in formula_workbook['02_踩點清單'].iter_rows(min_row=5) if r[0].value}
 
 def rows(name):
     return [list(row) for row in list(workbook[name].values)[4:] if row[0] is not None]
@@ -44,6 +57,7 @@ for r in rows('02_踩點清單'):
     lat, lng = number(r[14]), number(r[15])
     if lat is None and lng is None and geo:
         lat, lng = geo['lat'], geo['lng']
+    reservation = reservation_rows[r[0]]
     places.append(dict(id=r[0], category=r[1], nameZh=r[2], nameJa=r[3], address=r[4],
         hoursText=r[5], closedText=r[6], priority=r[7], dietText=r[9], summary=r[10],
         mapsUrl=r[11], website=r[12], imageUrl=image_url, imageAttribution=photo.get('imageAttribution'),
@@ -51,7 +65,11 @@ for r in rows('02_踩點清單'):
         imageKind=photo.get('imageKind'), imageAlt=photo.get('imageAlt'),
         lat=None if virtual else lat, lng=None if virtual else lng, virtual=virtual,
         verification=r[16], sourceUrl=r[17], coordinateSource=geo.get('source'),
-        coordinateLabel=geo.get('label'), coordinateAddress=geo.get('address')))
+        coordinateLabel=geo.get('label'), coordinateAddress=geo.get('address'),
+        reservationRequired=len(r) > 18 and r[18] == '是',
+        reservationNote=r[19] if len(r) > 19 else None,
+        reservationUrl=hyperlink(reservation[20]) if len(reservation) > 20 else None,
+        reservationSourceUrl=hyperlink(reservation[21]) if len(reservation) > 21 else None))
 itinerary = [dict(date=date(r[0]), sequence=number(r[1]), arrivalTime=time(r[2]),
     stayMinutes=number(r[3]), placeId=r[4], title=r[5], category=r[6],
     displayStatus=r[7], summary=r[8], note=r[9], mapsUrl=r[10], sourceUrl=r[11],
@@ -86,7 +104,7 @@ for extra in supplement['itinerary']:
 place_details = json.loads((ROOT / 'scripts/place-details.json').read_text())
 for place in places:
     extra = place_details.get(place['id'], {})
-    for field in ('foodDescription', 'diningType', 'weeklyHours', 'hoursNote', 'detailSourceUrls', 'detailsCheckedAt'):
+    for field in ('foodDescription', 'diningType', 'weeklyHours', 'hoursNote', 'detailSourceUrls', 'detailsCheckedAt', 'eventPeriod', 'dateHours', 'reservationRequired', 'reservationNote', 'reservationUrl', 'reservationSourceUrl'):
         if field in extra:
             place[field] = extra[field]
 
@@ -128,7 +146,7 @@ themes = [('2026-11-15','日','抵達名古屋','從桃園出發，把步調留�
     ('2026-11-17','二','藝術與大須','一杯咖啡、一場展覽，慢慢走進大須。','ART & STREETS'),
     ('2026-11-18','三','帶著回憶回家','吃好早餐，為回程留一點從容。','HOMEBOUND')]
 trip = dict(title='名古屋 · 旅の手帖', startDate='2026-11-15', endDate='2026-11-18',
-    timezone='Asia/Tokyo', updatedAt='2026-11-13',
+    timezone='Asia/Tokyo', updatedAt='2026-11-14',
     days=[dict(date=d,weekday=w,title=t,description=s,label=l,number=i+1) for i,(d,w,t,s,l) in enumerate(themes)],
     overview=[dict(title=r[0],value=r[1],note=r[2]) for r in rows('00_旅程總覽')
               if r[0] in ('住宿','去程','接機','回程','交通','飲食')])

@@ -8,6 +8,7 @@ import { categoryMarkerSvg } from './Icon';
 import { PlaceImage } from './PlaceImage';
 import { ExternalLink } from './ExternalLink';
 import { compactHours } from '../lib/hours';
+import { ReservationBadge } from './ReservationBadge';
 import type { Coordinates } from '../lib/distances';
 
 const categoryStyle = {
@@ -94,11 +95,10 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
               }
             },
           }}>
-          <Tooltip>{point.place.nameZh}</Tooltip><Popup className="place-popup"><div className="map-popup"><PlaceImage place={point.place} compact /><div><strong>{point.place.nameZh}</strong><span lang="ja">{point.place.nameJa}</span><span>{point.place.category}</span></div>
+          <Tooltip>{point.place.nameZh}</Tooltip><Popup className="place-popup"><div className="map-popup"><PlaceImage place={point.place} compact /><div><strong>{point.place.nameZh}</strong><span lang="ja">{point.place.nameJa}</span><span>{point.place.category}</span><ReservationBadge place={point.place} /></div>
             <ExternalLink href={point.place.mapsUrl} className="map-popup-link" label={`在 Google Maps 開啟 ${point.place.nameZh}`}><MapPinned size={18} aria-hidden="true" /><span className="sr-only">Google Maps</span></ExternalLink></div>
             <p className="map-popup-hours"><Clock3 size={13} aria-hidden="true" /><span>{compactHours(point.place)}</span></p>
-            {point.place.closedText && <p className="map-popup-closed">休業：{point.place.closedText}</p>}
-            {point.place.id === 'barns' && <p className="note">11/17 可能休業，請核對。</p>}
+            {(point.place.dateHours ? point.place.hoursNote : point.place.closedText) && <p className="map-popup-closed">{point.place.dateHours ? point.place.hoursNote : `休業：${point.place.closedText}`}</p>}
           </Popup>
         </Marker>)}
         {location && <CircleMarker center={location} radius={8} pathOptions={{ color:'#fff',weight:3,fillColor:'#4479AB',fillOpacity:1 }}><Tooltip>你的位置</Tooltip></CircleMarker>}

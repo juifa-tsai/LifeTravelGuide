@@ -246,5 +246,93 @@
     "address": "愛知県名古屋市中区錦二丁目１５番２０号",
     "label": "国土地理院・住所検索（街區參考點，非入口定位）",
     "checkedAt": "2026-11-13"
+  },
+  "hirokoji_lights_fushimi": {
+    "lat": 35.170815,
+    "lng": 136.899475,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A6%E4%BA%8C%E4%B8%81%E7%9B%AE",
+    "address": "愛知県名古屋市中区錦二丁目",
+    "label": "国土地理院・錦二丁目街區參考點，非燈飾入口",
+    "checkedAt": "2026-11-14"
+  },
+  "bar_ylang_ylang": {
+    "lat": 35.169769,
+    "lng": 136.892609,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A61%E4%B8%81%E7%9B%AE14%E7%95%AA23%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦一丁目１４番２３号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "oasis21": {
+    "lat": 35.171772,
+    "lng": 136.909058,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%9D%B1%E6%A1%9C1%E4%B8%81%E7%9B%AE11%E7%95%AA1%E5%8F%B7",
+    "address": "愛知県名古屋市東区東桜一丁目１１番１号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "jazz_inn_lovely": {
+    "lat": 35.172615,
+    "lng": 136.910217,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%9D%B1%E6%A1%9C1%E4%B8%81%E7%9B%AE10%E7%95%AA15%E5%8F%B7",
+    "address": "愛知県名古屋市東区東桜一丁目１０番１５号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "montmartre": {
+    "lat": 35.169209,
+    "lng": 136.913788,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%844%E4%B8%81%E7%9B%AE6%E7%95%AA8%E5%8F%B7",
+    "address": "愛知県名古屋市中区栄四丁目６番８号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "dainagoya_lights": {
+    "lat": 35.171711,
+    "lng": 136.88443,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%853%E4%B8%81%E7%9B%AE28%E7%95%AA12%E5%8F%B7",
+    "address": "愛知県名古屋市中村区名駅三丁目２８番１２号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "ikeda_lights": {
+    "lat": 35.166115,
+    "lng": 136.912903,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%844%E4%B8%81%E7%9B%AE19%E7%95%AA",
+    "address": "愛知県名古屋市中区栄四丁目１９番",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "sakaeminami_lights": {
+    "lat": 35.165134,
+    "lng": 136.906876,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%843%E4%B8%81%E7%9B%AE27%E7%95%AA7%E5%8F%B7",
+    "address": "愛知県名古屋市中区栄三丁目２７番７号",
+    "label": "国土地理院・南大津商店街振興組合地址參考點，非點燈路段入口",
+    "checkedAt": "2026-11-14"
+  },
+  "mirai_naked_moon": {
+    "lat": 35.172157,
+    "lng": 136.90773,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A63%E4%B8%81%E7%9B%AE6%E7%95%AA15%E5%8F%B7",
+    "address": "愛知県名古屋市中区錦三丁目６番１５号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "aniaff_air": {
+    "lat": 35.170242,
+    "lng": 136.887024,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%854%E4%B8%81%E7%9B%AE11%E7%95%AA27%E5%8F%B7",
+    "address": "愛知県名古屋市中村区名駅四丁目１１番２７号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
+  },
+  "shirotori_lights": {
+    "lat": 35.125439,
+    "lng": 136.901764,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%86%B1%E7%94%B0%E5%8C%BA%E7%86%B1%E7%94%B0%E8%A5%BF%E7%94%BA2%E7%95%AA5%E5%8F%B7",
+    "address": "愛知県名古屋市熱田区熱田西町２番５号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-14"
   }
 }

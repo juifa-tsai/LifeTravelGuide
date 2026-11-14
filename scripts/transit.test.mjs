@@ -15,7 +15,7 @@ const view = leg => legView(leg,place(leg.fromPlaceId),place(leg.toPlaceId));
 
 test('walking distances come from sourced foot routes with unchanged verified endpoints', () => {
   const walks = data.legs.filter(leg => leg.mode === '步行' && !place(leg.fromPlaceId).virtual && !place(leg.toPlaceId).virtual);
-  assert.equal(walks.length,8);
+  assert.equal(walks.length,15);
   for (const leg of walks) {
     assert(leg.navigation.walking.distanceMeters > 0);
     assert(leg.navigation.sources.some(source => source.includes('/routed-foot/')));

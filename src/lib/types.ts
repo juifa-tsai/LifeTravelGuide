@@ -16,6 +16,8 @@ export interface Place {
   virtual: boolean; verification: string; sourceUrl: string | null; coordinateSource: string | null;
   coordinateLabel: string | null; coordinateAddress: string | null;
   foodDescription?: string; diningType?: string;
+  reservationRequired?:boolean; reservationNote?:string | null; reservationUrl?:string | null; reservationSourceUrl?:string | null;
+  eventPeriod?: { start:string; end:string }; dateHours?:Record<string,string | null>;
   weeklyHours?: Partial<Record<string, string | null>>;
   hoursNote?: string; detailSourceUrls?: string[]; detailsCheckedAt?: string;
 }

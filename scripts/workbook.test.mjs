@@ -20,7 +20,7 @@ print(json.dumps(dict(stops=stops,places=places),ensure_ascii=False))
 `,fileURLToPath(new URL('../docs/名古屋四日行程_20261115-1118.xlsx',import.meta.url))],{encoding:'utf8'}));
 
 test('the updated workbook owns every itinerary time, status, summary and note', () => {
-  assert.equal(data.itinerary.length,29);
+  assert.equal(data.itinerary.length,37);
   assert.equal(data.itinerary.length,workbook.stops.length);
   for (const source of workbook.stops) {
     const stop = data.itinerary.find(stop => stop.date === source.date && stop.sequence === source.sequence);
@@ -32,9 +32,9 @@ test('the updated workbook owns every itinerary time, status, summary and note',
   }
 });
 
-test('seven newly added places have sourced descriptions, real map reference points and credited location photos', () => {
+test('the previous seven dining additions have sourced descriptions, real map reference points and credited location photos', () => {
   const ids=['bio_terrace','khaja_ghar','mihos_grains','oribio','pupu_kitchen','ko_vegan','bar_thistle'];
-  assert.equal(data.places.length,35);
+  assert.equal(data.places.length,46);
   for (const id of ids) {
     assert.equal(data.places.filter(place => place.id === id).length,1);
     const place=data.places.find(place => place.id === id);
@@ -51,13 +51,31 @@ test('seven newly added places have sourced descriptions, real map reference poi
 
 test('revised lunches, antique stop and optional bar follow the new day routes', () => {
   const get=(date,id)=>data.itinerary.find(stop=>stop.date===date&&stop.placeId===id);
-  assert.equal(get('2026-11-16','bio_terrace').arrivalTime,'12:15');
+  assert.equal(get('2026-11-16','montmartre').arrivalTime,'12:20');
   assert.equal(get('2026-11-16','fukiage').arrivalTime,'13:45');
-  assert.equal(get('2026-11-16','fukiage').stayMinutes,105);
+  assert.equal(get('2026-11-16','fukiage').stayMinutes,90);
   assert.equal(get('2026-11-17','khaja_ghar').arrivalTime,'12:45');
-  assert.equal(get('2026-11-17','bar_thistle').arrivalTime,'20:00');
+  assert.equal(get('2026-11-17','bar_thistle').arrivalTime,'22:25');
   assert.equal(get('2026-11-17','bar_thistle').displayStatus,'可選');
-  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-16').candidateIds,['le_jardin','recit']);
-  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-17').candidateIds,['mihos_grains','recit']);
+  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-16').candidateIds,['bio_terrace']);
+  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-17').candidateIds,['mihos_grains']);
   assert(!data.itinerary.some(stop=>stop.placeId==='barns'));
+});
+
+test('public reservation columns preserve mandatory flags and extract HYPERLINK targets instead of cached display labels',()=>{
+  const records=JSON.parse(execFileSync('python3',['-c',`
+import openpyxl,json,re,sys
+b=openpyxl.load_workbook(sys.argv[1],data_only=False)
+def link(c):
+ v=c.hyperlink.target if c.hyperlink else c.value
+ if not isinstance(v,str):return None
+ m=re.match(r'^=HYPERLINK\\(\\s*"((?:[^"]|"")*)"\\s*[,;]',v,re.I)
+ return m.group(1).replace('""','"') if m else v if v.startswith('https://') else None
+result=[]
+for row in b['02_踩點清單'].iter_rows(min_row=5):
+ if row[0].value:result.append(dict(id=row[0].value,reservationRequired=row[18].value=='是',reservationUrl=link(row[20]),reservationSourceUrl=link(row[21])))
+print(json.dumps(result,ensure_ascii=False))
+`,fileURLToPath(new URL('../docs/名古屋四日行程_20261115-1118.xlsx',import.meta.url))],{encoding:'utf8'}));
+  assert(records.some(r=>r.reservationRequired));assert(records.filter(r=>r.reservationUrl).length>10);
+  for(const record of records){const place=data.places.find(p=>p.id===record.id);for(const field of ['reservationRequired','reservationUrl','reservationSourceUrl'])assert.deepEqual(place[field],record[field],`${record.id}: ${field}`);}
 });

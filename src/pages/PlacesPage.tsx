@@ -9,7 +9,7 @@ import { byHotelDistance, isInNagoya, type Coordinates } from '../lib/distances'
 import { TravelMap } from '../components/TravelMap';
 import { collectionMapPoints } from '../lib/mapPoints';
 import { NearbyStoresLink } from '../components/NearbyStoresLink';
-const categories = ['老件店','古蹟／歷史','美術館／公園','素食餐廳','咖啡廳','酒吧','交通'];
+const categories = ['老件店','古蹟／歷史','美術館／公園','素食餐廳','咖啡廳','酒吧','夜間活動','交通'];
 export function PlacesPage({ data, visited, setVisited }: { data:TravelData; visited:Record<string,boolean>; setVisited:(value:Record<string,boolean> | ((previous:Record<string,boolean>) => Record<string,boolean>)) => void }) {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {

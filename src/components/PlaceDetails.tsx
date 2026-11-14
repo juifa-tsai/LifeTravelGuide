@@ -1,4 +1,4 @@
-import { BedDouble, Check, Clock3, Info, LocateFixed, MapPin, MapPinned } from 'lucide-react';
+import { BedDouble, Check, Clock3, Info, CalendarDays, LocateFixed, MapPin, MapPinned } from 'lucide-react';
 import type { Place } from '../lib/types';
 import { hasCoordinates } from '../lib/mapPoints';
 import { distanceKm, formatDistance } from '../lib/distances';
@@ -22,6 +22,10 @@ export function PlaceDetails({ place, hotel, date, visited, onVisit, onFocus }: 
     <p className="collection-address"><MapPin size={15} aria-hidden="true" /><span>{place.address}</span></p>
     {(place.hoursNote || place.closedText) && <p className="collection-hours">{place.hoursNote || `休業：${place.closedText}`}</p>}
     {diet && <p className="diet-note">{diet}</p>}
+    {(place.reservationRequired || place.reservationUrl) && <div className="reservation-details">
+      {place.reservationNote && <p className="collection-hours">{place.reservationNote}</p>}
+      {place.reservationUrl && <ExternalLink href={place.reservationUrl} className="text-action reservation-link" label={`${place.nameZh} 預約／聯絡`}><CalendarDays size={16} aria-hidden="true" />預約／聯絡</ExternalLink>}
+    </div>}
     <div className="collection-actions"><div className="collection-links">
       <ExternalLink href={place.mapsUrl} className="collection-icon-action" label={`在 Google Maps 開啟 ${place.nameZh}`}><MapPinned size={20} aria-hidden="true" /><span className="sr-only">Google Maps</span></ExternalLink>
       {hasCoordinates(place) && <button type="button" className="collection-icon-action" onClick={() => onFocus(place.id,true)} aria-label={`在地圖查看 ${place.nameZh}`}><LocateFixed size={20} aria-hidden="true" /></button>}

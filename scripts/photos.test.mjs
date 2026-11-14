@@ -13,8 +13,8 @@ test('all real locations use actual location photos; generic illustrations remai
     assert(!place.imageAlt.includes('示意'),place.id);
   }
 });
-test('23 individually matched photo screenshots retain exact source, photographer, content hash and original rights',()=>{
-  assert.equal(photos.length,23);
+test('34 individually matched photo screenshots retain exact source, photographer, content hash and original rights',()=>{
+  assert.equal(photos.length,34);
   assert.equal(new Set(photos.map(p=>p.placeId)).size,photos.length);
   assert(photos.filter(p=>p.view==='exterior').length>=16);
   for (const photo of photos) {
@@ -30,7 +30,8 @@ test('23 individually matched photo screenshots retain exact source, photographe
     assert.equal(place.imageLicenseUrl,photo.licenseUrl);
     assert(place.imageAttribution.includes(photo.author));
     const sourceHost=new URL(photo.sourceUrl).hostname;
-    assert(photo.provider==='Google Maps' ? sourceHost==='www.google.com' : sourceHost==='molnoda.com');
+    const hosts = {'Google Maps':['www.google.com'],'店家官網':['molnoda.com','bar-ylangylang1.amebaownd.com','www.jazzinnlovely.com','www-new.tokyuhotels.co.jp'],'設施官網':['www.sakaepark.co.jp','dainagoyabuilding.com','www.nagoya-tv-tower.co.jp','www.shirotori-garden.jp'],'官方觀光網站':['www.nagoya-info.jp'],'ホームメイト・リサーチ':['www.homemate-research-cinema.com']};
+    assert(hosts[photo.provider]?.includes(sourceHost),`${photo.placeId}: source host must match its reviewed provider`);
     assert.equal(new URL(photo.sourceImageUrl).protocol,'https:');
     const bytes=readFileSync(new URL(`../public/${photo.path}`,import.meta.url));
     assert.equal(bytes.toString('ascii',8,12),'WEBP');
