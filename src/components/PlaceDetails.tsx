@@ -16,7 +16,7 @@ export function PlaceDetails({ place, hotel, date, visited, onVisit, onFocus }: 
   const source = place.detailSourceUrls?.[0] || place.sourceUrl || place.website;
   return <div className="place-details">
     <p className="collection-hotel-distance"><BedDouble size={15} aria-hidden="true" />距飯店 <strong>{fromHotel}</strong></p>
-    <p className="collection-description">{place.foodDescription || place.summary}</p>
+    <p className="collection-description">{place.foodDescription || place.description || place.summary}</p>
     {place.nameJa !== place.nameZh && <p className="collection-japanese" lang="ja">{place.nameJa}</p>}
     {date && <p className="detail-meta"><Clock3 size={15} aria-hidden="true" /><span>{shortDate(date)}：{todayHours(place,date).replace('今日','當日')}</span></p>}
     <p className="collection-address"><MapPin size={15} aria-hidden="true" /><span>{place.address}</span></p>

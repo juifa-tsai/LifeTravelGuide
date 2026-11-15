@@ -104,7 +104,7 @@ for extra in supplement['itinerary']:
 place_details = json.loads((ROOT / 'scripts/place-details.json').read_text())
 for place in places:
     extra = place_details.get(place['id'], {})
-    for field in ('foodDescription', 'diningType', 'weeklyHours', 'hoursNote', 'detailSourceUrls', 'detailsCheckedAt', 'eventPeriod', 'dateHours', 'reservationRequired', 'reservationNote', 'reservationUrl', 'reservationSourceUrl'):
+    for field in ('foodDescription', 'description', 'diningType', 'weeklyHours', 'hoursNote', 'detailSourceUrls', 'detailsCheckedAt', 'eventPeriod', 'dateHours', 'reservationRequired', 'reservationNote', 'reservationUrl', 'reservationSourceUrl'):
         if field in extra:
             place[field] = extra[field]
 
@@ -146,7 +146,7 @@ themes = [('2026-11-15','日','抵達名古屋','從桃園出發，把步調留�
     ('2026-11-17','二','藝術與大須','一杯咖啡、一場展覽，慢慢走進大須。','ART & STREETS'),
     ('2026-11-18','三','帶著回憶回家','吃好早餐，為回程留一點從容。','HOMEBOUND')]
 trip = dict(title='名古屋 · 旅の手帖', startDate='2026-11-15', endDate='2026-11-18',
-    timezone='Asia/Tokyo', updatedAt='2026-11-14',
+    timezone='Asia/Tokyo', updatedAt='2026-11-15',
     days=[dict(date=d,weekday=w,title=t,description=s,label=l,number=i+1) for i,(d,w,t,s,l) in enumerate(themes)],
     overview=[dict(title=r[0],value=r[1],note=r[2]) for r in rows('00_旅程總覽')
               if r[0] in ('住宿','去程','接機','回程','交通','飲食')])

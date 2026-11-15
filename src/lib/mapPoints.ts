@@ -1,6 +1,6 @@
 import type { Place, Stop } from './types';
 
-export const favoriteCategories = ['素食餐廳','咖啡廳','酒吧'] as const;
+export const favoriteCategories = ['素食餐廳','咖啡廳','酒吧','潮牌／選物'] as const;
 export type CoordinatePlace = Place & { lat:number; lng:number };
 export interface MapPoint { place:CoordinatePlace; favorite:boolean; number?:number }
 export interface MapPinData { place:CoordinatePlace; stop:Stop; number:number }

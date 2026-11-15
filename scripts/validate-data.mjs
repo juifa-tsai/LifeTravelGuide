@@ -50,6 +50,10 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
       assert(Boolean(place.diningType), `${place.id}: dining type required`);
       assert(place.detailSourceUrls?.length > 0, `${place.id}: food description needs sources`);
     }
+    if (place.description) {
+      assert(typeof place.description === 'string' && place.description.length >= 30 && place.description.length <= 100, `${place.id}: invalid place description`);
+      assert(place.detailSourceUrls?.length > 0, `${place.id}: description needs sources`);
+    }
     for (const source of place.detailSourceUrls || []) url(source, `${place.id}.detailSourceUrls`);
     if (place.imageUrl) {
       assert(Boolean(place.imageAttribution), `${place.id}: image attribution required`);

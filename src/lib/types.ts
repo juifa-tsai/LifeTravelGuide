@@ -15,7 +15,7 @@ export interface Place {
   imageSubject?: 'exterior' | 'interior' | 'terrace'; imageRights?: 'original-rights'; imageCapturedAt?: string;
   virtual: boolean; verification: string; sourceUrl: string | null; coordinateSource: string | null;
   coordinateLabel: string | null; coordinateAddress: string | null;
-  foodDescription?: string; diningType?: string;
+  foodDescription?: string; description?:string; diningType?: string;
   reservationRequired?:boolean; reservationNote?:string | null; reservationUrl?:string | null; reservationSourceUrl?:string | null;
   eventPeriod?: { start:string; end:string }; dateHours?:Record<string,string | null>;
   weeklyHours?: Partial<Record<string, string | null>>;

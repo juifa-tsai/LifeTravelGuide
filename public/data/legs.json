@@ -110,10 +110,160 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "hotel",
+    "toPlaceId": "shikemichi",
+    "mode": "步行",
+    "summary": "約15–20分",
+    "details": "08:00由伏見飯店步行往那古野四間道。",
+    "minutesEstimate": 18,
+    "fareJpyEstimate": null,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.nagoya-info.jp/spot/detail/53/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1578.3,
+        "durationSeconds": 1264.2,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.175659,
+          "lng": 136.891785
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.891785,35.175659?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "shikemichi",
+    "toPlaceId": "endoji",
+    "mode": "步行",
+    "summary": "約3–5分",
+    "details": "沿四間道向北走到圓頓寺商店街。",
+    "minutesEstimate": 5,
+    "fareJpyEstimate": null,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.aichinow.pref.aichi.jp/spots/detail/923/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 140.1,
+        "durationSeconds": 112,
+        "fromCoordinates": {
+          "lat": 35.175659,
+          "lng": 136.891785
+        },
+        "toCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.891785,35.175659;136.891327,35.176331?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "endoji",
+    "toPlaceId": "nagoyajo",
+    "mode": "步行",
+    "summary": "約20–30分",
+    "details": "09:05從圓頓寺步行往名古屋城正門，接09:45本丸御殿行程。",
+    "minutesEstimate": 25,
+    "fareJpyEstimate": null,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.nagoya-info.jp/spot/detail/53/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1798,
+        "durationSeconds": 1442.1,
+        "fromCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        },
+        "toCoordinates": {
+          "lat": 35.1876572063889,
+          "lng": 136.899153485
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8913270,35.1763310;136.8991535,35.1876572?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "new_poppy",
+    "mode": "步行",
+    "summary": "約15–20分",
+    "details": "雨天備案：直接步行到四間道巷內的喫茶ニューポピー。",
+    "minutesEstimate": 18,
+    "fareJpyEstimate": null,
+    "certainty": "步行估算",
+    "sourceUrl": "https://b-bitou.com/shop/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1577.9,
+        "durationSeconds": 1266.1,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.175735,
+          "lng": 136.892517
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.892517,35.175735?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "new_poppy",
+    "toPlaceId": "endoji",
+    "mode": "步行",
+    "summary": "約3–5分",
+    "details": "雨勢較緩可續逛有遮棚的圓頓寺商店街。",
+    "minutesEstimate": 5,
+    "fareJpyEstimate": null,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.aichinow.pref.aichi.jp/spots/detail/923/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 170.5,
+        "durationSeconds": 136.3,
+        "fromCoordinates": {
+          "lat": 35.175735,
+          "lng": 136.892517
+        },
+        "toCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.892517,35.175735;136.891327,35.176331?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
     "toPlaceId": "nagoyajo",
     "mode": "地鐵＋步行",
     "summary": "約25–35分",
-    "details": "伏見（東山線）→ 榮（轉名城線）→ 名古屋城站 → 步行",
+    "details": "雨大直達備案：伏見搭東山線往藤丘至榮，轉名城線往久屋大通、名古屋城方向；名古屋城站7號出口步行約5分。",
     "minutesEstimate": 30,
     "fareJpyEstimate": null,
     "certainty": "估算",
@@ -236,34 +386,61 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "store_factory",
-    "toPlaceId": "toraya",
-    "mode": "地鐵／步行",
-    "summary": "約20–30分",
-    "details": "榮5丁目 → 新榮3丁目；以現場路線導航為準",
-    "minutesEstimate": 25,
+    "toPlaceId": "aoi_celestie",
+    "mode": "步行",
+    "summary": "約15–20分",
+    "details": "從丸田町往新榮町站1號出口。",
+    "minutesEstimate": 17,
     "fareJpyEstimate": null,
     "certainty": "估算",
-    "sourceUrl": null,
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
     "navigation": {
-      "steps": [
-        {
-          "line": "名城線",
-          "fromStation": "矢場町站",
-          "toStation": "榮站"
+      "walking": {
+        "distanceMeters": 1336.4,
+        "durationSeconds": 1075.4,
+        "fromCoordinates": {
+          "lat": 35.162441,
+          "lng": 136.915161
         },
-        {
-          "line": "東山線",
-          "fromStation": "榮站",
-          "toStation": "新榮町站"
+        "toCoordinates": {
+          "lat": 35.17094,
+          "lng": 136.919083
         }
-      ],
+      },
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://retty.me/area/PRE23/ARE63/SUB6304/100001529102/",
-        "https://nagoya.mypl.net/naka/shop/00000372987/access"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.915161,35.162441;136.919083,35.17094?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-13",
-      "note": "新榮町站2號出口，步行 8 分至店家。"
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "aoi_celestie",
+    "toPlaceId": "toraya",
+    "mode": "步行",
+    "summary": "約10–15分",
+    "details": "由新榮町站周邊往新栄3丁目。",
+    "minutesEstimate": 13,
+    "fareJpyEstimate": null,
+    "certainty": "估算",
+    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 899.5,
+        "durationSeconds": 719.7,
+        "fromCoordinates": {
+          "lat": 35.17094,
+          "lng": 136.919083
+        },
+        "toCoordinates": {
+          "lat": 35.166874,
+          "lng": 136.923813
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.919083,35.17094;136.923813,35.166874?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
     }
   },
   {
@@ -567,7 +744,7 @@
     "toPlaceId": "mori",
     "mode": "地鐵／步行",
     "summary": "約20–30分",
-    "details": "大須商圈 → 榮4丁目；可搭名城線或步行",
+    "details": "若取消覺王山，從大須直接走往榮，或在上前津搭名城線至榮。",
     "minutesEstimate": 25,
     "fareJpyEstimate": null,
     "certainty": "估算",
@@ -586,6 +763,154 @@
       ],
       "checkedAt": "2026-11-13",
       "note": "榮站13號出口，步行 3 分至店家。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "osu_street",
+    "toPlaceId": "kakuozan_sando",
+    "mode": "地鐵＋步行",
+    "summary": "約30–40分",
+    "details": "走到大須觀音站，鶴舞線往上小田井方向一站至伏見；轉東山線往藤丘方向至覺王山，走1號出口。",
+    "minutesEstimate": 35,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "大須觀音站",
+          "toStation": "伏見站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "伏見站",
+          "toStation": "覺王山站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/access"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "osu_street",
+    "toPlaceId": "tamesaburo_memorial",
+    "mode": "地鐵＋步行",
+    "summary": "約30–40分",
+    "details": "雨天直達：大須觀音 → 鶴舞線 → 伏見 → 東山線往藤丘 → 池下站，步行約3分。",
+    "minutesEstimate": 35,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "大須觀音站",
+          "toStation": "伏見站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "伏見站",
+          "toStation": "池下站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/access"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "kakuozan_sando",
+    "toPlaceId": "tamesaburo_memorial",
+    "mode": "步行",
+    "summary": "約8–12分",
+    "details": "由日泰寺參道轉往記念館，依散步折返點而異。",
+    "minutesEstimate": 10,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://www.furukawa-museum.or.jp/info/hours",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 564.9,
+        "durationSeconds": 452.1,
+        "fromCoordinates": {
+          "lat": 35.167667,
+          "lng": 136.952835
+        },
+        "toCoordinates": {
+          "lat": 35.168819,
+          "lng": 136.948578
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.952835,35.167667;136.948578,35.168819?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "tamesaburo_memorial",
+    "toPlaceId": "mori",
+    "mode": "地鐵＋步行",
+    "summary": "約25–35分",
+    "details": "步行約3分至池下站，搭東山線往高畑方向，在榮站下車，從12或13號出口往栄4丁目。",
+    "minutesEstimate": 30,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "池下站",
+          "toStation": "榮站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/access"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "art_museum",
+    "toPlaceId": "khaja_ghar",
+    "mode": "步行",
+    "summary": "約15–20分",
+    "details": "雨天可略過白川公園，直接由美術館往大須2丁目。",
+    "minutesEstimate": 18,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 923.2,
+        "durationSeconds": 725.7,
+        "fromCoordinates": {
+          "lat": 35.16400256,
+          "lng": 136.901001
+        },
+        "toCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.901001,35.16400256;136.899307,35.158134?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
     }
   },
   {

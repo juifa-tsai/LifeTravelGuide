@@ -20,7 +20,7 @@ print(json.dumps(dict(stops=stops,places=places),ensure_ascii=False))
 `,fileURLToPath(new URL('../docs/名古屋四日行程_20261115-1118.xlsx',import.meta.url))],{encoding:'utf8'}));
 
 test('the updated workbook owns every itinerary time, status, summary and note', () => {
-  assert.equal(data.itinerary.length,37);
+  assert.equal(data.itinerary.length,42);
   assert.equal(data.itinerary.length,workbook.stops.length);
   for (const source of workbook.stops) {
     const stop = data.itinerary.find(stop => stop.date === source.date && stop.sequence === source.sequence);
@@ -34,7 +34,7 @@ test('the updated workbook owns every itinerary time, status, summary and note',
 
 test('the previous seven dining additions have sourced descriptions, real map reference points and credited location photos', () => {
   const ids=['bio_terrace','khaja_ghar','mihos_grains','oribio','pupu_kitchen','ko_vegan','bar_thistle'];
-  assert.equal(data.places.length,46);
+  assert.equal(data.places.length,62);
   for (const id of ids) {
     assert.equal(data.places.filter(place => place.id === id).length,1);
     const place=data.places.find(place => place.id === id);
@@ -54,7 +54,7 @@ test('revised lunches, antique stop and optional bar follow the new day routes',
   assert.equal(get('2026-11-16','montmartre').arrivalTime,'12:20');
   assert.equal(get('2026-11-16','fukiage').arrivalTime,'13:45');
   assert.equal(get('2026-11-16','fukiage').stayMinutes,90);
-  assert.equal(get('2026-11-17','khaja_ghar').arrivalTime,'12:45');
+  assert.equal(get('2026-11-17','khaja_ghar').arrivalTime,'11:55');
   assert.equal(get('2026-11-17','bar_thistle').arrivalTime,'22:25');
   assert.equal(get('2026-11-17','bar_thistle').displayStatus,'可選');
   assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-16').candidateIds,['bio_terrace']);

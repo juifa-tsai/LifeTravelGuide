@@ -85,7 +85,7 @@ The original workbook has no coordinates or photos. `scripts/geocodes.json` supp
 
 Explicit Excel coordinates take precedence over the supplement, but need a coordinate source in `scripts/geocodes.json` to pass validation. If you move a place, update both its workbook address and its geocode record. Unknown coordinates remain null; the text card still works.
 
-All 43 real locations now use photographs of the matching place. The capture manifest contains 34 reviewed photographs, including storefronts, entrances, interiors, terraces and the actual activity venues. Twenty-two were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. The 11 latest additions use photographs from venue/organizer websites, Nagoya’s official tourism site and a matched HomeMate Cinema 2 entrance photograph. The MIRAI TOWER image shows the view from its observation deck; the Shirotori image shows the garden in daylight, not a promised night scene. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
+All 59 real locations now use photographs of the matching place. The capture manifest contains 50 reviewed photographs, including storefronts, entrances, interiors, terraces and the actual activity venues. Twenty-five were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. The 11 latest additions use photographs from venue/organizer websites, Nagoya’s official tourism site and a matched HomeMate Cinema 2 entrance photograph. The MIRAI TOWER image shows the view from its observation deck; the Shirotori image shows the garden in daylight, not a promised night scene. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
 
 `scripts/storefront-photos.json` records the matched store name/address, photographer, original photo/viewer URL, capture date, view type and SHA-256 hashes. These personal noncommercial travel-reference screenshots retain the original photographers’ rights; they are **not CC-licensed or newly licensed by this repository**. Google Maps usage terms and the official source are recorded separately from the existing Commons CC licenses. Card and popup thumbnails open the matching place’s stable Google Maps location link. Per-card photographer captions have been removed; complete author/source/license attribution is grouped under the collapsed 圖片授權 section at the bottom of Documents. Historical photo-viewer URLs remain provenance records, not navigation targets. Full credits are in `public/images/credits.json`; Google Maps photos are not live API requests, and the app needs no Google API key.
 
@@ -153,21 +153,21 @@ Distances are local calculations from verified place coordinates; unknown coordi
 
 交通卡不再顯示車資、核實程度、資料來源表格或無用的待確認欄位。步行以單列顯示路線距離與分鐘數，點選可開啟導航；公共運輸直接顯示起訖站、路線與移動時間，需轉乘時再展開各段車站。必要的接機位置、μticket 等提醒保留，航班時刻與時區不變。尚未選定餐廳的交通列隱藏，不把假定地點當成已知路段。
 
-`scripts/leg-details.json` 保存公共運輸站點與步行路線；本次行程使用九段公共運輸及十五段已核對的步行路線，Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；路段以既有核實地址參考點查詢（2026-11-13–14），實際入口、號誌與步速仍會影響結果。數值不顯示估算前綴符號；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
+`scripts/leg-details.json` 保存公共運輸站點與步行路線；本次行程使用十一段公共運輸及二十四段已核對的步行路線，Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；路段以既有核實地址參考點查詢（2026-11-13–14），實際入口、號誌與步速仍會影響結果。數值不顯示估算前綴符號；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
 
 踩點清單與分類不再包含住宿與機場，名古屋車站仍歸在交通分類。飯店取自完整地點資料，固定保留在所有踩點地圖篩選中，供定位、導航與計算距離使用；每日航班、住宿安排及文件照常保留。
 
-## 最新 Drive 行程同步（2026-11-14）
+## 最新 Drive 行程同步（2026-11-15）
 
-已同步 Drive「2026 Nakoya」中 03:13:43 UTC 更新的 Excel 原檔，共 46 個地點、37 個原始每日安排、30 段交通；踩點頁顯示其中 40 個非住宿／機場的實體地點。原檔雜湊與來源保存在 `docs/workbook-source.json`，重新執行 `npm run import:xlsx` 會重建相同資料，不修改 Excel。
+已同步 Drive「2026 Nakoya」中 07:21:51 UTC 更新的 Excel 原檔，共62個地點、42個原始每日安排、41段交通；踩點顯示56個非住宿／機場的實體地點。原檔不更動，來源時間、計數與 SHA-256 保存在 `docs/workbook-source.json`。重新執行 `npm run import:xlsx` 會合併圖片、核實座標、簡介與時段補充資料，維持相同結果。
 
-新增 11 個地點：廣小路通冬季點燈（伏見段）、BAR YLANG YLANG、綠洲21、jazz inn LOVELY、Montmartre、大名古屋聖誕點燈、池田公園冬季點燈、榮南・大須冬季點燈、NAKED 天空賞月、ANIAFF《劇場版 AIR》、白鳥庭園紅葉點燈。全部保留地址參考座標、Maps 連結、實景照片、描述與官方／可信來源；分類列新增「夜間活動」，仍以飯店距離排序，分類後飯店標記持續保留。
+新增10間「潮牌／選物」：Graphpaper、JACK IN THE BOX、KAPITAL、FREAK’S STORE、HOODS、Unlimited. -lounge-、Supreme、Chrome Hearts、BEAMS與Ron Herman；另加入AOI CELESTIE、喫茶New Poppy、四間道、圓頓寺商店街、覺王山參道與爲三郎記念館。皆有對應實景圖、核實地址參考座標、Maps連結、開放時段與簡介，沿用原卡片、收合、距離排序與營業篩選。街區歸入既有古蹟／歷史分類；潮店使用購物圖示，加入每日共享收藏圖層，踩點分類後僅呈現相符地點與固定飯店標記。
 
-行程依 Excel 更新：11/15 加入點燈散步與可選酒吧；11/16 改為 Montmartre 午餐、吹上市場／頂樓咖啡廳，晚間綠洲21與 BAR Récit；11/17 晚餐後加入爵士演出與可選 Bar Thistle。航班、接機與住宿訂單仍沿用既有資料，入住訂單只顯示一次，早餐維持隱藏。口袋候選排除當日已排入的店家；11/16 為 Bio Terrace，11/17 為 Miho’s Kitchen Grains。首晚六間晚餐候選順序不變。
+11/16早晨改走四間道、圓頓寺至名古屋城，傍晚在老件店與TORAYA之間加入AOI咖啡；11/17提早到SHRUB與美術館，下午加入覺王山與爲三郎記念館。所有時間、狀態與原始備註以Excel為準；早餐仍隱藏、航班與入住資訊仍各顯示一次，返台接駁及私人訂單仍由本機資料提供。既有待辦文字、勾選與圖片不受資料匯入影響。
 
-只有「必須訂位？」為「是」的地點顯示 **需預約**；不顯示建議、可選或未確認的預約狀態標籤。Miho’s Kitchen Grains 的晚餐須至少三天前預約，ORIBIO 為至少前一天的完全預約制。聯絡／預約連結與條件只在卡片展開後顯示，沒有代為完成預約。匯入器支援原檔第19–22欄，包括 HYPERLINK 形式的連結。`scripts/place-details.json` 保存已核對的條件與來源，與圖片、座標補充檔一併依穩定 ID 合併。
+潮店與建築／街區的短描述使用 `description`，餐飲沿用 `foodDescription`，展開卡片共用相同版面。照片使用店家、設施、官方觀光網站、可信媒體及Google Maps的匹配實景，未用品牌標誌、渲染圖或其他分店照片替代；出處、權利與截圖雜湊保存在原有圖片紀錄。部分為歷年照片，裝潢與當日陳列可能改變。國土地理院座標為地址／街區參考點，不當作精確入口。
 
-活動不是每天皆有：NAKED 至11/15、AIR 場次為11/15與16、爵士演出為11/17；白鳥庭園11/16–17沒有一般夜間點燈。`eventPeriod` 與 `dateHours` 讓營業燈號依日期判斷，不把活動時段當成每日營業保證。首晚抵達後通常趕不上 NAKED；AIR 與既定晚餐時段重疊，只放入踩點候選。一般營業時間、天候與座位仍以現場／官方當日公告為準；Vegan 菜單須確認供應與醬汁，不因葷素店提供 Vegan 選項而標成全素餐廳。所有來源與核對日期保存在地點資料內。
+常態營業不保證當日無臨休；Unlimited週二、Graphpaper與AOI週三休，Chrome Hearts20:00關閉，與LACHIC其他店不同。New Poppy本店08:00–18:00，週四及第二週三休；街區店舖時間不一，營業燈號保留待確認。預約僅在原始資料為必須時顯示「需預約」，其他預約狀態不加標籤。
 
 介面維持原有卡片、地圖與半小時 hr 單位，移除所有數值前的波浪估算符號。語音分頁改名為「求助」，原有 `#/audio` 連結及 Benji 錄音保留；踩點頁標題右側的商店 icon，以及求助頁最上方與語音播放相同樣式的大按鈕，會開啟 Google Maps 搜尋附近超商（包含 Lawson、全家、7-Eleven 等）。搜尋由 Google Maps 處理，網站不另行取得或傳送使用者座標；離線時仍可播放語音，外部 Maps 搜尋依既有離線規則停用。
 

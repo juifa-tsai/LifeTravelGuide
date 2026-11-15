@@ -14,4 +14,4 @@ export { defaultDay } from './entryDay';
 export { hasCoordinates, isCityPlace } from './mapPoints';
 export const stopId = (stop: Stop) => `${stop.date}-${stop.sequence}`;
 export const shortDate = (date: string) => `${Number(date.slice(5,7))}/${Number(date.slice(8))}`;
-export const categoryGroup = (category: string) => ({ '古蹟':'古蹟／歷史', '商圈':'古蹟／歷史', '美術館':'美術館／公園', '公園':'美術館／公園', '機場':'交通' }[category] || category);
+export const categoryGroup = (category: string) => ({ '古蹟':'古蹟／歷史', '街區':'古蹟／歷史', '商圈':'古蹟／歷史', '美術館':'美術館／公園', '公園':'美術館／公園', '機場':'交通' }[category] || category);

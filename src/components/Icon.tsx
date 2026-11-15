@@ -6,7 +6,7 @@ const categoryIcons:Record<string,keyof typeof icons> = {
   '古蹟／歷史':'Landmark', '商圈':'ShoppingBag', '老件店':'Building2', '機場':'Plane',
   '航班':'Plane', '交通':'TrainFront', '用餐':'Utensils', '早餐':'Coffee', '住宿':'BedDouble',
   '美術館':'Palette', '公園':'Trees', '美術館／公園':'Palette', '步行':'Footprints',
-  '夜間活動':'Moon', '接駁':'CarFront', '預約專車':'CarFront',
+  '潮牌／選物':'ShoppingBag', '街區':'Landmark', '夜間活動':'Moon', '接駁':'CarFront', '預約專車':'CarFront',
 };
 // Checked Lucide SVGs keep Leaflet icons aligned without bundling React's server renderer.
 export const categoryMarkerSvg = (category:string) => markerIcons[categoryIcons[category] ?? 'MapPin'];

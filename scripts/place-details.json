@@ -680,5 +680,282 @@
       "5": "06:00–19:00",
       "6": "06:00–19:00"
     }
+  },
+  "graphpaper": {
+    "detailSourceUrls": [
+      "https://graphpaper-nagoya.com/shop/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "週三休；12:00–20:00。",
+    "description": "以寬鬆剪裁、簡潔色調的服飾為主，結合書籍、黑膠與生活設計選品；可一併欣賞店內空間與家具陳列。",
+    "weeklyHours": {
+      "0": "12:00–20:00",
+      "1": "12:00–20:00",
+      "2": "12:00–20:00",
+      "3": null,
+      "4": "12:00–20:00",
+      "5": "12:00–20:00",
+      "6": "12:00–20:00"
+    }
+  },
+  "jack_in_the_box": {
+    "detailSourceUrls": [
+      "https://www.hamiltonwatch.com/en-int/store-locator/japan/aichi/nagoya/jack-in-the-box"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "臨時休業依店家公告。",
+    "description": "倉庫改造的選物空間，以日本設計師服飾、街頭衣著與配件為主，也有腕錶選品；品牌與尺碼依當日庫存。",
+    "weeklyHours": {
+      "0": "12:00–20:00",
+      "1": "12:00–20:00",
+      "2": "12:00–20:00",
+      "3": "12:00–20:00",
+      "4": "12:00–20:00",
+      "5": "12:00–20:00",
+      "6": "12:00–20:00"
+    }
+  },
+  "kapital": {
+    "detailSourceUrls": [
+      "https://www.kapital.jp/shop/detail/8"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "臨時休業依店家公告。",
+    "description": "岡山品牌以丹寧、染色與拼接工藝見長，可看寬鬆服飾、刺子風格布料及配件，留意不同系列的剪裁與細節。",
+    "weeklyHours": {
+      "0": "11:00–20:00",
+      "1": "11:00–20:00",
+      "2": "11:00–20:00",
+      "3": "11:00–20:00",
+      "4": "11:00–20:00",
+      "5": "11:00–20:00",
+      "6": "11:00–20:00"
+    }
+  },
+  "freaks_store": {
+    "detailSourceUrls": [
+      "https://nagoya.parco.jp/shop/detail/?cd=009015"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "臨時休業依店家公告。",
+    "description": "以美式休閒為主的服飾選物店，提供日常衣著、戶外風格與生活配件；CAHLUMN 等品牌到貨可先向店員詢問。",
+    "weeklyHours": {
+      "0": "10:00–20:00",
+      "1": "10:00–20:00",
+      "2": "10:00–20:00",
+      "3": "10:00–20:00",
+      "4": "10:00–20:00",
+      "5": "10:00–20:00",
+      "6": "10:00–20:00"
+    }
+  },
+  "hoods_nagoya": {
+    "detailSourceUrls": [
+      "https://www.doubledutch-jp.com/hoods-nagoya"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "臨時休業依店家公告。",
+    "description": "以 NEIGHBORHOOD、WTAPS 為主的街頭服飾店，可看工裝、軍裝元素與配件；新品發售及尺碼依店家公告。",
+    "weeklyHours": {
+      "0": "11:00–20:00",
+      "1": "11:00–20:00",
+      "2": "11:00–20:00",
+      "3": "11:00–20:00",
+      "4": "11:00–20:00",
+      "5": "11:00–20:00",
+      "6": "11:00–20:00"
+    }
+  },
+  "unlimited_lounge": {
+    "detailSourceUrls": [
+      "https://unlimited-web.jp/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "週二休；平日13:00開門，週末與國定假日12:00。",
+    "description": "以設計師服飾與配件為主，選品重視面料、輪廓及穿搭層次；想找 ssstein 等品牌時，可先詢問當季庫存。",
+    "weeklyHours": {
+      "0": "12:00–19:00",
+      "1": "13:00–19:00",
+      "2": null,
+      "3": "13:00–19:00",
+      "4": "13:00–19:00",
+      "5": "13:00–19:00",
+      "6": "12:00–19:00"
+    }
+  },
+  "supreme_nagoya": {
+    "detailSourceUrls": [
+      "https://supreme.com/stores?name=Supreme+Nagoya"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "11:00–20:00；發售日入場依品牌公告。",
+    "description": "提供街頭服飾、帽款與配件，陳列隨當季系列更新；熱門發售日可能有不同入場安排，出發前查看品牌公告。",
+    "weeklyHours": {
+      "0": "11:00–20:00",
+      "1": "11:00–20:00",
+      "2": "11:00–20:00",
+      "3": "11:00–20:00",
+      "4": "11:00–20:00",
+      "5": "11:00–20:00",
+      "6": "11:00–20:00"
+    }
+  },
+  "chrome_hearts": {
+    "detailSourceUrls": [
+      "https://www.lachic.jp/nagoya/shops/floor_01/f01_12s.html"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "11:00–20:00；與 LACHIC 其他店的閉店時間不同。",
+    "description": "以銀飾、皮件及服飾配件為主，位於 LACHIC 一樓；可比較雕花與金屬細節，款式及尺寸依當日供應。",
+    "weeklyHours": {
+      "0": "11:00–20:00",
+      "1": "11:00–20:00",
+      "2": "11:00–20:00",
+      "3": "11:00–20:00",
+      "4": "11:00–20:00",
+      "5": "11:00–20:00",
+      "6": "11:00–20:00"
+    }
+  },
+  "beams_nagoya": {
+    "detailSourceUrls": [
+      "https://www.beams.co.jp/shop/bna/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "臨時休業依店家公告。",
+    "description": "綜合男裝、女裝與生活選物的店舖，可瀏覽品牌聯名、休閒服飾及小物；位於 LACHIC 二樓，適合順路逛。",
+    "weeklyHours": {
+      "0": "11:00–21:00",
+      "1": "11:00–21:00",
+      "2": "11:00–21:00",
+      "3": "11:00–21:00",
+      "4": "11:00–21:00",
+      "5": "11:00–21:00",
+      "6": "11:00–21:00"
+    }
+  },
+  "ron_herman": {
+    "detailSourceUrls": [
+      "https://www.lachic.jp/nagoya/shops/floor_01/f01_10s.html"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "臨時休業依店家公告。",
+    "description": "加州生活風格選物店，結合休閒服飾、配件與日用物件；此處為 LACHIC 一樓店，留意與其他名古屋分店區別。",
+    "weeklyHours": {
+      "0": "11:00–21:00",
+      "1": "11:00–21:00",
+      "2": "11:00–21:00",
+      "3": "11:00–21:00",
+      "4": "11:00–21:00",
+      "5": "11:00–21:00",
+      "6": "11:00–21:00"
+    }
+  },
+  "aoi_celestie": {
+    "detailSourceUrls": [
+      "https://aoi-celestie.com/",
+      "https://tabelog.com/aichi/A2301/A230104/23090945/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "依食べログ08:00–21:00，L.O.20:00；週三休，臨休先確認。",
+    "foodDescription": "以自家烘焙咖啡搭配甜點與輕食，藍色大屋頂和庭園是空間特色；可點黑咖啡，甜點、奶油配方與蛋成分請先確認。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "08:00–21:00",
+      "1": "08:00–21:00",
+      "2": "08:00–21:00",
+      "3": null,
+      "4": "08:00–21:00",
+      "5": "08:00–21:00",
+      "6": "08:00–21:00"
+    }
+  },
+  "kakuozan_sando": {
+    "detailSourceUrls": [
+      "https://www.nagoya-info.jp/course/detail/9/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "街區可散步，各店與設施開放時間不同。",
+    "description": "從覺王山站通往日泰寺的參道，沿途有咖啡廳、雜貨與藝廊；雨停時可散步看街景，各店與寺院時段分開確認。",
+    "weeklyHours": {
+      "0": "戶外開放；各店時段不同",
+      "1": "戶外開放；各店時段不同",
+      "2": "戶外開放；各店時段不同",
+      "3": "戶外開放；各店時段不同",
+      "4": "戶外開放；各店時段不同",
+      "5": "戶外開放；各店時段不同",
+      "6": "戶外開放；各店時段不同"
+    }
+  },
+  "tamesaburo_memorial": {
+    "detailSourceUrls": [
+      "https://www.furukawa-museum.or.jp/info/hours",
+      "https://www.furukawa-museum.or.jp/show_exhibit"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "週一休；最後入館16:30，展期與例外開館日依官網。",
+    "description": "昭和時期數寄屋老宅與庭園，搭配當期古董展欣賞器物及建築空間；展覽內容、休館日與最後入館時間依官網。",
+    "weeklyHours": {
+      "0": "10:00–17:00",
+      "1": null,
+      "2": "10:00–17:00",
+      "3": "10:00–17:00",
+      "4": "10:00–17:00",
+      "5": "10:00–17:00",
+      "6": "10:00–17:00"
+    }
+  },
+  "shikemichi": {
+    "detailSourceUrls": [
+      "https://www.nagoya-info.jp/spot/detail/53/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "街區可散步，各店與設施開放時間不同。",
+    "description": "名古屋城下商人町留下的土藏與町家街區，可慢走看巷弄、屋頂及老屋立面；早晨以看街景為主，店舖各自營業。",
+    "weeklyHours": {
+      "0": "戶外開放；各店時段不同",
+      "1": "戶外開放；各店時段不同",
+      "2": "戶外開放；各店時段不同",
+      "3": "戶外開放；各店時段不同",
+      "4": "戶外開放；各店時段不同",
+      "5": "戶外開放；各店時段不同",
+      "6": "戶外開放；各店時段不同"
+    }
+  },
+  "endoji": {
+    "detailSourceUrls": [
+      "https://www.nagoya-info.jp/zhtw/spot/detail/45/",
+      "https://endojishotengai.com/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "街區可散步，各店與設施開放時間不同。",
+    "description": "有遮棚的傳統商店街，老店與新開的小店交錯，適合連接四間道散步；早晨可看街景，餐飲與零售另有營業時段。",
+    "weeklyHours": {
+      "0": "戶外開放；各店時段不同",
+      "1": "戶外開放；各店時段不同",
+      "2": "戶外開放；各店時段不同",
+      "3": "戶外開放；各店時段不同",
+      "4": "戶外開放；各店時段不同",
+      "5": "戶外開放；各店時段不同",
+      "6": "戶外開放；各店時段不同"
+    }
+  },
+  "new_poppy": {
+    "detailSourceUrls": [
+      "https://b-bitou.com/shop/"
+    ],
+    "detailsCheckedAt": "2026-11-15",
+    "hoursNote": "週四、第2週三公休；本店08:00–18:00，與別館時段不同。",
+    "foodDescription": "老屋喫茶店提供自家烘焙咖啡、小倉吐司與咖啡飯咖哩等餐點；餐點可能含蛋、肉或高湯，奶素先確認，黑咖啡較單純。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "08:00–18:00",
+      "1": "08:00–18:00",
+      "2": "08:00–18:00",
+      "3": "08:00–18:00",
+      "4": null,
+      "5": "08:00–18:00",
+      "6": "08:00–18:00"
+    }
   }
 }

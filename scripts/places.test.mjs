@@ -48,7 +48,7 @@ test('workbook-only hours never copy a weekday-specific time to another day', ()
 });
 test('all dining places have short sourced descriptions and distinguish vegetarian from mixed kitchens', () => {
   const dining = data.places.filter(p => !p.virtual && ['素食餐廳','咖啡廳','酒吧'].includes(p.category));
-  assert.equal(dining.length,23);
+  assert.equal(dining.length,25);
   for (const item of dining) {
     assert(item.foodDescription.length >= 35 && item.foodDescription.length <= 70, item.id);
     assert(item.diningType && item.weeklyHours && item.detailSourceUrls?.length);
@@ -155,4 +155,15 @@ test('seasonal and date-specific activities never appear open outside their actu
  assert.equal(at('coco_fushimi','2026-11-15','22:30'),'open');
  assert.equal(at('mihos_grains','2026-11-14','12:00'),'open');
  assert.equal(at('recit','2026-11-19','18:00'),'closed');
+});
+
+test('shopping, museum and cafe opening lights use each checked weekday, including the second Wednesday closure',()=>{
+ const at=(id,date,time)=>hours.openingInfo(place(id),new Date(`${date}T${time}:00+09:00`)).state;
+ assert.equal(at('unlimited_lounge','2026-11-16','12:30'),'closed');assert.equal(at('unlimited_lounge','2026-11-16','13:00'),'open');assert.equal(at('unlimited_lounge','2026-11-17','15:00'),'closed');
+ assert.equal(at('graphpaper','2026-11-18','15:00'),'closed');assert.equal(at('graphpaper','2026-11-17','15:00'),'open');
+ assert.equal(at('chrome_hearts','2026-11-17','20:30'),'closed');assert.equal(at('beams_nagoya','2026-11-17','20:30'),'open');
+ assert.equal(at('tamesaburo_memorial','2026-11-16','15:00'),'closed');assert.equal(at('tamesaburo_memorial','2026-11-17','15:40'),'open');
+ assert.equal(at('new_poppy','2026-11-11','10:00'),'closed');assert.equal(at('new_poppy','2026-11-18','10:00'),'open');assert.equal(at('new_poppy','2026-11-19','10:00'),'closed');
+ assert.equal(at('aoi_celestie','2026-11-16','17:55'),'open');assert.equal(at('aoi_celestie','2026-11-18','10:00'),'closed');
+ for(const id of ['shikemichi','endoji','kakuozan_sando'])assert.equal(at(id,'2026-11-17','10:00'),'unknown');
 });

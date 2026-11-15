@@ -657,5 +657,279 @@
       ],
       "checkedAt": "2026-11-14"
     }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "osu_street",
+    "toPlaceId": "kakuozan_sando",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "大須觀音站",
+          "toStation": "伏見站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "伏見站",
+          "toStation": "覺王山站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/access"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "osu_street",
+    "toPlaceId": "tamesaburo_memorial",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "大須觀音站",
+          "toStation": "伏見站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "伏見站",
+          "toStation": "池下站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/access"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "tamesaburo_memorial",
+    "toPlaceId": "mori",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "池下站",
+          "toStation": "榮站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/access"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "shikemichi",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1578.3,
+        "durationSeconds": 1264.2,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.175659,
+          "lng": 136.891785
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.891785,35.175659?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "shikemichi",
+    "toPlaceId": "endoji",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 140.1,
+        "durationSeconds": 112,
+        "fromCoordinates": {
+          "lat": 35.175659,
+          "lng": 136.891785
+        },
+        "toCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.891785,35.175659;136.891327,35.176331?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "endoji",
+    "toPlaceId": "nagoyajo",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1798,
+        "durationSeconds": 1442.1,
+        "fromCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        },
+        "toCoordinates": {
+          "lat": 35.1876572063889,
+          "lng": 136.899153485
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8913270,35.1763310;136.8991535,35.1876572?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "new_poppy",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1577.9,
+        "durationSeconds": 1266.1,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.175735,
+          "lng": 136.892517
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.892517,35.175735?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "new_poppy",
+    "toPlaceId": "endoji",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 170.5,
+        "durationSeconds": 136.3,
+        "fromCoordinates": {
+          "lat": 35.175735,
+          "lng": 136.892517
+        },
+        "toCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.892517,35.175735;136.891327,35.176331?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "store_factory",
+    "toPlaceId": "aoi_celestie",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1336.4,
+        "durationSeconds": 1075.4,
+        "fromCoordinates": {
+          "lat": 35.162441,
+          "lng": 136.915161
+        },
+        "toCoordinates": {
+          "lat": 35.17094,
+          "lng": 136.919083
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.915161,35.162441;136.919083,35.17094?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "aoi_celestie",
+    "toPlaceId": "toraya",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 899.5,
+        "durationSeconds": 719.7,
+        "fromCoordinates": {
+          "lat": 35.17094,
+          "lng": 136.919083
+        },
+        "toCoordinates": {
+          "lat": 35.166874,
+          "lng": 136.923813
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.919083,35.17094;136.923813,35.166874?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "kakuozan_sando",
+    "toPlaceId": "tamesaburo_memorial",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 564.9,
+        "durationSeconds": 452.1,
+        "fromCoordinates": {
+          "lat": 35.167667,
+          "lng": 136.952835
+        },
+        "toCoordinates": {
+          "lat": 35.168819,
+          "lng": 136.948578
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.952835,35.167667;136.948578,35.168819?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "art_museum",
+    "toPlaceId": "khaja_ghar",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 923.2,
+        "durationSeconds": 725.7,
+        "fromCoordinates": {
+          "lat": 35.16400256,
+          "lng": 136.901001
+        },
+        "toCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.901001,35.16400256;136.899307,35.158134?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
   }
 ]

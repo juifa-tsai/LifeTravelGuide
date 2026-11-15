@@ -468,5 +468,181 @@
     "imageSubject": "exterior",
     "imageRights": "original-rights",
     "imageCapturedAt": "2026-11-14"
+  },
+  "graphpaper": {
+    "imageUrl": "images/place-graphpaper.webp",
+    "imageAttribution": "Graphpaper NAGOYA · 原攝影者保留著作權",
+    "imageSourceUrl": "https://graphpaper-nagoya.com/shop/",
+    "imageLicenseUrl": "https://graphpaper-nagoya.com/shop/",
+    "imageKind": "place",
+    "imageAlt": "Graphpaper NAGOYA店內實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "jack_in_the_box": {
+    "imageUrl": "images/place-jack-in-the-box.webp",
+    "imageAttribution": "FASHIONSNAP 掲載写真 · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.fashionsnap.com/article/2011-08-19/nhoolywood-nagoya/",
+    "imageLicenseUrl": "https://www.fashionsnap.com/article/2011-08-19/nhoolywood-nagoya/",
+    "imageKind": "place",
+    "imageAlt": "JACK IN THE BOX店內實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "kapital": {
+    "imageUrl": "images/place-kapital.webp",
+    "imageAttribution": "KAPITAL · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.kapital.jp/shop/detail/8",
+    "imageLicenseUrl": "https://www.kapital.jp/shop/detail/8",
+    "imageKind": "place",
+    "imageAlt": "KAPITAL NAGOYA店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "freaks_store": {
+    "imageUrl": "images/place-freaks-store.webp",
+    "imageAttribution": "Google Maps掲載写真（撮影者は出典参照） · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.google.com/maps/search/?api=1&query=FREAK'S%20STORE%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%83%91%E3%83%AB%E3%82%B3%20%E8%A5%BF%E9%A4%A82F",
+    "imageLicenseUrl": "https://www.google.com/intl/zh-TW/help/terms_maps/",
+    "imageKind": "place",
+    "imageAlt": "FREAK’S STORE 名古屋PARCO店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "hoods_nagoya": {
+    "imageUrl": "images/place-hoods-nagoya.webp",
+    "imageAttribution": "HOODS NAGOYA · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.doubledutch-jp.com/hoods-nagoya",
+    "imageLicenseUrl": "https://www.doubledutch-jp.com/hoods-nagoya",
+    "imageKind": "place",
+    "imageAlt": "HOODS NAGOYA店內實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "unlimited_lounge": {
+    "imageUrl": "images/place-unlimited-lounge.webp",
+    "imageAttribution": "Snap! magazine · 原攝影者保留著作權",
+    "imageSourceUrl": "https://snamag.com/nagoya_shop/unlimited-lounge/",
+    "imageLicenseUrl": "https://snamag.com/nagoya_shop/unlimited-lounge/",
+    "imageKind": "place",
+    "imageAlt": "Unlimited. -lounge-店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "supreme_nagoya": {
+    "imageUrl": "images/place-supreme-nagoya.webp",
+    "imageAttribution": "Supreme · 原攝影者保留著作權",
+    "imageSourceUrl": "https://supreme.com/stores?name=Supreme+Nagoya",
+    "imageLicenseUrl": "https://supreme.com/stores?name=Supreme+Nagoya",
+    "imageKind": "place",
+    "imageAlt": "Supreme Nagoya店內實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "chrome_hearts": {
+    "imageUrl": "images/place-chrome-hearts.webp",
+    "imageAttribution": "Google Maps掲載写真（撮影者は出典参照） · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.google.com/maps/search/?api=1&query=Chrome+Hearts+Nagoya+LACHIC",
+    "imageLicenseUrl": "https://www.google.com/intl/zh-TW/help/terms_maps/",
+    "imageKind": "place",
+    "imageAlt": "Chrome Hearts Nagoya店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "beams_nagoya": {
+    "imageUrl": "images/place-beams-nagoya.webp",
+    "imageAttribution": "BEAMS · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.beams.co.jp/shop/bna/",
+    "imageLicenseUrl": "https://www.beams.co.jp/shop/bna/",
+    "imageKind": "place",
+    "imageAlt": "BEAMS 名古屋店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "ron_herman": {
+    "imageUrl": "images/place-ron-herman.webp",
+    "imageAttribution": "Ron Herman · 原攝影者保留著作權",
+    "imageSourceUrl": "https://ronherman.jp/store?id=526",
+    "imageLicenseUrl": "https://ronherman.jp/store?id=526",
+    "imageKind": "place",
+    "imageAlt": "Ron Herman 名古屋店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "aoi_celestie": {
+    "imageUrl": "images/place-aoi-celestie.webp",
+    "imageAttribution": "Google Maps掲載写真（撮影者は出典参照） · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.google.com/maps/search/?api=1&query=AOI%20CELESTIE%20COFFEE%20ROASTERY%20%E6%9D%B1%E6%A1%9C2-17-22",
+    "imageLicenseUrl": "https://www.google.com/intl/zh-TW/help/terms_maps/",
+    "imageKind": "place",
+    "imageAlt": "AOI CELESTIE COFFEE ROASTERY 店內實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "kakuozan_sando": {
+    "imageUrl": "images/place-kakuozan-sando.webp",
+    "imageAttribution": "名古屋観光コンベンションビューロー · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.nagoya-info.jp/course/detail/9/",
+    "imageLicenseUrl": "https://www.nagoya-info.jp/course/detail/9/",
+    "imageKind": "place",
+    "imageAlt": "覺王山・日泰寺參道店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "tamesaburo_memorial": {
+    "imageUrl": "images/place-tamesaburo-memorial.webp",
+    "imageAttribution": "古川美術館 · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.furukawa-museum.or.jp/memorial",
+    "imageLicenseUrl": "https://www.furukawa-museum.or.jp/memorial",
+    "imageKind": "place",
+    "imageAlt": "爲三郎記念館店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "shikemichi": {
+    "imageUrl": "images/place-shikemichi.webp",
+    "imageAttribution": "名古屋観光コンベンションビューロー · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.nagoya-info.jp/spot/detail/53/",
+    "imageLicenseUrl": "https://www.nagoya-info.jp/spot/detail/53/",
+    "imageKind": "place",
+    "imageAlt": "四間道店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "endoji": {
+    "imageUrl": "images/place-endoji.webp",
+    "imageAttribution": "名古屋観光コンベンションビューロー · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.nagoya-info.jp/spot/detail/45/",
+    "imageLicenseUrl": "https://www.nagoya-info.jp/spot/detail/45/",
+    "imageKind": "place",
+    "imageAlt": "圓頓寺商店街店面／街景實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "new_poppy": {
+    "imageUrl": "images/place-new-poppy.webp",
+    "imageAttribution": "BITOU COFFEE · 原攝影者保留著作權",
+    "imageSourceUrl": "https://b-bitou.com/shop/",
+    "imageLicenseUrl": "https://b-bitou.com/shop/",
+    "imageKind": "place",
+    "imageAlt": "喫茶 New Poppy店內實景",
+    "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
   }
 }
