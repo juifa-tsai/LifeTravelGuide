@@ -426,13 +426,19 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .reservation-details { margin-top:8px; }
 .reservation-link { display:inline-flex; align-items:center; gap:5px; min-height:44px; font-size:15px; }
 .todo-list { display:grid; gap:12px; margin:22px 0; }
-.todo-card { display:flex; align-items:center; gap:12px; min-height:86px; padding:17px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); }
-.todo-row { display:flex; align-items:flex-start; align-self:stretch; gap:13px; flex:1; min-width:0; cursor:pointer; }
+.todo-card { display:flex; align-items:center; gap:8px; min-height:86px; padding:17px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); touch-action:manipulation; }
+.todo-completion { display:grid; place-items:center; width:44px; height:44px; flex:0 0 44px; margin-left:-10px; cursor:pointer; }
 .todo-reference { display:block; flex:0 0 56px; border-radius:5px; overflow:hidden; }
 .todo-reference img { display:block; width:56px; height:75px; object-fit:contain; }
-.todo-card input { width:23px; height:23px; flex:0 0 23px; margin:3px 0 0; accent-color:var(--primary); cursor:pointer; }
-.todo-copy { display:grid; gap:5px; min-width:0; }
+.todo-completion input { width:23px; height:23px; margin:0; accent-color:var(--primary); cursor:pointer; }
+.todo-copy { display:grid; flex:1; gap:5px; min-width:0; }
 .todo-title { font-size:18px; font-weight:600; line-height:1.5; overflow-wrap:anywhere; }
-.todo-detail { font-size:16px; color:var(--muted); line-height:1.5; }
+.todo-detail { font-size:16px; color:var(--muted); line-height:1.5; white-space:pre-line; overflow-wrap:anywhere; }
 .todo-card.is-complete .todo-title { color:var(--muted); text-decoration:line-through; }
 .todo-card:focus-within { outline:2px solid var(--primary); outline-offset:2px; }
+.todo-add { display:grid; place-items:center; min-height:52px; width:100%; border:1px dashed var(--border); border-radius:var(--radius); color:var(--primary); }
+.todo-editor { display:grid; gap:12px; width:100%; min-width:0; font-size:16px; }
+.todo-editor input,.todo-editor textarea { display:block; width:100%; min-height:44px; padding:9px; margin-top:5px; border:1px solid var(--border); border-radius:8px; background:white; color:var(--text); font:inherit; }
+.todo-editor textarea { resize:vertical; }
+.todo-editor-actions { display:flex; align-items:center; gap:20px; }
+.todo-editor-actions .text-action { min-height:44px; }

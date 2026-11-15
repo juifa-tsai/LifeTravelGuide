@@ -8,6 +8,7 @@ import { japanDate, launchHash } from '../lib/entryDay';
 import { BookingProvider } from '../components/BookingProvider';
 import { defaultDay, loadData } from '../lib/data';
 import { useStoredState } from '../lib/storage';
+import { initialTodoItems, parseTodoItems, type TodoItem } from '../lib/todos';
 import { useOnline } from '../lib/connectivity';
 import { DayPage } from '../pages/DayPage';
 import { PlacesPage } from '../pages/PlacesPage';
@@ -43,6 +44,14 @@ function TravelApp({ data }: { data:TravelData }) {
   const online = useOnline();
   const [visited,setVisited] = useStoredState<Record<string,boolean>>('visited', {});
   const [todos,setTodos] = useStoredState<Record<string,boolean>>('todos', {});
+  const [storedTodoItems,setTodoItems] = useStoredState<TodoItem[]>('todo-items', initialTodoItems);
+  const todoItems = parseTodoItems(storedTodoItems) ?? initialTodoItems;
+  function saveTodo(item:TodoItem) {
+    setTodoItems(previous=>{
+      const items = parseTodoItems(previous) ?? initialTodoItems;
+      return items.some(existing=>existing.id === item.id) ? items.map(existing=>existing.id === item.id ? item : existing) : [...items,item];
+    });
+  }
   const [viewedDay,setViewedDay] = useState(() => defaultDay(data.trip.days));
   const lastDate = useRef(japanDate());
   const viewedDayRef = useRef(viewedDay);
@@ -101,7 +110,7 @@ function TravelApp({ data }: { data:TravelData }) {
       <Route path="/day/:date" element={<DayRoute data={data} onSelectDay={chooseDay} />} />
       <Route path="/places" element={<PlacesPage data={data} visited={visited} setVisited={setVisited} />} />
       <Route path="/documents" element={<DocumentsPage data={data} />} />
-      <Route path="/todos" element={<TodoPage completed={todos} onToggle={(id,checked)=>setTodos(previous=>({...previous,[id]:checked}))} />} />
+      <Route path="/todos" element={<TodoPage items={todoItems} completed={todos} onToggle={(id,checked)=>setTodos(previous=>({...previous,[id]:checked}))} onSave={saveTodo} />} />
       <Route path="/audio" element={<Suspense fallback={<p role="status">載入中…</p>}><AudioPage /></Suspense>} />
       <Route path="*" element={<Navigate to={`/day/${viewedDay}`} replace />} />
     </Routes></BookingProvider></main>
