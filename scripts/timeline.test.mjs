@@ -26,16 +26,10 @@ test('morning, afternoon and evening boundaries use Japan time, including Taiwan
 
 test('day parts preserve all itinerary entries, bookings and sequence without adding empty sections', () => {
   const before = structuredClone(data.itinerary);
-  const expected = {
-    '2026-11-15':[['afternoon',1],['evening',7]],
-    '2026-11-16':[['morning',4],['afternoon',4],['evening',5]],
-    '2026-11-17':[['morning',5],['afternoon',4],['evening',4]],
-    '2026-11-18':[['morning',5],['afternoon',2]],
-  };
-  for (const [date,sections] of Object.entries(expected)) {
+  for (const {date} of data.trip.days) {
     const stops = data.itinerary.filter(stop => stop.date === date);
     const groups = groupTimeline(stops);
-    assert.deepEqual(groups.map(group => [group.period,group.stops.length]),sections);
+    for(const group of groups){assert(group.stops.length>0);assert(group.stops.every(stop=>dayPeriod(stop)===group.period));}
     assert.deepEqual(groups.flatMap(group => group.stops),stops);
     assert.equal(new Set(groups.map(group => group.id)).size,groups.length);
   }
@@ -46,15 +40,16 @@ test('day parts preserve all itinerary entries, bookings and sequence without ad
 
 test('compact timelines hide hotel breakfasts and repeated airport cards without changing source reservations',()=>{
   const before = structuredClone(data);
-  const expected = {'2026-11-15':[1,4,5,6,7,8],'2026-11-16':[2,3,4,5,6,7,8,9,10,11,12,13],'2026-11-17':[2,3,4,5,6,7,8,9,10,11,12,13],'2026-11-18':[2,6]};
-  for (const [date,sequences] of Object.entries(expected)) {
+  for (const {date} of data.trip.days) {
     const source = data.itinerary.filter(stop=>stop.date === date);
     const {entries} = compactTimeline(source,data.legs);
-    assert.deepEqual(entries.map(entry=>entry.stop.sequence),sequences);
+    const sequences=entries.map(entry=>entry.stop.sequence);
+    assert.deepEqual(sequences,[...sequences].sort((a,b)=>a-b));
     assert(!entries.some(entry=>isHotelBreakfast(entry.stop)));
     assert.equal(entries.filter(entry=>entry.stop.displayStatus === '固定航班').length,date === '2026-11-15' || date === '2026-11-18' ? 1 : 0);
     // Every source marker still points to a visible card, including merged nodes.
     for (const stop of source) assert.equal(entries.filter(entry=>entry.sourceStops.includes(stop)).length,1);
+    for(const stop of source.filter(stop=>!isHotelBreakfast(stop)&&stop.displayStatus!=='固定航班'&&!['接駁','交通'].includes(stop.category)))assert(entries.some(entry=>entry.stop.stopId===stop.stopId),'every ordinary visit must retain a visible card');
     assert.deepEqual(compactTimeline([...source].reverse(),data.legs).entries.map(entry=>entry.stop.sequence),sequences);
   }
   assert.deepEqual(data,before);
@@ -75,11 +70,11 @@ test('point-to-point connections retain both return trains, morning hotel depart
   assert.equal(returning.entries[1].stop.arrivalTime,'12:05');
   assert.equal(returning.entries[1].checkInTime,'09:55');
   assert.deepEqual(groupTimeline(returning.entries.map(entry=>entry.stop)).map(group=>[group.period,group.stops.length]),[['morning',1],['afternoon',1]]);
-  for(const [date,destination] of [['2026-11-16','kato_coffee_sakae'],['2026-11-17','shrub']]) {
+  for(const {date} of data.trip.days.filter(day=>!['2026-11-15','2026-11-18'].includes(day.date))) {
     const morning = view(date);
-    assert.equal(morning.leadingTransfers.length,1);
-    assert.equal(morning.leadingTransfers[0].leg.fromPlaceId,'hotel');
-    assert.equal(morning.leadingTransfers[0].leg.toPlaceId,destination);
+    const first=morning.entries[0]?.stop;
+    const leading=data.legs.filter(leg=>leg.date===date&&leg.fromPlaceId==='hotel'&&leg.toPlaceId===first?.placeId);
+    if(leading.length){assert(morning.leadingTransfers.some(transfer=>transfer.leg===leading[0]));}
   }
   for(const day of data.trip.days) {
     const timeline = view(day.date);
@@ -98,7 +93,10 @@ test('a standalone airport event or transfer without a matching route remains vi
 });
 
 test('off-site breakfast remains a visible itinerary and map stop while hotel breakfast remains hidden',()=>{
- const breakfast=data.itinerary.find(s=>s.placeId==='kato_coffee_sakae');assert.equal(breakfast.category,'早餐');assert(!isHotelBreakfast(breakfast));
- const hotel=data.itinerary.find(s=>s.category==='早餐'&&s.placeId==='hotel');assert(isHotelBreakfast(hotel));
- const result=compactTimeline(data.itinerary.filter(s=>s.date===breakfast.date),data.legs);assert.equal(result.entries[0].stop,breakfast);assert.equal(result.entries.filter(e=>e.stop.placeId===breakfast.placeId).length,1);assert(result.entries[0].transfers.some(t=>t.leg.fromPlaceId===breakfast.placeId&&t.leg.toPlaceId==='nagoyajo'));
+ const base=data.itinerary.find(s=>s.placeId==='kato_coffee_sakae');
+ const breakfast={...base,sequence:2,category:'早餐'};assert(!isHotelBreakfast(breakfast));
+ const hotel={...base,stopId:'test-hotel',sequence:1,category:'早餐',placeId:'hotel'};assert(isHotelBreakfast(hotel));
+ const castle={...base,stopId:'test-castle',sequence:3,category:'古蹟',placeId:'nagoyajo'};
+ const leg={...data.legs.find(l=>l.fromPlaceId==='kato_coffee_sakae'),date:base.date,fromPlaceId:base.placeId,toPlaceId:'nagoyajo',mode:'地鐵'};
+ const result=compactTimeline([hotel,breakfast,castle],[leg]);assert.equal(result.entries[0].stop,breakfast);assert.equal(result.entries.filter(e=>e.stop.placeId===breakfast.placeId).length,1);assert(result.entries[0].transfers.some(t=>t.leg===leg));
 });

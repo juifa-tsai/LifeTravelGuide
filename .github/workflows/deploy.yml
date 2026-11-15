@@ -24,6 +24,8 @@ jobs:
           cache: pip
       - run: python -m pip install -r requirements.txt
       - run: npm ci
+      - name: Check workbook, supplements and committed data are synchronized
+        run: npm run sync:itinerary -- --check
       - run: npm test
       - name: Build with the repository path
         run: npm run build

@@ -12,7 +12,8 @@
     "note": "此項為出發事件；目的地為中部國際機場",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%A1%83%E5%9C%92%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20No.%209%2C%20Hangzhan%20S%20Rd%2C%20Dayuan%20District%2C%20Taoyuan%20City%2C%20Taiwan",
     "sourceUrl": "https://www.taoyuan-airport.com/",
-    "timezone": "Asia/Taipei"
+    "timezone": "Asia/Taipei",
+    "stopId": "2026-11-15-1"
   },
   {
     "date": "2026-11-15",
@@ -27,7 +28,8 @@
     "note": "入境及提取行李時間不確定",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-15-2"
   },
   {
     "date": "2026-11-15",
@@ -42,7 +44,8 @@
     "note": "19:55 為預約接機時間，非保證上車時間",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-15-3"
   },
   {
     "date": "2026-11-15",
@@ -57,7 +60,8 @@
     "note": "21:10僅預估；視入境與路況調整",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://drive.google.com/file/d/1vQjs3z1YICdQLyJhWNrOeDg7EFFoWvLG/view?usp=drivesdk",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-15-4"
   },
   {
     "date": "2026-11-15",
@@ -72,7 +76,8 @@
     "note": "MOLNODA 週日餐點 L.O.22:30，蔬食碗外帶請確認無蛋、魚介醬料。CoCo 伏見通店週日最後點餐22:00。麵屋華山週日至24:00，可點純素拉麵。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%88%B0%E7%9D%80%E5%BE%8C%E3%81%AE%E5%A4%95%E9%A3%9F%20Fushimi%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://tenpo.ichibanya.co.jp/map/2172/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-15-5"
   },
   {
     "date": "2026-11-15",
@@ -87,7 +92,8 @@
     "note": "沿飯店旁廣小路通走一小段。遇雨直接去酒吧或回房。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%BA%83%E5%B0%8F%E8%B7%AF%E9%80%9A%20%E4%BC%8F%E8%A6%8B%E4%BA%A4%E5%B7%AE%E7%82%B9%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A62%E4%B8%81%E7%9B%AE%E3%83%BB%E6%A0%841%E4%B8%81%E7%9B%AE%20%E4%BC%8F%E8%A6%8B%E4%BA%A4%E5%B7%AE%E7%82%B9",
     "sourceUrl": "https://aichinow.pref.aichi.jp/events/detail/1828/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-15-6"
   },
   {
     "date": "2026-11-15",
@@ -102,7 +108,8 @@
     "note": "店家刊登週日18:00–翌02:00。喝完步行回飯店約10–15分。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%90%E3%83%BC%E3%82%A4%E3%83%A9%E3%83%B3%E3%82%A4%E3%83%A9%E3%83%B3%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%8C%A61-14-23%20HP%E9%8C%A6%E6%A9%8B%E3%83%93%E3%83%AB2F",
     "sourceUrl": "https://tabelog.com/aichi/A2301/A230102/23010014/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-15-7"
   },
   {
     "date": "2026-11-15",
@@ -117,7 +124,8 @@
     "note": "時間視抵達與晚餐進度調整。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": null,
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-15-8"
   },
   {
     "date": "2026-11-16",
@@ -132,7 +140,8 @@
     "note": "步行約15–20分鐘，目標07:50到店門口。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://www.katocoffee.com/com/company/access.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-1"
   },
   {
     "date": "2026-11-16",
@@ -147,7 +156,8 @@
     "note": "網路預約已滿，可現場排隊。08:35仍在等就直接去名古屋城。點名古屋セット（¥660），請店家不附水煮蛋，並確認吐司麵糰是否含蛋。約09:00離店。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8A%A0%E8%97%A4%E7%8F%88%E7%90%B2%E5%BA%97%20%E6%A0%84%E5%BA%97%20%E5%90%8D%E5%8F%A4%E5%B1%8B%20%E6%9D%B1%E6%A1%9C1-3-2",
     "sourceUrl": "https://www.katocoffee.com/com/company/access.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-2"
   },
   {
     "date": "2026-11-16",
@@ -162,7 +172,8 @@
     "note": "由久屋大通搭名城線一站，7號出口步行約5分至東門。若早餐稍延，約09:30進城。11:15左右由東門離開。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%9F%8E%EF%BC%8F%E6%9C%AC%E4%B8%B8%E5%BE%A1%E6%AE%BF%201-1%20Honmaru%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0031%2C%20Japan",
     "sourceUrl": "https://www.nagoyajo.city.nagoya.jp/info/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-3"
   },
   {
     "date": "2026-11-16",
@@ -177,7 +188,8 @@
     "note": "城東門經久屋大通轉車到吹上，含步行與候車約25–35分。指定純素版；備案為久屋大通站旁的山本屋桜通大津店。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%B1%B1%E6%9C%AC%E5%B1%8B%20%E5%A4%A7%E4%B9%85%E6%89%8B%E6%9C%AC%E5%BA%97%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%8D%83%E7%A8%AE%E5%8C%BA%E5%A4%A7%E4%B9%85%E6%89%8B%E7%94%BA5-9-2",
     "sourceUrl": "https://a-yamamotoya.co.jp/store/yamamotoya/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-4"
   },
   {
     "date": "2026-11-16",
@@ -192,7 +204,8 @@
     "note": "自山本屋步行約5–8分。週一11:00–19:00，逛完到同棟7F。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E5%90%B9%E4%B8%8A%207-24%20Chikusatori%2C%20Chikusa%20Ward%2C%20Nagoya%2C%20Aichi%20464-0855%2C%20Japan",
     "sourceUrl": "https://www.antiquemarket.co.jp/access.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-5"
   },
   {
     "date": "2026-11-16",
@@ -207,7 +220,8 @@
     "note": "同棟電梯約1–3分。甜點請確認無蛋。14:30後可彈性多逛老件，約15:40往丸田町。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%AB%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%AB%E3%83%80%E3%83%B3%207-24%20Chikusatori%2C%20Chikusa%20Ward%2C%20Nagoya%2C%20Aichi%20464-0855%2C%20Japan",
     "sourceUrl": "https://www.antiquemarket.co.jp/7floor.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-6"
   },
   {
     "date": "2026-11-16",
@@ -222,7 +236,8 @@
     "note": "吹上搭櫻通線至御器所，轉鶴舞線至鶴舞站再步行。約15:40出發，預估16:15到店。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=STORE%20IN%20FACTORY%20marutamachi%20bld.%205%20Chome-23-9%20Sakae%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0008%2C%20Japan",
     "sourceUrl": "https://storeinfactory.com/pages/contact",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-7"
   },
   {
     "date": "2026-11-16",
@@ -237,7 +252,8 @@
     "note": "老件店約17:40離開；18:10離開咖啡廳，步行到TORAYA。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AOI%20CELESTIE%20COFFEE%20ROASTERY%20%E5%90%8D%E5%8F%A4%E5%B1%8B%20%E6%9D%B1%E5%8C%BA%E6%9D%B1%E6%A1%9C2-17-22",
     "sourceUrl": "https://tabelog.com/aichi/A2301/A230104/23090945/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-8"
   },
   {
     "date": "2026-11-16",
@@ -252,7 +268,8 @@
     "note": "週一17:30–22:00；18:30到店可行，建議出發前確認臨時休業與供餐。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%A9%E3%83%A4%E3%83%99%E3%82%B8%E3%82%BF%E3%82%A4%E3%82%AC%E3%83%BC%20%E3%82%BB%E3%82%AB%E3%83%B3%E3%83%89%E3%83%AB%E3%83%BC%E3%83%A0%203%20Chome-14-23%20Shinsakae%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0007%2C%20Japan",
     "sourceUrl": "https://nagoya.mypl.net/naka/shop/00000372987/menu",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-9"
   },
   {
     "date": "2026-11-16",
@@ -267,7 +284,8 @@
     "note": "新榮町搭東山線至榮。屋頂21:00關閉。下雨改從地面或銀河廣場看。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%AA%E3%82%A2%E3%82%B7%E3%82%B921%20%E6%B0%B4%E3%81%AE%E5%AE%87%E5%AE%99%E8%88%B9%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%9D%B1%E6%A1%9C1-11-1",
     "sourceUrl": "https://www.sakaepark.co.jp/about/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-10"
   },
   {
     "date": "2026-11-16",
@@ -282,7 +300,8 @@
     "note": "由榮／廣小路通步行回伏見。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": null,
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-11"
   },
   {
     "date": "2026-11-16",
@@ -297,7 +316,8 @@
     "note": "飯店步行約5–10分。週一營業至翌01:00，飲料最後點單00:00。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%90%E3%83%BC%20%E3%83%AC%E3%82%B7%203%20Chome-20-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://www.bar-recit.com/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-12"
   },
   {
     "date": "2026-11-16",
@@ -312,7 +332,8 @@
     "note": "由錦3丁目步行回伏見飯店約5–10分。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": null,
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-16-13"
   },
   {
     "date": "2026-11-17",
@@ -327,7 +348,8 @@
     "note": "供餐06:30–09:30。奶素品項現場挑選，早餐後步行往美術館。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://www.choice-hotels.jp/hotel/nagoyafushimi/breakfast/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-1"
   },
   {
     "date": "2026-11-17",
@@ -342,7 +364,8 @@
     "note": "依官網日文時段以09:00開門規劃。若排隊，直接去美術館。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B7%E3%83%A5%E3%83%A9%E3%83%96%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%20%E4%BC%8F%E8%A6%8B%202%20Chome-7-29-2%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://shrubcoffee.com/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-2"
   },
   {
     "date": "2026-11-17",
@@ -357,7 +380,8 @@
     "note": "11/17週二09:30開館，一般票¥1,900。從飯店直接步行可達。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%BE%8E%E8%A1%93%E9%A4%A8%202%20Chome-17-25%20Sakae%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0008%2C%20Japan",
     "sourceUrl": "https://art-museum.city.nagoya.jp/exhibitions/post/van_gogh_and_the_impressionists/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-3"
   },
   {
     "date": "2026-11-17",
@@ -372,7 +396,8 @@
     "note": "持續下雨可略過，從美術館直接步行前往大須午餐。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%99%BD%E5%B7%9D%E5%85%AC%E5%9C%92%202%20Chome%20Sakae%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://www.nagoya-info.jp/en/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-4"
   },
   {
     "date": "2026-11-17",
@@ -387,7 +412,8 @@
     "note": "週二11–15、17–23；12:45合適，距大須觀音步行約5分。屬葷素混合廚房：點Vegetable Dal Bhat並確認高湯、魚、蛋。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=KHAJA%20GHAR%202-27-34%20Osu%2C%20Nagoya%2C%20Japan",
     "sourceUrl": "https://tabelog.com/aichi/A2301/A230105/23085903/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-5"
   },
   {
     "date": "2026-11-17",
@@ -402,7 +428,8 @@
     "note": "參拜",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%A0%88%E8%A6%B3%E9%9F%B3%202%20Chome-21-47%20Osu%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0011%2C%20Japan",
     "sourceUrl": "https://www.osu-kannon.jp/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-6"
   },
   {
     "date": "2026-11-17",
@@ -417,7 +444,8 @@
     "note": "途中可逛老物雜貨",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%A0%88%E5%95%86%E5%BA%97%E8%A1%97%20Osu%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://osu.nagoya/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-7"
   },
   {
     "date": "2026-11-17",
@@ -432,7 +460,8 @@
     "note": "乾燥或微雨先走參道；日泰寺16:30關門。持續下雨直接進記念館。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E8%A6%9A%E7%8E%8B%E5%B1%B1%20%E6%97%A5%E6%B3%B0%E5%AF%BA%20%E5%90%8D%E5%8F%A4%E5%B1%8B",
     "sourceUrl": "https://www.nittaiji.or.jp/13haika/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-8"
   },
   {
     "date": "2026-11-17",
@@ -447,7 +476,8 @@
     "note": "雨天可提前約15:00進館。最後入館16:30。離館後由池下站搭東山線回榮。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%88%B2%E4%B8%89%E9%83%8E%E8%A8%98%E5%BF%B5%E9%A4%A8%20%E5%90%8D%E5%8F%A4%E5%B1%8B",
     "sourceUrl": "https://www.furukawa-museum.or.jp/show_exhibit",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-9"
   },
   {
     "date": "2026-11-17",
@@ -462,7 +492,8 @@
     "note": "晚餐提前15分鐘，19:00左右離店。指定ヴィーガンカレー（¥1,680），再步行往爵士吧。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%BC%204%20Chome-15-9%20Sakae%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://tabelog.com/aichi/A2301/A230103/23084339/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-10"
   },
   {
     "date": "2026-11-17",
@@ -477,7 +508,8 @@
     "note": "從森のカレー步行約10–15分。演出費¥2,700，建議確認單人座位。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B8%E3%83%A3%E3%82%BA%20%E3%82%A4%E3%83%B3%20%E3%83%A9%E3%83%96%E3%83%AA%E3%83%BC%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%9D%B1%E6%A1%9C1-10-15",
     "sourceUrl": "https://www.jazzinnlovely.com/schedule/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-11"
   },
   {
     "date": "2026-11-17",
@@ -492,7 +524,8 @@
     "note": "入座費¥800，吧檯13席，禁菸。週二飲料L.O.00:30，午夜無客可能提早關門。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Thistle%EF%BC%88%E3%83%90%E3%83%BC%E3%82%B7%E3%82%B9%E3%83%AB%EF%BC%89%202-15-20%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://www.bar-thistle.com/",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-12"
   },
   {
     "date": "2026-11-17",
@@ -507,7 +540,8 @@
     "note": "隔天07:00早餐、08:00退房。若略過酒吧，演出後可直接返回。",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": null,
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-17-13"
   },
   {
     "date": "2026-11-18",
@@ -522,7 +556,8 @@
     "note": "11/18早餐含在住宿",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://drive.google.com/file/d/1vQjs3z1YICdQLyJhWNrOeDg7EFFoWvLG/view?usp=drivesdk",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-18-1"
   },
   {
     "date": "2026-11-18",
@@ -537,7 +572,8 @@
     "note": "必須於10:00以前退房",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B%202%20Chome-19-14%20Nishiki%2C%20Naka%20Ward%2C%20Nagoya%2C%20Aichi%20460-0003%2C%20Japan",
     "sourceUrl": "https://drive.google.com/file/d/1vQjs3z1YICdQLyJhWNrOeDg7EFFoWvLG/view?usp=drivesdk",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-18-2"
   },
   {
     "date": "2026-11-18",
@@ -552,7 +588,8 @@
     "note": "地鐵東山線，轉乘步行時間依現場",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%EF%BC%8F%E5%90%8D%E9%89%84%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%20Meieki%2C%20Nakamura%20Ward%2C%20Nagoya%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://www.meitetsu.co.jp/cht/airport-access/index.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-18-3"
   },
   {
     "date": "2026-11-18",
@@ -567,7 +604,8 @@
     "note": "μSKY需加購μticket；實際班次請核對",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-18-4"
   },
   {
     "date": "2026-11-18",
@@ -582,7 +620,8 @@
     "note": "預留緩衝；起飛時間12:05",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-18-5"
   },
   {
     "date": "2026-11-18",
@@ -597,7 +636,8 @@
     "note": "預定台灣時間14:40抵達",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%201-1%20Centrair%2C%20Tokoname%2C%20Aichi%2C%20Japan",
     "sourceUrl": "https://www.centrair.jp/tzh/access/train.html",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "stopId": "2026-11-18-6"
   },
   {
     "date": "2026-11-18",
@@ -612,6 +652,7 @@
     "note": "抵達時間為台灣時間 UTC+8",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%A1%83%E5%9C%92%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20No.%209%2C%20Hangzhan%20S%20Rd%2C%20Dayuan%20District%2C%20Taoyuan%20City%2C%20Taiwan",
     "sourceUrl": "https://www.taoyuan-airport.com/",
-    "timezone": "Asia/Taipei"
+    "timezone": "Asia/Taipei",
+    "stopId": "2026-11-18-7"
   }
 ]

@@ -7,11 +7,15 @@ import re
 import unicodedata
 from pathlib import Path
 import openpyxl
+from stop_identity import assign_stop_ids
 
 ROOT = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('workbook', nargs='?', type=Path, default=ROOT / 'docs/名古屋四日行程_20261115-1118.xlsx')
 parser.add_argument('--out', type=Path, default=ROOT / 'public/data')
+parser.add_argument('--previous', type=Path, default=ROOT / 'public/data', help='Previous published data for stable visit identities')
+parser.add_argument('--identity-map', type=Path, help='Resolve ambiguous visits: date/sequence -> existing stopId, or null for a new visit')
+parser.add_argument('--report', type=Path, default=ROOT / 'output/data-report.md')
 args = parser.parse_args()
 workbook = openpyxl.load_workbook(args.workbook, data_only=True)
 formula_workbook = openpyxl.load_workbook(args.workbook, data_only=False)
@@ -78,6 +82,7 @@ itinerary = [dict(date=date(r[0]), sequence=number(r[1]), arrivalTime=time(r[2])
 # Arrival dinner notes fill missing fields only; the current workbook owns its text.
 supplement = json.loads((ROOT / 'scripts/dinner-supplement.json').read_text())
 place_ids = {place['id'] for place in places}
+workbook_place_ids = set(place_ids)
 for place in supplement['places']:
     if place['id'] not in place_ids:
         place = dict(place)
@@ -100,12 +105,22 @@ for extra in supplement['itinerary']:
                 if field in extra and not stop.get(field):
                     stop[field] = extra[field]
 
+previous_path = args.previous / 'itinerary.json'
+previous = json.loads(previous_path.read_text()) if previous_path.exists() else []
+overrides = json.loads(args.identity_map.read_text()) if args.identity_map else {}
+assign_stop_ids(itinerary, previous, overrides)
+
 # Checked card descriptions and weekly schedules survive workbook reimports.
 place_details = json.loads((ROOT / 'scripts/place-details.json').read_text())
 for place in places:
     extra = place_details.get(place['id'], {})
     for field in ('foodDescription', 'description', 'diningType', 'weeklyHours', 'hoursNote', 'detailSourceUrls', 'detailsCheckedAt', 'eventPeriod', 'dateHours', 'reservationRequired', 'reservationNote', 'reservationUrl', 'reservationSourceUrl'):
         if field in extra:
+            # Excel owns reservation changes. A checked shorter note is valid
+            # only while its original workbook wording is still unchanged.
+            if field.startswith('reservation') and place['id'] in workbook_place_ids:
+                if field != 'reservationNote' or extra.get('reservationNoteSource') != place.get(field):
+                    continue
             place[field] = extra[field]
 
 legs = [dict(date=date(r[0]), fromPlaceId=r[1], toPlaceId=r[2], mode=r[3],
@@ -114,8 +129,21 @@ legs = [dict(date=date(r[0]), fromPlaceId=r[1], toPlaceId=r[2], mode=r[3],
 # Checked station steps and walking routes supplement, rather than replace, Excel legs.
 leg_details = json.loads((ROOT / 'scripts/leg-details.json').read_text())
 navigation = {(extra['date'], extra['fromPlaceId'], extra['toPlaceId']):extra['navigation'] for extra in leg_details}
+place_by_id = {place['id']:place for place in places}
 for leg in legs:
     extra = navigation.get((leg['date'], leg['fromPlaceId'], leg['toPlaceId']))
+    # A verified walking route can be reused on another day only when its two
+    # endpoints are still identical. Public transport remains date-specific.
+    if not extra and leg['mode'] == '步行':
+        for cached in sorted(leg_details, key=lambda item:item['navigation'].get('checkedAt', ''), reverse=True):
+            foot = cached['navigation'].get('walking')
+            if not foot or (cached['fromPlaceId'], cached['toPlaceId']) != (leg['fromPlaceId'], leg['toPlaceId']):
+                continue
+            if all(place_by_id.get(leg[field], {}).get('lat') == foot[endpoint].get('lat') and
+                   place_by_id.get(leg[field], {}).get('lng') == foot[endpoint].get('lng')
+                   for field,endpoint in [('fromPlaceId','fromCoordinates'), ('toPlaceId','toCoordinates')]):
+                extra = cached['navigation']
+                break
     if extra:
         leg['navigation'] = extra
 documents = [dict(id=f'document-{i+1}', category=r[0], title=r[1], url=r[2],
@@ -173,8 +201,8 @@ args.out.mkdir(parents=True, exist_ok=True)
 for name,data in dict(trip=trip,places=places,itinerary=itinerary,legs=legs,documents=documents).items():
     (args.out / f'{name}.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
 # Development-only report: never included in public/ or the Pages artifact.
-report = ROOT / 'output/data-report.md'
-report.parent.mkdir(exist_ok=True)
+report = args.report
+report.parent.mkdir(parents=True, exist_ok=True)
 issues = ['# 資料檢查報告（不上線）', '', '## Excel 待確認事項', '']
 issues += [f'- {r[0]}：{r[2]}（{r[4]}）' for r in rows('05_待確認')]
 issues += ['', '## 缺漏資料', '']

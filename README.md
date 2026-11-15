@@ -49,19 +49,40 @@ The downloaded workbook remains the editing source. The site never reads private
 
 ```sh
 python3 -m pip install -r requirements.txt
-npm run import:xlsx
-npm run validate:data
+npm run sync:itinerary
 npm test
 npm run build
 ```
 
-For a different workbook:
+For a newly downloaded workbook (the file is copied into `docs/` only after validation):
 
 ```sh
-python3 scripts/xlsx-to-json.py /path/to/updated.xlsx
+npm run sync:itinerary -- "/path/to/updated.xlsx"
 ```
 
-The importer reads the original seven sheets plus the optional `07_餐飲與酒吧動線` candidate sheet and allowlists fields into five JSON files in `public/data/`. It excludes default visit records, private booking contents, and the development task sheet. The place sheet’s public reservation requirement, notes, contact link and verification source are allowlisted; HYPERLINK formulas are read as URLs without evaluating formulas. A gap report is generated in ignored `output/data-report.md`. Data validation runs on every build; CI intentionally uses committed JSON so changing a local workbook requires explicit reimport.
+The importer reads the original seven sheets plus the optional `07_餐飲與酒吧動線` candidate sheet and allowlists fields into five JSON files in `public/data/`. It excludes default visit records, private booking contents, and the development task sheet. The place sheet’s public reservation requirement, notes, contact link and verification source are allowlisted; HYPERLINK formulas are read as URLs without evaluating formulas. The workbook format and its other sheets are unchanged.
+
+### 第一階段：安全同步與差異報告
+
+`npm run sync:itinerary` 先快照輸入 Excel，在暫存區匯入與合併既有補充檔，再驗證資料、照片檔案、核實座標、餐飲資訊及點到點交通。通過後才更新原檔、五份 JSON、來源紀錄與 `public/data/version.json`；失敗保留目前資料，檔案套用中出錯則回復先前內容。同步鎖防止兩個同步程序互相覆蓋，重複執行不產生多餘變更。
+
+```sh
+# 僅預覽與檢查；有待套用差異或錯誤時回傳非零狀態
+npm run sync:itinerary -- "/path/to/updated.xlsx" --check
+
+# 核對報告後套用，再走既有測試／建置／commit／push 流程
+npm run sync:itinerary -- "/path/to/updated.xlsx"
+```
+
+報告放在不上線的 `output/itinerary-sync.md` 與 `.json`，包含新增、移除、修改欄位、影響日期與待補資料；JSON 保留變更前後值。新增地點缺照片、座標、簡介／時段，或調整動線後缺交通資料時，先更新原有 `media.json`、`geocodes.json`、`place-details.json`、`leg-details.json` 等補充檔再重跑。地址、營業時段或交通說明變動時也會提示核對舊補充資料，不會自動猜測。既有地點只改時間或順序時直接重用已核實素材。步行路線換日期時，只在起訖地點與核實座標完全相同時重用；公共運輸仍按日期與起訖點查核。
+
+每次停留新增穩定 `stopId`，與 `placeId`、排序 `sequence` 分開；初次升級沿用目前卡片識別，舊版 JSON 仍相容。匯入依既有內容與地點比對，改時間、插入、重排與跨日移動可保留 ID。重複飯店停留無法唯一辨識時停止同步，可用 `--identity-map /path/to/visits.json` 明確指定新 `日期/順序` 對應的既有 ID；值為 `null` 表示新增停留，避免默默猜錯。
+
+來源檔 `--source /path/to/drive-source.json` 僅接受 `driveFileId`、`driveUrl`、`driveModifiedTime`，用於記錄下載時取得的 Drive 中繼資料；不接受授權憑證。未提供此來源檔的新 Excel 不沿用舊的 Drive 修改時間。`version.json` 記錄五份資料各自及整組 SHA-256，讓 CI 確認同一版 Excel、補充檔與發布資料一致；App 繼續使用原有載入與離線更新流程。
+
+CI 在測試及建置前執行 `sync:itinerary --check`，避免漏匯入或混用版本。回歸測試改核對當前 Excel 與資料契約，不再綁死可編輯行程的筆數、時間、順序及整日雜湊；固定航班、預約、隱私、營業判斷、地圖與卡片互動測試保留。此階段沒有新增背景 Drive 存取權限，也不會自動提交或發布；仍使用既有 GitHub Pages 部署。
+
+低階 `npm run import:xlsx` 與 `python3 scripts/xlsx-to-json.py /path/to/updated.xlsx` 仍可用於除錯，產生原有 `output/data-report.md`，但不負責更新來源紀錄與版本檔；正式更新請使用同步指令。
 
 ### 第一晚晚餐與補充資料
 

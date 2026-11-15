@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "import:xlsx": "python3 scripts/xlsx-to-json.py",
+    "sync:itinerary": "node scripts/sync-itinerary.mjs",
     "validate:data": "node scripts/validate-data.mjs",
     "test": "node --test scripts/*.test.mjs",
     "build": "npm run validate:data && tsc -b && vite build",

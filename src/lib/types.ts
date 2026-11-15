@@ -22,6 +22,7 @@ export interface Place {
   hoursNote?: string; detailSourceUrls?: string[]; detailsCheckedAt?: string;
 }
 export interface Stop {
+  stopId?: string;
   date: string; sequence: number; arrivalTime: string; stayMinutes: number | null;
   placeId: string; title: string; category: string; displayStatus: string;
   summary: string; note: string | null; mapsUrl: string; sourceUrl: string | null; timezone: string;

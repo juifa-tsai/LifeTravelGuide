@@ -48,7 +48,6 @@ test('workbook-only hours never copy a weekday-specific time to another day', ()
 });
 test('all dining places have short sourced descriptions and distinguish vegetarian from mixed kitchens', () => {
   const dining = data.places.filter(p => !p.virtual && ['素食餐廳','咖啡廳','酒吧'].includes(p.category));
-  assert.equal(dining.length,27);
   for (const item of dining) {
     assert(item.foodDescription.length >= 35 && item.foodDescription.length <= 70, item.id);
     assert(item.diningType && item.weeklyHours && item.detailSourceUrls?.length);

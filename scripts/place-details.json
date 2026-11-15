@@ -341,7 +341,8 @@
       "https://grains.nagoya/menu/"
     ],
     "detailsCheckedAt": "2026-11-14",
-    "reservationNote": "晚餐須至少3天前預約；午餐不用預約。週一與國定假日休。"
+    "reservationNote": "晚餐須至少3天前預約；午餐不用預約。週一與國定假日休。",
+    "reservationNoteSource": "晚餐完全預約制，至少提前3天。11/17晚餐應於11/14聯繫並確認受理。一般午餐可到店，週一休。"
   },
   "oribio": {
     "foodDescription": "菜食餐廳供應蔬菜主餐、湯葉料理與多種純植物性選項；採完全預約制，點餐時可進一步說明奶素與其他飲食需求。",
@@ -360,7 +361,8 @@
       "https://www.nagoya-oribiocafe.com/"
     ],
     "detailsCheckedAt": "2026-11-14",
-    "reservationNote": "完全預約制，至少前一天預約；週一、二休。"
+    "reservationNote": "完全預約制，至少前一天預約；週一、二休。",
+    "reservationNoteSource": "用餐完全預約制，最晚前一天。週一、週二休。官方頁面有LINE及電郵。"
   },
   "pupu_kitchen": {
     "foodDescription": "以有機時蔬與玄米設計日替午餐，也有香料蔬菜咖哩、豆乳甜點與咖啡；純植物性料理適合午間慢慢用餐。",

@@ -67,7 +67,13 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
     }
   }
   const sequences = new Set();
+  const stopIds = new Set();
   for (const stop of itinerary) {
+    if (stop.stopId !== undefined) {
+      assert(typeof stop.stopId === 'string' && /^[a-zA-Z0-9_-]{1,80}$/.test(stop.stopId), 'Invalid stop ID');
+      assert(!stopIds.has(stop.stopId), `Duplicate stop ID: ${stop.stopId}`);
+      stopIds.add(stop.stopId);
+    }
     assert(ids.has(stop.placeId), `Missing place: ${stop.placeId}`);
     assert(datePattern.test(stop.date), `Invalid itinerary date: ${stop.date}`);
     assert(Number.isInteger(stop.sequence) && stop.sequence > 0, 'Invalid sequence');
@@ -87,7 +93,11 @@ export function validateData({ trip, places, itinerary, legs, documents }) {
       for (const id of day.candidateIds) assert(ids.has(id), `Missing candidate place: ${id}`);
     }
   }
+  const legIds = new Set();
   for (const leg of legs) {
+    const key = `${leg.date}/${leg.fromPlaceId}/${leg.toPlaceId}`;
+    assert(!legIds.has(key), `Duplicate transit route: ${key}`);
+    legIds.add(key);
     assert(ids.has(leg.fromPlaceId) && ids.has(leg.toPlaceId), 'Missing transit reference');
     assert(datePattern.test(leg.date), 'Invalid transit date');
     assert(nonnegative(leg.minutesEstimate) && nonnegative(leg.fareJpyEstimate), 'Invalid transit estimate');

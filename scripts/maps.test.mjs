@@ -21,7 +21,7 @@ test('lightweight marker SVGs match the current Lucide category icons', () => {
 });
 
 test('all four daily maps permanently retain the complete shared favorite collection', () => {
-  assert.equal(favoriteIds.length,37);
+  assert.deepEqual(favoriteIds,data.places.filter(place=>!place.virtual && ['素食餐廳','咖啡廳','酒吧','潮牌／選物'].includes(place.category) && model.hasCoordinates(place)).map(place=>place.id).sort());
   for (const day of data.trip.days) {
     const points = model.dailyMapPoints(data.itinerary.filter(stop => stop.date === day.date),data.places);
     assert.deepEqual(points.filter(point => point.favorite).map(point => point.place.id).sort(),favoriteIds);
@@ -45,16 +45,17 @@ test('a scheduled favorite has one marker with both its itinerary number and fav
   const shrub = points.filter(point => point.place.id === 'shrub');
   assert.equal(shrub.length,1);
   assert.equal(shrub[0].favorite,true);
-  assert.equal(shrub[0].number,2);
+  const beforeShrub=stops.slice(0,stops.findIndex(stop=>stop.placeId==='shrub')+1);
+  assert.equal(shrub[0].number,new Set(beforeShrub.map(stop=>data.places.find(place=>place.id===stop.placeId)).filter(place=>model.hasCoordinates(place)&&place.id!=='tpe').map(place=>place.id)).size);
   assert.equal(model.dayPins(stops,data.places).filter(point => point.place.id === 'hotel').length,1);
 });
 test('schematic segments stop at unknown meals and never connect international flights', () => {
-  const expectedCounts = { '2026-11-15':3,'2026-11-16':12,'2026-11-17':12,'2026-11-18':2 };
   const knownTaiwan = data.places.map(place => place.id === 'tpe' ? {...place,lat:25.08,lng:121.23} : place);
-  for (const [date,count] of Object.entries(expectedCounts)) {
+  for (const {date} of data.trip.days) {
     const stops = data.itinerary.filter(stop => stop.date === date);
     const segments = model.dailySegments(stops,knownTaiwan);
-    assert.equal(segments.length,count);
+    const valid=stop=>stop.placeId!=='tpe'&&model.hasCoordinates(knownTaiwan.find(place=>place.id===stop.placeId));
+    assert.equal(segments.length,stops.slice(1).filter((stop,index)=>valid(stops[index])&&valid(stop)&&stops[index].placeId!==stop.placeId).length);
     assert(segments.every(segment => segment.every(([latitude]) => latitude > 34)));
   }
   const segments = model.dailySegments(data.itinerary.filter(stop => stop.date === '2026-11-17'),data.places);

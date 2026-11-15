@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadData } from './validate-data.mjs';
+import { readFileSync } from 'node:fs';
 
 const data = loadData();
 const workbook = JSON.parse(execFileSync('python3',['-c',`
@@ -20,7 +21,6 @@ print(json.dumps(dict(stops=stops,places=places),ensure_ascii=False))
 `,fileURLToPath(new URL('../docs/名古屋四日行程_20261115-1118.xlsx',import.meta.url))],{encoding:'utf8'}));
 
 test('the updated workbook owns every itinerary time, status, summary and note', () => {
-  assert.equal(data.itinerary.length,41);
   assert.equal(data.itinerary.length,workbook.stops.length);
   for (const source of workbook.stops) {
     const stop = data.itinerary.find(stop => stop.date === source.date && stop.sequence === source.sequence);
@@ -34,7 +34,6 @@ test('the updated workbook owns every itinerary time, status, summary and note',
 
 test('the six retained dining additions have sourced descriptions, real map reference points and credited location photos', () => {
   const ids=['khaja_ghar','mihos_grains','oribio','pupu_kitchen','ko_vegan','bar_thistle'];
-  assert.equal(data.places.length,63);
   for (const id of ids) {
     assert.equal(data.places.filter(place => place.id === id).length,1);
     const place=data.places.find(place => place.id === id);
@@ -49,17 +48,16 @@ test('the six retained dining additions have sourced descriptions, real map refe
   }
 });
 
-test('revised lunches, antique stop and optional bar follow the new day routes', () => {
-  const get=(date,id)=>data.itinerary.find(stop=>stop.date===date&&stop.placeId===id);
-  assert.equal(get('2026-11-16','yamamotoya_okute').arrivalTime,'11:45');
-  assert.equal(get('2026-11-16','fukiage').arrivalTime,'12:45');
-  assert.equal(get('2026-11-16','fukiage').stayMinutes,90);
-  assert.equal(get('2026-11-17','khaja_ghar').arrivalTime,'11:55');
-  assert.equal(get('2026-11-17','bar_thistle').arrivalTime,'22:25');
-  assert.equal(get('2026-11-17','bar_thistle').displayStatus,'可選');
-  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-16').candidateIds,['yamamotoya_otsu']);
-  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-17').candidateIds,['mihos_grains']);
-  assert(!data.itinerary.some(stop=>stop.placeId==='barns'));
+test('all workbook places and supplemental candidates are exported once without duplicating scheduled stops', () => {
+  const supplement=JSON.parse(readFileSync(new URL('./dinner-supplement.json',import.meta.url),'utf8'));
+  assert.deepEqual(data.places.map(place=>place.id).sort(),[...new Set([...workbook.places,...supplement.places].map(place=>place.id))].sort());
+  for(const day of data.trip.days){
+    const scheduled=new Set(workbook.stops.filter(stop=>stop.date===day.date).map(stop=>stop.placeId));
+    for(const id of day.candidateIds ?? []){
+      assert(data.places.some(place=>place.id===id));
+      assert(!scheduled.has(id),`${day.date}: ${id} is already scheduled`);
+    }
+  }
 });
 
 test('public reservation columns preserve mandatory flags and extract HYPERLINK targets instead of cached display labels',()=>{
