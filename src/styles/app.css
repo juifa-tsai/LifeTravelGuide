@@ -36,6 +36,8 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .stop-time time,.stop-duration { font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; }
 .stop-booking-time { display:flex; align-items:center; gap:6px; color:var(--primary-dark); font-size:14px; }
 .stop-booking-time time { font-weight:600; }
+.suggested-departure { margin-bottom:10px; }
+.suggested-departure time { font-weight:650; font-variant-numeric:tabular-nums; }
 .stay { color:var(--muted); font-size:14px; }
 .badge { display:inline-block; font-size:12px; line-height:1; padding:4px 5px; border-radius:5px; background:#F1EEE8; color:#6F6556; white-space:nowrap; font-weight:400; }
 .badge-flexible { border:1px dashed #C7B693; color:#7D5A17; background:#F6F1E6; }

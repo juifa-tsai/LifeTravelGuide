@@ -60,7 +60,7 @@ export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; 
             const entry = entries.find(entry=>entry.stop === stop)!;
             const place = data.places.find(p => p.id === stop.placeId);
             return <div className="timeline-item" key={stopId(stop)}>
-              <PlaceCard stop={stop} place={place} hotel={hotel} checkInTime={entry.checkInTime} documents={data.documents} selected={highlightedStop === stopId(stop)} onFocus={focus} />
+              <PlaceCard stop={stop} nextStop={stops.find(candidate=>candidate.sequence > stop.sequence && candidate.placeId !== stop.placeId && candidate.category !== '早餐')} place={place} hotel={hotel} checkInTime={entry.checkInTime} documents={data.documents} selected={highlightedStop === stopId(stop)} onFocus={focus} />
               {entry.transfers.length > 0 && <div className="transit-offset">{entry.transfers.map(transfer)}</div>}
             </div>;
           })}{returnTransfer && period === periods.at(-1) && <div className="timeline-item"><TaiwanTransferCard /></div>}</div></section>;
