@@ -9,17 +9,19 @@ import { PlaceImage } from './PlaceImage';
 import { ReservationBadge } from './ReservationBadge';
 import { PlaceDetails } from './PlaceDetails';
 import { durationHours } from '../lib/timeline';
-import { plannedDeparture } from '../lib/departure';
+import { plannedArrival } from '../lib/arrival';
 const BookingDetails = lazy(()=>import('./BookingDetails'));
-export function PlaceCard({ stop, nextStop, place, hotel, documents, checkInTime, selected, onFocus }: {
-  stop: Stop; nextStop?:Stop; place?: Place; hotel?: Place; documents:TravelDocument[]; checkInTime?:string; selected: boolean; onFocus: (placeId: string, returnToMap?: boolean) => void;
+export function PlaceCard({ stop, place, hotel, documents, checkInTime, selected, onFocus }: {
+  stop: Stop; place?: Place; hotel?: Place; documents:TravelDocument[]; checkInTime?:string; selected: boolean; onFocus: (placeId: string, returnToMap?: boolean) => void;
 }) {
   const [open, setOpen] = useState(false);
   const flexible = /彈性|待選|候選用餐|可選/.test(stop.displayStatus);
   const flight = stop.displayStatus === '固定航班';
   const duration = durationHours(stop.stayMinutes);
   const booking = bookingForStop(stop);
-  const departure = plannedDeparture(stop,nextStop);
+  const arrival = plannedArrival(stop);
+  const breakfastSummary = stop.summary.startsWith(`${stop.arrivalTime} `)
+    ? stop.summary.slice(stop.arrivalTime.length).trimStart() : stop.summary;
   const title = stop.category === '住宿' && booking?.kind !== 'hotel' ? stop.summary : booking?.kind === 'flight' ? `${booking.from.airport} ${booking.from.terminal} → ${booking.to.airport} ${booking.to.terminal}` : stop.displayStatus === '固定航班' || stop.summary.includes('返回飯店') || stop.summary.includes('退房') || stop.category === '接駁' || stop.category === '航班' ? stop.summary : stop.title;
   return <div className="timeline-stop" id={`stop-${stopId(stop)}`}>
     <div className="timeline-rail"><span className={`timeline-dot ${flexible ? 'flexible' : ''}`}>
@@ -37,8 +39,8 @@ export function PlaceCard({ stop, nextStop, place, hotel, documents, checkInTime
         </span>{place && <PlaceImage place={place} compact linked={false} />}<span className={`expand-icon ${open ? 'is-open' : ''}`}><ChevronDown size={17} /></span>
       </button>
       {open && <div id={`detail-${stopId(stop)}`} className="stop-detail">
-        {departure && <p className="detail-meta suggested-departure"><Clock3 size={15} aria-hidden="true" /><span>建議出發 <time>{departure.daysLater === 1 ? '翌日 ' : departure.daysLater > 1 ? `${departure.daysLater}天後 ` : ''}{departure.time}</time> · {departure.zone}</span></p>}
-        {stop.category === '早餐' && <p className="stop-summary">{stop.summary}</p>}
+        {arrival && <p className="detail-meta arrival-time"><Clock3 size={15} aria-hidden="true" /><span>抵達 <time>{arrival.time}</time>{arrival.zone && ` · ${arrival.zone}`}</span></p>}
+        {stop.category === '早餐' && <p className="stop-summary">{breakfastSummary}</p>}
         {stop.category === '接駁' && stop.displayStatus === '已預訂' && <p className="stop-booking-time"><Clock3 size={15} aria-hidden="true" /><span>預約接機 <time>{stop.arrivalTime}</time> · 日本時間</span></p>}
         {booking ? <Suspense fallback={<p className="small muted" role="status">載入預訂資料…</p>}><BookingDetails booking={booking} documents={documents} place={place} /></Suspense> : place?.category === '住宿' ? <><p className="detail-meta"><MapPin size={15} aria-hidden="true" /><span>{place.address}</span></p><div className="collection-links"><ExternalLink href={place.mapsUrl} className="collection-icon-action" label={`在 Google Maps 開啟 ${place.nameZh}`}><MapPinned size={20} aria-hidden="true" /></ExternalLink></div></> : place && !place.virtual ? <PlaceDetails place={place} hotel={hotel} date={stop.date} onFocus={onFocus} /> : <>
           <p className="stop-summary">{stop.summary}</p>
