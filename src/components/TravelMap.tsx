@@ -60,10 +60,12 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
   const lodging = points.find(point => point.place.category === '住宿');
   const markerIcons = useMemo(() => new Map(points.map(point => [point.place.id,icon(point,point.place.id === selected)])),[points,selected]);
   function locate() {
-    request(point => {
+    const center = (point:{lat:number;lng:number}) => {
       map.current?.stop(); map.current?.closePopup();
       map.current?.flyTo([point.lat,point.lng],15);
-    });
+    };
+    if (position) center(position);
+    request(center);
   }
   return <section className="travel-map-section" id={id} aria-label={label}>
     <div className="map-frame">

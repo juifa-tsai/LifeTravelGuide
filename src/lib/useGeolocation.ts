@@ -2,21 +2,26 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Coordinates } from './distances';
 import { createLocationTracker, initialLocationState, locationTimeout, type LocationEnvironment } from './locationTracker';
 
-// A cancellable single fix, not continuous movement tracking. clearWatch
-// stops GPS after the first result, on timeout, or when the app is hidden.
-const locateOnce:LocationEnvironment['locate'] = (success,error) => {
+// The shared controller keeps this subscription alive only in Japan while
+// visible. Minute refreshes use a separate single fix and never restart it.
+const subscribeLocation:LocationEnvironment['locate'] = (success,error) => {
   if (!navigator.geolocation) { error({code:0}); return ()=>{}; }
-  let id:number | undefined, settled = false;
-  const cancel = () => { settled = true; if (id !== undefined) navigator.geolocation.clearWatch(id); };
+  let id:number | undefined, canceled = false;
+  const cancel = () => { canceled = true; if (id !== undefined) navigator.geolocation.clearWatch(id); };
   id = navigator.geolocation.watchPosition(result=>{
-    if (settled) return;
-    cancel(); success(result);
+    if (!canceled) success(result);
   },failure=>{
-    if (settled) return;
-    cancel(); error(failure);
+    if (!canceled) error(failure);
   },{enableHighAccuracy:true,maximumAge:0,timeout:locationTimeout});
-  if (settled) navigator.geolocation.clearWatch(id);
+  if (canceled) navigator.geolocation.clearWatch(id);
   return cancel;
+};
+const refreshLocation:LocationEnvironment['locate'] = (success,error) => {
+  if (!navigator.geolocation) { error({code:0}); return ()=>{}; }
+  let canceled = false;
+  navigator.geolocation.getCurrentPosition(value=>{if (!canceled) success(value);},failure=>{if (!canceled) error(failure);},
+    {enableHighAccuracy:true,maximumAge:0,timeout:locationTimeout});
+  return ()=>{canceled = true;};
 };
 
 // Used once by LocationProvider, above all routes. Coordinates stay in memory.
@@ -26,7 +31,7 @@ export function useGeolocation() {
   const request = useCallback((onLocated?:(point:Coordinates)=>void)=>tracker.current?.request(onLocated),[]);
   useEffect(()=>{
     const instance = createLocationTracker({
-      locate:locateOnce,now:()=>Date.now(),
+      locate:subscribeLocation,refresh:refreshLocation,now:()=>Date.now(),
       schedule:(callback,delay)=>window.setTimeout(callback,delay),cancel:id=>window.clearTimeout(id),
     },setState);
     tracker.current = instance;

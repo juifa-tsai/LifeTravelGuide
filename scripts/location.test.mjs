@@ -42,9 +42,9 @@ test('local Japan outline is the documented rounded Natural Earth geometry with 
 });
 test('opening gets one fix; Japan fixes schedule fresh requests every 60 seconds without waiting for movement callbacks',()=>{
  const s=setup();s.tracker.resume();s.tracker.resume();assert.equal(s.calls.length,1);assert(s.state.locating);
- s.fix();assert.equal(s.state.country,'japan');assert(s.calls[0].canceled);const previous=s.state;
+ s.fix();assert.equal(s.state.country,'japan');assert.equal(s.calls[0].canceled,false);const previous=s.state;
  s.advance(59999);assert.equal(s.calls.length,1);s.advance(1);assert.equal(s.calls.length,2);s.fix(road);
- assert.deepEqual(s.state.position,road);assert.deepEqual(previous.position,airport);assert(s.calls[1].canceled);
+ assert.deepEqual(s.state.position,road);assert.deepEqual(previous.position,airport);assert.equal(s.calls[0].canceled,false);assert(s.calls[1].canceled);
  s.advance(60000);assert.equal(s.calls.length,3);s.tracker.dispose();assert.equal(s.timers.size,0);
 });
 test('outside Japan gets one opening fix and no automatic follow-up; return to foreground checks again',()=>{
@@ -85,5 +85,25 @@ test('denied or unsupported location stops polling, clears distances and can be 
  for(const code of [0,1]){const s=setup();s.tracker.resume();s.fix();s.tracker.request();s.fail(code);assert.equal(s.state.position,null);assert.equal(s.state.country,'unknown');s.advance(180000);assert.equal(s.calls.length,2);s.tracker.request();s.fix();assert.equal(s.state.country,'japan');s.tracker.dispose();}
 });
 test('invalid coordinates and stale or future samples never become a fresh distance',()=>{
- for(const [point,age]of [[{lat:NaN,lng:136.9},0],[airport,31000],[airport,-6000]]){const s=setup();s.tracker.resume();s.fix(point,0,s.now-age);assert.equal(s.state.position,null);assert.equal(s.state.country,'unknown');assert.equal(s.state.locating,false);s.advance(120000);assert.equal(s.calls.length,1);s.tracker.dispose();}
+ for(const [point,age]of [[{lat:NaN,lng:136.9},0],[airport,31000],[airport,-6000]]){const s=setup();s.tracker.resume();s.fix(point,0,s.now-age);assert.equal(s.state.position,null);assert.equal(s.state.country,'unknown');s.advance(15000);assert.equal(s.state.locating,false);s.advance(120000);assert.equal(s.calls.length,1);s.tracker.dispose();}
+});
+
+test('one shared Japan subscription updates movement between minute refreshes and stops immediately on an outside fix',()=>{
+ const s=setup();let focused=0;s.tracker.resume();s.tracker.request(()=>focused++);s.fix();
+ s.advance(5000);s.fix(road,0);assert.deepEqual(s.state.position,road);assert.equal(s.calls.length,1);assert.equal(focused,1);assert.equal(s.calls[0].canceled,false);
+ s.advance(5000);s.fix(taiwan,0);assert.equal(s.state.country,'outside');assert(s.calls[0].canceled);s.advance(180000);assert.equal(s.calls.length,1);s.tracker.dispose();
+});
+
+test('temporary watch errors do not cancel movement updates or warn over a fresh position, and minute refresh leaves the watch alive',()=>{
+ const s=setup();s.tracker.resume();s.fix();s.fail(3,0);assert.equal(s.calls[0].canceled,false);assert.equal(s.state.message,'');
+ s.advance(5000);s.fix(road,0);assert.deepEqual(s.state.position,road);s.advance(55000);assert.equal(s.calls.length,2);assert.equal(s.calls[0].canceled,false);s.fix(airport,1);assert.equal(s.calls[0].canceled,false);s.fix(road,0);assert.deepEqual(s.state.position,road);s.tracker.dispose();assert(s.calls[0].canceled);
+});
+
+test('an older minute response never replaces a more recent movement fix',()=>{
+ const s=setup();s.tracker.resume();s.fix();s.advance(60000);const started=s.now;s.advance(1000);s.fix(road,0);
+ s.fix(airport,1,started);assert.deepEqual(s.state.position,road);assert.equal(s.state.locating,false);assert.equal(s.calls[0].canceled,false);s.tracker.dispose();
+});
+
+test('a temporary startup error does not discard a valid fix arriving a moment later',()=>{
+ const s=setup();s.tracker.resume();s.fail(2);assert.equal(s.calls[0].canceled,false);assert.equal(s.state.message,'正在取得位置…');s.advance(1000);s.fix(road,0);assert.deepEqual(s.state.position,road);assert.equal(s.state.country,'japan');assert.equal(s.state.message,'');s.tracker.dispose();
 });
