@@ -22,5 +22,5 @@ test('a fresh launch resets stale itinerary URLs, preserving private imports and
  for(const hash of ['','#','#/','#/day','#/day/2026-11-15','#/day/2026-11-18','#/day/invalid'])assert.equal(launchHash(hash,days,now),'#/day/2026-11-16');
  assert.equal(launchHash('#/day/2026-11-18',days,new Date('2026-11-19T10:00:00+09:00')),'#/day/2026-11-15');
  assert.equal(launchHash('#/day/2026-11-15?bookings=DEMO_TOKEN',days,now),'#/day/2026-11-16?bookings=DEMO_TOKEN');
- for(const hash of ['#/places','#/documents','#/audio','#/documents?entryQr=DEMO_QR'])assert.equal(launchHash(hash,days,now),hash);
+ for(const hash of ['#/places','#/documents','#/todos','#/audio','#/documents?entryQr=DEMO_QR'])assert.equal(launchHash(hash,days,now),hash);
 });

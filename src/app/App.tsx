@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState, Component, type MouseEvent, type ReactNode } from 'react';
 import { HashRouter, NavLink, Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { BookOpen, CalendarDays, MapPin, Files, CircleHelp, WifiOff, RefreshCw, X } from 'lucide-react';
+import { BookOpen, CalendarDays, MapPin, Files, ListTodo, CircleHelp, WifiOff, RefreshCw, X } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import type { TravelData } from '../lib/types';
 import { BackToTop } from '../components/BackToTop';
@@ -12,6 +12,7 @@ import { useOnline } from '../lib/connectivity';
 import { DayPage } from '../pages/DayPage';
 import { PlacesPage } from '../pages/PlacesPage';
 import { DocumentsPage } from '../pages/DocumentsPage';
+import { TodoPage } from '../pages/TodoPage';
 const AudioPage = lazy(()=>import('../pages/AudioPage').then(module=>({default:module.AudioPage})));
 
 class ErrorBoundary extends Component<{ children:ReactNode }, { failed:boolean }> {
@@ -41,6 +42,7 @@ function TravelApp({ data }: { data:TravelData }) {
   const location = useLocation();
   const online = useOnline();
   const [visited,setVisited] = useStoredState<Record<string,boolean>>('visited', {});
+  const [todos,setTodos] = useStoredState<Record<string,boolean>>('todos', {});
   const [viewedDay,setViewedDay] = useState(() => defaultDay(data.trip.days));
   const lastDate = useRef(japanDate());
   const viewedDayRef = useRef(viewedDay);
@@ -74,7 +76,7 @@ function TravelApp({ data }: { data:TravelData }) {
   }
   useEffect(() => { window.scrollTo({ top:0, behavior:'instant' }); }, [location.pathname]);
   useEffect(() => {
-    document.title = `${activeDay ? `${activeDay.title} · ${activeDay.date.slice(5).replace('-','/')}` : location.pathname === '/places' ? '踩點清單' : location.pathname === '/documents' ? '重要文件' : location.pathname === '/audio' ? '求助' : '名古屋'}｜旅の手帖`;
+    document.title = `${activeDay ? `${activeDay.title} · ${activeDay.date.slice(5).replace('-','/')}` : location.pathname === '/places' ? '踩點清單' : location.pathname === '/documents' ? '重要文件' : location.pathname === '/todos' ? '待辦事項' : location.pathname === '/audio' ? '求助' : '名古屋'}｜旅の手帖`;
   }, [activeDay, location.pathname]);
   useEffect(() => {
     function resume() {
@@ -90,6 +92,7 @@ function TravelApp({ data }: { data:TravelData }) {
     { url:dayUrl, label:'行程', icon:CalendarDays, active:location.pathname.startsWith('/day/') },
     { url:'/places', label:'踩點', icon:MapPin, active:location.pathname === '/places' },
     { url:'/documents', label:'文件', icon:Files, active:location.pathname === '/documents' },
+    { url:'/todos', label:'待辦', icon:ListTodo, active:location.pathname === '/todos' },
     { url:'/audio', label:'求助', icon:CircleHelp, active:location.pathname === '/audio' },
   ];
   return <div className="app-shell"><a href="#main-content" className="skip-link" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>跳至主要內容</a>
@@ -98,6 +101,7 @@ function TravelApp({ data }: { data:TravelData }) {
       <Route path="/day/:date" element={<DayRoute data={data} onSelectDay={chooseDay} />} />
       <Route path="/places" element={<PlacesPage data={data} visited={visited} setVisited={setVisited} />} />
       <Route path="/documents" element={<DocumentsPage data={data} />} />
+      <Route path="/todos" element={<TodoPage completed={todos} onToggle={(id,checked)=>setTodos(previous=>({...previous,[id]:checked}))} />} />
       <Route path="/audio" element={<Suspense fallback={<p role="status">載入中…</p>}><AudioPage /></Suspense>} />
       <Route path="*" element={<Navigate to={`/day/${viewedDay}`} replace />} />
     </Routes></BookingProvider></main>

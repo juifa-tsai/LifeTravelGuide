@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Restore Commons previews and retain the separately captured place-photo credits."""
+"""Restore referenced previews and retain the separately captured place-photo credits."""
 import io
 import json
 from pathlib import Path

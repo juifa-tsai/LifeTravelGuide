@@ -178,5 +178,15 @@
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "path": "images/dumplings.webp"
+  },
+  "soujun-premium": {
+    "title": "爽潤 PREMIUM 360粒商品實照",
+    "downloadUrl": "https://luckysky.hk/wp-content/uploads/2021/12/爽潤-new.jpg",
+    "sourceUrl": "https://luckysky.hk/?product=%E7%88%BD%E6%BD%A4",
+    "author": "Lucky Sky International Limited",
+    "license": "原攝影者保留著作權；個人非營利購物辨識引用，非 CC 授權。",
+    "licenseUrl": "https://luckysky.hk/?product=%E7%88%BD%E6%BD%A4",
+    "path": "images/soujun-premium.webp",
+    "rights": "original-rights"
   }
 }

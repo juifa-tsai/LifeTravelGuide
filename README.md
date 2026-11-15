@@ -91,7 +91,7 @@ All 43 real locations now use photographs of the matching place. The capture man
 
 To recapture one reviewed image, install Playwright in your maintenance environment, then run `node scripts/capture-place-photo.mjs <placeId>`. An existing installation can be selected with `PLAYWRIGHT_MODULE_PATH` (module file path) and `CHROMIUM_PATH`. Inspect the result against its source and photographer, synchronize the corresponding `scripts/media.json` entry, rebuild credits with `python3 scripts/fetch-images.py`, then run `npm run import:xlsx` and the normal validation/tests/build. Captures do not replace a missing photo with an unrelated stock image; Excel reimports retain them by stable place ID.
 
-`scripts/media.json` maps stable place IDs to the preview image, credit, source, license, type and alternative text. The Excel importer merges this supplement so reimporting the workbook preserves the photos. `scripts/media-assets.json` records the original Commons files; restore missing Commons assets and rebuild all credits with (captured images must already exist):
+`scripts/media.json` maps stable place IDs to the preview image, credit, source, license, type and alternative text. The Excel importer merges this supplement so reimporting the workbook preserves the photos. `scripts/media-assets.json` records the original Commons files and the matched shopping-product reference; restore missing Commons assets and rebuild all credits with (captured images must already exist):
 
 ```sh
 python3 scripts/fetch-images.py
@@ -105,7 +105,7 @@ The map uses standard **OpenStreetMap** tiles with light-gray styling applied on
 
 ## Offline and local state
 
-After a successful production visit, the service worker precaches the app, all five JSON files and local images. All seven routes work offline. Local MP3 phrase recordings are precached with the app for offline playback. Base-map tiles, external navigation and Drive documents require connectivity; the UI explains this and disables external links when offline. No private PDF or map tile is cached. A new deployment prompts to update; returning to the app also checks for an update. Production caching can be tested with `npm run build && npm run preview`; it is intentionally disabled in development. See [Vite PWA documentation](https://vite-pwa-org.netlify.app/guide/).
+After a successful production visit, the service worker precaches the app, all five JSON files and local images. All eight routes work offline. Local MP3 phrase recordings are precached with the app for offline playback. Base-map tiles, external navigation and Drive documents require connectivity; the UI explains this and disables external links when offline. No private PDF or map tile is cached. A new deployment prompts to update; returning to the app also checks for an update. Production caching can be tested with `npm run build && npm run preview`; it is intentionally disabled in development. See [Vite PWA documentation](https://vite-pwa-org.netlify.app/guide/).
 
 Last selected day and visit checks use `nagoya:*` localStorage keys. Visit records are stored by stable place ID, never uploaded or written to Excel. Unavailable storage falls back to in-memory session state. Clearing browser data removes local records. Location uses one `getCurrentPosition` call per tap and never watches or stores a location. On the places page, an already granted permission is reused once on entry and when returning from the background; it does not trigger a new permission prompt automatically. The browser pans the map and requests only the visible tiles; this static application has no backend collecting location records.
 
@@ -207,3 +207,8 @@ Distances are local calculations from verified place coordinates; unknown coordi
 `BookingDetails` 共用訂單與車輛版面，新增獨立的 `taiwan_transfer` 本機紀錄，可保存目的地地址、訂單編號、四位驗證碼、全鋒短訂單連結、登記時間與日後提供的司機／車輛資料。這次使用者明確要求記錄的全鋒驗證碼，只允許放在此本機紀錄；其他預訂仍不接受驗證碼或 PIN。公開程式碼只有通用卡片與業者名稱，不包含實際住址、訂單、驗證碼、私人短連結或訂單回應。
 
 私人 `#/day/2026-11-18?returnTransfer=<base64url>` 連結匯入後切到返台日並移除參數；舊版會保留尚未支援的參數，更新後再匯入。既有四筆航班、住宿及日本接機紀錄逐欄保留。返台訂單連結限 `https://www.tms.tw/` 下六碼短網址，不將驗證碼加到外部網址或從 App 自動查詢訂單。私人資料只存瀏覽器，離線可讀；訂單與 Google Maps 路線須連線及使用者點選才開啟。Excel、JSON 匯入及圖片資料不受影響。
+
+
+## 待辦清單
+
+底部頁籤順序為「行程／踩點／文件／待辦／求助」，`#/todos` 顯示兩項待辦：買爽潤 PREMIUM（360粒，2罐），以及買明信片寫給 Craig 和宜儒。沿用既有卡片樣式，整列可勾選完成並顯示完成數量；不新增排序、編輯或多餘提示。商品旁的縮圖可點開放大，使用已核對相同360粒藍白包裝的 Lucky Sky 商品實照；來源與原作者權利沿用圖片紀錄及文件頁折疊授權區，圖片隨 App 離線保存。完成狀態按穩定 ID 存在 `nagoya:todos`，切頁、重開與離線仍保留；瀏覽器無法寫入時沿用既有的本次瀏覽狀態。清除瀏覽器資料會清除勾選，不影響其他本機訂單或造訪紀錄。
