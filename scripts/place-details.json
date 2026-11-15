@@ -68,12 +68,12 @@
       "5": "09:00–18:00",
       "6": "09:00–18:00"
     },
-    "hoursNote": "不定休、L.O.17:30；官網日英開店時間不同，早到先確認。",
+    "hoursNote": "不定休、L.O.17:30；依日文官網以09:00開門規劃，排隊可直接去美術館。",
     "detailSourceUrls": [
-      "https://shrubcoffee.com/shop/",
+      "https://shrubcoffee.com/",
       "https://tabelog.com/aichi/A2301/A230102/23087115/"
     ],
-    "detailsCheckedAt": "2026-11-13"
+    "detailsCheckedAt": "2026-11-15"
   },
   "ao_sands": {
     "foodDescription": "主打現烤麵包的越南法國三明治，以蔬菜、香草與醬料組合呈現越南風味；奶素需先確認配料、蛋與魚露。",
@@ -976,6 +976,25 @@
       "https://a-yamamotoya.co.jp/store/sakuradoori-ootsu/",
       "https://nagoya-meshi.jp/nagoyameshi-search/detail/味噌煮込みうどんの山本屋-桜通大津店/",
       "https://a-yamamotoya.co.jp/store/sakuradoori-ootsu/"
+    ],
+    "detailsCheckedAt": "2026-11-15"
+  },
+  "kato_coffee_sakae": {
+    "foodDescription": "自家烘焙咖啡搭配名古屋式小倉吐司早餐，附奶油與水煮蛋；奶素請不附水煮蛋，並先確認吐司麵糰及配料是否含蛋。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "08:00–16:00",
+      "1": "08:00–16:00",
+      "2": "08:00–16:00",
+      "3": "08:00–16:00",
+      "4": "08:00–16:00",
+      "5": "08:00–16:00",
+      "6": "08:00–16:00"
+    },
+    "hoursNote": "早餐08:00–10:30；週三逢5／15／25日改隔日休，另休第4週四。",
+    "detailSourceUrls": [
+      "https://www.katocoffee.com/com/company/access.html",
+      "https://r.gnavi.co.jp/em8eu96b0000/menu3/"
     ],
     "detailsCheckedAt": "2026-11-15"
   }

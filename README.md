@@ -85,7 +85,7 @@ The original workbook has no coordinates or photos. `scripts/geocodes.json` supp
 
 Explicit Excel coordinates take precedence over the supplement, but need a coordinate source in `scripts/geocodes.json` to pass validation. If you move a place, update both its workbook address and its geocode record. Unknown coordinates remain null; the text card still works.
 
-All 60 real locations now use photographs of the matching place. The capture manifest contains 51 reviewed photographs, including storefronts, entrances, interiors, terraces and the actual activity venues. Twenty-five were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. The 11 latest additions use photographs from venue/organizer websites, Nagoya’s official tourism site and a matched HomeMate Cinema 2 entrance photograph. The MIRAI TOWER image shows the view from its observation deck; the Shirotori image shows the garden in daylight, not a promised night scene. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
+All 61 real locations now use photographs of the matching place. The capture manifest contains 52 reviewed photographs, including storefronts, entrances, interiors, terraces and the actual activity venues. Twenty-four were captured with Playwright from publicly visible Google Maps place photographs; MOLNODA uses its official entrance-sign photograph because the Maps lead image is an architectural rendering. The eleven activity additions use photographs from venue/organizer websites, Nagoya’s official tourism site and a matched HomeMate Cinema 2 entrance photograph. The MIRAI TOWER image shows the view from its observation deck; the Shirotori image shows the garden in daylight, not a promised night scene. Existing Wikimedia location photos remain. Generic images remain labeled **示意** only for virtual meals/events. All images are local optimized WebP files for reliable offline viewing.
 
 `scripts/storefront-photos.json` records the matched store name/address, photographer, original photo/viewer URL, capture date, view type and SHA-256 hashes. These personal noncommercial travel-reference screenshots retain the original photographers’ rights; they are **not CC-licensed or newly licensed by this repository**. Google Maps usage terms and the official source are recorded separately from the existing Commons CC licenses. Card and popup thumbnails open the matching place’s stable Google Maps location link. Per-card photographer captions have been removed; complete author/source/license attribution is grouped under the collapsed 圖片授權 section at the bottom of Documents. Historical photo-viewer URLs remain provenance records, not navigation targets. Full credits are in `public/images/credits.json`; Google Maps photos are not live API requests, and the app needs no Google API key.
 
@@ -157,17 +157,17 @@ The places page uses collapsible cards. The preview shows the photo, name, today
 
 交通卡不再顯示車資、核實程度、資料來源表格或無用的待確認欄位。步行以單列顯示路線距離與分鐘數，點選可開啟導航；公共運輸直接顯示起訖站、路線與移動時間，需轉乘時再展開各段車站。必要的接機位置、μticket 等提醒保留，航班時刻與時區不變。尚未選定餐廳的交通列隱藏，不把假定地點當成已知路段。
 
-`scripts/leg-details.json` 保存公共運輸站點與步行路線；本次行程使用十二段公共運輸及二十三段已核對的步行路線，Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；路段以既有核實地址參考點查詢（2026-11-13–14），實際入口、號誌與步速仍會影響結果。數值不顯示估算前綴符號；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
+`scripts/leg-details.json` 保存公共運輸站點與步行路線；本次行程使用十三段公共運輸及二十四段已核對的步行路線，Excel 匯入會依日期／起點／終點合併到 `legs.json` 的 `navigation` 欄位。站點依名古屋市交通局／名鐵官方路線圖及店家交通說明核對。步行距離與預估時間來自 [OpenStreetMap 路線服務](https://routing.openstreetmap.de/) 的 OSRM foot 路由回應，非直線距離；路段以既有核實地址參考點查詢（2026-11-13–15），實際入口、號誌與步速仍會影響結果。數值不顯示估算前綴符號；距離以 50m 或 0.1km 顯示，時間向上取整至分鐘。來源網址、原始距離／秒數、端點座標與核對日期保存在補充檔；網頁不會即時呼叫路線服務，也不會送出使用者位置。OpenStreetMap 貢獻者署名保留在頁面地圖中。地址座標變動後須重查步行資料，驗證會拒絕過期端點。
 
 踩點清單與分類不再包含住宿與機場，名古屋車站仍歸在交通分類。飯店取自完整地點資料，固定保留在所有踩點地圖篩選中，供定位、導航與計算距離使用；每日航班、住宿安排及文件照常保留。
 
 ## 最新 Drive 行程同步（2026-11-15）
 
-已同步 Drive「2026 Nakoya」中 11:23:19 UTC 更新的 Excel 原檔，共62個地點、42個原始每日安排、41段交通；踩點顯示57個非住宿／機場的實體地點。原檔不更動，來源時間、計數與 SHA-256 保存在 `docs/workbook-source.json`。重新執行 `npm run import:xlsx` 會合併圖片、核實座標、簡介與時段補充資料，維持相同結果。
+已同步 Drive「2026 Nakoya」中 13:32:01 UTC 更新的 Excel 原檔，共63個地點、41個原始每日安排、43段交通；踩點顯示58個非住宿／機場的實體地點。原檔不更動，來源時間、計數與 SHA-256 保存在 `docs/workbook-source.json`。重新執行 `npm run import:xlsx` 會合併圖片、核實座標、簡介與時段補充資料，維持相同結果。
 
 新增10間「潮牌／選物」：Graphpaper、JACK IN THE BOX、KAPITAL、FREAK’S STORE、HOODS、Unlimited. -lounge-、Supreme、Chrome Hearts、BEAMS與Ron Herman；另加入AOI CELESTIE、喫茶New Poppy、四間道、圓頓寺商店街、覺王山參道與爲三郎記念館。皆有對應實景圖、核實地址參考座標、Maps連結、開放時段與簡介，沿用原卡片、收合、距離排序與營業篩選。街區歸入既有古蹟／歷史分類；潮店使用購物圖示，加入每日共享收藏圖層，踩點分類後僅呈現相符地點與固定飯店標記。
 
-11/16早晨改走四間道→08:35 New Poppy→09:20名古屋城，11:45在山本屋大久手本店吃純素味噌煮烏龍麵，12:45到吹上老件店、14:18同棟咖啡；大津店列為午餐備案。15:40後由吹上經御器所轉鶴舞線至鶴舞，接16:15丸田町老件店，晚餐前仍保留AOI咖啡。兩間山本屋皆有已核對的店面實景、GSI地址參考座標與奶素提醒；大久手本店依2026/10官方公告取消週一公休，一般麵湯含魚出汁，需明確指定純素版本。Excel已移除的Bio Terrace與11/16午餐占位列同步移除；11/17提早到SHRUB與美術館，下午加入覺王山與爲三郎記念館。所有時間、狀態與原始備註以Excel為準；早餐仍隱藏、航班與入住資訊仍各顯示一次，返台接駁及私人訂單仍由本機資料提供。既有待辦文字、勾選與圖片不受資料匯入影響。
+11/16由飯店07:30–07:35出發，07:50到加藤珈琲店榮店候位、08:00開門；08:35仍在等則直接去名古屋城。早餐不附水煮蛋，先確認吐司麵糰有無蛋，09:00離店，經久屋大通搭名城線至名古屋城站東門，接09:20參觀。四間道、圓頓寺及New Poppy保留於踩點作彈性選項；11:45在山本屋大久手本店吃純素味噌煮烏龍麵，12:45到吹上老件店、14:18同棟咖啡；大津店列為午餐備案。15:40後由吹上經御器所轉鶴舞線至鶴舞，接16:15丸田町老件店，晚餐前仍保留AOI咖啡。兩間山本屋皆有已核對的店面實景、GSI地址參考座標與奶素提醒；大久手本店依2026/10官方公告取消週一公休，一般麵湯含魚出汁，需明確指定純素版本。Excel已移除的Bio Terrace與11/16午餐占位列同步移除；11/17的SHRUB依日文官網09:00開門改為可選外帶咖啡，09:30美術館時刻不變，下午保留覺王山與爲三郎記念館。所有時間、狀態與原始備註以Excel為準；飯店早餐仍隱藏、外出早餐保留，航班與入住資訊仍各顯示一次，返台接駁及私人訂單仍由本機資料提供。既有待辦文字、勾選與圖片不受資料匯入影響。
 
 潮店與建築／街區的短描述使用 `description`，餐飲沿用 `foodDescription`，展開卡片共用相同版面。照片使用店家、設施、官方觀光網站、可信媒體及Google Maps的匹配實景，未用品牌標誌、渲染圖或其他分店照片替代；出處、權利與截圖雜湊保存在原有圖片紀錄。部分為歷年照片，裝潢與當日陳列可能改變。國土地理院座標為地址／街區參考點，不當作精確入口。
 
@@ -183,9 +183,9 @@ The places page uses collapsible cards. The preview shows the photo, name, today
 
 ## 航班與住宿時間軸資料
 
-時間軸的去、回程各以一張航班卡顯示完整起訖航廈、各地時刻、日本航空／經濟艙／訂單機型，回程另保留 09:55 報到提醒；抵達與報到不再重複顯示機場圖卡。車站轉乘與 19:55 預約接機放入點到點交通連線，保留車站、路線、時間及司機通知。住宿預訂資料只出現在 11/15 首次入住卡；其餘返回飯店與退房卡僅保留地點及必要提醒。移除早餐安排、早餐與行李資訊。兩段航班與首次入住卡各自直接連結 `documents.json` 中對應的私人 Drive 憑證。
+時間軸的去、回程各以一張航班卡顯示完整起訖航廈、各地時刻、日本航空／經濟艙／訂單機型，回程另保留 09:55 報到提醒；抵達與報到不再重複顯示機場圖卡。車站轉乘與 19:55 預約接機放入點到點交通連線，保留車站、路線、時間及司機通知。住宿預訂資料只出現在 11/15 首次入住卡；其餘返回飯店與退房卡僅保留地點及必要提醒。僅隱藏飯店早餐與行李資訊；行程新增的外出早餐沿用一般地點卡。兩段航班與首次入住卡各自直接連結 `documents.json` 中對應的私人 Drive 憑證。
 
-基本資料集中於 `src/data/bookingBasics.ts`，核對來源為既有電子行程單、機票訂單確認、入住憑證及住宿訂單。`compactTimeline` 只整理顯示節點，不改 Excel、原始行程時刻或預約；重新匯入後仍維持精簡顯示。隱藏節點的地圖標記會對應到合併後的卡片，飯店位置與轉乘路線保留。刪除早餐卡後，從飯店前往當日第一站的交通仍顯示在時間軸起點。
+基本資料集中於 `src/data/bookingBasics.ts`，核對來源為既有電子行程單、機票訂單確認、入住憑證及住宿訂單。`compactTimeline` 只整理顯示節點，不改 Excel、原始行程時刻或預約；重新匯入後仍維持精簡顯示。隱藏節點的地圖標記會對應到合併後的卡片，飯店位置與轉乘路線保留。`isHotelBreakfast` 共用於時間軸、每日地圖及下一站判定，外出早餐不會被過濾；飯店出發交通仍顯示在時間軸起點。加藤珈琲的展開卡保留07:50候位、08:35略過門檻及09:00建議出發。
 
 訂單編號及航空公司訂位代號只存在瀏覽器 `nagoya:booking-details`，可用私人 `#/day/2026-11-15?bookings=<base64url>` 連結一次匯入，或在展開卡片按「編輯訂單」填寫。匯入後立即移除 fragment 參數，對應預訂的卡片讀取同一份本機資料；重新整理、切換日期或離線仍可看。只接受兩段航班的訂單編號／訂位代號、飯店及機場接送的訂單編號，以及接機車輛／司機欄位，不保存 PIN、旅客姓名、票號、付款或證件資訊。不把實際編號、私人連結或來源 PDF 放進 repository、公開 JSON、測試 fixture 或預快取；清除瀏覽器資料後需重新匯入。Drive 憑證維持原本權限，需連線及有權限的 Google 帳號才能開啟。
 

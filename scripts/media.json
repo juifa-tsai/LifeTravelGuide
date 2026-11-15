@@ -655,5 +655,16 @@
     "imageSubject": "exterior",
     "imageRights": "original-rights",
     "imageCapturedAt": "2026-11-15"
+  },
+  "kato_coffee_sakae": {
+    "imageUrl": "images/place-kato-coffee-sakae.webp",
+    "imageAttribution": "honu加藤珈琲店 · 原攝影者保留著作權",
+    "imageSourceUrl": "https://www.katocoffee.com/com/company/access.html",
+    "imageLicenseUrl": "https://www.katocoffee.com/com/company/access.html",
+    "imageKind": "place",
+    "imageAlt": "加藤珈琲店 榮店店面實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
   }
 }

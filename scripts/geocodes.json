@@ -470,5 +470,13 @@
     "address": "愛知県名古屋市中区丸の内三丁目１９番３０号",
     "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
     "checkedAt": "2026-11-15"
+  },
+  "kato_coffee_sakae": {
+    "lat": 35.173687,
+    "lng": 136.910431,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%9D%B1%E6%A1%9C1%E4%B8%81%E7%9B%AE3%E7%95%AA2%E5%8F%B7",
+    "address": "愛知県名古屋市東区東桜一丁目３番２号",
+    "label": "国土地理院・住所／施設検索（地址參考點，非入口定位）",
+    "checkedAt": "2026-11-15"
   }
 }

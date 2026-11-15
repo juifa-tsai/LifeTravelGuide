@@ -940,5 +940,23 @@
     "captureMethod": "Playwright screenshot of the publicly visible photograph, then resized without content edits.",
     "sourceScreenshotSha256": "f5546a3f07d104953778d20e38105fba9dec7f3c1d30b3674d242a46588941f0",
     "sha256": "83dd5404354a233f4364e3a1cc09a897b128502ce24c32886f8e25e56fbe6b66"
+  },
+  {
+    "placeId": "kato_coffee_sakae",
+    "title": "加藤珈琲店 榮店",
+    "matchedName": "自家焙煎珈琲の店 加藤珈琲店",
+    "matchedAddress": "名古屋市東区東桜1-3-2",
+    "view": "exterior",
+    "sourceUrl": "https://www.katocoffee.com/com/company/access.html",
+    "sourceImageUrl": "https://www.katocoffee.com/com/img/company/fes-image7.jpg",
+    "author": "honu加藤珈琲店",
+    "provider": "店家官網",
+    "license": "原攝影者保留著作權；個人非營利行程識別引用，非 CC 授權。",
+    "licenseUrl": "https://www.katocoffee.com/com/company/access.html",
+    "path": "images/place-kato-coffee-sakae.webp",
+    "capturedAt": "2026-11-15",
+    "captureMethod": "Playwright screenshot of the publicly visible photograph, then resized without content edits.",
+    "sourceScreenshotSha256": "74acb41bc638445e2d24235a7c265d11b91485ebcd3c03fc8468078ae54206ff",
+    "sha256": "adfb036d3574117be006fe0d758f18f8646f7d38066ade2398998ded1eb716e6"
   }
 ]

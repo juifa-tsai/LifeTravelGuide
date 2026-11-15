@@ -3,6 +3,8 @@ import type { Leg, Stop } from './types';
 export type DayPeriod = 'morning' | 'afternoon' | 'evening';
 export const periodLabels:Record<DayPeriod,string> = { morning:'早上', afternoon:'下午', evening:'晚上' };
 
+export const isHotelBreakfast = (stop:Pick<Stop,'category' | 'placeId'>) => stop.category === '早餐' && stop.placeId === 'hotel';
+
 export function durationHours(minutes:number | null): string | null {
   if (minutes === null || !Number.isFinite(minutes) || minutes <= 0) return null;
   return `${Math.max(0.5,Math.round(minutes / 30) / 2)} hr`;
@@ -37,7 +39,7 @@ export function compactTimeline(source:Stop[], legs:Leg[]) {
   const arrival = stops.find(stop=>stop.displayStatus === '固定航班' && stop.summary.includes('抵達'));
   const flightPlace = departure?.timezone === 'Asia/Taipei' && arrival ? arrival : departure;
   const entries:TimelineEntry[] = stops.filter(stop=> {
-    if (stop.category === '早餐') return false;
+    if (isHotelBreakfast(stop)) return false;
     if (stop.displayStatus === '固定航班') return !departure || stop === departure;
     if (stop.category === '接駁') return !legs.some(leg=>leg.date === stop.date && leg.fromPlaceId === stop.placeId && leg.mode.includes('專車'));
     if (stop.category === '交通') return !legs.some(leg=>leg.date === stop.date && leg.toPlaceId === stop.placeId && leg.mode !== '航班');

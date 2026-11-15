@@ -20,7 +20,7 @@ print(json.dumps(dict(stops=stops,places=places),ensure_ascii=False))
 `,fileURLToPath(new URL('../docs/名古屋四日行程_20261115-1118.xlsx',import.meta.url))],{encoding:'utf8'}));
 
 test('the updated workbook owns every itinerary time, status, summary and note', () => {
-  assert.equal(data.itinerary.length,42);
+  assert.equal(data.itinerary.length,41);
   assert.equal(data.itinerary.length,workbook.stops.length);
   for (const source of workbook.stops) {
     const stop = data.itinerary.find(stop => stop.date === source.date && stop.sequence === source.sequence);
@@ -34,7 +34,7 @@ test('the updated workbook owns every itinerary time, status, summary and note',
 
 test('the six retained dining additions have sourced descriptions, real map reference points and credited location photos', () => {
   const ids=['khaja_ghar','mihos_grains','oribio','pupu_kitchen','ko_vegan','bar_thistle'];
-  assert.equal(data.places.length,62);
+  assert.equal(data.places.length,63);
   for (const id of ids) {
     assert.equal(data.places.filter(place => place.id === id).length,1);
     const place=data.places.find(place => place.id === id);

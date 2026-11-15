@@ -48,7 +48,7 @@ test('workbook-only hours never copy a weekday-specific time to another day', ()
 });
 test('all dining places have short sourced descriptions and distinguish vegetarian from mixed kitchens', () => {
   const dining = data.places.filter(p => !p.virtual && ['素食餐廳','咖啡廳','酒吧'].includes(p.category));
-  assert.equal(dining.length,26);
+  assert.equal(dining.length,27);
   for (const item of dining) {
     assert(item.foodDescription.length >= 35 && item.foodDescription.length <= 70, item.id);
     assert(item.diningType && item.weeklyHours && item.detailSourceUrls?.length);
@@ -170,4 +170,10 @@ test('shopping, museum and cafe opening lights use each checked weekday, includi
 
 test('both Yamamotoya branches have Monday hours after the main store cancelled its old Monday closure',()=>{
  for(const id of ['yamamotoya_okute','yamamotoya_otsu']){assert.equal(hours.todayHours(place(id),'2026-11-16'),'11:00–22:00');assert.equal(hours.openingInfo(place(id),new Date('2026-11-16T12:00:00+09:00')).state,'open');}
+});
+
+test('Kato breakfast hours preserve opening and shifted Wednesday/fourth Thursday closures',()=>{
+ const p=place('kato_coffee_sakae');
+ for(const [date,expected]of [['2026-11-16','08:00–16:00'],['2026-11-18','今日公休'],['2026-11-19','08:00–16:00'],['2026-11-25','08:00–16:00'],['2026-11-26','今日公休'],['2026-07-15','08:00–16:00'],['2026-07-16','今日公休'],['2026-07-23','今日公休'],['2026-01-15','08:00–16:00']])assert.equal(hours.todayHours(p,date),expected,date);
+ for(const [time,state]of [['07:50','closed'],['08:00','open'],['10:31','open'],['16:00','closed']])assert.equal(hours.openingInfo(p,new Date('2026-11-16T'+time+':00+09:00')).state,state,time);
 });

@@ -110,14 +110,71 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "hotel",
-    "toPlaceId": "shikemichi",
+    "toPlaceId": "kato_coffee_sakae",
     "mode": "步行",
     "summary": "約15–20分",
-    "details": "08:00由伏見飯店步行往那古野四間道。",
+    "details": "07:30–07:35 由伏見飯店出發，約07:50到加藤珈琲店。",
     "minutesEstimate": 18,
-    "fareJpyEstimate": null,
+    "fareJpyEstimate": 0,
     "certainty": "步行估算",
-    "sourceUrl": "https://www.nagoya-info.jp/spot/detail/53/",
+    "sourceUrl": "https://www.google.com/maps/dir/?api=1&origin=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B&destination=%E5%8A%A0%E8%97%A4%E7%8F%88%E7%90%B2%E5%BA%97%20%E6%A6%AE%E5%BA%97&travelmode=walking",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1362.3,
+        "durationSeconds": 1089.5,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.173687,
+          "lng": 136.910431
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9008940,35.1689260;136.9104310,35.1736870?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "kato_coffee_sakae",
+    "toPlaceId": "nagoyajo",
+    "mode": "地鐵＋步行",
+    "summary": "約15–20分",
+    "details": "久屋大通站搭名城線往大曽根方向一站，到名古屋城站7號出口，步行約5分至東門。",
+    "minutesEstimate": 18,
+    "fareJpyEstimate": 210,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://www.nagoyajo.city.nagoya.jp/access/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "久屋大通站",
+          "toStation": "名古屋城站"
+        }
+      ],
+      "sources": [
+        "https://www.nagoyajo.city.nagoya.jp/access/",
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-15",
+      "note": "往大曽根方向一站；名古屋城站7號出口步行至東門。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "shikemichi",
+    "mode": "步行",
+    "summary": "彈性：約15–20分",
+    "details": "想看四間道老街與土藏時，可由伏見飯店步行前往。",
+    "minutesEstimate": 18,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.city.nagoya.jp/kankou/rekishi/1017254/1017255.html",
     "navigation": {
       "walking": {
         "distanceMeters": 1578.3,
@@ -133,66 +190,6 @@
       },
       "sources": [
         "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.891785,35.175659?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "shikemichi",
-    "toPlaceId": "new_poppy",
-    "mode": "步行",
-    "summary": "同區步行約1–5分",
-    "details": "沿四間道進巷內的喫茶ニューポピー。若排隊可改去喫茶まつば，週一08:00開門。",
-    "minutesEstimate": 4,
-    "fareJpyEstimate": null,
-    "certainty": "步行估算",
-    "sourceUrl": "https://b-bitou.com/shop/",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 65,
-        "durationSeconds": 52.1,
-        "fromCoordinates": {
-          "lat": 35.175659,
-          "lng": 136.891785
-        },
-        "toCoordinates": {
-          "lat": 35.175735,
-          "lng": 136.892517
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.891785,35.175659;136.892517,35.175735?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "new_poppy",
-    "toPlaceId": "nagoyajo",
-    "mode": "步行",
-    "summary": "約20–30分",
-    "details": "08:55 從四間道步行往名古屋城正門，約09:20抵達。",
-    "minutesEstimate": 25,
-    "fareJpyEstimate": null,
-    "certainty": "步行估算",
-    "sourceUrl": "https://www.nagoyajo.city.nagoya.jp/info/",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 1746.2,
-        "durationSeconds": 1396.6,
-        "fromCoordinates": {
-          "lat": 35.175735,
-          "lng": 136.892517
-        },
-        "toCoordinates": {
-          "lat": 35.1876572063889,
-          "lng": 136.899153485
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8925170,35.1757350;136.8991535,35.1876572?overview=false&steps=false"
       ],
       "checkedAt": "2026-11-15"
     }
@@ -562,31 +559,31 @@
   {
     "date": "2026-11-17",
     "fromPlaceId": "hotel",
-    "toPlaceId": "shrub",
+    "toPlaceId": "art_museum",
     "mode": "步行",
-    "summary": "約8–12分",
-    "details": "伏見飯店 → 錦2丁目",
-    "minutesEstimate": 10,
-    "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null,
+    "summary": "約10–15分",
+    "details": "飯店早餐後，步行往白川公園內的名古屋市美術館。",
+    "minutesEstimate": 12,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.google.com/maps/dir/?api=1&origin=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BC%8F%E8%A6%8B&destination=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%BE%8E%E8%A1%93%E9%A4%A8&travelmode=walking",
     "navigation": {
       "walking": {
-        "distanceMeters": 481.5,
-        "durationSeconds": 389.1,
+        "distanceMeters": 680.9,
+        "durationSeconds": 544.8,
         "fromCoordinates": {
           "lat": 35.168926,
           "lng": 136.900894
         },
         "toCoordinates": {
-          "lat": 35.171364,
-          "lng": 136.898483
+          "lat": 35.16400256,
+          "lng": 136.901001
         }
       },
       "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.898483,35.171364?overview=false&steps=false"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9008940,35.1689260;136.9010010,35.1640026?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-13"
+      "checkedAt": "2026-11-15"
     }
   },
   {
@@ -594,12 +591,12 @@
     "fromPlaceId": "shrub",
     "toPlaceId": "art_museum",
     "mode": "步行",
-    "summary": "約15–20分",
-    "details": "錦2丁目 → 白川公園美術館",
+    "summary": "可選：約15–20分",
+    "details": "08:40–08:50左右可由飯店步行約8–12分往SHRUB；09:00外帶後步行去美術館。",
     "minutesEstimate": 18,
-    "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": "https://www.nagoya-info.jp/en/event/detail/1419/",
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.google.com/maps/dir/?api=1&origin=SHRUB%20COFFEE%20FUSHIMI&destination=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%BE%8E%E8%A1%93%E9%A4%A8&travelmode=walking",
     "navigation": {
       "walking": {
         "distanceMeters": 1087.2,
@@ -1097,5 +1094,65 @@
     "fareJpyEstimate": null,
     "certainty": "電子機票",
     "sourceUrl": "https://drive.google.com/file/d/1CzLVEmBks43X_2pFAp4UGCOeyDsqLM4M/view?usp=drivesdk"
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "shrub",
+    "mode": "步行",
+    "summary": "可選：約8–12分",
+    "details": "若想在看展前買咖啡，從飯店步行至伏見SHRUB，以09:00開門規劃。",
+    "minutesEstimate": 10,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://shrubcoffee.com/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 481.5,
+        "durationSeconds": 389.1,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.171364,
+          "lng": 136.898483
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.898483,35.171364?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "shikemichi",
+    "toPlaceId": "endoji",
+    "mode": "步行",
+    "summary": "彈性：約3–5分",
+    "details": "四間道往北到圓頓寺商店街。想逛選物店可安排11:00後。",
+    "minutesEstimate": 5,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.nagoya-info.jp/spot/detail/45/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 140.1,
+        "durationSeconds": 112,
+        "fromCoordinates": {
+          "lat": 35.175659,
+          "lng": 136.891785
+        },
+        "toCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8917850,35.1756590;136.8913270,35.1763310?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
   }
 ]

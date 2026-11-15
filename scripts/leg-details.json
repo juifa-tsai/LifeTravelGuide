@@ -932,5 +932,94 @@
       ],
       "checkedAt": "2026-11-15"
     }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "kato_coffee_sakae",
+    "toPlaceId": "nagoyajo",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "久屋大通站",
+          "toStation": "名古屋城站"
+        }
+      ],
+      "sources": [
+        "https://www.nagoyajo.city.nagoya.jp/access/",
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-15",
+      "note": "往大曽根方向一站；名古屋城站7號出口步行至東門。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "kato_coffee_sakae",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1362.3,
+        "durationSeconds": 1089.5,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.173687,
+          "lng": 136.910431
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9008940,35.1689260;136.9104310,35.1736870?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "shikemichi",
+    "toPlaceId": "endoji",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 140.1,
+        "durationSeconds": 112,
+        "fromCoordinates": {
+          "lat": 35.175659,
+          "lng": 136.891785
+        },
+        "toCoordinates": {
+          "lat": 35.176331,
+          "lng": 136.891327
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8917850,35.1756590;136.8913270,35.1763310?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "art_museum",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 680.9,
+        "durationSeconds": 544.8,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.16400256,
+          "lng": 136.901001
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9008940,35.1689260;136.9010010,35.1640026?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
   }
 ]

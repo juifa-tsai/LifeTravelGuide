@@ -6,9 +6,9 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {loadData} from './validate-data.mjs';
 const data=loadData();
-test('Nov16 follows New Poppy, the earlier castle visit and Yamamotoya lunch with exact workbook durations',()=>{
+test('Nov16 follows Kato breakfast, the castle visit and Yamamotoya lunch with exact workbook durations',()=>{
  const stops=data.itinerary.filter(s=>s.date==='2026-11-16');
- for(const [sequence,id,time,minutes]of [[2,'shikemichi','08:20',10],[3,'new_poppy','08:35',20],[4,'nagoyajo','09:20',115],[5,'yamamotoya_okute','11:45',50],[6,'fukiage','12:45',90],[7,'le_jardin','14:18',12],[8,'store_factory','16:15',85]]){
+ for(const [sequence,id,time,minutes]of [[2,'kato_coffee_sakae','07:50',70],[3,'nagoyajo','09:20',115],[4,'yamamotoya_okute','11:45',50],[5,'fukiage','12:45',90],[6,'le_jardin','14:18',12],[7,'store_factory','16:15',85]]){
   const s=stops.find(s=>s.sequence===sequence);assert.equal(s.placeId,id);assert.equal(s.arrivalTime,time);assert.equal(s.stayMinutes,minutes);
  }
  assert.deepEqual(data.trip.days.find(d=>d.date==='2026-11-16').candidateIds,['yamamotoya_otsu']);
@@ -31,10 +31,10 @@ print(json.dumps(rows,ensure_ascii=False))
  const nav=(a,b)=>data.legs.find(l=>l.date==='2026-11-16'&&l.fromPlaceId===a&&l.toPlaceId===b).navigation;
  assert.deepEqual(nav('le_jardin','store_factory').steps.map(s=>[s.line,s.fromStation,s.toStation]),[['櫻通線','吹上站','御器所站'],['鶴舞線','御器所站','鶴舞站']]);
  assert.deepEqual(nav('nagoyajo','yamamotoya_okute').steps.map(s=>[s.line,s.fromStation,s.toStation]),[['名城線','名古屋城站','久屋大通站'],['櫻通線','久屋大通站','吹上站']]);
- for(const [a,b]of [['shikemichi','new_poppy'],['new_poppy','nagoyajo'],['yamamotoya_okute','fukiage']])assert(nav(a,b).walking.distanceMeters>0);
+ for(const [a,b]of [['hotel','kato_coffee_sakae'],['shikemichi','endoji'],['yamamotoya_okute','fukiage']])assert(nav(a,b).walking.distanceMeters>0);
 });
 
-test('the Nov17 and Nov18 schedules remain identical to the preceding deployed workbook',()=>{
- const expected={"2026-11-17": "c35896b13b98fb3a7e77bb4c4a2647ac200f152bddefcf8a1154c03f2df613fc", "2026-11-18": "3bfb4b52d4370121f925c8537dd40ac04f460dfd59ca6b5fd74496459bb81711"};
+test('the Nov15 and Nov18 schedules remain identical to the preceding deployed workbook',()=>{
+ const expected={"2026-11-15": "41b8090b6044f18f5b0439481a1a98437c33a5f69cf3d8518478ff2232a7bd6e", "2026-11-18": "3bfb4b52d4370121f925c8537dd40ac04f460dfd59ca6b5fd74496459bb81711"};
  for(const [date,hash]of Object.entries(expected))assert.equal(createHash('sha256').update(JSON.stringify(data.itinerary.filter(s=>s.date===date))).digest('hex'),hash,date);
 });

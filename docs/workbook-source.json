@@ -1,11 +1,11 @@
 {
   "driveFileId": "11iKYAKClPwtdG0jtotqcchyyApw57Vbn",
   "driveUrl": "https://docs.google.com/spreadsheets/d/11iKYAKClPwtdG0jtotqcchyyApw57Vbn/edit",
-  "driveModifiedTime": "2026-11-15T11:23:19.524Z",
+  "driveModifiedTime": "2026-11-15T13:32:01.863Z",
   "syncedAt": "2026-11-15",
-  "sha256": "c571dc6c6674874a43844c977df079bb556b4813ce899d07616f6bfa87b588bc",
-  "places": 62,
-  "stops": 42,
-  "legs": 41,
+  "sha256": "5f3fe98f32d71735d915150a95553205dd047190b5be916891d057270fe256c1",
+  "places": 63,
+  "stops": 41,
+  "legs": 43,
   "notes": "Includes 07_餐飲與酒吧動線 and reservation columns. Stored source workbook unchanged; only allowlisted fields are exported."
 }

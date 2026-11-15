@@ -12,7 +12,7 @@ import { taiwanTransferBooking } from '../data/bookingBasics';
 import { TransitConnector } from '../components/TransitConnector';
 import { PlaceImage } from '../components/PlaceImage';
 import { ExternalLink } from '../components/ExternalLink';
-import { compactTimeline, groupTimeline, periodLabels, type TimelineTransfer } from '../lib/timeline';
+import { compactTimeline, groupTimeline, isHotelBreakfast, periodLabels, type TimelineTransfer } from '../lib/timeline';
 import { todayHours } from '../lib/placeHours';
 const periodIcons = { morning:Sunrise, afternoon:Sun, evening:Moon };
 export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; onSelectDay:(date:string)=>void }) {
@@ -23,9 +23,10 @@ export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; 
   const {entries,leadingTransfers} = useMemo(() => compactTimeline(stops,data.legs), [stops,data.legs]);
   const periods = useMemo(() => groupTimeline(entries.map(entry=>entry.stop)), [entries]);
   const hotel = data.places.find(place=>place.category === '住宿');
-  const mapStops = stops.filter(stop=>stop.category !== '早餐');
+  const mapStops = stops.filter(stop=>!isHotelBreakfast(stop));
   function select(pin:MapPinData) {
-    const target = entries.find(entry=>entry.sourceStops.includes(pin.stop))?.stop;
+    const matched = entries.find(entry=>entry.sourceStops.includes(pin.stop));
+    const target = (matched?.stop.placeId === pin.place.id ? matched : entries.find(entry=>entry.stop.placeId === pin.place.id) ?? matched)?.stop;
     setSelected(pin.place.id); setHighlightedStop(target ? stopId(target) : null);
     if (target) document.getElementById(`stop-${stopId(target)}`)?.scrollIntoView({ behavior:'smooth', block:'center' });
   }
@@ -60,7 +61,7 @@ export function DayPage({ data, day, onSelectDay }: { data:TravelData; day:Day; 
             const entry = entries.find(entry=>entry.stop === stop)!;
             const place = data.places.find(p => p.id === stop.placeId);
             return <div className="timeline-item" key={stopId(stop)}>
-              <PlaceCard stop={stop} nextStop={stops.find(candidate=>candidate.sequence > stop.sequence && candidate.placeId !== stop.placeId && candidate.category !== '早餐')} place={place} hotel={hotel} checkInTime={entry.checkInTime} documents={data.documents} selected={highlightedStop === stopId(stop)} onFocus={focus} />
+              <PlaceCard stop={stop} nextStop={stops.find(candidate=>candidate.sequence > stop.sequence && candidate.placeId !== stop.placeId && !isHotelBreakfast(candidate))} place={place} hotel={hotel} checkInTime={entry.checkInTime} documents={data.documents} selected={highlightedStop === stopId(stop)} onFocus={focus} />
               {entry.transfers.length > 0 && <div className="transit-offset">{entry.transfers.map(transfer)}</div>}
             </div>;
           })}{returnTransfer && period === periods.at(-1) && <div className="timeline-item"><TaiwanTransferCard /></div>}</div></section>;

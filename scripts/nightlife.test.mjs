@@ -24,7 +24,7 @@ test('all eleven new activities are real, photographed, sourced and mapped using
 test('source workbook metadata matches the exact newly synchronized file and exported counts',()=>{
  const metadata=read('../docs/workbook-source.json');const bytes=readFileSync(new URL('../docs/名古屋四日行程_20261115-1118.xlsx',import.meta.url));
  assert.equal(createHash('sha256').update(bytes).digest('hex'),metadata.sha256);
- assert.equal(metadata.driveModifiedTime,'2026-11-15T11:23:19.524Z');
+ assert.equal(metadata.driveModifiedTime,'2026-11-15T13:32:01.863Z');
  assert.equal(metadata.places,data.places.length);assert.equal(metadata.stops,data.itinerary.length);assert.equal(metadata.legs,data.legs.length);
 });
 test('only mandatory reservations produce a badge; optional and unknown statuses stay unlabelled',()=>{

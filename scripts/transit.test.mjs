@@ -15,7 +15,7 @@ const view = leg => legView(leg,place(leg.fromPlaceId),place(leg.toPlaceId));
 
 test('walking distances come from sourced foot routes with unchanged verified endpoints', () => {
   const walks = data.legs.filter(leg => leg.mode === '步行' && !place(leg.fromPlaceId).virtual && !place(leg.toPlaceId).virtual);
-  assert.equal(walks.length,23);
+  assert.equal(walks.length,24);
   for (const leg of walks) {
     assert(leg.navigation.walking.distanceMeters > 0);
     assert(leg.navigation.sources.some(source => source.includes('/routed-foot/')));
@@ -32,7 +32,7 @@ test('walking distances come from sourced foot routes with unchanged verified en
 
 test('public transport has continuous station steps and useful transfer details', () => {
   const transit = data.legs.filter(leg => /地鐵|名鐵/.test(leg.mode) && !place(leg.fromPlaceId).virtual && !place(leg.toPlaceId).virtual);
-  assert.equal(transit.length,12);
+  assert.equal(transit.length,13);
   for (const leg of transit) {
     const result = view(leg);
     assert(result.steps.length > 0);

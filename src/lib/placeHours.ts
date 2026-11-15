@@ -8,7 +8,15 @@ export function todayHours(place: Place, date = japanDate()): string {
   if (place.eventPeriod && (date < place.eventPeriod.start || date > place.eventPeriod.end)) return '非活動期間';
   if (place.dateHours && Object.prototype.hasOwnProperty.call(place.dateHours,date)) return place.dateHours[date] || (place.category === '夜間活動' ? '當日無場次' : '今日公休');
   const day = new Date(`${date}T00:00:00Z`).getUTCDay();
-  const closed = (place.closedText || '').replace(/第([1-5])[與、]第([1-5])週([日一二三四五六])/g,'第$1週$3、第$2週$3');
+  const closed = (place.closedText || '').replace(/第([1-5])個週/g,'第$1週').replace(/第([1-5])[與、]第([1-5])週([日一二三四五六])/g,'第$1週$3、第$2週$3');
+  const shifted = /週([日一二三四五六])逢([\d／/、]+)日改隔日休/.exec(closed);
+  if (shifted) {
+    const dates = shifted[2].split(/[／/、]/).map(Number);
+    const weekday = weekdays.indexOf(shifted[1]);
+    const previous = new Date(new Date(`${date}T00:00:00Z`).getTime()-86400000);
+    if ((day === weekday && !dates.includes(Number(date.slice(8)))) ||
+      (previous.getUTCDay() === weekday && dates.includes(previous.getUTCDate()))) return '今日公休';
+  }
   const ordinal = Math.ceil(Number(date.slice(8)) / 7);
   const nthDay = [...`${closed} ${place.hoursNote || ''}`.matchAll(/第([1-5])週([日一二三四五六])/g)];
   const nthClosed = !place.dateHours && nthDay.some(match => Number(match[1]) === ordinal && match[2] === weekdays[day]);

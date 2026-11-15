@@ -38,6 +38,7 @@ export function PlaceCard({ stop, nextStop, place, hotel, documents, checkInTime
       </button>
       {open && <div id={`detail-${stopId(stop)}`} className="stop-detail">
         {departure && <p className="detail-meta suggested-departure"><Clock3 size={15} aria-hidden="true" /><span>建議出發 <time>{departure.daysLater === 1 ? '翌日 ' : departure.daysLater > 1 ? `${departure.daysLater}天後 ` : ''}{departure.time}</time> · {departure.zone}</span></p>}
+        {stop.category === '早餐' && <p className="stop-summary">{stop.summary}</p>}
         {stop.category === '接駁' && stop.displayStatus === '已預訂' && <p className="stop-booking-time"><Clock3 size={15} aria-hidden="true" /><span>預約接機 <time>{stop.arrivalTime}</time> · 日本時間</span></p>}
         {booking ? <Suspense fallback={<p className="small muted" role="status">載入預訂資料…</p>}><BookingDetails booking={booking} documents={documents} place={place} /></Suspense> : place?.category === '住宿' ? <><p className="detail-meta"><MapPin size={15} aria-hidden="true" /><span>{place.address}</span></p><div className="collection-links"><ExternalLink href={place.mapsUrl} className="collection-icon-action" label={`在 Google Maps 開啟 ${place.nameZh}`}><MapPinned size={20} aria-hidden="true" /></ExternalLink></div></> : place && !place.virtual ? <PlaceDetails place={place} hotel={hotel} date={stop.date} onFocus={onFocus} /> : <>
           <p className="stop-summary">{stop.summary}</p>
@@ -45,7 +46,7 @@ export function PlaceCard({ stop, nextStop, place, hotel, documents, checkInTime
           {place?.dietText && <p className="diet-note">{place.dietText}</p>}
           <div className="card-actions"><ExternalLink href={stop.mapsUrl} className="button button-outline"><MapPin size={15} />Google Maps<ArrowUpRight size={14} /></ExternalLink></div>
         </>}
-        {booking?.kind !== 'flight' && stop.note && !/早餐|行李/.test(stop.note) && /預約|不確定|僅預估|末點|末班|核對|核實|μticket|台灣時間|含在住宿|含11|天守閣|退房|可略過|直接回|不喝酒|指定|奶素|Vegan|臨休|售罄|供餐/.test(stop.note) && <p className="note">{stop.note}</p>}
+        {booking?.kind !== 'flight' && stop.note && !/行李/.test(stop.note) && /預約|不確定|僅預估|末點|末班|核對|核實|μticket|台灣時間|含在住宿|含11|天守閣|退房|可略過|直接回|不喝酒|指定|奶素|Vegan|臨休|售罄|供餐|候位|排隊|早餐|無蛋/.test(stop.note) && <p className="note">{stop.note}</p>}
       </div>}
     </article>
   </div>;
