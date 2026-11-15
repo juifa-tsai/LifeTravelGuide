@@ -4,7 +4,7 @@ export interface Coordinates { lat: number; lng: number }
 type CoordinatesInput = { lat: number | null; lng: number | null };
 export const validCoordinates = (point: CoordinatesInput | null | undefined): point is Coordinates => !!point && point.lat !== null && point.lng !== null && Number.isFinite(point.lat) && Number.isFinite(point.lng) && Math.abs(point.lat) <= 90 && Math.abs(point.lng) <= 180;
 
-function inRing(point: Coordinates, ring: number[][]): boolean {
+export function inRing(point: Coordinates, ring: number[][]): boolean {
   let inside = false;
   for (let i = 0, j = ring.length-1; i < ring.length; j = i++) {
     const [x,y] = ring[i], [previousX,previousY] = ring[j];
@@ -15,13 +15,6 @@ function inRing(point: Coordinates, ring: number[][]): boolean {
 export function isInNagoya(point: Coordinates | null | undefined): point is Coordinates {
   if (!validCoordinates(point) || point.lat < 34.8 || point.lat > 35.4 || point.lng < 136.6 || point.lng > 137.3) return false;
   return boundary.coordinates.some(polygon => inRing(point,polygon[0]) && !polygon.slice(1).some(hole => inRing(point,hole)));
-}
-// Include the airport and the road/rail corridor through Tokai, Chita and
-// Tokoname. These approximate bounds only control distance visibility; they
-// are not an administrative boundary or a source of map coordinates.
-export function isInTripArea(point: Coordinates | null | undefined): point is Coordinates {
-  return validCoordinates(point) && (
-    (point.lat >= 34.82 && point.lat <= 35.17 && point.lng >= 136.78 && point.lng <= 136.98) || isInNagoya(point));
 }
 export function distanceKm(from: CoordinatesInput | null | undefined, to: CoordinatesInput | null | undefined): number | null {
   if (!validCoordinates(from) || !validCoordinates(to)) return null;

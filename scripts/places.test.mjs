@@ -61,17 +61,6 @@ test('local city boundary includes Nagoya wards and excludes nearby cities, the 
   for (const p of [{lat:35.168,lng:136.904},{lat:35.1709,lng:136.8815},{lat:35.1638,lng:136.9735},{lat:35.105,lng:137.0}]) assert(geo.isInNagoya(p), JSON.stringify(p));
   for (const p of [{lat:35.179,lng:136.756},{lat:35.247,lng:136.972},{lat:35.181,lng:137.084},{lat:34.858,lng:136.811},{lat:35.68,lng:139.76},{lat:25.08,lng:121.23},null,{lat:NaN,lng:136.9}]) assert.equal(geo.isInNagoya(p),false,JSON.stringify(p));
 });
-test('current-position distances include Centrair and the airport road/rail corridor while staying local to the trip', () => {
-  for (const point of [place('hotel'),place('ngo'),{lat:34.858,lng:136.811},
-    {lat:35.02,lng:136.893},{lat:34.98,lng:136.92},{lat:34.91,lng:136.84}]) {
-    assert(geo.isInTripArea(point),JSON.stringify(point));
-    assert(Number.isFinite(geo.distanceKm(point,place('molnoda'))));
-  }
-  const fromAirport = geo.distanceKm(place('ngo'),place('hotel'));
-  assert(fromAirport > 30 && fromAirport < 40);
-  for (const point of [{lat:35.247,lng:136.972},{lat:35.68,lng:139.76},{lat:25.08,lng:121.23},
-    null,{lat:NaN,lng:136.9},{lat:35,lng:Infinity}]) assert.equal(geo.isInTripArea(point),false,JSON.stringify(point));
-});
 test('straight-line distances require real coordinates and hotel distance is independent of current position', () => {
   const hotel = place('hotel');
   assert.equal(geo.distanceKm(hotel,hotel),0);

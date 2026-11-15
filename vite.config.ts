@@ -8,6 +8,7 @@ export default defineConfig({
   base,
   build: { rollupOptions: { output: { manualChunks(id) {
     if (id.endsWith('/src/data/nagoyaBoundary.json')) return 'nagoya-boundary';
+    if (id.endsWith('/src/data/japanBoundary.json')) return 'japan-boundary';
   } } } },
   plugins: [react(), VitePWA({
     registerType: 'prompt',

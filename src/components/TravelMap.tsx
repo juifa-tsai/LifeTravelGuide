@@ -9,8 +9,7 @@ import { PlaceImage } from './PlaceImage';
 import { ExternalLink } from './ExternalLink';
 import { compactHours } from '../lib/hours';
 import { ReservationBadge } from './ReservationBadge';
-import type { Coordinates } from '../lib/distances';
-import { useGeolocation } from '../lib/useGeolocation';
+import { useCurrentLocation } from './LocationProvider';
 
 const categoryStyle = {
   '素食餐廳':{ className:'vegan' },
@@ -49,17 +48,16 @@ function MapViewport({ points, focusIds, selected, reset,focusVersion }: { point
   },[map,active?.place.id,focusVersion]);
   return null;
 }
-export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPlace,onReset,onLocation,segments = [],focusVersion = 0 }: {
+export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPlace,onReset,segments = [],focusVersion = 0 }: {
   id:string; label:string; points:MapPoint[]; focusIds:string[]; selected:string | null;
-  onSelect:(id:string) => void; onFocusPlace:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number; onLocation?:(point:Coordinates | null) => void;
+  onSelect:(id:string) => void; onFocusPlace:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number;
 }) {
   const online = useOnline();
   const map = useRef<L.Map | null>(null);
   const [reset,setReset] = useState(0);
-  const {position,locating,message,request} = useGeolocation();
+  const {position,locating,message,request} = useCurrentLocation();
   const [tileError,setTileError] = useState(false);
   const lodging = points.find(point => point.place.category === '住宿');
-  useEffect(() => { onLocation?.(position); },[position,onLocation]);
   const markerIcons = useMemo(() => new Map(points.map(point => [point.place.id,icon(point,point.place.id === selected)])),[points,selected]);
   function locate() {
     request(point => {
