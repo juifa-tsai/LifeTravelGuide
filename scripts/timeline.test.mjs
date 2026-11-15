@@ -93,10 +93,10 @@ test('a standalone airport event or transfer without a matching route remains vi
 });
 
 test('off-site breakfast remains a visible itinerary and map stop while hotel breakfast remains hidden',()=>{
- const base=data.itinerary.find(s=>s.placeId==='kato_coffee_sakae');
+ const base=data.itinerary.find(s=>s.category==='早餐'&&s.placeId!=='hotel');
  const breakfast={...base,sequence:2,category:'早餐'};assert(!isHotelBreakfast(breakfast));
  const hotel={...base,stopId:'test-hotel',sequence:1,category:'早餐',placeId:'hotel'};assert(isHotelBreakfast(hotel));
  const castle={...base,stopId:'test-castle',sequence:3,category:'古蹟',placeId:'nagoyajo'};
- const leg={...data.legs.find(l=>l.fromPlaceId==='kato_coffee_sakae'),date:base.date,fromPlaceId:base.placeId,toPlaceId:'nagoyajo',mode:'地鐵'};
+ const leg={...data.legs.find(l=>l.fromPlaceId===base.placeId),date:base.date,fromPlaceId:base.placeId,toPlaceId:'nagoyajo',mode:'地鐵'};
  const result=compactTimeline([hotel,breakfast,castle],[leg]);assert.equal(result.entries[0].stop,breakfast);assert.equal(result.entries.filter(e=>e.stop.placeId===breakfast.placeId).length,1);assert(result.entries[0].transfers.some(t=>t.leg===leg));
 });

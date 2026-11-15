@@ -1221,5 +1221,24 @@
     "sourceScreenshotSha256": "74acb41bc638445e2d24235a7c265d11b91485ebcd3c03fc8468078ae54206ff",
     "sha256": "adfb036d3574117be006fe0d758f18f8646f7d38066ade2398998ded1eb716e6",
     "transformation": "Playwright screenshot; resized to at most 960 × 720; converted to WebP. Original photograph content unchanged. Thumbnail may crop using CSS."
+  },
+  {
+    "placeId": "ito_coffee_kissa",
+    "title": "伊藤珈琲喫茶室（Ito Coffee）",
+    "matchedName": "イトウ珈琲喫茶室",
+    "matchedAddress": "愛知県名古屋市東区泉1-7-25",
+    "view": "exterior",
+    "sourceUrl": "https://life-designs.jp/spot/ito_coffee_kissa/",
+    "sourceImageUrl": "https://life-designs.jp/wp/wp-content/uploads/2024/04/image15-1024x689.jpg",
+    "author": "Life Designs",
+    "provider": "Life Designs",
+    "license": "原攝影者保留著作權；個人非營利行程識別引用，非 CC 授權。",
+    "licenseUrl": "https://life-designs.jp/spot/ito_coffee_kissa/",
+    "path": "images/place-ito-coffee-kissa.webp",
+    "captureMethod": "Playwright screenshot of the publicly visible photograph, then resized without content edits.",
+    "capturedAt": "2026-11-15",
+    "sourceScreenshotSha256": "db69eceb643571de11a3893c6b90ba9bc59c8ccbfa75ad0ac04389f2548496bb",
+    "sha256": "eb437f7741de6632c167efe329e6645b7f9c22282f89f01b5a9adcfa4f1d09ca",
+    "transformation": "Playwright screenshot; resized to at most 960 × 720; converted to WebP. Original photograph content unchanged. Thumbnail may crop using CSS."
   }
 ]

@@ -12,6 +12,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const workbookName = '名古屋四日行程_20261115-1118.xlsx';
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const data = loadData();
+const breakfastId = data.itinerary.find(stop => stop.category === '早餐' && stop.placeId !== 'hotel').placeId;
 function fixture(t) {
   const path = mkdtempSync(join(tmpdir(), 'nagoya-sync-'));
   t.after(() => rmSync(path, { recursive: true, force: true }));
@@ -47,8 +48,8 @@ test('a no-op synchronization and check are byte-stable, retain timestamps and r
 test('time and duration edits can be checked, applied and reimported without touching other days or place resources', t => {
   const root = fixture(t), before = trackedBytes(root);
   const original = fixtureData(root);
-  const target = original.itinerary.find(stop => stop.date === '2026-11-16' && stop.placeId === 'kato_coffee_sakae');
-  const workbook = editWorkbook(root, `s=b['01_每日行程']\nfor row in range(5,s.max_row+1):\n if s.cell(row,5).value=='kato_coffee_sakae':\n  s.cell(row,3).value=datetime.time(7,55)\n  s.cell(row,4).value=65`);
+  const target = original.itinerary.find(stop => stop.date === '2026-11-16' && stop.placeId === breakfastId);
+  const workbook = editWorkbook(root, `s=b['01_每日行程']\nfor row in range(5,s.max_row+1):\n if s.cell(row,5).value==${JSON.stringify(breakfastId)}:\n  s.cell(row,3).value=datetime.time(7,55)\n  s.cell(row,4).value=65`);
   const pending = syncItinerary({ root, workbook, check: true });
   assert.equal(pending.status, 'changes-pending');
   assert.deepEqual(pending.changedDates, ['2026-11-16']);
@@ -69,7 +70,7 @@ test('time and duration edits can be checked, applied and reimported without tou
 
 test('inserting a visit preserves every previous identity, including repeated hotel stops; later edits keep the new identity', t => {
   const root = fixture(t), original = fixtureData(root);
-  const workbook = editWorkbook(root, `s=b['01_每日行程']\nrows=[list(r) for r in list(s.values)[4:] if r[0]]\nfirst=next(r for r in rows if r[4]=='kato_coffee_sakae')\nextra=list(first);extra[2]=datetime.time(7,45);extra[3]=5;extra[8]='新增候位安排'\nrows.insert(rows.index(first),extra)\ns.delete_rows(5,s.max_row)\ncounts={}\nfor r in rows:\n key=str(r[0])[:10];counts[key]=counts.get(key,0)+1;r[1]=counts[key];s.append(r)`);
+  const workbook = editWorkbook(root, `s=b['01_每日行程']\nrows=[list(r) for r in list(s.values)[4:] if r[0]]\nfirst=next(r for r in rows if r[4]==${JSON.stringify(breakfastId)})\nextra=list(first);extra[2]=datetime.time(7,45);extra[3]=5;extra[8]='新增候位安排'\nrows.insert(rows.index(first),extra)\ns.delete_rows(5,s.max_row)\ncounts={}\nfor r in rows:\n key=str(r[0])[:10];counts[key]=counts.get(key,0)+1;r[1]=counts[key];s.append(r)`);
   const report = syncItinerary({ root, workbook });
   assert.equal(report.status, 'applied');
   const after = fixtureData(root);
@@ -107,9 +108,9 @@ test('invalid references and incomplete new places are blocked before any tracke
 
 test('changed routes, stale coordinates and opening supplements are explicitly identified', () => {
   const changed = structuredClone(data);
-  const store = changed.places.find(place => place.id === 'kato_coffee_sakae');
+  const store = changed.places.find(place => place.id === breakfastId);
   store.address = '新地址'; store.hoursText = '09:00–17:00';
-  changed.legs = changed.legs.filter(leg => !(leg.fromPlaceId === 'hotel' && leg.toPlaceId === 'kato_coffee_sakae'));
+  changed.legs = changed.legs.filter(leg => !(leg.fromPlaceId === 'hotel' && leg.toPlaceId === breakfastId));
   const errors = enrichmentIssues(changed, data, join(root, 'public')).join('\n');
   assert.match(errors, /地址已變更/);
   assert.match(errors, /開放資訊已變更/);
@@ -129,13 +130,13 @@ test('new Excel reservation wording takes precedence over an older shortened sup
 
 test('walking cache reuse across days requires unchanged verified endpoints; transit on a new date requires its own check', t => {
   const root = fixture(t);
-  const workbook = editWorkbook(root, `s=b['03_交通銜接']\nrows=[list(r) for r in list(s.values)[4:] if r[0]]\nr=next(r for r in rows if r[1]=='hotel' and r[2]=='kato_coffee_sakae');r[0]=datetime.datetime(2026,11,17);s.append(r)`);
+  const workbook = editWorkbook(root, `s=b['03_交通銜接']\nrows=[list(r) for r in list(s.values)[4:] if r[0]]\nr=next(r for r in rows if r[1]=='hotel' and r[2]==${JSON.stringify(breakfastId)});r[0]=datetime.datetime(2026,11,17);s.append(r)`);
   assert.equal(syncItinerary({ root, workbook }).status, 'applied');
-  const walking = fixtureData(root).legs.filter(leg => leg.fromPlaceId === 'hotel' && leg.toPlaceId === 'kato_coffee_sakae');
+  const walking = fixtureData(root).legs.filter(leg => leg.fromPlaceId === 'hotel' && leg.toPlaceId === breakfastId);
   assert.equal(walking.length, 2);
   assert.deepEqual(walking[0].navigation, walking[1].navigation);
   const before = trackedBytes(root);
-  const unverified = editWorkbook(root, `s=b['03_交通銜接']\nrows=[list(r) for r in list(s.values)[4:] if r[0]]\nr=next(r for r in rows if r[1]=='kato_coffee_sakae' and r[2]=='nagoyajo');r[0]=datetime.datetime(2026,11,17);s.append(r)`);
+  const unverified = editWorkbook(root, `s=b['03_交通銜接']\nrows=[list(r) for r in list(s.values)[4:] if r[0]]\nr=next(r for r in rows if r[1]==${JSON.stringify(breakfastId)} and r[2]=='nagoyajo');r[0]=datetime.datetime(2026,11,17);s.append(r)`);
   const blocked = syncItinerary({ root, workbook: unverified });
   assert.equal(blocked.status, 'blocked');
   assert.match(blocked.errors.join('\n'), /公共運輸起訖站與路線/);

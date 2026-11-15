@@ -2,10 +2,9 @@
   "driveFileId": "11iKYAKClPwtdG0jtotqcchyyApw57Vbn",
   "driveUrl": "https://docs.google.com/spreadsheets/d/11iKYAKClPwtdG0jtotqcchyyApw57Vbn/edit",
   "syncedAt": "2026-11-15",
-  "sha256": "3a6bbde57d882889cc6f4eb3dc16cb5ed14473e5786484d00abf4bf029cace84",
-  "places": 63,
+  "sha256": "c34641cda40185144dde78318882911829dbbdad829ca782cd43907609d5ab46",
+  "places": 64,
   "stops": 41,
   "legs": 45,
-  "notes": "Includes 07_餐飲與酒吧動線 and reservation columns. Stored source workbook unchanged; only allowlisted fields are exported.",
-  "driveModifiedTime": "2026-11-15T22:48:21.115Z"
+  "notes": "Base Drive workbook: 2026-11-15T22:48:21.115Z. Local 11/16 breakfast revision requested by the user via Google Maps: Ito Coffee kissa; Drive file was not rewritten. Only allowlisted fields are exported."
 }

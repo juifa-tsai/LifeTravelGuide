@@ -1005,5 +1005,27 @@
       "https://r.gnavi.co.jp/em8eu96b0000/menu3/"
     ],
     "detailsCheckedAt": "2026-11-15"
+  },
+  "ito_coffee_kissa": {
+    "foodDescription": "老舖咖啡烘焙商直營喫茶室，供應濃醇咖啡、拿鐵與小山形麵包；小倉奶油款可詢問，麵包及附湯先確認無蛋與動物高湯。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": null,
+      "1": "08:30–18:30",
+      "2": "08:30–18:30",
+      "3": "08:30–18:30",
+      "4": "08:30–18:30",
+      "5": "08:30–18:30",
+      "6": "08:30–18:30"
+    },
+    "hoursNote": "本店旁喫茶室；開門紀錄08:00／08:30不一，依較晚08:30規劃；L.O.待確認。",
+    "detailSourceUrls": [
+      "https://ito-coffee.com/2023/10/11/post-5229",
+      "https://tabelog.com/aichi/A2301/A230104/23087048/",
+      "https://note.com/icscoffee/n/n72291baa394d",
+      "https://ameblo.jp/tannanfm-kirasuma/entry-12978408410.html",
+      "https://mt.tokai-tv.com/gourmet_info/002215.html"
+    ],
+    "detailsCheckedAt": "2026-11-16"
   }
 }

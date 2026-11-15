@@ -478,5 +478,13 @@
     "address": "愛知県名古屋市東区東桜一丁目３番２号",
     "label": "国土地理院・住所／施設検索（地址參考點，非入口定位）",
     "checkedAt": "2026-11-15"
+  },
+  "ito_coffee_kissa": {
+    "lat": 35.176186,
+    "lng": 136.913635,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%B3%891-7-25",
+    "address": "愛知県名古屋市東区泉一丁目７番２５号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-16"
   }
 }

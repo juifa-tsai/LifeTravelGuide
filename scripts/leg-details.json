@@ -1334,5 +1334,49 @@
       ],
       "checkedAt": "2026-11-16"
     }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "ito_coffee_kissa",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1924.1,
+        "durationSeconds": 1539.3,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.176186,
+          "lng": 136.913635
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.913635,35.176186?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "ito_coffee_kissa",
+    "toPlaceId": "nagoyajo",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "久屋大通站",
+          "toStation": "名古屋城站"
+        }
+      ],
+      "note": "步行至久屋大通，往大曽根方向一站；名古屋城站7號出口往東門。",
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nagoyajo.city.nagoya.jp/access/",
+        "https://tabelog.com/aichi/A2301/A230104/23087048/"
+      ],
+      "checkedAt": "2026-11-16"
+    }
   }
 ]

@@ -666,5 +666,16 @@
     "imageSubject": "exterior",
     "imageRights": "original-rights",
     "imageCapturedAt": "2026-11-15"
+  },
+  "ito_coffee_kissa": {
+    "imageUrl": "images/place-ito-coffee-kissa.webp",
+    "imageAttribution": "Life Designs · 原攝影者保留著作權",
+    "imageSourceUrl": "https://life-designs.jp/spot/ito_coffee_kissa/",
+    "imageLicenseUrl": "https://life-designs.jp/spot/ito_coffee_kissa/",
+    "imageKind": "place",
+    "imageAlt": "伊藤珈琲喫茶室店面實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
   }
 }
