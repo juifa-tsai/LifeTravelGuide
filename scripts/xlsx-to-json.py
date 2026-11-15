@@ -169,15 +169,12 @@ for extra in transport['documents']:
         documents.append(extra)
         document_ids.add(extra['id'])
         document_urls.add(extra['url'])
-themes = [('2026-11-15','日','抵達名古屋','從桃園出發，把步調留給夜晚。','ARRIVAL'),
-    ('2026-11-16','一','古蹟與老件','走進城郭，尋找時間留下的物件。','OLD & NEW'),
-    ('2026-11-17','二','藝術與大須','一杯咖啡、一場展覽，慢慢走進大須。','ART & STREETS'),
-    ('2026-11-18','三','帶著回憶回家','吃好早餐，為回程留一點從容。','HOMEBOUND')]
-trip = dict(title='名古屋 · 旅の手帖', startDate='2026-11-15', endDate='2026-11-18',
-    timezone='Asia/Tokyo', updatedAt='2026-11-15',
-    days=[dict(date=d,weekday=w,title=t,description=s,label=l,number=i+1) for i,(d,w,t,s,l) in enumerate(themes)],
-    overview=[dict(title=r[0],value=r[1],note=r[2]) for r in rows('00_旅程總覽')
-              if r[0] in ('住宿','去程','接機','回程','交通','飲食')])
+trip_details = json.loads((ROOT / 'scripts/trip-details.json').read_text())
+trip = {field:trip_details[field] for field in ('title','startDate','endDate','timezone','updatedAt')}
+trip['days'] = [{field:day[field] for field in ('date','weekday','title','description','label','number')}
+                for day in trip_details['days']]
+trip['overview'] = [dict(title=r[0],value=r[1],note=r[2]) for r in rows('00_旅程總覽')
+                    if r[0] in ('住宿','去程','接機','回程','交通','飲食')]
 # The optional route sheet owns the pocket candidates for each day. Match the
 # established place names, omit scheduled stops, and retain stable place IDs.
 if '07_餐飲與酒吧動線' in workbook.sheetnames:

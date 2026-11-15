@@ -1,0 +1,41 @@
+{
+  "title": "名古屋 · 旅の手帖",
+  "startDate": "2026-11-15",
+  "endDate": "2026-11-18",
+  "timezone": "Asia/Tokyo",
+  "updatedAt": "2026-11-16",
+  "days": [
+    {
+      "date": "2026-11-15",
+      "weekday": "日",
+      "title": "抵達名古屋",
+      "description": "從桃園出發，把步調留給夜晚。",
+      "label": "ARRIVAL",
+      "number": 1
+    },
+    {
+      "date": "2026-11-16",
+      "weekday": "一",
+      "title": "古蹟與街區",
+      "description": "名古屋城出發，穿過大須，沿參道走到覺王山。",
+      "label": "OLD & NEW",
+      "number": 2
+    },
+    {
+      "date": "2026-11-17",
+      "weekday": "二",
+      "title": "藝術與老件",
+      "description": "梵谷展與老件採集，經池下回到榮的爵士夜。",
+      "label": "ART & STREETS",
+      "number": 3
+    },
+    {
+      "date": "2026-11-18",
+      "weekday": "三",
+      "title": "帶著回憶回家",
+      "description": "吃好早餐，為回程留一點從容。",
+      "label": "HOMEBOUND",
+      "number": 4
+    }
+  ]
+}

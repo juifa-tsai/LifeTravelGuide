@@ -31,7 +31,7 @@ test('today uses Japan time and the actual weekday, with split hours, closures a
   assert.equal(hours.todayHours(place('coco_fushimi'),'2026-11-15'),'11:00–22:00');
   assert.equal(hours.todayHours(place('art_museum'),'2026-11-13'),'09:30–20:00');
   assert.equal(hours.todayHours({...place('new_poppy'),weeklyHours:{'1':'營業狀態待確認'}},'2026-11-16'),'營業狀態待確認');
-  assert.equal(hours.todayHours(place('khaja_ghar'),'2026-11-17'),'11:00–15:00／17:00–23:00');
+  assert.equal(hours.todayHours(place('khaja_ghar'),'2026-11-17'),'10:00–23:00');
   assert.equal(hours.todayHours(place('bar_thistle'),'2026-11-17'),'17:00–翌01:00');
   assert.equal(hours.todayHours(place('oribio'),'2026-11-16'),'今日公休');
   assert.equal(hours.todayHours(place('ko_vegan'),'2026-11-17'),'今日公休');
@@ -96,7 +96,8 @@ test('places sort by unrounded distance from the hotel, keeping unknown coordina
 });
 
 test('opening lights use Japan time, inclusive opening and exclusive closing times, including lunch breaks',()=>{
- const at=(id,time)=>hours.openingInfo(place(id),new Date(`2026-11-17T${time}:00+09:00`)).state;
+ const splitHours={...place('khaja_ghar'),weeklyHours:{'2':'11:00–15:00／17:00–23:00'},closedText:null,hoursNote:undefined};
+ const at=(id,time)=>hours.openingInfo(id==='khaja_ghar'?splitHours:place(id),new Date(`2026-11-17T${time}:00+09:00`)).state;
  for(const [time,state]of [['10:59','closed'],['11:00','open'],['14:59','open'],['15:00','closed'],['16:59','closed'],['17:00','open'],['22:59','open'],['23:00','closed']])assert.equal(at('khaja_ghar',time),state,time);
  assert.equal(hours.openingInfo(place('khaja_ghar'),new Date('2026-11-17T02:00:00Z')).state,'open');
  assert.equal(hours.openingInfo(place('shrub'),new Date('2026-11-17T23:30:00+08:00')).state,'closed');

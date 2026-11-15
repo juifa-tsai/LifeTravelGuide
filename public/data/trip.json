@@ -3,7 +3,7 @@
   "startDate": "2026-11-15",
   "endDate": "2026-11-18",
   "timezone": "Asia/Tokyo",
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "days": [
     {
       "date": "2026-11-15",
@@ -20,23 +20,24 @@
     {
       "date": "2026-11-16",
       "weekday": "一",
-      "title": "古蹟與老件",
-      "description": "走進城郭，尋找時間留下的物件。",
+      "title": "古蹟與街區",
+      "description": "名古屋城出發，穿過大須，沿參道走到覺王山。",
       "label": "OLD & NEW",
       "number": 2,
       "candidateIds": [
-        "yamamotoya_otsu"
+        "kazan"
       ]
     },
     {
       "date": "2026-11-17",
       "weekday": "二",
-      "title": "藝術與大須",
-      "description": "一杯咖啡、一場展覽，慢慢走進大須。",
+      "title": "藝術與老件",
+      "description": "梵谷展與老件採集，經池下回到榮的爵士夜。",
       "label": "ART & STREETS",
       "number": 3,
       "candidateIds": [
-        "mihos_grains"
+        "yamamotoya_okute",
+        "kazan"
       ]
     },
     {

@@ -658,9 +658,11 @@
       ],
       "sources": [
         "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.furukawa-museum.or.jp/info/access"
+        "https://www.furukawa-museum.or.jp/info/location",
+        "https://tabelog.com/aichi/A2301/A230103/23084339/"
       ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16",
+      "note": "略過丸田町時，從榮站13號出口往栄4丁目。"
     }
   },
   {
@@ -727,9 +729,9 @@
         }
       },
       "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.919083,35.17094;136.923813,35.166874?overview=false&steps=false"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9190830,35.1709400;136.9238130,35.1668740?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16"
     }
   },
   {
@@ -1020,6 +1022,317 @@
         "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9008940,35.1689260;136.9010010,35.1640026?overview=false&steps=false"
       ],
       "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "nagoyajo",
+    "toPlaceId": "khaja_ghar",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "名古屋城站",
+          "toStation": "上前津站"
+        },
+        {
+          "line": "鶴舞線",
+          "fromStation": "上前津站",
+          "toStation": "大須觀音站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nagoyajo.city.nagoya.jp/access/",
+        "https://www.khajaghar.jp/access.html"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "大須觀音站2號出口步行至店家。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "osu_street",
+    "toPlaceId": "kakuozan_sando",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "上前津站",
+          "toStation": "榮站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "榮站",
+          "toStation": "覺王山站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nittaiji.or.jp/14acces/"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "覺王山站1號出口沿參道往日泰寺，16:30關門。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "kakuozan_sando",
+    "toPlaceId": "aoi_celestie",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "覺王山站",
+          "toStation": "新榮町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nittaiji.or.jp/14acces/",
+        "https://tabelog.com/aichi/A2301/A230104/23090945/"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "由日泰寺沿參道回站；新榮町站1號出口旁。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "kakuozan_sando",
+    "toPlaceId": "toraya",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "覺王山站",
+          "toStation": "新榮町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nittaiji.or.jp/14acces/",
+        "https://nagoya.mypl.net/naka/shop/00000372987/access"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "略過咖啡時，可由新榮町站2號出口往餐廳。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "art_museum",
+    "toPlaceId": "pupu_kitchen",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "伏見站",
+          "toStation": "淺間町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://heal-ai.com/pupu/",
+        "https://heal-ai.com/shopinfo/"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "美術館步行至伏見；淺間町站1號出口往店家。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "shirokawa",
+    "toPlaceId": "pupu_kitchen",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "伏見站",
+          "toStation": "淺間町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://heal-ai.com/pupu/",
+        "https://heal-ai.com/shopinfo/"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "淺間町站1號出口往店家。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "pupu_kitchen",
+    "toPlaceId": "fukiage",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "淺間町站",
+          "toStation": "丸之內站"
+        },
+        {
+          "line": "櫻通線",
+          "fromStation": "丸之內站",
+          "toStation": "吹上站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://heal-ai.com/pupu/",
+        "https://www.antiquemarket.co.jp/access.html",
+        "https://heal-ai.com/shopinfo/"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "吹上站2號出口旁。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "le_jardin",
+    "toPlaceId": "tamesaburo_memorial",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "吹上站",
+          "toStation": "今池站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "今池站",
+          "toStation": "池下站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.antiquemarket.co.jp/access.html",
+        "https://www.furukawa-museum.or.jp/info/location"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "池下站1號出口步行至記念館。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "fukiage",
+    "toPlaceId": "tamesaburo_memorial",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "吹上站",
+          "toStation": "今池站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "今池站",
+          "toStation": "池下站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.antiquemarket.co.jp/access.html",
+        "https://www.furukawa-museum.or.jp/info/location"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "略過同棟咖啡時，池下站1號出口步行至記念館。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "tamesaburo_memorial",
+    "toPlaceId": "store_factory",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "池下站",
+          "toStation": "榮站"
+        },
+        {
+          "line": "名城線",
+          "fromStation": "榮站",
+          "toStation": "矢場町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/location",
+        "https://storeinfactory.com/pages/contact"
+      ],
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "art_museum",
+    "toPlaceId": "yamamotoya_okute",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "伏見站",
+          "toStation": "丸之內站"
+        },
+        {
+          "line": "櫻通線",
+          "fromStation": "丸之內站",
+          "toStation": "吹上站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://a-yamamotoya.co.jp/store/yamamotoya/",
+        "https://www.antiquemarket.co.jp/access.html"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "午餐備案；吹上站1號出口往大久手本店。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "khaja_ghar",
+    "toPlaceId": "osu_street",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 709.8,
+        "durationSeconds": 569.8,
+        "fromCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        },
+        "toCoordinates": {
+          "lat": 35.160095,
+          "lng": 136.903915
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8993070,35.1581340;136.9039150,35.1600950?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "store_factory",
+    "toPlaceId": "mori",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 955.6,
+        "durationSeconds": 764.6,
+        "fromCoordinates": {
+          "lat": 35.162441,
+          "lng": 136.915161
+        },
+        "toCoordinates": {
+          "lat": 35.167244,
+          "lng": 136.910385
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9151610,35.1624410;136.9103850,35.1672440?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-16"
     }
   }
 ]

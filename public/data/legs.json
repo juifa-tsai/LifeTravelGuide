@@ -197,53 +197,64 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "nagoyajo",
-    "toPlaceId": "yamamotoya_otsu",
+    "toPlaceId": "khaja_ghar",
     "mode": "地鐵＋步行",
-    "summary": "備案約15–20分",
-    "details": "從東門出城，名古屋城站搭名城線一站到久屋大通。2號出口步行約30秒到備案餐廳。",
-    "minutesEstimate": 18,
+    "summary": "約25–30分",
+    "details": "城東門→名古屋城站搭名城線往榮、金山→上前津轉鶴舞線往上小田井一站→大須觀音2號出口步行約3分。",
+    "minutesEstimate": 28,
     "fareJpyEstimate": null,
-    "certainty": "路線估算",
-    "sourceUrl": "https://a-yamamotoya.co.jp/store/sakuradoori-ootsu/",
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
     "navigation": {
       "steps": [
         {
           "line": "名城線",
           "fromStation": "名古屋城站",
-          "toStation": "久屋大通站"
+          "toStation": "上前津站"
+        },
+        {
+          "line": "鶴舞線",
+          "fromStation": "上前津站",
+          "toStation": "大須觀音站"
         }
       ],
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nagoyajo.city.nagoya.jp/access/",
+        "https://www.khajaghar.jp/access.html"
       ],
-      "checkedAt": "2026-11-15",
-      "note": "久屋大通站2號出口步行30秒至午餐備案。"
+      "checkedAt": "2026-11-16",
+      "note": "大須觀音站2號出口步行至店家。"
     }
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "yamamotoya_otsu",
-    "toPlaceId": "fukiage",
-    "mode": "地鐵＋步行",
-    "summary": "備案約15–20分",
-    "details": "久屋大通搭櫻通線往德重，車程約8分。吹上站2號出口旁即古董市場。",
-    "minutesEstimate": 17,
-    "fareJpyEstimate": null,
-    "certainty": "含步行與候車估算",
-    "sourceUrl": "https://kotsu.city.nagoya.jp/rp/subway/",
+    "fromPlaceId": "khaja_ghar",
+    "toPlaceId": "osu_kannon",
+    "mode": "步行",
+    "summary": "約4–8分",
+    "details": "大須マルシェ步行到大須觀音。",
+    "minutesEstimate": 6,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.khajaghar.jp/",
     "navigation": {
-      "steps": [
-        {
-          "line": "櫻通線",
-          "fromStation": "久屋大通站",
-          "toStation": "吹上站"
+      "walking": {
+        "distanceMeters": 166.5,
+        "durationSeconds": 133.1,
+        "fromCoordinates": {
+          "lat": 35.158134,
+          "lng": 136.899307
+        },
+        "toCoordinates": {
+          "lat": 35.15918,
+          "lng": 136.899597
         }
-      ],
+      },
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899307,35.158134;136.899597,35.15918?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-15",
-      "note": "櫻通線往德重；吹上站2號出口旁。"
+      "checkedAt": "2026-11-13"
     }
   },
   {
@@ -279,136 +290,150 @@
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "nagoyajo",
-    "toPlaceId": "yamamotoya_okute",
+    "fromPlaceId": "osu_kannon",
+    "toPlaceId": "osu_street",
+    "mode": "步行",
+    "summary": "約3–8分",
+    "details": "從大須觀音往商店街西側，往東逛至上前津站。",
+    "minutesEstimate": 5,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://osu.nagoya/ja/",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 590.8,
+        "durationSeconds": 474.6,
+        "fromCoordinates": {
+          "lat": 35.15918,
+          "lng": 136.899597
+        },
+        "toCoordinates": {
+          "lat": 35.160095,
+          "lng": 136.903915
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899597,35.15918;136.903915,35.160095?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-13"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "osu_street",
+    "toPlaceId": "kakuozan_sando",
     "mode": "地鐵＋步行",
-    "summary": "約25–35分",
-    "details": "城東門→名古屋城站（名城線）→久屋大通（轉櫻通線往德重）→吹上站1號出口，步行約3分到店。",
-    "minutesEstimate": 30,
-    "fareJpyEstimate": 240,
-    "certainty": "車資依路線查詢；含步行、候車與轉乘估算",
-    "sourceUrl": "https://kotsu.city.nagoya.jp/rp/subway/",
+    "summary": "約30–40分（到日泰寺）",
+    "details": "上前津搭名城線右回り到榮，轉東山線往藤丘至覺王山。從1號出口沿參道步行約15分到日泰寺。",
+    "minutesEstimate": 35,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
     "navigation": {
       "steps": [
         {
           "line": "名城線",
-          "fromStation": "名古屋城站",
-          "toStation": "久屋大通站"
+          "fromStation": "上前津站",
+          "toStation": "榮站"
         },
         {
-          "line": "櫻通線",
-          "fromStation": "久屋大通站",
-          "toStation": "吹上站"
+          "line": "東山線",
+          "fromStation": "榮站",
+          "toStation": "覺王山站"
         }
       ],
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nittaiji.or.jp/14acces/"
       ],
-      "checkedAt": "2026-11-15",
-      "note": "名古屋城東門出園；吹上站1號出口步行3分至餐廳。"
+      "checkedAt": "2026-11-16",
+      "note": "覺王山站1號出口沿參道往日泰寺，16:30關門。"
     }
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "yamamotoya_okute",
-    "toPlaceId": "fukiage",
-    "mode": "步行",
-    "summary": "約5–8分",
-    "details": "由山本屋步行回吹上站路口，往2號出口旁的古董市場。",
-    "minutesEstimate": 7,
-    "fareJpyEstimate": 0,
-    "certainty": "步行估算",
-    "sourceUrl": "https://www.google.com/maps/dir/?api=1&origin=%E5%B1%B1%E6%9C%AC%E5%B1%8B%20%E5%A4%A7%E4%B9%85%E6%89%8B%E6%9C%AC%E5%BA%97%20%E5%90%8D%E5%8F%A4%E5%B1%8B&destination=%E3%82%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E5%90%B9%E4%B8%8A&travelmode=walking",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 553.2,
-        "durationSeconds": 442.5,
-        "fromCoordinates": {
-          "lat": 35.161461,
-          "lng": 136.936493
-        },
-        "toCoordinates": {
-          "lat": 35.158779,
-          "lng": 136.935486
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.936493,35.161461;136.935486,35.158779?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "fukiage",
-    "toPlaceId": "le_jardin",
-    "mode": "同棟",
-    "summary": "約1–3分",
-    "details": "同棟電梯到7樓。",
-    "minutesEstimate": 2,
-    "fareJpyEstimate": null,
-    "certainty": "路線估算",
-    "sourceUrl": "https://www.antiquemarket.co.jp/7floor.html"
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "le_jardin",
-    "toPlaceId": "store_factory",
+    "fromPlaceId": "kakuozan_sando",
+    "toPlaceId": "aoi_celestie",
     "mode": "地鐵＋步行",
-    "summary": "約25–35分",
-    "details": "吹上搭櫻通線往德重至御器所，轉鶴舞線往上小田井至鶴舞站，再步行至丸田町。",
-    "minutesEstimate": 30,
+    "summary": "約20–30分",
+    "details": "由日泰寺步行回覺王山站，搭東山線往高畑至新榮町，1號出口旁。",
+    "minutesEstimate": 25,
     "fareJpyEstimate": null,
-    "certainty": "路線估算",
-    "sourceUrl": "https://www.google.com/maps/dir/?api=1&origin=%E3%82%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E5%90%B9%E4%B8%8A&destination=STORE%20IN%20FACTORY%20marutamachi%20bld.%20%E5%90%8D%E5%8F%A4%E5%B1%8B&travelmode=transit",
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
     "navigation": {
       "steps": [
         {
-          "line": "櫻通線",
-          "fromStation": "吹上站",
-          "toStation": "御器所站"
-        },
-        {
-          "line": "鶴舞線",
-          "fromStation": "御器所站",
-          "toStation": "鶴舞站"
+          "line": "東山線",
+          "fromStation": "覺王山站",
+          "toStation": "新榮町站"
         }
       ],
       "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nittaiji.or.jp/14acces/",
+        "https://tabelog.com/aichi/A2301/A230104/23090945/"
       ],
-      "checkedAt": "2026-11-15",
-      "note": "櫻通線往德重，御器所轉鶴舞線往上小田井；鶴舞站出站後步行至丸田町。"
+      "checkedAt": "2026-11-16",
+      "note": "由日泰寺沿參道回站；新榮町站1號出口旁。"
     }
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "store_factory",
-    "toPlaceId": "aoi_celestie",
+    "fromPlaceId": "khaja_ghar",
+    "toPlaceId": "osu_street",
     "mode": "步行",
-    "summary": "約15–20分",
-    "details": "從丸田町往新榮町站1號出口。",
-    "minutesEstimate": 17,
-    "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+    "summary": "約3–8分（彈性）",
+    "details": "午餐後可直接由大須マルシェ進商店街，往上前津逛。",
+    "minutesEstimate": 5,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://osu.nagoya/ja/",
     "navigation": {
       "walking": {
-        "distanceMeters": 1336.4,
-        "durationSeconds": 1075.4,
+        "distanceMeters": 709.8,
+        "durationSeconds": 569.8,
         "fromCoordinates": {
-          "lat": 35.162441,
-          "lng": 136.915161
+          "lat": 35.158134,
+          "lng": 136.899307
         },
         "toCoordinates": {
-          "lat": 35.17094,
-          "lng": 136.919083
+          "lat": 35.160095,
+          "lng": 136.903915
         }
       },
       "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.915161,35.162441;136.919083,35.17094?overview=false&steps=false"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8993070,35.1581340;136.9039150,35.1600950?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "kakuozan_sando",
+    "toPlaceId": "toraya",
+    "mode": "地鐵＋步行",
+    "summary": "約30–40分（略過咖啡）",
+    "details": "覺王山搭東山線至新榮町，從2號出口步行約8分到餐廳。",
+    "minutesEstimate": 35,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://nagoya.mypl.net/naka/shop/00000372987/access",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "覺王山站",
+          "toStation": "新榮町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nittaiji.or.jp/14acces/",
+        "https://nagoya.mypl.net/naka/shop/00000372987/access"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "略過咖啡時，可由新榮町站2號出口往餐廳。"
     }
   },
   {
@@ -416,12 +441,12 @@
     "fromPlaceId": "aoi_celestie",
     "toPlaceId": "toraya",
     "mode": "步行",
-    "summary": "約10–15分",
-    "details": "由新榮町站周邊往新栄3丁目。",
-    "minutesEstimate": 13,
-    "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+    "summary": "約8–10分",
+    "details": "從新榮町站旁的AOI，步行至新栄3丁目餐廳。",
+    "minutesEstimate": 9,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://nagoya.mypl.net/naka/shop/00000372987/access",
     "navigation": {
       "walking": {
         "distanceMeters": 899.5,
@@ -436,9 +461,9 @@
         }
       },
       "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.919083,35.17094;136.923813,35.166874?overview=false&steps=false"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9190830,35.1709400;136.9238130,35.1668740?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16"
     }
   },
   {
@@ -648,129 +673,40 @@
   },
   {
     "date": "2026-11-17",
-    "fromPlaceId": "shirokawa",
-    "toPlaceId": "khaja_ghar",
-    "mode": "步行",
-    "summary": "約12–20分",
-    "details": "白川公園 → 大須2丁目 KHAJA GHAR（大須マルシェ），沿途步行",
-    "minutesEstimate": 17,
-    "fareJpyEstimate": null,
-    "certainty": "步行估算",
-    "sourceUrl": "https://tabelog.com/aichi/A2301/A230105/23085903/",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 993.6,
-        "durationSeconds": 794.7,
-        "fromCoordinates": {
-          "lat": 35.164967,
-          "lng": 136.899704
-        },
-        "toCoordinates": {
-          "lat": 35.158134,
-          "lng": 136.899307
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899704,35.164967;136.899307,35.158134?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-13"
-    }
-  },
-  {
-    "date": "2026-11-17",
-    "fromPlaceId": "khaja_ghar",
-    "toPlaceId": "osu_kannon",
-    "mode": "步行",
-    "summary": "約4–8分",
-    "details": "KHAJA GHAR → 大須觀音，行程步行可達",
-    "minutesEstimate": 6,
-    "fareJpyEstimate": null,
-    "certainty": "步行估算",
-    "sourceUrl": "https://tabelog.com/aichi/A2301/A230105/23085903/",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 166.5,
-        "durationSeconds": 133.1,
-        "fromCoordinates": {
-          "lat": 35.158134,
-          "lng": 136.899307
-        },
-        "toCoordinates": {
-          "lat": 35.15918,
-          "lng": 136.899597
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899307,35.158134;136.899597,35.15918?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-13"
-    }
-  },
-  {
-    "date": "2026-11-17",
-    "fromPlaceId": "osu_kannon",
-    "toPlaceId": "osu_street",
-    "mode": "步行",
-    "summary": "約3–8分",
-    "details": "觀音寺 → 大須商店街",
-    "minutesEstimate": 5,
-    "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null,
-    "navigation": {
-      "walking": {
-        "distanceMeters": 590.8,
-        "durationSeconds": 474.6,
-        "fromCoordinates": {
-          "lat": 35.15918,
-          "lng": 136.899597
-        },
-        "toCoordinates": {
-          "lat": 35.160095,
-          "lng": 136.903915
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899597,35.15918;136.903915,35.160095?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-13"
-    }
-  },
-  {
-    "date": "2026-11-17",
-    "fromPlaceId": "osu_street",
-    "toPlaceId": "mori",
-    "mode": "地鐵／步行",
+    "fromPlaceId": "art_museum",
+    "toPlaceId": "pupu_kitchen",
+    "mode": "地鐵＋步行",
     "summary": "約20–30分",
-    "details": "若取消覺王山，從大須直接走往榮，或在上前津搭名城線至榮。",
+    "details": "美術館步行至伏見。伏見搭鶴舞線往上小田井兩站到淺間町，1號出口步行約5分。",
     "minutesEstimate": 25,
     "fareJpyEstimate": null,
-    "certainty": "估算",
-    "sourceUrl": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
     "navigation": {
       "steps": [
         {
-          "line": "名城線",
-          "fromStation": "上前津站",
-          "toStation": "榮站"
+          "line": "鶴舞線",
+          "fromStation": "伏見站",
+          "toStation": "淺間町站"
         }
       ],
       "sources": [
         "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.kenko-shokuiku.city.nagoya.jp/pdf/mori_curry.pdf"
+        "https://heal-ai.com/pupu/",
+        "https://heal-ai.com/shopinfo/"
       ],
-      "checkedAt": "2026-11-13",
-      "note": "榮站13號出口，步行 3 分至店家。"
+      "checkedAt": "2026-11-16",
+      "note": "美術館步行至伏見；淺間町站1號出口往店家。"
     }
   },
   {
     "date": "2026-11-17",
-    "fromPlaceId": "osu_street",
-    "toPlaceId": "kakuozan_sando",
+    "fromPlaceId": "shirokawa",
+    "toPlaceId": "pupu_kitchen",
     "mode": "地鐵＋步行",
-    "summary": "約30–40分",
-    "details": "走到大須觀音站，鶴舞線往上小田井方向一站至伏見；轉東山線往藤丘方向至覺王山，走1號出口。",
-    "minutesEstimate": 35,
+    "summary": "約15–25分",
+    "details": "白川公園步行至伏見，搭鶴舞線到淺間町，1號出口步行約5分。",
+    "minutesEstimate": 22,
     "fareJpyEstimate": null,
     "certainty": "含步行及候車估算",
     "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
@@ -778,81 +714,191 @@
       "steps": [
         {
           "line": "鶴舞線",
-          "fromStation": "大須觀音站",
-          "toStation": "伏見站"
-        },
-        {
-          "line": "東山線",
           "fromStation": "伏見站",
-          "toStation": "覺王山站"
+          "toStation": "淺間町站"
         }
       ],
       "sources": [
         "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.furukawa-museum.or.jp/info/access"
+        "https://heal-ai.com/pupu/",
+        "https://heal-ai.com/shopinfo/"
       ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16",
+      "note": "淺間町站1號出口往店家。"
     }
   },
   {
     "date": "2026-11-17",
-    "fromPlaceId": "osu_street",
+    "fromPlaceId": "pupu_kitchen",
+    "toPlaceId": "fukiage",
+    "mode": "地鐵＋步行",
+    "summary": "約25–40分",
+    "details": "吃完走回淺間町站。淺間町搭鶴舞線一站到丸之內，轉櫻通線往德重至吹上，2號出口旁即古董市場。",
+    "minutesEstimate": 30,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "淺間町站",
+          "toStation": "丸之內站"
+        },
+        {
+          "line": "櫻通線",
+          "fromStation": "丸之內站",
+          "toStation": "吹上站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://heal-ai.com/pupu/",
+        "https://www.antiquemarket.co.jp/access.html",
+        "https://heal-ai.com/shopinfo/"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "吹上站2號出口旁。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "fukiage",
+    "toPlaceId": "le_jardin",
+    "mode": "同棟",
+    "summary": "約1–3分",
+    "details": "同棟搭電梯到7樓。",
+    "minutesEstimate": 2,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.antiquemarket.co.jp/7floor.html"
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "le_jardin",
     "toPlaceId": "tamesaburo_memorial",
     "mode": "地鐵＋步行",
-    "summary": "約30–40分",
-    "details": "雨天直達：大須觀音 → 鶴舞線 → 伏見 → 東山線往藤丘 → 池下站，步行約3分。",
-    "minutesEstimate": 35,
+    "summary": "約15–25分",
+    "details": "下樓後從吹上搭櫻通線往太閤通至今池，轉東山線往藤丘一站至池下，1號出口步行約3分。",
+    "minutesEstimate": 20,
     "fareJpyEstimate": null,
     "certainty": "含步行及候車估算",
-    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "sourceUrl": "https://www.furukawa-museum.or.jp/info/location",
     "navigation": {
       "steps": [
         {
-          "line": "鶴舞線",
-          "fromStation": "大須觀音站",
-          "toStation": "伏見站"
+          "line": "櫻通線",
+          "fromStation": "吹上站",
+          "toStation": "今池站"
         },
         {
           "line": "東山線",
-          "fromStation": "伏見站",
+          "fromStation": "今池站",
           "toStation": "池下站"
         }
       ],
       "sources": [
         "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.furukawa-museum.or.jp/info/access"
+        "https://www.antiquemarket.co.jp/access.html",
+        "https://www.furukawa-museum.or.jp/info/location"
       ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16",
+      "note": "池下站1號出口步行至記念館。"
     }
   },
   {
     "date": "2026-11-17",
-    "fromPlaceId": "kakuozan_sando",
+    "fromPlaceId": "fukiage",
     "toPlaceId": "tamesaburo_memorial",
-    "mode": "步行",
-    "summary": "約8–12分",
-    "details": "由日泰寺參道轉往記念館，依散步折返點而異。",
-    "minutesEstimate": 10,
+    "mode": "地鐵＋步行",
+    "summary": "約15–25分（略過咖啡）",
+    "details": "吹上搭櫻通線至今池，轉東山線至池下，1號出口步行約3分。",
+    "minutesEstimate": 20,
     "fareJpyEstimate": null,
     "certainty": "含步行及候車估算",
-    "sourceUrl": "https://www.furukawa-museum.or.jp/info/hours",
+    "sourceUrl": "https://www.furukawa-museum.or.jp/info/location",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "吹上站",
+          "toStation": "今池站"
+        },
+        {
+          "line": "東山線",
+          "fromStation": "今池站",
+          "toStation": "池下站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.antiquemarket.co.jp/access.html",
+        "https://www.furukawa-museum.or.jp/info/location"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "略過同棟咖啡時，池下站1號出口步行至記念館。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "tamesaburo_memorial",
+    "toPlaceId": "store_factory",
+    "mode": "地鐵＋步行",
+    "summary": "約20–30分",
+    "details": "池下搭東山線往高畑至榮，轉名城線往上前津一站到矢場町，再步行到丸田町店。",
+    "minutesEstimate": 25,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "東山線",
+          "fromStation": "池下站",
+          "toStation": "榮站"
+        },
+        {
+          "line": "名城線",
+          "fromStation": "榮站",
+          "toStation": "矢場町站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.furukawa-museum.or.jp/info/location",
+        "https://storeinfactory.com/pages/contact"
+      ],
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "store_factory",
+    "toPlaceId": "mori",
+    "mode": "步行",
+    "summary": "約10–15分",
+    "details": "由栄5丁目丸田町店走至栄4丁目食べるテラスSAKAE。",
+    "minutesEstimate": 12,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://tabelog.com/aichi/A2305/A230501/23084339/",
     "navigation": {
       "walking": {
-        "distanceMeters": 564.9,
-        "durationSeconds": 452.1,
+        "distanceMeters": 955.6,
+        "durationSeconds": 764.6,
         "fromCoordinates": {
-          "lat": 35.167667,
-          "lng": 136.952835
+          "lat": 35.162441,
+          "lng": 136.915161
         },
         "toCoordinates": {
-          "lat": 35.168819,
-          "lng": 136.948578
+          "lat": 35.167244,
+          "lng": 136.910385
         }
       },
       "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.952835,35.167667;136.948578,35.168819?overview=false&steps=false"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.9151610,35.1624410;136.9103850,35.1672440?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16"
     }
   },
   {
@@ -860,9 +906,9 @@
     "fromPlaceId": "tamesaburo_memorial",
     "toPlaceId": "mori",
     "mode": "地鐵＋步行",
-    "summary": "約25–35分",
-    "details": "步行約3分至池下站，搭東山線往高畑方向，在榮站下車，從12或13號出口往栄4丁目。",
-    "minutesEstimate": 30,
+    "summary": "約20–30分（略過丸田町）",
+    "details": "池下搭東山線往高畑至榮，13號出口步行至栄4丁目。",
+    "minutesEstimate": 25,
     "fareJpyEstimate": null,
     "certainty": "含步行及候車估算",
     "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
@@ -876,39 +922,11 @@
       ],
       "sources": [
         "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.furukawa-museum.or.jp/info/access"
+        "https://www.furukawa-museum.or.jp/info/location",
+        "https://tabelog.com/aichi/A2301/A230103/23084339/"
       ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-17",
-    "fromPlaceId": "art_museum",
-    "toPlaceId": "khaja_ghar",
-    "mode": "步行",
-    "summary": "約15–20分",
-    "details": "雨天可略過白川公園，直接由美術館往大須2丁目。",
-    "minutesEstimate": 18,
-    "fareJpyEstimate": null,
-    "certainty": "含步行及候車估算",
-    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 923.2,
-        "durationSeconds": 725.7,
-        "fromCoordinates": {
-          "lat": 35.16400256,
-          "lng": 136.901001
-        },
-        "toCoordinates": {
-          "lat": 35.158134,
-          "lng": 136.899307
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.901001,35.16400256;136.899307,35.158134?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
+      "checkedAt": "2026-11-16",
+      "note": "略過丸田町時，從榮站13號出口往栄4丁目。"
     }
   },
   {
@@ -1151,6 +1169,69 @@
       },
       "sources": [
         "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8917850,35.1756590;136.8913270,35.1763310?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "art_museum",
+    "toPlaceId": "yamamotoya_okute",
+    "mode": "地鐵＋步行",
+    "summary": "約25–35分（午餐備案）",
+    "details": "美術館步行至伏見，鶴舞線往上小田井至丸之內，轉櫻通線往德重至吹上。1號出口步行約3分。",
+    "minutesEstimate": 30,
+    "fareJpyEstimate": null,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "鶴舞線",
+          "fromStation": "伏見站",
+          "toStation": "丸之內站"
+        },
+        {
+          "line": "櫻通線",
+          "fromStation": "丸之內站",
+          "toStation": "吹上站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://a-yamamotoya.co.jp/store/yamamotoya/",
+        "https://www.antiquemarket.co.jp/access.html"
+      ],
+      "checkedAt": "2026-11-16",
+      "note": "午餐備案；吹上站1號出口往大久手本店。"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "fromPlaceId": "yamamotoya_okute",
+    "toPlaceId": "fukiage",
+    "mode": "步行",
+    "summary": "約5–8分（午餐備案）",
+    "details": "步行回吹上站路口，往2號出口旁的古董市場。",
+    "minutesEstimate": 7,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.antiquemarket.co.jp/access.html",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 553.2,
+        "durationSeconds": 442.5,
+        "fromCoordinates": {
+          "lat": 35.161461,
+          "lng": 136.936493
+        },
+        "toCoordinates": {
+          "lat": 35.158779,
+          "lng": 136.935486
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.936493,35.161461;136.935486,35.158779?overview=false&steps=false"
       ],
       "checkedAt": "2026-11-15"
     }

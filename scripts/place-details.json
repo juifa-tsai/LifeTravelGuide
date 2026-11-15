@@ -310,19 +310,21 @@
     "foodDescription": "尼泊爾食堂以豆湯、米飯與蔬菜咖哩組成套餐；屬葷素混合廚房，請指定蔬菜版並確認高湯、蛋與醬料。",
     "diningType": "葷素餐廳",
     "weeklyHours": {
-      "0": "11:00–23:00",
-      "1": "11:00–15:00／17:00–23:00",
-      "2": "11:00–15:00／17:00–23:00",
-      "3": "11:00–15:00／17:00–23:00",
-      "4": "11:00–15:00／17:00–23:00",
-      "5": "11:00–15:00／17:00–23:00",
-      "6": "11:00–23:00"
+      "0": "10:00–23:00",
+      "1": "10:00–23:00",
+      "2": "10:00–23:00",
+      "3": "10:00–23:00",
+      "4": "10:00–23:00",
+      "5": "10:00–23:00",
+      "6": "10:00–23:00"
     },
-    "hoursNote": "餐點L.O.22:30；蔬菜套餐的高湯、魚露與配料先確認。",
+    "hoursNote": "官網列無固定公休，L.O.22:30；蔬菜達爾巴特的高湯、魚露與配菜先確認。",
     "detailSourceUrls": [
-      "https://tabelog.com/aichi/A2301/A230105/23085903/"
+      "https://www.khajaghar.jp/",
+      "https://www.khajaghar.jp/access.html",
+      "https://www.khajaghar.jp/menu.html"
     ],
-    "detailsCheckedAt": "2026-11-13"
+    "detailsCheckedAt": "2026-11-16"
   },
   "mihos_grains": {
     "foodDescription": "以玄米與蔬菜製作純素定食、咖哩及甜點，週日提供純素拉麵；晚餐須提前預約，部分營業日仍需向店家確認。",
@@ -378,9 +380,11 @@
     },
     "hoursNote": "午餐11:30–14:00，L.O.15:00；週日、週一公休。",
     "detailSourceUrls": [
-      "https://heal-ai.com/pupu/"
+      "https://heal-ai.com/pupu/",
+      "https://www.kenko-shokuiku.city.nagoya.jp/pdf/natural_organic_cafe_pupu_kitchen.pdf",
+      "https://heal-ai.com/shopinfo/"
     ],
-    "detailsCheckedAt": "2026-11-13"
+    "detailsCheckedAt": "2026-11-16"
   },
   "ko_vegan": {
     "foodDescription": "安靜的純素咖啡空間，提供精品咖啡、豆乳拿鐵、巧克力與水果蛋糕及餅乾；目前未確認正餐，適合作為咖啡甜點站。",
@@ -855,10 +859,12 @@
   },
   "kakuozan_sando": {
     "detailSourceUrls": [
-      "https://www.nagoya-info.jp/course/detail/9/"
+      "https://www.nagoya-info.jp/course/detail/9/",
+      "https://www.nittaiji.or.jp/13haika/",
+      "https://www.nittaiji.or.jp/14acces/"
     ],
-    "detailsCheckedAt": "2026-11-15",
-    "hoursNote": "街區可散步，各店與設施開放時間不同。",
+    "detailsCheckedAt": "2026-11-16",
+    "hoursNote": "日泰寺05:00–16:30；參道各店時段不同。",
     "description": "從覺王山站通往日泰寺的參道，沿途有咖啡廳、雜貨與藝廊；雨停時可散步看街景，各店與寺院時段分開確認。",
     "weeklyHours": {
       "0": "戶外開放；各店時段不同",
