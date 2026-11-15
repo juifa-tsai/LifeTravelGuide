@@ -5,7 +5,7 @@ import { categoryGroup } from '../lib/data';
 import { CategoryIcon } from '../components/Icon';
 import { CollectionCard } from '../components/CollectionCard';
 import { japanDate, todayCaption, openingInfo } from '../lib/placeHours';
-import { byHotelDistance, isInNagoya, type Coordinates } from '../lib/distances';
+import { byHotelDistance, isInTripArea, type Coordinates } from '../lib/distances';
 import { TravelMap } from '../components/TravelMap';
 import { collectionMapPoints } from '../lib/mapPoints';
 import { NearbyStoresLink } from '../components/NearbyStoresLink';
@@ -21,29 +21,8 @@ export function PlacesPage({ data, visited, setVisited }: { data:TravelData; vis
   }, []);
   const date = japanDate(now);
   const [position,setPosition] = useState<Coordinates | null>(null);
-  const currentPosition = isInNagoya(position) ? position : null;
+  const currentPosition = isInTripArea(position) ? position : null;
   const hotel = data.places.find(place => place.category === '住宿');
-  useEffect(() => {
-    let active = true;
-    // Reuse an existing permission; the map button handles the first permission request.
-    async function refreshPosition() {
-      setPosition(null);
-      if (!navigator.geolocation || !navigator.permissions) return;
-      try {
-        const permission = await navigator.permissions.query({ name:'geolocation' });
-        if (active && permission.state === 'granted') navigator.geolocation.getCurrentPosition(
-          result => { if (active) setPosition({ lat:result.coords.latitude,lng:result.coords.longitude }); },
-          () => { if (active) setPosition(null); },
-          { enableHighAccuracy:false,timeout:10000,maximumAge:0 },
-        );
-      } catch { /* Keep distances unknown until the user taps My Location. */ }
-    }
-    const onVisible = () => { if (document.visibilityState === 'visible') void refreshPosition(); };
-    void refreshPosition();
-    document.addEventListener('visibilitychange',onVisible);
-    return () => { active = false; document.removeEventListener('visibilitychange',onVisible); };
-  }, []);
-  function onLocation(point:Coordinates | null) { setPosition(point); return isInNagoya(point); }
   const [filter, setFilter] = useState('');
   const [openOnly,setOpenOnly] = useState(false);
   const [selected,setSelected] = useState<string | null>(null);
@@ -68,7 +47,7 @@ export function PlacesPage({ data, visited, setVisited }: { data:TravelData; vis
     <div className="places-layout"><aside className="places-controls">
       <fieldset className="category-filter" aria-label="地點分類篩選"><legend className="sr-only">分類（單選）</legend>{['',...categories].map(category => <label key={category} className={`category-option ${filter === category ? 'active' : ''}`} title={category || '全部分類'}><input type="radio" name="place-category" value={category} checked={filter === category} onChange={() => { setFilter(category); setSelected(null); }} aria-label={category || '全部分類'} />{category ? <CategoryIcon category={category} size={20} /> : <LayoutGrid size={20} strokeWidth={1.7} aria-hidden="true" />}</label>)}</fieldset>
       <fieldset className="opening-filter" aria-label="營業狀態篩選"><legend className="sr-only">營業狀態（單選）</legend>{[false,true].map(value=><label key={String(value)} className={`opening-option ${openOnly === value ? 'active' : ''}`}><input type="radio" name="opening-status" checked={openOnly === value} onChange={()=>{setOpenOnly(value);setSelected(null);}} aria-label={value ? '營業中' : '全部'} />{value && <span className="status-dot open" aria-hidden="true" />}{value ? '營業中' : '全部'}</label>)}</fieldset>
-    </aside><section className="places-results" aria-label="地點清單"><TravelMap id="places-map" label="踩點與收藏地圖" points={mapPoints} focusIds={visible.map(place => place.id)} selected={selected} onSelect={id => focusPlace(id)} onFocusPlace={selectPlace} onReset={() => setSelected(null)} focusVersion={focusVersion} onLocation={onLocation} /><div className="section-heading"><h2 aria-live="polite">{filter ? <CategoryIcon category={filter} size={20} /> : <LayoutGrid size={20} aria-hidden="true" />}{filter || '旅行收藏'}<span className="place-count">{visible.length} 筆</span></h2></div>
+    </aside><section className="places-results" aria-label="地點清單"><TravelMap id="places-map" label="踩點與收藏地圖" points={mapPoints} focusIds={visible.map(place => place.id)} selected={selected} onSelect={id => focusPlace(id)} onFocusPlace={selectPlace} onReset={() => setSelected(null)} focusVersion={focusVersion} onLocation={setPosition} /><div className="section-heading"><h2 aria-live="polite">{filter ? <CategoryIcon category={filter} size={20} /> : <LayoutGrid size={20} aria-hidden="true" />}{filter || '旅行收藏'}<span className="place-count">{visible.length} 筆</span></h2></div>
       <div className="places-list">{visible.map(place => <CollectionCard key={place.id} place={place} opening={openings.get(place.id)!} position={currentPosition} hotel={hotel} visited={!!visited[place.id]} selected={selected === place.id}
         onVisit={checked => setVisited(previous => ({ ...previous, [place.id]:checked }))} onFocus={focusPlace} />)}</div>
       {!visible.length && <div className="empty-state"><MapPin size={28} /><h2>沒有符合的地點</h2><button className="button button-outline" onClick={() => {setFilter('');setOpenOnly(false);}}>清除篩選</button></div>}

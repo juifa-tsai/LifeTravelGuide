@@ -10,6 +10,7 @@ import { ExternalLink } from './ExternalLink';
 import { compactHours } from '../lib/hours';
 import { ReservationBadge } from './ReservationBadge';
 import type { Coordinates } from '../lib/distances';
+import { useGeolocation } from '../lib/useGeolocation';
 
 const categoryStyle = {
   '素食餐廳':{ className:'vegan' },
@@ -50,32 +51,21 @@ function MapViewport({ points, focusIds, selected, reset,focusVersion }: { point
 }
 export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPlace,onReset,onLocation,segments = [],focusVersion = 0 }: {
   id:string; label:string; points:MapPoint[]; focusIds:string[]; selected:string | null;
-  onSelect:(id:string) => void; onFocusPlace:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number; onLocation?:(point:Coordinates | null) => boolean | void;
+  onSelect:(id:string) => void; onFocusPlace:(id:string) => void; onReset:() => void; segments?:[number,number][][]; focusVersion?:number; onLocation?:(point:Coordinates | null) => void;
 }) {
   const online = useOnline();
   const map = useRef<L.Map | null>(null);
-  const alive = useRef(true);
   const [reset,setReset] = useState(0);
-  const [location,setLocation] = useState<L.LatLngTuple | null>(null);
-  const [locating,setLocating] = useState(false);
-  const [message,setMessage] = useState('');
+  const {position,locating,message,request} = useGeolocation();
   const [tileError,setTileError] = useState(false);
   const lodging = points.find(point => point.place.category === '住宿');
-  useEffect(() => { alive.current = true; return () => { alive.current = false; }; },[]);
+  useEffect(() => { onLocation?.(position); },[position,onLocation]);
   const markerIcons = useMemo(() => new Map(points.map(point => [point.place.id,icon(point,point.place.id === selected)])),[points,selected]);
   function locate() {
-    if (!navigator.geolocation) { onLocation?.(null); setMessage('此瀏覽器不支援定位。'); return; }
-    setLocating(true); setMessage('正在取得位置…');
-    navigator.geolocation.getCurrentPosition(result => {
-      if (!alive.current) return;
-      const position:L.LatLngTuple = [result.coords.latitude,result.coords.longitude];
-      const accepted = onLocation?.({ lat:position[0],lng:position[1] });
-      setLocation(accepted === false ? null : position); setLocating(false); setMessage('');
-      if (accepted !== false) map.current?.flyTo(position,15);
-    },() => {
-      if (!alive.current) return;
-      onLocation?.(null); setLocating(false); setMessage('無法取得位置，請確認瀏覽器定位權限。');
-    },{ enableHighAccuracy:false,timeout:10000,maximumAge:0 });
+    request(point => {
+      map.current?.stop(); map.current?.closePopup();
+      map.current?.flyTo([point.lat,point.lng],15);
+    });
   }
   return <section className="travel-map-section" id={id} aria-label={label}>
     <div className="map-frame">
@@ -101,7 +91,7 @@ export function TravelMap({ id,label,points,focusIds,selected,onSelect,onFocusPl
             {(point.place.dateHours ? point.place.hoursNote : point.place.closedText) && <p className="map-popup-closed">{point.place.dateHours ? point.place.hoursNote : `休業：${point.place.closedText}`}</p>}
           </Popup>
         </Marker>)}
-        {location && <CircleMarker center={location} radius={8} pathOptions={{ color:'#fff',weight:3,fillColor:'#4479AB',fillOpacity:1 }}><Tooltip>你的位置</Tooltip></CircleMarker>}
+        {position && <CircleMarker center={[position.lat,position.lng]} radius={8} pathOptions={{ color:'#fff',weight:3,fillColor:'#4479AB',fillOpacity:1 }}><Tooltip>你的位置</Tooltip></CircleMarker>}
       </MapContainer>
       <div className="map-zoom"><button aria-label="放大地圖" onClick={() => map.current?.zoomIn()}>+</button><button aria-label="縮小地圖" onClick={() => map.current?.zoomOut()}>−</button></div>
       {!online && <div className="offline-map map-offline-banner"><MapPin size={17} /><span>離線地圖 · 底圖需連線</span></div>}
