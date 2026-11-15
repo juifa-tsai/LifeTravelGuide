@@ -28,7 +28,7 @@ test('day parts preserve all itinerary entries, bookings and sequence without ad
   const before = structuredClone(data.itinerary);
   const expected = {
     '2026-11-15':[['afternoon',1],['evening',7]],
-    '2026-11-16':[['morning',4],['afternoon',5],['evening',5]],
+    '2026-11-16':[['morning',5],['afternoon',4],['evening',5]],
     '2026-11-17':[['morning',5],['afternoon',4],['evening',4]],
     '2026-11-18':[['morning',5],['afternoon',2]],
   };

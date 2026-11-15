@@ -28,9 +28,9 @@ test('today uses Japan time and the actual weekday, with split hours, closures a
   assert.equal(hours.todayHours(place('toraya'),'2026-11-19'),'17:30–22:00');
   assert.equal(hours.todayHours(place('mori'),'2026-11-18'),'11:30–14:30');
   assert.equal(hours.todayHours(place('nine_cafe_fushimi'),'2026-11-15'),'17:00–翌04:00');
-  assert.equal(hours.todayHours(place('coco_fushimi'),'2026-11-15'),'11:00–23:00');
+  assert.equal(hours.todayHours(place('coco_fushimi'),'2026-11-15'),'11:00–22:00');
   assert.equal(hours.todayHours(place('art_museum'),'2026-11-13'),'09:30–20:00');
-  assert.equal(hours.todayHours(place('bio_terrace'),'2026-11-16'),'營業狀態待確認');
+  assert.equal(hours.todayHours({...place('new_poppy'),weeklyHours:{'1':'營業狀態待確認'}},'2026-11-16'),'營業狀態待確認');
   assert.equal(hours.todayHours(place('khaja_ghar'),'2026-11-17'),'11:00–15:00／17:00–23:00');
   assert.equal(hours.todayHours(place('bar_thistle'),'2026-11-17'),'17:00–翌01:00');
   assert.equal(hours.todayHours(place('oribio'),'2026-11-16'),'今日公休');
@@ -48,7 +48,7 @@ test('workbook-only hours never copy a weekday-specific time to another day', ()
 });
 test('all dining places have short sourced descriptions and distinguish vegetarian from mixed kitchens', () => {
   const dining = data.places.filter(p => !p.virtual && ['素食餐廳','咖啡廳','酒吧'].includes(p.category));
-  assert.equal(dining.length,25);
+  assert.equal(dining.length,26);
   for (const item of dining) {
     assert(item.foodDescription.length >= 35 && item.foodDescription.length <= 70, item.id);
     assert(item.diningType && item.weeklyHours && item.detailSourceUrls?.length);
@@ -117,7 +117,7 @@ test('overnight service belongs to yesterday, including when today is closed and
 test('ordinary and nth-week closures are gray while unresolved or outdoor hours stay unknown',()=>{
  for(const [id,date]of [['anzu','2026-11-16'],['fukiage','2026-11-10'],['barns','2026-11-16']])assert.equal(hours.openingInfo(place(id),new Date(date+'T18:00:00+09:00')).state,'closed');
  assert.equal(hours.openingInfo(place('fukiage'),new Date('2026-11-17T18:00:00+09:00')).state,'open');
- for(const [id,date]of [['bio_terrace','2026-11-16'],['nagoya_station','2026-11-17'],['osu_street','2026-11-17'],['shirokawa','2026-11-17']])assert.equal(hours.openingInfo(place(id),new Date(date+'T12:00:00+09:00')).state,'unknown',id);
+ for(const [id,date]of [[{...place('new_poppy'),hoursNote:'營業狀態待確認'},'2026-11-16'],['nagoya_station','2026-11-17'],['osu_street','2026-11-17'],['shirokawa','2026-11-17']])assert.equal(hours.openingInfo(typeof id==='string' ? place(id) : id,new Date(date+'T12:00:00+09:00')).state,'unknown',typeof id==='string' ? id : 'uncertain schedule');
  const pending={...place('fukiage'),closedText:'待確認'};
  assert.equal(hours.openingInfo(pending,new Date('2026-11-17T12:00:00+09:00')).state,'unknown');
 });
@@ -152,7 +152,7 @@ test('seasonal and date-specific activities never appear open outside their actu
  assert.equal(at('oasis21','2026-11-17','21:00'),'closed');
  assert.equal(at('barns','2026-11-17','18:00'),'open','current official November calendar supersedes the old third-Tuesday rule');
  assert.equal(at('barns','2026-12-17','18:00'),'unknown','a November calendar does not promise December opening');
- assert.equal(at('coco_fushimi','2026-11-15','22:30'),'open');
+ assert.equal(at('coco_fushimi','2026-11-15','22:30'),'closed');
  assert.equal(at('mihos_grains','2026-11-14','12:00'),'open');
  assert.equal(at('recit','2026-11-19','18:00'),'closed');
 });
@@ -166,4 +166,8 @@ test('shopping, museum and cafe opening lights use each checked weekday, includi
  assert.equal(at('new_poppy','2026-11-11','10:00'),'closed');assert.equal(at('new_poppy','2026-11-18','10:00'),'open');assert.equal(at('new_poppy','2026-11-19','10:00'),'closed');
  assert.equal(at('aoi_celestie','2026-11-16','17:55'),'open');assert.equal(at('aoi_celestie','2026-11-18','10:00'),'closed');
  for(const id of ['shikemichi','endoji','kakuozan_sando'])assert.equal(at(id,'2026-11-17','10:00'),'unknown');
+});
+
+test('both Yamamotoya branches have Monday hours after the main store cancelled its old Monday closure',()=>{
+ for(const id of ['yamamotoya_okute','yamamotoya_otsu']){assert.equal(hours.todayHours(place(id),'2026-11-16'),'11:00–22:00');assert.equal(hours.openingInfo(place(id),new Date('2026-11-16T12:00:00+09:00')).state,'open');}
 });

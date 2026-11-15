@@ -13,8 +13,8 @@ test('all real locations use actual location photos; generic illustrations remai
     assert(!place.imageAlt.includes('示意'),place.id);
   }
 });
-test('50 individually matched photo screenshots retain exact source, photographer, content hash and original rights',()=>{
-  assert.equal(photos.length,50);
+test('51 individually matched photo screenshots retain exact source, photographer, content hash and original rights',()=>{
+  assert.equal(photos.length,51);
   assert.equal(new Set(photos.map(p=>p.placeId)).size,photos.length);
   assert(photos.filter(p=>p.view==='exterior').length>=16);
   for (const photo of photos) {
@@ -30,7 +30,7 @@ test('50 individually matched photo screenshots retain exact source, photographe
     assert.equal(place.imageLicenseUrl,photo.licenseUrl);
     assert(place.imageAttribution.includes(photo.author));
     const sourceHost=new URL(photo.sourceUrl).hostname;
-    const hosts = {'Google Maps':['www.google.com'],'店家官網':['molnoda.com','bar-ylangylang1.amebaownd.com','www.jazzinnlovely.com','www-new.tokyuhotels.co.jp','graphpaper-nagoya.com','www.kapital.jp','www.doubledutch-jp.com','supreme.com','www.beams.co.jp','ronherman.jp','b-bitou.com'],'設施官網':['www.sakaepark.co.jp','dainagoyabuilding.com','www.nagoya-tv-tower.co.jp','www.shirotori-garden.jp','www.furukawa-museum.or.jp'],'官方觀光網站':['www.nagoya-info.jp'],'ホームメイト・リサーチ':['www.homemate-research-cinema.com'],'時尚媒體':['www.fashionsnap.com','snamag.com']};
+    const hosts = {'Google Maps':['www.google.com'],'店家官網':['molnoda.com','bar-ylangylang1.amebaownd.com','www.jazzinnlovely.com','www-new.tokyuhotels.co.jp','graphpaper-nagoya.com','www.kapital.jp','www.doubledutch-jp.com','supreme.com','www.beams.co.jp','ronherman.jp','b-bitou.com'],'設施官網':['www.sakaepark.co.jp','dainagoyabuilding.com','www.nagoya-tv-tower.co.jp','www.shirotori-garden.jp','www.furukawa-museum.or.jp'],'官方觀光網站':['www.nagoya-info.jp'],'ホームメイト・リサーチ':['www.homemate-research-cinema.com'],'時尚媒體':['www.fashionsnap.com','snamag.com'],'素食餐廳指南':['vegeness.com'],'食べログ':['tabelog.com']};
     assert(hosts[photo.provider]?.includes(sourceHost),`${photo.placeId}: source host must match its reviewed provider`);
     assert.equal(new URL(photo.sourceImageUrl).protocol,'https:');
     const bytes=readFileSync(new URL(`../public/${photo.path}`,import.meta.url));

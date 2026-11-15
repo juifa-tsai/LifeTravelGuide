@@ -11,7 +11,7 @@ test('all sixteen new places have the same sourced photo, time, description and 
 });
 test('new morning walks, coffee and Kakuozan visit follow the revised Excel route without changing flights',()=>{
  const day=date=>data.itinerary.filter(s=>s.date===date);const ids=date=>day(date).map(s=>s.placeId);
- assert.deepEqual(ids('2026-11-16').slice(1,4),['shikemichi','endoji','nagoyajo']);assert(ids('2026-11-16').includes('aoi_celestie'));
+ assert.deepEqual(ids('2026-11-16').slice(1,4),['shikemichi','new_poppy','nagoyajo']);assert(ids('2026-11-16').includes('aoi_celestie'));
  assert.deepEqual(ids('2026-11-17').slice(7,10),['kakuozan_sando','tamesaburo_memorial','mori']);
  assert.equal(day('2026-11-17').find(s=>s.placeId==='shrub').arrivalTime,'08:10');assert.equal(day('2026-11-17').find(s=>s.placeId==='art_museum').arrivalTime,'09:30');
  assert.equal(day('2026-11-15').find(s=>s.placeId==='tpe').arrivalTime,'15:50');assert.equal(day('2026-11-18').find(s=>s.summary.includes('起飛')).arrivalTime,'12:05');

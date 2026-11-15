@@ -32,8 +32,8 @@ test('the updated workbook owns every itinerary time, status, summary and note',
   }
 });
 
-test('the previous seven dining additions have sourced descriptions, real map reference points and credited location photos', () => {
-  const ids=['bio_terrace','khaja_ghar','mihos_grains','oribio','pupu_kitchen','ko_vegan','bar_thistle'];
+test('the six retained dining additions have sourced descriptions, real map reference points and credited location photos', () => {
+  const ids=['khaja_ghar','mihos_grains','oribio','pupu_kitchen','ko_vegan','bar_thistle'];
   assert.equal(data.places.length,62);
   for (const id of ids) {
     assert.equal(data.places.filter(place => place.id === id).length,1);
@@ -51,13 +51,13 @@ test('the previous seven dining additions have sourced descriptions, real map re
 
 test('revised lunches, antique stop and optional bar follow the new day routes', () => {
   const get=(date,id)=>data.itinerary.find(stop=>stop.date===date&&stop.placeId===id);
-  assert.equal(get('2026-11-16','montmartre').arrivalTime,'12:20');
-  assert.equal(get('2026-11-16','fukiage').arrivalTime,'13:45');
+  assert.equal(get('2026-11-16','yamamotoya_okute').arrivalTime,'11:45');
+  assert.equal(get('2026-11-16','fukiage').arrivalTime,'12:45');
   assert.equal(get('2026-11-16','fukiage').stayMinutes,90);
   assert.equal(get('2026-11-17','khaja_ghar').arrivalTime,'11:55');
   assert.equal(get('2026-11-17','bar_thistle').arrivalTime,'22:25');
   assert.equal(get('2026-11-17','bar_thistle').displayStatus,'可選');
-  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-16').candidateIds,['bio_terrace']);
+  assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-16').candidateIds,['yamamotoya_otsu']);
   assert.deepEqual(data.trip.days.find(day=>day.date==='2026-11-17').candidateIds,['mihos_grains']);
   assert(!data.itinerary.some(stop=>stop.placeId==='barns'));
 });

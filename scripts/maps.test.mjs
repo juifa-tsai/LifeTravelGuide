@@ -21,7 +21,7 @@ test('lightweight marker SVGs match the current Lucide category icons', () => {
 });
 
 test('all four daily maps permanently retain the complete shared favorite collection', () => {
-  assert.equal(favoriteIds.length,35);
+  assert.equal(favoriteIds.length,36);
   for (const day of data.trip.days) {
     const points = model.dailyMapPoints(data.itinerary.filter(stop => stop.date === day.date),data.places);
     assert.deepEqual(points.filter(point => point.favorite).map(point => point.place.id).sort(),favoriteIds);
@@ -110,5 +110,5 @@ test('popup hours keep last order, weekdays, overnight times and uncertain openi
   assert.match(nine,/L\.O\.\s*翌(?:日)?03:00/);
   assert(!nine.includes('一般週日資訊'));
   assert.equal(compactHours({ hoursText:null }), '開放時間待確認');
-  assert.equal(compactHours(data.places.find(place => place.id === 'bio_terrace')), '營業狀態待確認');
+  assert.equal(compactHours({hoursText:'11:00–16:00',hoursNote:'營業狀態待確認'}), '營業狀態待確認');
 });

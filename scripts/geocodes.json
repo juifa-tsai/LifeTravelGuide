@@ -191,14 +191,6 @@
     "label": "国土地理院・住所検索（地址參考點，非入口定位）",
     "checkedAt": "2026-11-13"
   },
-  "bio_terrace": {
-    "lat": 35.175282,
-    "lng": 136.903259,
-    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E4%B8%B8%E3%81%AE%E5%86%853%E4%B8%81%E7%9B%AE15%E7%95%AA5%E5%8F%B7",
-    "address": "愛知県名古屋市中区丸の内三丁目１５番５号",
-    "label": "国土地理院・住所検索（街區參考點，非入口定位）",
-    "checkedAt": "2026-11-13"
-  },
   "khaja_ghar": {
     "lat": 35.158134,
     "lng": 136.899307,
@@ -460,6 +452,22 @@
     "lng": 136.892517,
     "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E8%A5%BF%E5%8C%BA%E9%82%A3%E5%8F%A4%E9%87%8E1-36-52",
     "address": "愛知県名古屋市西区那古野一丁目３６番５２号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-15"
+  },
+  "yamamotoya_okute": {
+    "lat": 35.161461,
+    "lng": 136.936493,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%8D%83%E7%A8%AE%E5%8C%BA%E5%A4%A7%E4%B9%85%E6%89%8B%E7%94%BA5%E4%B8%81%E7%9B%AE9%E7%95%AA2%E5%8F%B7",
+    "address": "愛知県名古屋市千種区大久手町五丁目９番地",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-15"
+  },
+  "yamamotoya_otsu": {
+    "lat": 35.174332,
+    "lng": 136.906509,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E4%B8%B8%E3%81%AE%E5%86%853%E4%B8%81%E7%9B%AE19%E7%95%AA30%E5%8F%B7",
+    "address": "愛知県名古屋市中区丸の内三丁目１９番３０号",
     "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
     "checkedAt": "2026-11-15"
   }

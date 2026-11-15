@@ -271,17 +271,6 @@
     "imageRights": "original-rights",
     "imageCapturedAt": "2026-11-13"
   },
-  "bio_terrace": {
-    "imageUrl": "images/place-bio-terrace.webp",
-    "imageAttribution": "© Bio Terrace · Google Maps",
-    "imageSourceUrl": "https://www.google.com/maps/@35.1752034,136.9032834,3a,90y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICezunx1AE!2e10!3e12!6shttps%3A%2F%2Flh3.googleusercontent.com%2Fgrass-cs%2FAABkmLdqYJb-7j9Z8TB1LUWDFih7MdRd_Ny_7eGHoSVv8lxKSTInH7acxQ7vzZyc_kCDoTWcfM41FyUBWh4z2-OdjYASefwH7DR81fb9eqCTDcb-ajkHz6S7XXejRhr7q4pohY_SJzRp%3Dw408-h272-k-no!7i2400!8i1600?hl=ja",
-    "imageLicenseUrl": "https://www.google.com/intl/zh-TW/help/terms_maps/",
-    "imageKind": "place",
-    "imageAlt": "Bio Terrace（丸之內） 露台實景",
-    "imageSubject": "terrace",
-    "imageRights": "original-rights",
-    "imageCapturedAt": "2026-11-13"
-  },
   "khaja_ghar": {
     "imageUrl": "images/place-khaja-ghar.webp",
     "imageAttribution": "© カジャガール · Google Maps",
@@ -642,6 +631,28 @@
     "imageKind": "place",
     "imageAlt": "喫茶 New Poppy店內實景",
     "imageSubject": "interior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "yamamotoya_okute": {
+    "imageUrl": "images/place-yamamotoya-okute.webp",
+    "imageAttribution": "Vegeness掲載写真（撮影者は出典参照） · 原攝影者保留著作權",
+    "imageSourceUrl": "https://vegeness.com/shop/27527/",
+    "imageLicenseUrl": "https://vegeness.com/shop/27527/",
+    "imageKind": "place",
+    "imageAlt": "山本屋 大久手本店店面實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-15"
+  },
+  "yamamotoya_otsu": {
+    "imageUrl": "images/place-yamamotoya-otsu.webp",
+    "imageAttribution": "スパマキシマム · 原攝影者保留著作權",
+    "imageSourceUrl": "https://tabelog.com/aichi/A2301/A230103/23073081/dtlphotolst/smp2/",
+    "imageLicenseUrl": "https://tabelog.com/aichi/A2301/A230103/23073081/dtlphotolst/smp2/",
+    "imageKind": "place",
+    "imageAlt": "山本屋 桜通大津店店面實景",
+    "imageSubject": "exterior",
     "imageRights": "original-rights",
     "imageCapturedAt": "2026-11-15"
   }

@@ -396,68 +396,6 @@
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "nagoyajo",
-    "toPlaceId": "montmartre",
-    "navigation": {
-      "steps": [
-        {
-          "line": "名城線",
-          "fromStation": "名古屋城站",
-          "toStation": "榮站"
-        }
-      ],
-      "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
-      ],
-      "checkedAt": "2026-11-14",
-      "note": "榮站出站後步行至名古屋東急飯店。"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "montmartre",
-    "toPlaceId": "fukiage",
-    "navigation": {
-      "steps": [
-        {
-          "line": "櫻通線",
-          "fromStation": "高岳站",
-          "toStation": "吹上站"
-        }
-      ],
-      "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
-      ],
-      "checkedAt": "2026-11-14",
-      "note": "從飯店步行至高岳站；吹上站2號出口附近。"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "le_jardin",
-    "toPlaceId": "store_factory",
-    "navigation": {
-      "steps": [
-        {
-          "line": "櫻通線",
-          "fromStation": "吹上站",
-          "toStation": "久屋大通站"
-        },
-        {
-          "line": "名城線",
-          "fromStation": "久屋大通站",
-          "toStation": "矢場町站"
-        }
-      ],
-      "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
-      ],
-      "checkedAt": "2026-11-14",
-      "note": "頂樓咖啡廳離開後，步行至吹上站。"
-    }
-  },
-  {
-    "date": "2026-11-16",
     "fromPlaceId": "toraya",
     "toPlaceId": "oasis21",
     "navigation": {
@@ -750,98 +688,6 @@
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "shikemichi",
-    "toPlaceId": "endoji",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 140.1,
-        "durationSeconds": 112,
-        "fromCoordinates": {
-          "lat": 35.175659,
-          "lng": 136.891785
-        },
-        "toCoordinates": {
-          "lat": 35.176331,
-          "lng": 136.891327
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.891785,35.175659;136.891327,35.176331?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "endoji",
-    "toPlaceId": "nagoyajo",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 1798,
-        "durationSeconds": 1442.1,
-        "fromCoordinates": {
-          "lat": 35.176331,
-          "lng": 136.891327
-        },
-        "toCoordinates": {
-          "lat": 35.1876572063889,
-          "lng": 136.899153485
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8913270,35.1763310;136.8991535,35.1876572?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "hotel",
-    "toPlaceId": "new_poppy",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 1577.9,
-        "durationSeconds": 1266.1,
-        "fromCoordinates": {
-          "lat": 35.168926,
-          "lng": 136.900894
-        },
-        "toCoordinates": {
-          "lat": 35.175735,
-          "lng": 136.892517
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.892517,35.175735?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "new_poppy",
-    "toPlaceId": "endoji",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 170.5,
-        "durationSeconds": 136.3,
-        "fromCoordinates": {
-          "lat": 35.175735,
-          "lng": 136.892517
-        },
-        "toCoordinates": {
-          "lat": 35.176331,
-          "lng": 136.891327
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.892517,35.175735;136.891327,35.176331?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-15"
-    }
-  },
-  {
-    "date": "2026-11-16",
     "fromPlaceId": "store_factory",
     "toPlaceId": "aoi_celestie",
     "navigation": {
@@ -928,6 +774,161 @@
       },
       "sources": [
         "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.901001,35.16400256;136.899307,35.158134?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "nagoyajo",
+    "toPlaceId": "yamamotoya_okute",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "名古屋城站",
+          "toStation": "久屋大通站"
+        },
+        {
+          "line": "櫻通線",
+          "fromStation": "久屋大通站",
+          "toStation": "吹上站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-15",
+      "note": "名古屋城東門出園；吹上站1號出口步行3分至餐廳。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "nagoyajo",
+    "toPlaceId": "yamamotoya_otsu",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "名古屋城站",
+          "toStation": "久屋大通站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-15",
+      "note": "久屋大通站2號出口步行30秒至午餐備案。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "yamamotoya_otsu",
+    "toPlaceId": "fukiage",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "久屋大通站",
+          "toStation": "吹上站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-15",
+      "note": "櫻通線往德重；吹上站2號出口旁。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "le_jardin",
+    "toPlaceId": "store_factory",
+    "navigation": {
+      "steps": [
+        {
+          "line": "櫻通線",
+          "fromStation": "吹上站",
+          "toStation": "御器所站"
+        },
+        {
+          "line": "鶴舞線",
+          "fromStation": "御器所站",
+          "toStation": "鶴舞站"
+        }
+      ],
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html"
+      ],
+      "checkedAt": "2026-11-15",
+      "note": "櫻通線往德重，御器所轉鶴舞線往上小田井；鶴舞站出站後步行至丸田町。"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "shikemichi",
+    "toPlaceId": "new_poppy",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 65,
+        "durationSeconds": 52.1,
+        "fromCoordinates": {
+          "lat": 35.175659,
+          "lng": 136.891785
+        },
+        "toCoordinates": {
+          "lat": 35.175735,
+          "lng": 136.892517
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.891785,35.175659;136.892517,35.175735?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "new_poppy",
+    "toPlaceId": "nagoyajo",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1746.2,
+        "durationSeconds": 1396.6,
+        "fromCoordinates": {
+          "lat": 35.175735,
+          "lng": 136.892517
+        },
+        "toCoordinates": {
+          "lat": 35.1876572063889,
+          "lng": 136.899153485
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8925170,35.1757350;136.8991535,35.1876572?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "yamamotoya_okute",
+    "toPlaceId": "fukiage",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 553.2,
+        "durationSeconds": 442.5,
+        "fromCoordinates": {
+          "lat": 35.161461,
+          "lng": 136.936493
+        },
+        "toCoordinates": {
+          "lat": 35.158779,
+          "lng": 136.935486
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.936493,35.161461;136.935486,35.158779?overview=false&steps=false"
       ],
       "checkedAt": "2026-11-15"
     }

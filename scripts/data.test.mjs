@@ -75,7 +75,7 @@ test('arrival dinner remains flexible at 21:45 and follows the updated workbook 
   const dinner = data.itinerary.find(stop => stop.date === '2026-11-15' && stop.placeId === 'late_dinner');
   assert.equal(dinner.arrivalTime, '21:45');
   assert.equal(dinner.displayStatus, '彈性');
-  for (const term of ['MOLNODA','CoCo','華山','Vegan','21:45']) assert((dinner.summary + dinner.note).includes(term), term);
+  for (const term of ['MOLNODA','CoCo','華山','純素','22:00']) assert((dinner.summary + dinner.note).includes(term), term);
 });
 
 // Exercise the real importer, including a future workbook owning a supplemental ID.

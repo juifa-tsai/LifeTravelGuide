@@ -222,15 +222,15 @@
     "foodDescription": "日式咖哩可搭配蔬菜與米飯，奶素須指定不含動物性原料的ココイチベジカレー，分店販售及加料成分另確認。",
     "diningType": "葷素餐廳",
     "weeklyHours": {
-      "0": "11:00–23:00",
+      "0": "11:00–22:00",
       "1": "11:00–23:00",
       "2": "11:00–23:00",
       "3": "11:00–23:00",
       "4": "11:00–23:00",
       "5": "11:00–23:00",
-      "6": "11:00–23:00"
+      "6": "11:00–22:00"
     },
-    "hoursNote": "分店官網11:00–23:00；ベジカレー供應與 L.O. 待確認。",
+    "hoursNote": "週末依行程以22:00作保守截止；官網目前列L.O.23:00，出發前確認。",
     "detailSourceUrls": [
       "https://tenpo.ichibanya.co.jp/map/2172/"
     ],
@@ -303,25 +303,6 @@
     "hoursNote": "週一休館；假日調整，入館於閉館前30分鐘。",
     "detailSourceUrls": [
       "https://art-museum.city.nagoya.jp/guide/calendar/"
-    ],
-    "detailsCheckedAt": "2026-11-13"
-  },
-  "bio_terrace": {
-    "foodDescription": "以植物性餐盤、米粉可麗露與生食甜點為主，搭配茶飲；目前營業狀態未確認，請先向店家確認再安排午餐。",
-    "diningType": "葷素餐廳",
-    "weeklyHours": {
-      "0": "營業狀態待確認",
-      "1": "營業狀態待確認",
-      "2": "營業狀態待確認",
-      "3": "營業狀態待確認",
-      "4": "營業狀態待確認",
-      "5": "營業狀態待確認",
-      "6": "營業狀態待確認"
-    },
-    "hoursNote": "營業狀態待確認；平台暫停刊登，11/16請先確認供餐。",
-    "detailSourceUrls": [
-      "https://vegewel.com/en/restaurant/2475",
-      "https://tabelog.com/aichi/A2301/A230103/23079614/"
     ],
     "detailsCheckedAt": "2026-11-13"
   },
@@ -957,5 +938,45 @@
       "5": "08:00–18:00",
       "6": "08:00–18:00"
     }
+  },
+  "yamamotoya_okute": {
+    "foodDescription": "以八丁味噌煮烏龍麵為主，另供應純素版本。一般湯底含魚介高湯，請明確指定純素麵、不要蛋，並確認當日供應。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–22:00",
+      "1": "11:00–22:00",
+      "2": "11:00–22:00",
+      "3": "11:00–22:00",
+      "4": "11:00–22:00",
+      "5": "11:00–22:00",
+      "6": "11:00–22:00"
+    },
+    "hoursNote": "餐點L.O.21:00；2026/10起取消週一公休，臨休依官網公告。",
+    "detailSourceUrls": [
+      "https://a-yamamotoya.co.jp/store/yamamotoya/",
+      "https://a-yamamotoya.co.jp/news/news-320/",
+      "https://vegeness.com/shop/27527/"
+    ],
+    "detailsCheckedAt": "2026-11-15"
+  },
+  "yamamotoya_otsu": {
+    "foodDescription": "主打手工味噌煮烏龍麵，另有登載純素菜單。一般品項會使用魚介出汁或雞蛋，奶素請指定純素版本並先確認供應。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–22:00",
+      "1": "11:00–22:00",
+      "2": "11:00–22:00",
+      "3": "11:00–22:00",
+      "4": "11:00–22:00",
+      "5": "11:00–22:00",
+      "6": "11:00–22:00"
+    },
+    "hoursNote": "L.O.待確認；年末年始與臨時休業依公告。",
+    "detailSourceUrls": [
+      "https://a-yamamotoya.co.jp/store/sakuradoori-ootsu/",
+      "https://nagoya-meshi.jp/nagoyameshi-search/detail/味噌煮込みうどんの山本屋-桜通大津店/",
+      "https://a-yamamotoya.co.jp/store/sakuradoori-ootsu/"
+    ],
+    "detailsCheckedAt": "2026-11-15"
   }
 }
