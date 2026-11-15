@@ -1,4 +1,4 @@
-import { ChevronDown } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import type { Place } from '../lib/types';
 import { hasCoordinates } from '../lib/mapPoints';
 import { openingLabels, type OpeningInfo } from '../lib/placeHours';
@@ -19,7 +19,11 @@ export function CollectionCard({ place, opening, position, hotel, visited, selec
         <h2>{place.nameZh}</h2>
         <p className="collection-today"><span className={`status-dot ${opening.state}`} role="img" aria-label={openingLabels[opening.state]} /><span>{opening.hoursText}</span></p>
         <span className="collection-tags"><span className={`dining-badge ${foodType === '素食餐廳' ? 'vegetarian' : ''}`}>{foodType}</span><ReservationBadge place={place} /></span>
-      </div><span className="collection-distance" aria-label={`距目前位置 ${fromHere}`}><small>目前</small><strong>{fromHere}</strong></span><ChevronDown className="collection-chevron" size={17} aria-hidden="true" /></summary>
+      </div><span className="collection-side"><span className="collection-distance" aria-label={`距目前位置 ${fromHere}`}><small>目前</small><strong>{fromHere}</strong></span>
+        <button type="button" className={`collection-visit ${visited ? 'checked' : ''}`} aria-pressed={visited} aria-label={visited ? `取消 ${place.nameZh} 的去過標記` : `標記 ${place.nameZh} 已去過`} onClick={event => { event.preventDefault(); event.stopPropagation(); onVisit(!visited); }}>
+          <span className="collection-visit-mark" aria-hidden="true">{visited && <Check size={16} strokeWidth={2.6} />}</span>
+        </button>
+      </span><ChevronDown className="collection-chevron" size={17} aria-hidden="true" /></summary>
       <div className="collection-body"><PlaceDetails place={place} hotel={hotel} visited={visited} onVisit={onVisit} onFocus={onFocus} /></div>
     </details>
   </article>;

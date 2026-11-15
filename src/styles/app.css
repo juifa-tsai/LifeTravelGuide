@@ -354,6 +354,11 @@ h1 { font-size:26px; line-height:1.5; letter-spacing:.015em; font-weight:700; }
 .collection-distance { flex-shrink:0; text-align:right; min-width:48px; color:var(--muted); font-variant-numeric:tabular-nums; }
 .collection-distance small { display:block; font-size:12px; margin-bottom:3px; }
 .collection-distance strong { display:block; font-size:14px; font-weight:500; white-space:nowrap; }
+.collection-side { display:flex; flex:0 0 auto; flex-direction:column; align-items:flex-end; }
+.collection-visit { display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:50%; background:transparent; cursor:pointer; }
+.collection-visit-mark { display:grid; place-items:center; width:23px; height:23px; border:1.5px solid #BBC3B8; border-radius:50%; }
+.collection-visit.checked .collection-visit-mark { color:#39734A; background:#E9F3EA; border-color:#7DA585; }
+.collection-visit:focus-visible { outline:2px solid #39734A; outline-offset:-3px; }
 .collection-chevron { flex-shrink:0; color:var(--muted); transition:transform .2s; }
 .collection-details[open] .collection-chevron { transform:rotate(180deg); }
 .collection-body { border-top:1px solid var(--border); margin:0 13px; padding:10px 0; }
