@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Pause, Play, RotateCcw, Store, Volume2 } from 'lucide-react';
 import { audioPhrases, type AudioPhrase } from '../data/audioPhrases';
 import { NearbyStoresLink } from '../components/NearbyStoresLink';
+import { CurrencyCard } from '../components/CurrencyCard';
 
 function AudioCard({ phrase, onPlaybackStart }: { phrase: AudioPhrase; onPlaybackStart: (audio: HTMLAudioElement) => void }) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -56,6 +57,6 @@ export function AudioPage() {
   }
   return <>
     <header className="page-heading"><h1>求助</h1><p>按播放讓店員聽，點標題查看日文與中文。</p></header>
-    <section className="audio-cards" aria-label="旅途求助卡片"><article className="audio-card nearby-help-card"><header className="audio-card-heading"><span className="audio-card-icon"><Store size={20} aria-hidden="true" /></span><h2>附近便利超商</h2></header><NearbyStoresLink variant="button" /></article>{audioPhrases.map(phrase => <AudioCard key={phrase.id} phrase={phrase} onPlaybackStart={onPlaybackStart} />)}</section>
+    <section className="audio-cards" aria-label="旅途求助卡片"><CurrencyCard /><article className="audio-card nearby-help-card"><header className="audio-card-heading"><span className="audio-card-icon"><Store size={20} aria-hidden="true" /></span><h2>附近便利超商</h2></header><NearbyStoresLink variant="button" /></article>{audioPhrases.map(phrase => <AudioCard key={phrase.id} phrase={phrase} onPlaybackStart={onPlaybackStart} />)}</section>
   </>;
 }

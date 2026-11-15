@@ -7,6 +7,7 @@ import { BackToTop } from '../components/BackToTop';
 import { japanDate, launchHash } from '../lib/entryDay';
 import { BookingProvider } from '../components/BookingProvider';
 import { LocationProvider } from '../components/LocationProvider';
+import { ExchangeRateProvider } from '../components/ExchangeRateProvider';
 import { defaultDay, loadData } from '../lib/data';
 import { useStoredState } from '../lib/storage';
 import { initialTodoItems, parseTodoItems, type TodoItem } from '../lib/todos';
@@ -135,5 +136,5 @@ export default function App() {
   },[]);
   if (error) return <LoadError />;
   if (!data) return <main className="load-state" role="status"><BookOpen size={36} /><h1>打開旅行手帖…</h1><p>正在準備四天的名古屋時光。</p></main>;
-  return <ErrorBoundary><HashRouter><LocationProvider><TravelApp data={data} /></LocationProvider></HashRouter></ErrorBoundary>;
+  return <ErrorBoundary><HashRouter><LocationProvider><ExchangeRateProvider><TravelApp data={data} /></ExchangeRateProvider></LocationProvider></HashRouter></ErrorBoundary>;
 }
