@@ -1,10 +1,12 @@
 {
   "driveFileId": "11iKYAKClPwtdG0jtotqcchyyApw57Vbn",
   "driveUrl": "https://docs.google.com/spreadsheets/d/11iKYAKClPwtdG0jtotqcchyyApw57Vbn/edit",
-  "syncedAt": "2026-11-15",
-  "sha256": "c34641cda40185144dde78318882911829dbbdad829ca782cd43907609d5ab46",
+  "syncedAt": "2026-11-16",
+  "sha256": "e4bfb84e7ee07f7b89a60a507a0e2899704a94a01aaf1adf5a3f4b60b1e4147d",
   "places": 64,
   "stops": 41,
   "legs": 45,
-  "notes": "Base Drive workbook: 2026-11-15T22:48:21.115Z. Local 11/16 breakfast revision requested by the user via Google Maps: Ito Coffee kissa; Drive file was not rewritten. Only allowlisted fields are exported."
+  "notes": "Synced Drive workbook modified 2026-11-16T02:38:11.221Z. Preserved the user-requested Ito Coffee breakfast correction from d728360 where Drive retained the older unchanged breakfast. sha256 describes the merged project workbook; rawDriveSha256 describes the downloaded Drive file. Only allowlisted fields are exported.",
+  "driveModifiedTime": "2026-11-16T02:38:11.221Z",
+  "rawDriveSha256": "8a5afbbcc98be596df98f2da52274375784e28941ac48063a84cf5c6435fd3ec"
 }

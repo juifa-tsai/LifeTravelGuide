@@ -677,5 +677,16 @@
     "imageSubject": "exterior",
     "imageRights": "original-rights",
     "imageCapturedAt": "2026-11-15"
+  },
+  "coco_osu": {
+    "imageUrl": "images/place-coco-osu.webp",
+    "imageAttribution": "monch312 · 原攝影者保留著作權",
+    "imageSourceUrl": "https://tabelog.com/aichi/A2301/A230105/23025313/dtlphotolst/4/smp2/",
+    "imageLicenseUrl": "https://tabelog.com/aichi/A2301/A230105/23025313/dtlphotolst/4/smp2/",
+    "imageKind": "place",
+    "imageAlt": "CoCo 壱番屋中區大須店店面實景",
+    "imageSubject": "exterior",
+    "imageRights": "original-rights",
+    "imageCapturedAt": "2026-11-16"
   }
 }

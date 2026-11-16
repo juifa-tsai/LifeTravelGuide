@@ -486,5 +486,13 @@
     "address": "愛知県名古屋市東区泉一丁目７番２５号",
     "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
     "checkedAt": "2026-11-16"
+  },
+  "coco_osu": {
+    "lat": 35.157661,
+    "lng": 136.900238,
+    "source": "https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%96%80%E5%89%8D%E7%94%BA1%E7%95%AA15%E5%8F%B7-3",
+    "address": "愛知県名古屋市中区門前町１番１５号",
+    "label": "国土地理院・住所／施設検索（街區參考點，非入口定位）",
+    "checkedAt": "2026-11-16"
   }
 }

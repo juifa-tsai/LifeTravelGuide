@@ -1240,5 +1240,24 @@
     "sourceScreenshotSha256": "db69eceb643571de11a3893c6b90ba9bc59c8ccbfa75ad0ac04389f2548496bb",
     "sha256": "eb437f7741de6632c167efe329e6645b7f9c22282f89f01b5a9adcfa4f1d09ca",
     "transformation": "Playwright screenshot; resized to at most 960 × 720; converted to WebP. Original photograph content unchanged. Thumbnail may crop using CSS."
+  },
+  {
+    "placeId": "coco_osu",
+    "title": "CoCo 壱番屋中區大須店",
+    "matchedName": "CoCo壱番屋 中区大須店",
+    "matchedAddress": "愛知県名古屋市中区門前町1-15-3",
+    "view": "exterior",
+    "sourceUrl": "https://tabelog.com/aichi/A2301/A230105/23025313/dtlphotolst/4/smp2/",
+    "sourceImageUrl": "https://tblg.k-img.com/restaurant/images/Rvw/216610/640x640_rect_cbb4a7feec915746b32ff2a30bd2f36b.jpg",
+    "author": "monch312",
+    "provider": "食べログ",
+    "license": "原攝影者保留著作權；個人非營利行程識別引用，非 CC 授權。",
+    "licenseUrl": "https://tabelog.com/aichi/A2301/A230105/23025313/dtlphotolst/4/smp2/",
+    "path": "images/place-coco-osu.webp",
+    "captureMethod": "Playwright screenshot of the publicly visible photograph, then resized without content edits.",
+    "capturedAt": "2026-11-16",
+    "sourceScreenshotSha256": "3e148551663c8611bb0ca1753f5db11d92aaf0026beb5c4d7cc74fd1f7a6ef21",
+    "sha256": "3f6d2a2c6d1a9fa4b053d722e5562ad9b432e7ce599a459ba163ba72ef347de7",
+    "transformation": "Playwright screenshot; resized to at most 960 × 720; converted to WebP. Original photograph content unchanged. Thumbnail may crop using CSS."
   }
 ]

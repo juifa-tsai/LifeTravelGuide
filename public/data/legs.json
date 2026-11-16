@@ -110,64 +110,6 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "hotel",
-    "toPlaceId": "ito_coffee_kissa",
-    "mode": "步行",
-    "summary": "約25–30分",
-    "details": "08:00由飯店步行至泉一丁目，08:30早餐。",
-    "minutesEstimate": 26,
-    "fareJpyEstimate": 0,
-    "certainty": "步行估算",
-    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%83%88%E3%82%A6%E7%8F%88%E7%90%B2%E5%96%AB%E8%8C%B6%E5%AE%A4%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%B3%891-7-25",
-    "navigation": {
-      "walking": {
-        "distanceMeters": 1924.1,
-        "durationSeconds": 1539.3,
-        "fromCoordinates": {
-          "lat": 35.168926,
-          "lng": 136.900894
-        },
-        "toCoordinates": {
-          "lat": 35.176186,
-          "lng": 136.913635
-        }
-      },
-      "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.913635,35.176186?overview=false&steps=false"
-      ],
-      "checkedAt": "2026-11-16"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "ito_coffee_kissa",
-    "toPlaceId": "nagoyajo",
-    "mode": "地鐵＋步行",
-    "summary": "約25–30分",
-    "details": "步行至久屋大通站，搭名城線往大曽根一站至名古屋城，7號出口往東門。",
-    "minutesEstimate": 28,
-    "fareJpyEstimate": 210,
-    "certainty": "含步行及候車估算",
-    "sourceUrl": "https://www.nagoyajo.city.nagoya.jp/access/",
-    "navigation": {
-      "steps": [
-        {
-          "line": "名城線",
-          "fromStation": "久屋大通站",
-          "toStation": "名古屋城站"
-        }
-      ],
-      "note": "步行至久屋大通，往大曽根方向一站；名古屋城站7號出口往東門。",
-      "sources": [
-        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
-        "https://www.nagoyajo.city.nagoya.jp/access/",
-        "https://tabelog.com/aichi/A2301/A230104/23087048/"
-      ],
-      "checkedAt": "2026-11-16"
-    }
-  },
-  {
-    "date": "2026-11-16",
-    "fromPlaceId": "hotel",
     "toPlaceId": "shikemichi",
     "mode": "步行",
     "summary": "彈性：約15–20分",
@@ -198,12 +140,12 @@
   {
     "date": "2026-11-16",
     "fromPlaceId": "nagoyajo",
-    "toPlaceId": "khaja_ghar",
+    "toPlaceId": "coco_osu",
     "mode": "地鐵＋步行",
     "summary": "約25–30分",
-    "details": "城東門→名古屋城站搭名城線往榮、金山→上前津轉鶴舞線往上小田井一站→大須觀音2號出口步行約3分。",
+    "details": "東門出城，名古屋城站搭名城線左回り至上前津，轉鶴舞線往伏見方向一站到大須觀音，2號出口步行至店。",
     "minutesEstimate": 28,
-    "fareJpyEstimate": null,
+    "fareJpyEstimate": 240,
     "certainty": "含步行及候車估算",
     "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/subway/",
     "navigation": {
@@ -219,33 +161,33 @@
           "toStation": "大須觀音站"
         }
       ],
+      "note": "大須觀音站2號出口往門前町店，指定ココイチベジカレー。",
       "sources": [
         "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
         "https://www.nagoyajo.city.nagoya.jp/access/",
-        "https://www.khajaghar.jp/access.html"
+        "https://tenpo.ichibanya.co.jp/map/2668/"
       ],
-      "checkedAt": "2026-11-16",
-      "note": "大須觀音站2號出口步行至店家。"
+      "checkedAt": "2026-11-16"
     }
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "khaja_ghar",
+    "fromPlaceId": "coco_osu",
     "toPlaceId": "osu_kannon",
     "mode": "步行",
-    "summary": "約4–8分",
-    "details": "大須マルシェ步行到大須觀音。",
+    "summary": "約5–8分",
+    "details": "從餐廳步行約5–8分到大須觀音。",
     "minutesEstimate": 6,
     "fareJpyEstimate": 0,
     "certainty": "步行估算",
-    "sourceUrl": "https://www.khajaghar.jp/",
+    "sourceUrl": "https://www.google.com/maps/dir/?api=1&origin=CoCo%E5%A3%B1%E7%95%AA%E5%B1%8B%20%E4%B8%AD%E5%8C%BA%E5%A4%A7%E9%A0%88%E5%BA%97%20%E5%90%8D%E5%8F%A4%E5%B1%8B&destination=%E5%A4%A7%E9%A0%88%E8%A6%B3%E9%9F%B3%20%E5%90%8D%E5%8F%A4%E5%B1%8B&travelmode=walking",
     "navigation": {
       "walking": {
-        "distanceMeters": 166.5,
-        "durationSeconds": 133.1,
+        "distanceMeters": 329.2,
+        "durationSeconds": 263.5,
         "fromCoordinates": {
-          "lat": 35.158134,
-          "lng": 136.899307
+          "lat": 35.157661,
+          "lng": 136.900238
         },
         "toCoordinates": {
           "lat": 35.15918,
@@ -253,9 +195,9 @@
         }
       },
       "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.899307,35.158134;136.899597,35.15918?overview=false&steps=false"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900238,35.157661;136.899597,35.15918?overview=false&steps=false"
       ],
-      "checkedAt": "2026-11-13"
+      "checkedAt": "2026-11-16"
     }
   },
   {
@@ -381,22 +323,22 @@
   },
   {
     "date": "2026-11-16",
-    "fromPlaceId": "khaja_ghar",
+    "fromPlaceId": "coco_osu",
     "toPlaceId": "osu_street",
     "mode": "步行",
-    "summary": "約3–8分（彈性）",
-    "details": "午餐後可直接由大須マルシェ進商店街，往上前津逛。",
-    "minutesEstimate": 5,
+    "summary": "約5–10分（彈性）",
+    "details": "午餐後可步行至商店街西側，再往上前津方向逛。",
+    "minutesEstimate": 8,
     "fareJpyEstimate": 0,
     "certainty": "步行估算",
     "sourceUrl": "https://osu.nagoya/ja/",
     "navigation": {
       "walking": {
-        "distanceMeters": 709.8,
-        "durationSeconds": 569.8,
+        "distanceMeters": 641.2,
+        "durationSeconds": 514.8,
         "fromCoordinates": {
-          "lat": 35.158134,
-          "lng": 136.899307
+          "lat": 35.157661,
+          "lng": 136.900238
         },
         "toCoordinates": {
           "lat": 35.160095,
@@ -404,7 +346,7 @@
         }
       },
       "sources": [
-        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.8993070,35.1581340;136.9039150,35.1600950?overview=false&steps=false"
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900238,35.157661;136.903915,35.160095?overview=false&steps=false"
       ],
       "checkedAt": "2026-11-16"
     }
@@ -1235,6 +1177,64 @@
         "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.936493,35.161461;136.935486,35.158779?overview=false&steps=false"
       ],
       "checkedAt": "2026-11-15"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "hotel",
+    "toPlaceId": "ito_coffee_kissa",
+    "mode": "步行",
+    "summary": "約25–30分",
+    "details": "08:00由飯店步行至泉一丁目，08:30早餐。",
+    "minutesEstimate": 26,
+    "fareJpyEstimate": 0,
+    "certainty": "步行估算",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%83%88%E3%82%A6%E7%8F%88%E7%90%B2%E5%96%AB%E8%8C%B6%E5%AE%A4%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%B3%891-7-25",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 1924.1,
+        "durationSeconds": 1539.3,
+        "fromCoordinates": {
+          "lat": 35.168926,
+          "lng": 136.900894
+        },
+        "toCoordinates": {
+          "lat": 35.176186,
+          "lng": 136.913635
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900894,35.168926;136.913635,35.176186?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "ito_coffee_kissa",
+    "toPlaceId": "nagoyajo",
+    "mode": "地鐵＋步行",
+    "summary": "約25–30分",
+    "details": "步行至久屋大通站，搭名城線往大曽根一站至名古屋城，7號出口往東門。",
+    "minutesEstimate": 28,
+    "fareJpyEstimate": 210,
+    "certainty": "含步行及候車估算",
+    "sourceUrl": "https://www.nagoyajo.city.nagoya.jp/access/",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "久屋大通站",
+          "toStation": "名古屋城站"
+        }
+      ],
+      "note": "步行至久屋大通，往大曽根方向一站；名古屋城站7號出口往東門。",
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nagoyajo.city.nagoya.jp/access/",
+        "https://tabelog.com/aichi/A2301/A230104/23087048/"
+      ],
+      "checkedAt": "2026-11-16"
     }
   }
 ]

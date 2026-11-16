@@ -1378,5 +1378,77 @@
       ],
       "checkedAt": "2026-11-16"
     }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "nagoyajo",
+    "toPlaceId": "coco_osu",
+    "navigation": {
+      "steps": [
+        {
+          "line": "名城線",
+          "fromStation": "名古屋城站",
+          "toStation": "上前津站"
+        },
+        {
+          "line": "鶴舞線",
+          "fromStation": "上前津站",
+          "toStation": "大須觀音站"
+        }
+      ],
+      "note": "大須觀音站2號出口往門前町店，指定ココイチベジカレー。",
+      "sources": [
+        "https://www.kotsu.city.nagoya.jp/rp/subway/routemap.html",
+        "https://www.nagoyajo.city.nagoya.jp/access/",
+        "https://tenpo.ichibanya.co.jp/map/2668/"
+      ],
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "coco_osu",
+    "toPlaceId": "osu_kannon",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 329.2,
+        "durationSeconds": 263.5,
+        "fromCoordinates": {
+          "lat": 35.157661,
+          "lng": 136.900238
+        },
+        "toCoordinates": {
+          "lat": 35.15918,
+          "lng": 136.899597
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900238,35.157661;136.899597,35.15918?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-16"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "fromPlaceId": "coco_osu",
+    "toPlaceId": "osu_street",
+    "navigation": {
+      "walking": {
+        "distanceMeters": 641.2,
+        "durationSeconds": 514.8,
+        "fromCoordinates": {
+          "lat": 35.157661,
+          "lng": 136.900238
+        },
+        "toCoordinates": {
+          "lat": 35.160095,
+          "lng": 136.903915
+        }
+      },
+      "sources": [
+        "https://routing.openstreetmap.de/routed-foot/route/v1/foot/136.900238,35.157661;136.903915,35.160095?overview=false&steps=false"
+      ],
+      "checkedAt": "2026-11-16"
+    }
   }
 ]

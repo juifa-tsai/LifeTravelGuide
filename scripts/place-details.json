@@ -1027,5 +1027,24 @@
       "https://mt.tokai-tv.com/gourmet_info/002215.html"
     ],
     "detailsCheckedAt": "2026-11-16"
+  },
+  "coco_osu": {
+    "foodDescription": "日式咖哩連鎖店，提供不使用動物性原料的ココイチベジカレー；可選菠菜或菇，配料先確認，一般野菜咖哩並非素食。",
+    "diningType": "葷素餐廳",
+    "weeklyHours": {
+      "0": "11:00–23:00",
+      "1": "11:00–23:00",
+      "2": "11:00–23:00",
+      "3": "11:00–23:00",
+      "4": "11:00–23:00",
+      "5": "11:00–23:00",
+      "6": "11:00–23:00"
+    },
+    "hoursNote": "一般11:00–23:00，L.O.23:00；指定「ココイチベジカレー」，配料、醬料與高湯成分另確認。",
+    "detailSourceUrls": [
+      "https://tenpo.ichibanya.co.jp/map/2668/",
+      "https://demae-can.com/shop/menu/3487523"
+    ],
+    "detailsCheckedAt": "2026-11-16"
   }
 }
